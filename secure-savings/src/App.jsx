@@ -359,7 +359,7 @@ function App() {
                 </div>
                 <div className="p-4 text-right">
                   <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                    Today's Money
+                    Today&apos;s Money
                   </p>
                   <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
                     $53k
@@ -390,7 +390,7 @@ function App() {
                 </div>
                 <div className="p-4 text-right">
                   <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                    Today's Users
+                    Today&apos;s Users
                   </p>
                   <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
                     2,300
@@ -691,7 +691,8 @@ function App() {
                   <a
                     href="https://www.creative-tim.com"
                     target="_blank"
-                    className="transition-colors hover:text-blue-500" rel="noreferrer"
+                    className="transition-colors hover:text-blue-500"
+                    rel="noreferrer"
                   >
                     Creative Tim
                   </a>{" "}
@@ -702,7 +703,8 @@ function App() {
                     <a
                       href="https://www.creative-tim.com"
                       target="_blank"
-                      className="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500" rel="noreferrer"
+                      className="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500"
+                      rel="noreferrer"
                     >
                       Creative Tim
                     </a>
@@ -711,7 +713,8 @@ function App() {
                     <a
                       href="https://www.creative-tim.com/presentation"
                       target="_blank"
-                      className="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500" rel="noreferrer"
+                      className="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500"
+                      rel="noreferrer"
                     >
                       About Us
                     </a>
@@ -720,7 +723,8 @@ function App() {
                     <a
                       href="https://www.creative-tim.com/blog"
                       target="_blank"
-                      className="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500" rel="noreferrer"
+                      className="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500"
+                      rel="noreferrer"
                     >
                       Blog
                     </a>
@@ -729,7 +733,8 @@ function App() {
                     <a
                       href="https://www.creative-tim.com/license"
                       target="_blank"
-                      className="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500" rel="noreferrer"
+                      className="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500"
+                      rel="noreferrer"
                     >
                       License
                     </a>
