@@ -1,12 +1,10 @@
 Live site Link: #
 
-# Project Name
+# Project Name : SecureSavings
 
 ## Introduction
 
 Briefly introduce your project and its purpose.
-
-## Login and Science Study Components
 
 ### Login Page
 
