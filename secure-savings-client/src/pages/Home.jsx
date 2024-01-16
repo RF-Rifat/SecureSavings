@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div>Home || Dash board</div>
+    <div>Home</div>
   )
 }
 
