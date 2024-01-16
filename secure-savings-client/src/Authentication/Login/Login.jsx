@@ -11,7 +11,7 @@ import {
 
 const Login = () => {
   return (
-    <Card className="w-96">
+    <Card className="w-96 mx-auto mt-11">
       <CardHeader
         variant="gradient"
         color="gray"
@@ -36,7 +36,7 @@ const Login = () => {
           Don&apos;t have an account?
           <Typography
             as="a"
-            href="#signup"
+            href="/signUp"
             variant="small"
             color="blue-gray"
             className="ml-1 font-bold"
