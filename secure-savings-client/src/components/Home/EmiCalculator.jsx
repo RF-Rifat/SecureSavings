@@ -1,7 +1,7 @@
-const BmCalculator = () => {
+const EmiCalculator = () => {
   return (
-    <div>BmCalculator</div>
+    <div>EmiCalculator</div>
   )
 }
 
-export default BmCalculator
+export default EmiCalculator
