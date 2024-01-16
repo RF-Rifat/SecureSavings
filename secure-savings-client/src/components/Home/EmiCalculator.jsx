@@ -76,7 +76,7 @@ const EmiCalculator = () => {
                   >
                     Reset
                   </Button>
-                </div>
+                </div>t
               </div>
               <Input
                 label="Calculated Interest:"
