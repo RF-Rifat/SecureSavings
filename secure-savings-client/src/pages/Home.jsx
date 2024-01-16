@@ -1,10 +1,10 @@
-import Marquee from "./Marquee";
+import MarqueeComp from "./MarqueeComp";
 
 const Home = () => {
   return (
     <div>
       Home
-      <Marquee></Marquee>
+      <MarqueeComp></MarqueeComp>
     </div>
   );
 };
