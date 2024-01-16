@@ -1,7 +1,12 @@
+import Marquee from "./Marquee";
+
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <div>
+      Home
+      <Marquee></Marquee>
+    </div>
+  );
+};
 
-export default Home
+export default Home;
