@@ -1,4 +1,4 @@
-## Live site Link: <a href="https://secure-savings-delta.vercel.app" target="_blank">Secure-Savings</a>
+## Live site Link: [Secure-Savings](https://secure-savings-delta.vercel.app){:target="_blank"}
 
 # Project Name : SecureSavings
 
