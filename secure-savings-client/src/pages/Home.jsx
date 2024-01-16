@@ -1,26 +1,15 @@
-
 import MarqueeComp from "./MarqueeComp";
-import EmiCalculator from "../components/Home/EmiCalculator"
-import Hero from "../components/Home/Hero"
-
+import EmiCalculator from "../components/Home/EmiCalculator";
+import Hero from "../components/Home/Hero";
 
 const Home = () => {
-
   return (
-
     <div>
-      Home
+      <Hero />
       <MarqueeComp></MarqueeComp>
+      <EmiCalculator />
     </div>
   );
 };
-
-    <>
-      <Hero />
-      <EmiCalculator />
-    </>
-  )
-}
-
 
 export default Home;
