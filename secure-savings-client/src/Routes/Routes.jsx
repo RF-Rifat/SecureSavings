@@ -4,6 +4,8 @@ import SignUp from "../Authentication/SignUp";
 import Home from "../pages/Home";
 import Root from "./Root";
 import ErrorPage from "../pages/ErrorPage";
+import MyWallet from "../pages/MyWallet";
+import AboutUs from "../pages/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -13,15 +15,23 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home />,
+      },
+      {
+        path: "/wallet",
+        element: <MyWallet />,
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs />,
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: <Login />,
       },
       {
         path: "/signUp",
-        element: <SignUp></SignUp>,
+        element: <SignUp />,
       },
     ],
   },

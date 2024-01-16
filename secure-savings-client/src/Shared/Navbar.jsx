@@ -18,6 +18,7 @@ import {
   Bars3Icon,
   ChatBubbleLeftEllipsisIcon,
   CurrencyBangladeshiIcon,
+  UserPlusIcon,
   WalletIcon,
 } from "@heroicons/react/24/solid";
 import { Link, NavLink } from "react-router-dom";
@@ -135,6 +136,11 @@ const navListItems = [
     label: "Saving",
     link: "saving",
     icon: CurrencyBangladeshiIcon,
+  },
+  {
+    label: "About Us",
+    link: "aboutUs",
+    icon: UserPlusIcon,
   },
   {
     label: "Contact",
