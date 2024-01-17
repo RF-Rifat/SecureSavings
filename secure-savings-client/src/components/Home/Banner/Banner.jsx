@@ -9,9 +9,11 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div>
-      <div></div>
-      <div>
+    <div className="flex my-10">
+      <div className="flex items-center p-10 border-4">
+        <h2 className="text-5xl font-bold">Believing, banking and achieving different</h2>
+      </div>
+      <div className="border-4">
         <Swiper
           effect={"coverflow"}
           grabCursor={true}
@@ -36,24 +38,6 @@ const Banner = () => {
           </SwiperSlide>
           <SwiperSlide>
             <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
           </SwiperSlide>
         </Swiper>
       </div>
