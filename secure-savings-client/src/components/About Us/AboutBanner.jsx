@@ -24,9 +24,11 @@ const AboutBanner = () => {
                   Your story starts with us.
                 </h1>
                 <p className="mt-4 text-lg text-blueGray-200 text-white">
-                  This is a simple example of a Landing Page you can build using
-                  Notus React. It features multiple CSS components based on the
-                  Tailwind CSS design system.
+                  At Secure-Saving, we believe in more than just financial
+                  transactions – we believe in building lasting relationships.
+                  With a commitment to excellence and a passion for innovation,
+                  we are your dedicated financial partner, here to support you
+                  on your journey to financial success.
                 </p>
               </div>
             </div>
