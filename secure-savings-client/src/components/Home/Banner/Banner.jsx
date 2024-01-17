@@ -9,9 +9,10 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div className="flex my-10">
-      <div className="flex items-center p-10 border-4">
-        <h2 className="text-5xl font-bold">Believing, banking and achieving different</h2>
+    <div className="flex my-10 gap-6">
+      <div className="block items-center p-10 border-4">
+        <h4 className="text-2xl text-green-500 font-semibold">Simple. Transparent. Secure</h4>
+        <h2 className="text-5xl font-bold">Believing, Banking and Achieving Different</h2>
       </div>
       <div className="border-4">
         <Swiper
