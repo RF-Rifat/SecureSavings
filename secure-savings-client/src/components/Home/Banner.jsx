@@ -3,13 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 
 import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div className=" 2xl:flex justify-between my-10 gap-6">
+    <div className="2xl:flex justify-between my-10 gap-6">
       <div className="block items-center 2xl:p-28 space-y-2 text-center 2xl:text-left">
         <h4 className="text-xl lg:text-2xl text-green-500 font-semibold">
           Simple. Transparent. Secure
@@ -19,11 +19,17 @@ const Banner = () => {
         </h2>
         <p className="text-base">Believing, Banking and Achieving Different</p>
       </div>
-      <div>
+      <div className="flex-1">
         <Swiper
           effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
+          loop={true}
+          rewind={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: true,
+          }}
           slidesPerView={"auto"}
           coverflowEffect={{
             rotate: 50,
@@ -33,7 +39,7 @@ const Banner = () => {
             slideShadows: true,
           }}
           pagination={true}
-          modules={[EffectCoverflow, Pagination]}
+          modules={[EffectCoverflow, Pagination, Autoplay]}
           className="mySwiper"
         >
           <SwiperSlide>

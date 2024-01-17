@@ -1,5 +1,5 @@
 import { Button, Input, Typography } from "@material-tailwind/react";
-import logo from "../assets/images/logo.png";
+import logo from "/logo.png";
 const Footer = () => {
   // footer link items
   const LINKS = [
