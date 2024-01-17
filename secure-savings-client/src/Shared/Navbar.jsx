@@ -191,11 +191,9 @@ export function ComplexNavbar() {
 
   return (
     <>
-      <nav
-        className={`max-w-screen-2xl mx-auto z-50 w-full p-2 lg:pl-6 sticky h-20 top-0 rounded-b-md ${"navbarBgColor"}`}
-      >
+      <nav className="max-w-screen-2xl bg-white mx-auto z-50 w-full p-2 lg:pl-6 sticky h-20 top-0 rounded-b-md">
         <div className="mx-auto">
-          <div className="mx-auto flex items-center justify-between gap-3">
+          <div className="mx-auto flex items-center justify-between gap-3 mt-2">
             <Link
               as="a"
               to={"/"}
@@ -246,7 +244,11 @@ export function ComplexNavbar() {
             to={"/"}
             className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
           >
-            <img className="h-20 " src="/Logo.png" alt="logo" />
+            <img
+              className="h-32"
+              src="https://i.postimg.cc/JzBb4z3L/logo.png"
+              alt="logo"
+            />
           </Link>
           <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
             <svg
