@@ -1,10 +1,8 @@
+/* eslint-disable react/prop-types */
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-
 
 const SavingCard = ({ card }) => {
-    console.log(card);
-    const { bankName, description, imageUrl } = card || {};
+    const { bankName, description, imageUrl, rating } = card || {};
 
     return (
         <>
@@ -62,7 +60,7 @@ const SavingCard = ({ card }) => {
                                             clipRule="evenodd"
                                         />
                                     </svg>
-                                    5.0
+                                    {rating}
                                 </p>
                             </div>
                             <p className="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased">
