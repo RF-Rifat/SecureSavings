@@ -1,4 +1,5 @@
 import AboutBanner from "../components/About Us/AboutBanner";
+import Clients from "../components/About Us/Clients";
 
 const AboutUs = () => {
   return (
@@ -48,7 +49,7 @@ const AboutUs = () => {
                       <div className="flex items-center">
                         <div>
                           <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-light-blue-600 bg-light-blue-200 mr-3">
-                           
+
                           </span>
                         </div>
                         <div>
@@ -62,7 +63,7 @@ const AboutUs = () => {
                       <div className="flex items-center">
                         <div>
                           <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-light-blue-600 bg-light-blue-200 mr-3">
-                           
+
                           </span>
                         </div>
                         <div>
@@ -76,7 +77,7 @@ const AboutUs = () => {
                       <div className="flex items-center">
                         <div>
                           <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-light-blue-600 bg-light-blue-200 mr-3">
-                          
+
                           </span>
                         </div>
                         <div>
@@ -92,152 +93,7 @@ const AboutUs = () => {
             </div>
           </div>
         </section>
-        <section className="pt-20 pb-48">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center text-center mb-24">
-              <div className="w-full lg:w-6/12 px-4">
-                <h2 className="text-4xl font-semibold">Here are our heroes</h2>
-                <p className="text-lg leading-relaxed m-4 text-blueGray-500">
-                  According to the National Oceanic and Atmospheric
-                  Administration, Ted, Scambos, NSIDClead scentist, puts the
-                  potentially record maximum.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-wrap">
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                <div className="px-6">
-                  <img
-                    alt="..."
-                    src="/notus-react/static/media/team-1-800x800.fa5a7ac2.jpg"
-                    className="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
-                  <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Ryan Tompson</h5>
-                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Web Developer
-                    </p>
-                    <div className="mt-6">
-                      <button
-                        className="bg-light-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      ></button>
-                      <button
-                        className="bg-light-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      ></button>
-                      <button
-                        className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      ></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                <div className="px-6">
-                  <img
-                    alt="..."
-                    src="/notus-react/static/media/team-2-800x800.3e08ef14.jpg"
-                    className="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
-                  <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Romina Hadid</h5>
-                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Marketing Specialist
-                    </p>
-                    <div className="mt-6">
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      ></button>
-                      <button
-                        className="bg-light-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      ></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                <div className="px-6">
-                  <img
-                    alt="..."
-                    src="/notus-react/static/media/team-3-800x800.19201574.jpg"
-                    className="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
-                  <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Alexa Smith</h5>
-                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      UI/UX Designer
-                    </p>
-                    <div className="mt-6">
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        
-                      </button>
-                      <button
-                        className="bg-light-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        
-                      </button>
-                      <button
-                        className="bg-blue-gray-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                <div className="px-6">
-                  <img
-                    alt="..."
-                    src="/notus-react/static/media/team-4-470x470.4ef82ef4.png"
-                    className="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
-                  <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Jenna Kardi</h5>
-                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Founder and CEO
-                    </p>
-                    <div className="mt-6">
-                      <button
-                        className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                       
-                      </button>
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                       
-                      </button>
-                      <button
-                        className="bg-light-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                       
-                      </button>
-                      <button
-                        className="bg-blueGray-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                       
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Clients />
         <section className="pb-20 relative block bg-blue-gray-800">
           <div
             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
@@ -274,7 +130,7 @@ const AboutUs = () => {
             <div className="flex flex-wrap mt-12 justify-center">
               <div className="w-full lg:w-3/12 px-4 text-center">
                 <div className="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                 
+
                 </div>
                 <h6 className="text-xl mt-5 font-semibold text-white">
                   Excelent Services
@@ -286,7 +142,7 @@ const AboutUs = () => {
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
                 <div className="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                 
+
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
                   Grow your market
@@ -298,7 +154,7 @@ const AboutUs = () => {
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
                 <div className="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                
+
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
                   Launch time
