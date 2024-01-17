@@ -18,6 +18,10 @@ Component Consistency: Leveraging Material Tailwind's pre-designed components en
 Smooth Transitions: The implementation of React Router DOM enables smooth and dynamic transitions between different sections of the application, providing users with an intuitive and engaging navigation experience.
 Single Page Application (SPA): Utilizing React Router DOM allows SecureSavings to function as a Single Page Application, reducing page reloads and enhancing overall performance for a more fluid user journey.
 
+### Framer Motion Integration
+- Smooth Animations: Leverage Framer Motion to create smooth and visually appealing animations throughout the application.
+- Variants: Define animation variants for different components, making it easy to reuse animation logic.
+
 ### Login Page
 ### SignUp Page
 
