@@ -3,12 +3,13 @@ import EmiCalculator from "../components/Home/EmiCalculator";
 
 import Features from "../components/Home/Features";
 import Footer from "../components/Footer";
-import BannerCard from "../components/About Us/BannerCard";
+import Banner from "../components/Home/Banner";
+
 
 const Home = () => {
   return (
     <div>
-      <BannerCard />
+      <Banner />
       <MarqueeComp></MarqueeComp>
       <Features />
       <EmiCalculator />
