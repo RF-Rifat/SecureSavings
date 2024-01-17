@@ -1,0 +1,83 @@
+[
+   {
+     "id": 1,
+     "img": "https://i.ibb.co/0BttNwK/bankimg.jpg",
+     "title": "Credit Cards",
+     "lists": [
+       { "name": "Rewards Program" },
+       { "name": "Travel Benefits" },
+       { "name": "Interest Rates" }
+     ]
+   },
+   {
+     "id": 2,
+     "img": "https://i.ibb.co/Sx2yt2K/mobile.jpg",
+     "title": "Savings Accounts",
+     "lists": [
+       { "name": "High Interest Rates" },
+       { "name": "Online Banking" },
+       { "name": "Automatic Transfers" }
+     ]
+   },
+   {
+     "id": 3,
+     "img": "https://i.ibb.co/NTYxDPD/card.webp",
+     "title": "Home Loans",
+     "lists": [
+       { "name": "Fixed-rate Mortgages" },
+       { "name": "Adjustable-rate Mortgages" },
+       { "name": "Home Equity Loans" }
+     ]
+   },
+   {
+     "id": 4,
+     "img": "https://i.ibb.co/yNp3dp6/home.jpg",
+     "title": "Security Measures",
+     "lists": [
+       { "name": "Two-Factor Authentication" },
+       { "name": "Fraud Protection" },
+       { "name": "Secure Online Transactions" }
+     ]
+   },
+   {
+     "id": 5,
+     "img": "https://i.ibb.co/7RcgkFL/dollar.png",
+     "title": "Personal Loans",
+     "lists": [
+       { "name": "Flexible Repayment Terms" },
+       { "name": "Quick Approval" },
+       { "name": "No Collateral Required" }
+     ]
+   },
+   {
+     "id": 6,
+     "img": "https://i.ibb.co/51H3NFb/piechart.jpg",
+     "title": "Currency Exchange",
+     "lists": [
+       { "name": "Competitive Exchange Rates" },
+       { "name": "Foreign Currency Accounts" },
+       { "name": "Global ATM Access" }
+     ]
+   },
+   {
+     "id": 7,
+     "img": "https://i.ibb.co/vP0k2yT/locker.png",
+     "title": "Investment Services",
+     "lists": [
+       { "name": "Diversified Portfolios" },
+       { "name": "Financial Advisors" },
+       { "name": "Tax-Advantaged Accounts" }
+     ]
+   },
+   {
+     "id": 8,
+     "img": "https://i.ibb.co/7p2rmnx/currency.png",
+     "title": "Online Banking",
+     "lists": [
+       { "name": "24/7 Account Access" },
+       { "name": "Mobile Check Deposits" },
+       { "name": "Budgeting Tools" }
+     ]
+   }
+ ]
+ 
