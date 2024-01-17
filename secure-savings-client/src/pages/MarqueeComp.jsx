@@ -6,7 +6,7 @@ import masterCard from "../../src//assets/images/marqueeItems/masterCard.jpg";
 
 const MarqueeComp = () => {
   return (
-    <div className="h-44 ">
+    <div className="h-44 max-w-screen-2xl mx-auto">
       <h1 className="text-center text-4xl font-medium">Our partner</h1>
       <div>
         <Marquee

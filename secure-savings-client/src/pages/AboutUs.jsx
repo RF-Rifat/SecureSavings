@@ -1,4 +1,5 @@
-import AboutBanner from "../components/Home/About Us/AboutBanner";
+import AboutBanner from "../components/About Us/AboutBanner";
+
 
 const AboutUs = () => {
   return (
