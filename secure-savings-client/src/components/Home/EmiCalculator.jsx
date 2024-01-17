@@ -37,9 +37,9 @@ const EmiCalculator = () => {
 
   return (
     <>
-      <div className="my-24 max-w-screen-2xl mx-auto">
+      <div className="my-24 max-w-screen-2xl mx-auto bg-[#fff8f8]">
         <div className="flex lg:flex-row flex-col-reverse items-center gap-5 p-3">
-          <div className="lg:w-1/2 w-full md:p-20 p-5 bg-[#fff8f8]">
+          <div className="lg:w-1/2 w-full md:p-20 p-5">
             <h4 className="text-red-400 text-[18px] font-semibold">CALCULATE LOAN</h4>
             <h2 className="text-blue-gray-900 font-bold xl:text-4xl text-2xl mt-4 mb-10">Online EMI Calculator</h2>
             <div className="flex flex-col gap-6">
@@ -85,7 +85,7 @@ const EmiCalculator = () => {
             </div>
           </div>
           <div className="lg:w-1/2 w-full">
-            <img className="w-full h-full" src="https://img.freepik.com/free-photo/portrait-office-worker-with-laptop-credit-card-sitting-table-isolated-white_186202-3264.jpg?w=900&t=st=1705397017~exp=1705397617~hmac=1eccb59e436966b67ef44790c9955d63ad124cd0cf6de248fe01889f6a4dbd51" alt="Card" />
+            <img className="w-full h-full rounded-lg" src="https://plus.unsplash.com/premium_photo-1658526914485-af7b566986b2?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Card" />
           </div>
         </div>
       </div>
@@ -93,4 +93,4 @@ const EmiCalculator = () => {
   )
 }
 
-export default EmiCalculator
+export default EmiCalculator;
