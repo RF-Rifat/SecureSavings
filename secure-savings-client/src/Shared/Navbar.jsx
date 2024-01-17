@@ -225,7 +225,7 @@ export function ComplexNavbar() {
     };
   }, []);
 
-  const navbarBgColor = isScrolled ? "bg-primary" : "bg-transparent";
+  const navbarBgColor = isScrolled ? "bg-primary" : "bg-white";
   const drawerBgColor = isScrolled
     ? "bg-primary text-background"
     : "bg-background text-primary";

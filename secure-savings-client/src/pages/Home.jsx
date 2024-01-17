@@ -2,9 +2,8 @@ import MarqueeComp from "./MarqueeComp";
 import EmiCalculator from "../components/Home/EmiCalculator";
 
 import Features from "../components/Home/Features";
-import Footer from "../components/Footer";
-import Banner from "../components/Home/Banner";
 
+import Banner from "../components/Home/Banner";
 
 const Home = () => {
   return (
@@ -13,7 +12,6 @@ const Home = () => {
       <MarqueeComp></MarqueeComp>
       <Features />
       <EmiCalculator />
-      <Footer />
     </div>
   );
 };

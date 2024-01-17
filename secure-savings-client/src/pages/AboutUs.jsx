@@ -1,6 +1,5 @@
 import AboutBanner from "../components/About Us/AboutBanner";
 
-
 const AboutUs = () => {
   return (
     <>
@@ -37,9 +36,7 @@ const AboutUs = () => {
               </div>
               <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
                 <div className="md:pr-12">
-                  <div className="text-lightBlue-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-light-blue-300">
-                    <i className="fas fa-rocket text-xl" />
-                  </div>
+                  <div className="text-lightBlue-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-light-blue-300"></div>
                   <h3 className="text-3xl font-semibold">A growing company</h3>
                   <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
                     The extension comes with three pre-built pages to help you
@@ -51,7 +48,7 @@ const AboutUs = () => {
                       <div className="flex items-center">
                         <div>
                           <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-light-blue-600 bg-light-blue-200 mr-3">
-                            <i className="fas fa-fingerprint" />
+                           
                           </span>
                         </div>
                         <div>
@@ -65,7 +62,7 @@ const AboutUs = () => {
                       <div className="flex items-center">
                         <div>
                           <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-light-blue-600 bg-light-blue-200 mr-3">
-                            <i className="fab fa-html5" />
+                           
                           </span>
                         </div>
                         <div>
@@ -79,7 +76,7 @@ const AboutUs = () => {
                       <div className="flex items-center">
                         <div>
                           <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-light-blue-600 bg-light-blue-200 mr-3">
-                            <i className="far fa-paper-plane" />
+                          
                           </span>
                         </div>
                         <div>
@@ -124,21 +121,15 @@ const AboutUs = () => {
                       <button
                         className="bg-light-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
-                      >
-                        <i className="fab fa-twitter" />
-                      </button>
+                      ></button>
                       <button
                         className="bg-light-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
-                      >
-                        <i className="fab fa-facebook-f" />
-                      </button>
+                      ></button>
                       <button
                         className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
-                      >
-                        <i className="fab fa-dribbble" />
-                      </button>
+                      ></button>
                     </div>
                   </div>
                 </div>
@@ -159,15 +150,11 @@ const AboutUs = () => {
                       <button
                         className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
-                      >
-                        <i className="fab fa-google" />
-                      </button>
+                      ></button>
                       <button
                         className="bg-light-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
-                      >
-                        <i className="fab fa-facebook-f" />
-                      </button>
+                      ></button>
                     </div>
                   </div>
                 </div>
@@ -189,19 +176,19 @@ const AboutUs = () => {
                         className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-google" />
+                        
                       </button>
                       <button
                         className="bg-light-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-twitter" />
+                        
                       </button>
                       <button
                         className="bg-blue-gray-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-instagram" />
+                        
                       </button>
                     </div>
                   </div>
@@ -224,25 +211,25 @@ const AboutUs = () => {
                         className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-dribbble" />
+                       
                       </button>
                       <button
                         className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-google" />
+                       
                       </button>
                       <button
                         className="bg-light-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-twitter" />
+                       
                       </button>
                       <button
                         className="bg-blueGray-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-instagram" />
+                       
                       </button>
                     </div>
                   </div>
@@ -287,7 +274,7 @@ const AboutUs = () => {
             <div className="flex flex-wrap mt-12 justify-center">
               <div className="w-full lg:w-3/12 px-4 text-center">
                 <div className="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                  <i className="fas fa-medal text-xl" />
+                 
                 </div>
                 <h6 className="text-xl mt-5 font-semibold text-white">
                   Excelent Services
@@ -299,7 +286,7 @@ const AboutUs = () => {
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
                 <div className="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                  <i className="fas fa-poll text-xl" />
+                 
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
                   Grow your market
@@ -311,7 +298,7 @@ const AboutUs = () => {
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
                 <div className="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                  <i className="fas fa-lightbulb text-xl" />
+                
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
                   Launch time
