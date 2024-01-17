@@ -200,7 +200,7 @@ export function ComplexNavbar() {
               className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
             >
               <img
-                className="h-20"
+                className="h-12"
                 src="./logo.png"
                 alt="logo"
               />
@@ -245,7 +245,7 @@ export function ComplexNavbar() {
             className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
           >
             <img
-              className="h-32"
+              className="h-20"
               src="/logo.png"
               alt="logo"
             />

@@ -48,6 +48,7 @@ const Banner = () => {
           <SwiperSlide>
             <img src="https://i.postimg.cc/Z5LV7Tb8/cards.png" />
           </SwiperSlide>
+
           <SwiperSlide>
             <img src="https://i.postimg.cc/fTwR6NYz/homeLoan.png" />
           </SwiperSlide>
