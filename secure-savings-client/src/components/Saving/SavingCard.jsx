@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
-const SavingCard = () => {
+
+const SavingCard = ({ card }) => {
+    console.log(card);
+    const { bankName, description, imageUrl } = card || {};
 
     return (
         <>
@@ -16,8 +20,8 @@ const SavingCard = () => {
                 >
                     <div className="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
                         <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                            <img className='object-cover h-60'
-                                src="https://media.istockphoto.com/id/93462501/photo/credit-cards.jpg?s=2048x2048&w=is&k=20&c=6ysfijTw50ZN83Lq-NoEbfUepeO9Womy5Yb2L1pxHTI="
+                            <img className='object-cover w-full h-60'
+                                src={imageUrl}
                                 alt="ui/ux review check"
                             />
                             <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
@@ -42,7 +46,7 @@ const SavingCard = () => {
                         <div className="p-6">
                             <div className="mb-3 flex items-center justify-between">
                                 <h5 className="block font-sans text-xl font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
-                                    Wooden House, Florida
+                                    {bankName}
                                 </h5>
                                 <p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
                                     <svg
@@ -62,8 +66,7 @@ const SavingCard = () => {
                                 </p>
                             </div>
                             <p className="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased">
-                                Enter a freshly updated and thoughtfully furnished peaceful home
-                                surrounded by ancient trees, stone walls, and open meadows.
+                                {description}
                             </p>
                             <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
                                 <span
