@@ -9,8 +9,8 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div className="2xl:flex justify-between my-10 gap-6">
-      <div className="block items-center 2xl:p-28 space-y-2 text-center 2xl:text-left">
+    <div className="2xl:flex justify-between my-10 gap-6 max-w-screen-2xl mx-auto">
+      <div className="block items-center space-y-2 text-center 2xl:text-left 2xl:w-1/2">
         <h4 className="text-xl lg:text-2xl text-green-500 font-semibold">
           Simple. Transparent. Secure
         </h4>
@@ -19,7 +19,7 @@ const Banner = () => {
         </h2>
         <p className="text-base">Believing, Banking and Achieving Different</p>
       </div>
-      <div className="flex-1">
+      <div className="2xl:w-1/2">
         <Swiper
           effect={"coverflow"}
           grabCursor={true}
@@ -28,7 +28,7 @@ const Banner = () => {
           rewind={true}
           autoplay={{
             delay: 2500,
-            disableOnInteraction: true,
+            disableOnInteraction: false,
           }}
           slidesPerView={"auto"}
           coverflowEffect={{
@@ -49,6 +49,9 @@ const Banner = () => {
             <img src="https://i.postimg.cc/Z5LV7Tb8/cards.png" />
           </SwiperSlide>
 
+          <SwiperSlide>
+            <img src="https://i.postimg.cc/fTwR6NYz/homeLoan.png" />
+          </SwiperSlide>
           <SwiperSlide>
             <img src="https://i.postimg.cc/fTwR6NYz/homeLoan.png" />
           </SwiperSlide>
