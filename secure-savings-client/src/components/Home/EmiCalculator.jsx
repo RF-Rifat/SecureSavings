@@ -91,7 +91,7 @@ const EmiCalculator = () => {
             </div>
           </div>
           <div className="lg:w-1/2 w-full">
-            <img className="w-full h-full rounded-lg" src="https://images.unsplash.com/photo-1651601484601-321238b04138?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Card" />
+            <img className="w-full h-full rounded-lg" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Card" />
           </div>
         </div>
       </div>
