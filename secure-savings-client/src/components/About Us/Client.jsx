@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 
 const Client = ({ client }) => {
-    console.log(client);
-    const { image, name, role } = client || {}
+    const { image, socialLinks, name, role } = client || {}
+    const Facebook = socialLinks[0]?.url;
+    const Twitter = socialLinks[1]?.url;
+    const LinkedIn = socialLinks[2]?.url;
+    console.log(Facebook, Twitter, LinkedIn);
 
     return (
         <>
@@ -17,7 +20,7 @@ const Client = ({ client }) => {
                     <h3 className="text-sm text-gray-400 "> {role} </h3>
                     <ul className="flex flex-row items-center justify-center text-center mt-5">
                         <li className="mx-2">
-                            <a href="" target="_blank" aria-label="Share on Twitter">
+                            <a href={Twitter} target="_blank" rel="noreferrer" aria-label="Share on Twitter">
                                 <svg
                                     className="h-8 text-indigo-700 hover:text-indigo-300"
                                     fill="currentColor"
@@ -31,7 +34,7 @@ const Client = ({ client }) => {
                             </a>
                         </li>
                         <li className="mx-2">
-                            <a href="" target="_blank" aria-label="Share on LinkedIn">
+                            <a href={LinkedIn} target="_blank" rel="noreferrer" aria-label="Share on LinkedIn">
                                 <svg
                                     className="h-8 text-indigo-700 hover:text-indigo-300"
                                     fill="currentColor"
@@ -45,7 +48,7 @@ const Client = ({ client }) => {
                             </a>
                         </li>
                         <li className="mx-2">
-                            <a href="" target="_blank" aria-label="Share on Facebook">
+                            <a href={Facebook} target="_blank" rel="noreferrer" aria-label="Share on Facebook">
                                 <svg
                                     className="h-8 text-indigo-700 hover:text-indigo-300"
                                     fill="currentColor"
