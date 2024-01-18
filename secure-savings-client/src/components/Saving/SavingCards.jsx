@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SavingCard from "./SavingCard";
+import SavingBanner from "./SavingBanner";
 
 const SavingCards = () => {
     const [card, setCard] = useState([]);
@@ -11,13 +12,16 @@ const SavingCards = () => {
     }, [setCard])
 
     return (
-        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 my-10">
+        <>
+        <SavingBanner></SavingBanner>
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 mt-10 mb-24">
             {
                 card?.map((item, index) => (
                     <SavingCard card={item} key={index} />
                 ))
             }
         </div>
+        </>
     );
 };
 
