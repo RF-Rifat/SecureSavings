@@ -11,7 +11,7 @@ const SavingCards = () => {
     }, [setCard])
 
     return (
-        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 my-10">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 mt-10 mb-24">
             {
                 card?.map((item, index) => (
                     <SavingCard card={item} key={index} />

@@ -18,7 +18,7 @@ const Login = () => {
         className="mb-4 grid h-28 place-items-center"
       >
         <Typography variant="h3" color="white">
-          Sign In
+          Login
         </Typography>
       </CardHeader>
       <CardBody className="flex flex-col gap-4">
@@ -30,7 +30,7 @@ const Login = () => {
       </CardBody>
       <CardFooter className="pt-0">
         <Button variant="gradient" fullWidth>
-          Sign In
+          Login
         </Button>
         <Typography variant="small" className="mt-6 flex justify-center">
           Don&apos;t have an account?
