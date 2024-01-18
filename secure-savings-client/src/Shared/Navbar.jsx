@@ -199,13 +199,7 @@ export function ComplexNavbar() {
               to={"/"}
               className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
             >
-
-              <img
-                className="h-12"
-                src="./logo.png"
-                alt="logo"
-              />
-
+              <img className="h-12" src="./logo.png" alt="logo" />
             </Link>
             <div className="hidden lg:block">
               <NavList />
@@ -223,7 +217,7 @@ export function ComplexNavbar() {
             <div className="flex gap-3 items-center">
               <Link to={"/login"}>
                 {!false && (
-                  <Button color="blue">
+                  <Button color="green">
                     <span>Log In</span>
                   </Button>
                 )}
@@ -246,11 +240,7 @@ export function ComplexNavbar() {
             to={"/"}
             className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
           >
-            <img
-              className="h-20"
-              src="/logo.png"
-              alt="logo"
-            />
+            <img className="h-20" src="/logo.png" alt="logo" />
           </Link>
           <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
             <svg
