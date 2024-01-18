@@ -222,13 +222,13 @@ export function ComplexNavbar() {
 
             <div className="flex gap-3 items-center">
               <Link to={"/login"}>
-                {!true && (
+                {!false && (
                   <Button color="blue">
                     <span>Log In</span>
                   </Button>
                 )}
               </Link>
-              {true && <ProfileMenu />}
+              {false && <ProfileMenu />}
             </div>
           </div>
         </div>
