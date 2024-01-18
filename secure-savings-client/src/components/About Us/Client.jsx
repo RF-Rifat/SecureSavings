@@ -5,12 +5,11 @@ const Client = ({ client }) => {
     const Facebook = socialLinks[0]?.url;
     const Twitter = socialLinks[1]?.url;
     const LinkedIn = socialLinks[2]?.url;
-    console.log(Facebook, Twitter, LinkedIn);
 
     return (
         <>
             <div className="mt-10 bg-gradient-to-br to-indigo-800">
-                <div className="bg-white font-semibold text-center rounded-3xl border shadow-lg p-10">
+                <div className="bg-white font-semibold text-center rounded-3xl border shadow-lg hover:scale-110 transition p-10">
                     <img
                         className="mb-5 w-32 h-32 object-cover rounded-full shadow-lg mx-auto"
                         src={image}
