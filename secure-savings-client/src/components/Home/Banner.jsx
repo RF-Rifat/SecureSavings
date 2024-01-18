@@ -9,8 +9,8 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div className="2xl:flex justify-between my-10 gap-6 max-w-screen-2xl mx-auto">
-      <div className="block items-center space-y-2 text-center 2xl:text-left 2xl:w-1/2">
+    <div className="2xl:flex px-6 lg:px-0 justify-between my-10 gap-6 max-w-screen-2xl mx-auto">
+      <div className="grid py-10 items-center space-y-2 text-center 2xl:text-left 2xl:w-1/2">
         <h4 className="text-xl lg:text-2xl text-green-500 font-semibold">
           Simple. Transparent. Secure
         </h4>
