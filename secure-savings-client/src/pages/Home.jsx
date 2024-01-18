@@ -1,12 +1,14 @@
 import MarqueeComp from "./MarqueeComp";
 import EmiCalculator from "../components/Home/EmiCalculator";
-import Hero from "../components/Home/Hero";
+
 import Features from "../components/Home/Features";
+
+import Banner from "../components/Home/Banner";
 
 const Home = () => {
   return (
     <div>
-      <Hero />
+      <Banner />
       <MarqueeComp></MarqueeComp>
       <Features />
       <EmiCalculator />

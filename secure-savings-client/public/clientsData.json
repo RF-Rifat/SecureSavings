@@ -1,0 +1,97 @@
+[
+    {
+        "name": "Alexa Smith",
+        "role": "UI/UX Designer",
+        "image": "https://media.istockphoto.com/id/1310310495/photo/happy-asian-japanese-little-boy-playing-in-playground-with-yellow-t-shirt.jpg?s=2048x2048&w=is&k=20&c=m5hy2UZzKyfcGJRpuLQbksVxSWYxOuH69VZUPYJhnkw=",
+        "skills": [
+            "UI Design",
+            "UX Design"
+        ],
+        "socialLinks": [
+            {
+                "icon": "bg-red-600",
+                "url": "https://www.linkedin.com"
+            },
+            {
+                "icon": "bg-light-blue-400",
+                "url": "https://www.twitter.com"
+            },
+            {
+                "icon": "bg-blue-gray-700",
+                "url": "https://www.linkedin.com"
+            }
+        ]
+    },
+    {
+        "name": "John Doe",
+        "role": "Front-end Developer",
+        "image": "https://media.istockphoto.com/id/1820515865/photo/little-boy-playing-on-the-seesaw-in-the-playground-in-autumn.jpg?s=2048x2048&w=is&k=20&c=Q8V8G4ZK8TiygffO9ZkIdkYESLGWAhSQKnN1_Jl3-r0=",
+        "skills": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "socialLinks": [
+            {
+                "icon": "bg-red-600",
+                "url": "https://www.facebook.com"
+            },
+            {
+                "icon": "bg-light-blue-400",
+                "url": "https://www.twitter.com"
+            },
+            {
+                "icon": "bg-blue-gray-700",
+                "url": "https://www.linkedin.com"
+            }
+        ]
+    },
+    {
+        "name": "Emily Johnson",
+        "role": "Backend Developer",
+        "image": "https://media.istockphoto.com/id/1283672435/photo/child-at-playground.jpg?s=2048x2048&w=is&k=20&c=Xxa-hUOlsHFoNL9HYizMOaMHxdh4zEKiVqWjjdscCUY=",
+        "skills": [
+            "Node.js",
+            "Express",
+            "MongoDB"
+        ],
+        "socialLinks": [
+            {
+                "icon": "bg-red-600",
+                "url": "https://www.facebook.com"
+            },
+            {
+                "icon": "bg-light-blue-400",
+                "url": "https://www.twitter.com"
+            },
+            {
+                "icon": "bg-blue-gray-700",
+                "url": "https://www.linkedin.com"
+            }
+        ]
+    },
+    {
+        "name": "Chris Taylor",
+        "role": "Graphic Designer",
+        "image": "https://media.istockphoto.com/id/1820520969/photo/little-boy-playing-on-the-seesaw-in-the-playground-in-autumn.jpg?s=2048x2048&w=is&k=20&c=q374Um_YRWXFqwUCSXP9VzjZJSRiLLR_BpnhBJPdVHY=",
+        "skills": [
+            "Adobe Photoshop",
+            "Illustrator",
+            "InDesign"
+        ],
+        "socialLinks": [
+            {
+                "icon": "bg-red-600",
+                "url": "https://www.facebook.com"
+            },
+            {
+                "icon": "bg-light-blue-400",
+                "url": "https://www.twitter.com"
+            },
+            {
+                "icon": "bg-blue-gray-700",
+                "url": "https://www.linkedin.com"
+            }
+        ]
+    }
+]
