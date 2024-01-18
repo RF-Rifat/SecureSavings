@@ -22,6 +22,7 @@ import {
   WalletIcon,
 } from "@heroicons/react/24/solid";
 import { Link, NavLink } from "react-router-dom";
+import ToggleTheme from "../components/ToggleTheme";
 // import logo from './logo.png'
 
 // profile menu component
@@ -215,6 +216,8 @@ export function ComplexNavbar() {
             </IconButton>
 
             <div className="flex gap-3 items-center">
+              {/* toggle button */}
+              <ToggleTheme></ToggleTheme>
               <Link to={"/login"}>
                 {!false && (
                   <Button color="green">

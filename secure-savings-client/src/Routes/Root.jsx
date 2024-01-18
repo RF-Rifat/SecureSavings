@@ -4,7 +4,8 @@ import Footer from "../components/Footer";
 
 const Root = () => {
   return (
-    <div>
+    // toggle theme bg color
+    <div className="dark:bg-[#003e5b]">
       <ComplexNavbar />
       <Outlet></Outlet>
       <Footer />
