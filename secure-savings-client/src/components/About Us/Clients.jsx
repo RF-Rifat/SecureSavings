@@ -18,7 +18,6 @@ const Clients = () => {
                     <motion.div
                         whileHover={{ scale: 0.8 }}
                         whileTap={{ scale: 0.8 }}
-                        style={{ x: 100 }}
                     >
                         <div className="flex flex-wrap justify-center text-center">
                             <div className="w-full lg:w-6/12 px-4">
