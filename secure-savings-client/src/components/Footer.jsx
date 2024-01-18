@@ -24,8 +24,8 @@ const Footer = () => {
 
   return (
     <footer className="relative w-full">
-      <div className="mx-auto w-full max-w-6xl px-8">
-        <div className="grid grid-cols-1 justify-center md:grid-cols-3">
+      <div className="mx-auto w-full max-w-7xl px-8">
+        <div className="grid grid-cols-1 justify-center md:grid-cols-3 md:justify-between">
           <div className="flex justify-center md:justify-start">
             {/* logo */}
             <img className="h-36" src={logo} alt="logo" />
