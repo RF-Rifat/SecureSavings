@@ -9,8 +9,8 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div className="2xl:flex px-6 justify-between my-10 gap-6 max-w-screen-2xl mx-auto bg-[#266c6c] p-4 rounded-md">
-      <div className="grid py-10 items-center space-y-2 text-center 2xl:text-left 2xl:w-1/2">
+    <div className="2xl:flex px-6 justify-between my-10 gap-6 max-w-screen-2xl mx-auto p-4">
+      <div className="grid py-20 items-center space-y-2 text-center 2xl:text-left 2xl:w-1/2">
         <h4 className="text-2xl lg:text-2xl text-green-500 font-semibold">
           Simple. Transparent. Secure
         </h4>
@@ -47,10 +47,6 @@ const Banner = () => {
           </SwiperSlide>
           <SwiperSlide>
             <img src="https://i.postimg.cc/Z5LV7Tb8/cards.png" />
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <img src="https://i.postimg.cc/fTwR6NYz/homeLoan.png" />
           </SwiperSlide>
           <SwiperSlide>
             <img src="https://i.postimg.cc/fTwR6NYz/homeLoan.png" />

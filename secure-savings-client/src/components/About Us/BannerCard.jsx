@@ -1,3 +1,11 @@
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+} from "@material-tailwind/react";
 const BannerCard = () => {
   return (
     <section className="pb-20 bg-blue-gray-300 -mt-24">
@@ -63,7 +71,7 @@ const BannerCard = () => {
               Check Notus React!
             </a>
           </div>
-          <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
+          {/* <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-lightBlue-500">
               <img
                 alt="..."
@@ -92,11 +100,33 @@ const BannerCard = () => {
                 </p>
               </blockquote>
             </div>
-          </div>
+          </div> */}
+          <Card className="mt-6 w-96">
+            <CardHeader color="blue-gray" className="relative h-56">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+                alt="card-image"
+              />
+            </CardHeader>
+            <CardBody>
+              <Typography variant="h5" color="blue-gray" className="mb-2">
+                Our Journey: Crafting Exceptional Experiences
+              </Typography>
+              <Typography>
+                At Secure-Saving, we pride ourselves on a journey that
+                revolves around delivering exceptional financial experiences.
+                From the very beginning, our commitment has been to provide a
+                seamless and secure banking environment for our customers.
+              </Typography>
+            </CardBody>
+            <CardFooter className="pt-0">
+              <Button>Discover Our Story</Button>
+            </CardFooter>
+          </Card>
         </div>
       </div>
     </section>
   );
-}
+};
 
-export default BannerCard
+export default BannerCard;
