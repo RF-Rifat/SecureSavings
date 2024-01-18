@@ -1,8 +1,8 @@
 
 const SavingBanner = () => {
     return (
-        <div>
-            <h2>Saving Banner</h2>
+        <div className="max-w-screen-2xl mx-auto my-10">
+            <img className="rounded-xl" src="https://i.postimg.cc/DZ4wGxDZ/saving-banner.png" alt="" />
         </div>
     );
 };
