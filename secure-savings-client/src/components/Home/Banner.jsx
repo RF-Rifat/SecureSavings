@@ -7,7 +7,9 @@ import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 
 import "./Banner.css";
 
+
 const Banner = () => {
+
   return (
     <div className="2xl:flex px-6 justify-between my-10 gap-6 max-w-screen-2xl mx-auto p-4">
       <div className="grid py-20 items-center space-y-2 text-center 2xl:text-left 2xl:w-1/2">
