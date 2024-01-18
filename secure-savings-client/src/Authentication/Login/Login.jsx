@@ -8,10 +8,11 @@ import {
   Checkbox,
   Button,
 } from "@material-tailwind/react";
+import SocialLogin from "../SocialLogin";
 
 const Login = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center lg:h-screen">
+    <div className="flex flex-col md:flex-row justify-center items-center mt-14 mb-14 lg:h-screen">
       {/* Left Side: Image */}
       <div className="w-full md:w-1/2 mb-6 md:mb-0">
         <img
@@ -33,6 +34,7 @@ const Login = () => {
           </Typography>
         </CardHeader>
         <CardBody className="flex flex-col gap-4">
+          <Input label="Name" size="lg" />
           <Input label="Email" size="lg" />
           <Input label="Password" size="lg" />
           <div className="-ml-2.5">
@@ -56,6 +58,14 @@ const Login = () => {
             </Typography>
           </Typography>
         </CardFooter>
+        <div className="flex items-center  space-x-1">
+          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
+          <p className="px-3 text-sm dark:text-gray-400">
+            Login with social accounts
+          </p>
+          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
+        </div>
+        <SocialLogin></SocialLogin>
       </Card>
     </div>
   );
