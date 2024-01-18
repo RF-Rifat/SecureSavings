@@ -9,15 +9,15 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div className="2xl:flex px-6 justify-between my-10 gap-6 max-w-screen-2xl mx-auto bg-blue-800 text-white p-4 rounded-md shadow-md">
+    <div className="2xl:flex px-6 justify-between my-10 gap-6 max-w-screen-2xl mx-auto bg-[#266c6c] p-4 rounded-md">
       <div className="grid py-10 items-center space-y-2 text-center 2xl:text-left 2xl:w-1/2">
-        <h4 className="text-2xl lg:text-2xl font-semibold">
+        <h4 className="text-2xl lg:text-2xl text-green-500 font-semibold">
           Simple. Transparent. Secure
         </h4>
         <h2 className="text-2xl lg:text-5xl font-bold">
           <span className="text-red-500">1348+</span> Branch and Sub-branch
         </h2>
-        <p className="text-2xl">Believing, Banking, and Achieving Different</p>
+        <p className="text-2xl">Believing, Banking and Achieving Different</p>
       </div>
       <div className="2xl:w-1/2">
         <Swiper
