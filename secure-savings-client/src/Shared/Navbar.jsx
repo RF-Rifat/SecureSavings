@@ -199,11 +199,13 @@ export function ComplexNavbar() {
               to={"/"}
               className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
             >
+
               <img
                 className="h-12"
                 src="./logo.png"
                 alt="logo"
               />
+
             </Link>
             <div className="hidden lg:block">
               <NavList />
