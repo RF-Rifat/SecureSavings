@@ -16,11 +16,7 @@ const SocialLogin = () => {
         navigate("/");
       })
       .catch((error) => {
-        // Swal.fire({
-        //   icon: "error",
-        //   title: "Oops...",
-        //   text: "Something went wrong!",
-        // });
+        toast.error(error);
       });
   };
   return (

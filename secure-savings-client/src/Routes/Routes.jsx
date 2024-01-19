@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/saving",
-        element: <SavingCards />
+        element: <SavingCards />,
       },
       {
         path: "/login",

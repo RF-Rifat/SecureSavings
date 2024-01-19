@@ -168,15 +168,7 @@ const Login = () => {
                       className="mt-6 mb-4 flex justify-center"
                     >
                       Don&apos;t have an account?
-                      <Typography
-                        as="a"
-                        href="/signUp"
-                        variant="small"
-                        color="blue-gray"
-                        className="ml-1 font-bold"
-                      >
-                        Sign up
-                      </Typography>
+                      <Link to={"/signUp"}>Sign up</Link>
                     </Typography>
                     <button
                       type="button"
@@ -191,7 +183,7 @@ const Login = () => {
                         or login with:
                       </p>
                     </div>
-                    <SocialLogin/>
+                    <SocialLogin />
                     {/* <div className="flex justify-center">
                       <a
                         href="#!"
