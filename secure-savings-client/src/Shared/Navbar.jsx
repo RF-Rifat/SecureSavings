@@ -22,13 +22,17 @@ import {
   WalletIcon,
 } from "@heroicons/react/24/solid";
 import { Link, NavLink } from "react-router-dom";
-// import logo from './logo.png'
-
-// profile menu component
+import ToggleTheme from "../components/ToggleTheme";
+import useAuth from "../Hooks/useAuth";
+// import AuthProvider from "../Authentication/AuthProvider";
 
 function ProfileMenu() {
-  //   const { user, logOut } = useContext(AuthProvider);
-  const { displayName, photoURL, email } = false || {};
+  // const  authInfo  = useContext(AuthProvider);
+  const { authInfo } = useAuth();
+
+  const { logOut } = authInfo || {};
+
+  const { displayName, photoURL, email } = authInfo?.user || {};
 
   const profileMenuItems = [
     {
@@ -94,7 +98,7 @@ function ProfileMenu() {
           );
         })}
         <button
-          onClick={"logOut"}
+          onClick={logOut}
           role="menuitem"
           className="w-full pt-[9px] pb-2 px-3 text-start leading-tight cursor-pointer select-none transition-all hover:bg-opacity-80 focus:bg-opacity-80 active:bg-opacity-80 hover:text-blue-gray-900 focus:text-blue-gray-900 active:text-blue-gray-900 outline-none flex items-center gap-2 rounded hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
         >
@@ -183,7 +187,9 @@ function NavList() {
 }
 
 export function ComplexNavbar() {
-  // const { user } = useContext("AuthProvider");
+  const { authInfo } = useAuth();
+  const { displayName, email } = authInfo?.user || {};
+  console.log(displayName, email);
   const [open, setOpen] = useState(false);
 
   const openDrawer = () => setOpen(true);
@@ -215,14 +221,16 @@ export function ComplexNavbar() {
             </IconButton>
 
             <div className="flex gap-3 items-center">
+              {/* toggle button */}
+              <ToggleTheme></ToggleTheme>
               <Link to={"/login"}>
-                {!false && (
+                {!authInfo?.user && (
                   <Button color="green">
                     <span>Log In</span>
                   </Button>
                 )}
               </Link>
-              {false && <ProfileMenu />}
+              {authInfo?.user && <ProfileMenu />}
             </div>
           </div>
         </div>
@@ -260,7 +268,7 @@ export function ComplexNavbar() {
           </IconButton>
         </div>
         <NavList></NavList>
-        {!false && (
+        {!authInfo?.user && (
           <div className="flex gap-2">
             <Button variant="outlined">SIGN UP</Button>
             <Button color="blue">

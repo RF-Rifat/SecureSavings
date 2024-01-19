@@ -1,12 +1,15 @@
+import { FcBullish, FcMiddleBattery, FcServices } from "react-icons/fc";
 import AboutBanner from "../components/About Us/AboutBanner";
 import Clients from "../components/About Us/Clients";
+
+
 
 const AboutUs = () => {
   return (
     <>
       <main>
         <AboutBanner />
-        <section className="relative py-20 bg-blue-gray-500">
+        {/* <section className="relative py-20 bg-blue-gray-500">
           <div
             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
             style={{ transform: "translateZ(400px)" }}
@@ -92,10 +95,10 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         <Clients />
-        <section className="pb-20 relative block bg-blue-gray-800">
-          <div
+        <section className="pb-20 relative block bg-blue-gray-300">
+          {/* <div
             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
             style={{ transform: "translateZ(0px)" }}
           >
@@ -113,7 +116,7 @@ const AboutUs = () => {
                 points="2560 0 2560 100 0 100"
               />
             </svg>
-          </div>
+          </div> */}
           <div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
             <div className="flex flex-wrap text-center justify-center">
               <div className="w-full lg:w-6/12 px-4">
@@ -130,7 +133,7 @@ const AboutUs = () => {
             <div className="flex flex-wrap mt-12 justify-center">
               <div className="w-full lg:w-3/12 px-4 text-center">
                 <div className="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-
+                  <FcServices className="h-12 w-12" />
                 </div>
                 <h6 className="text-xl mt-5 font-semibold text-white">
                   Excelent Services
@@ -142,7 +145,7 @@ const AboutUs = () => {
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
                 <div className="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-
+                  <FcBullish className="h-12 w-12" />
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
                   Grow your market
@@ -154,7 +157,7 @@ const AboutUs = () => {
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
                 <div className="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-
+                  <FcMiddleBattery className="h-12 w-12" />
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
                   Launch time
@@ -167,7 +170,7 @@ const AboutUs = () => {
             </div>
           </div>
         </section>
-        <section className="relative block py-24 lg:pt-0 bg-light-green-300">
+        {/* <section className="relative block py-24 lg:pt-0 bg-light-green-300">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
               <div className="w-full lg:w-6/12 px-4">
@@ -234,7 +237,7 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
     </>
   );

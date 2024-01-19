@@ -37,7 +37,7 @@ const Footer = () => {
                 <Typography
                   variant="small"
                   color="blue-gray"
-                  className="mb-4 font-bold uppercase "
+                  className="mb-4 font-bold uppercase text-green-600"
                 >
                   {title}
                 </Typography>
@@ -46,7 +46,7 @@ const Footer = () => {
                     <Typography
                       key={key}
                       as="li"
-                      color="blue-gray"
+                      color="black"
                       className="font-normal"
                     >
                       <a
@@ -63,7 +63,7 @@ const Footer = () => {
           </div>
           {/* subscribe section */}
           <div className="  mt-5 md:mt-0">
-            <h1 className="mb-4 font-bold text-center  uppercase">
+            <h1 className="mb-4 font-bold text-center  uppercase text-green-700">
               Subscribe for newsletter
             </h1>
             <div className="flex  flex-col items-center justify-center gap-2 mt-3">
@@ -78,7 +78,7 @@ const Footer = () => {
         <div className="flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
           <Typography
             variant="small"
-            className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
+            className="mb-4 text-center font-normal text-black md:mb-0"
           >
             &copy; {currentYear}{" "}
             <a href="https://material-tailwind.com/">
@@ -86,7 +86,7 @@ const Footer = () => {
             </a>
             All Rights Reserved.
           </Typography>
-          <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
+          <div className="flex gap-4 text-black sm:justify-center">
             <Typography
               as="a"
               href="#"
