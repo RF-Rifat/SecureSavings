@@ -53,6 +53,9 @@ const Banner = () => {
           <SwiperSlide>
             <img src="https://i.postimg.cc/fTwR6NYz/homeLoan.png" />
           </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://i.postimg.cc/QxLDj0NG/Financial-Planning-Services-Instagram-Post.png" />
+          </SwiperSlide>
         </Swiper>
       </div>
     </div>
