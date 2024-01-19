@@ -1,21 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./Demo.css";
 import { TbMessageCircle2 } from "react-icons/tb";
 
 import useAuth from "../Hooks/useAuth";
 
 const ChatBox = () => {
+  const [open, setOpen] = useState(false);
   const { authInfo } = useAuth();
   const info = authInfo?.user || {};
   const { displayName, email } = authInfo?.user || {};
   useEffect(() => {
-    console.log("Component mounted");
     const chatInit = (selector) => {
-      console.log("Initializing chat");
       if (!window.LIVE_CHAT_UI) {
         let chat = document.getElementById(selector);
         let toggles = chat.querySelectorAll(".toggle");
-        let close = chat.querySelector(".close");
 
         window.setTimeout(() => {
           chat.classList.add("is-active");
@@ -25,10 +23,6 @@ const ChatBox = () => {
           toggle.addEventListener("click", () => {
             chat.classList.add("is-active");
           });
-        });
-
-        close.addEventListener("click", () => {
-          chat.classList.remove("is-active");
         });
 
         document.onkeydown = function (evt) {
@@ -61,8 +55,8 @@ const ChatBox = () => {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
       />
-      <div id="chat-app" className="chat-app">
-        <div className="chat-app_toggle toggle">
+      <div id="chat-app" className={`chat-app ${open && "is-active"}`}>
+        <div className="chat-app_toggle toggle" onClick={() => setOpen(!open)}>
           <div className="icon send">
             <i className="fas fa-paper-plane" />
           </div>
@@ -72,7 +66,12 @@ const ChatBox = () => {
         </div>
         <div className="chat-app_box">
           <div className="chat-app_header">
-            <div className="close" />
+            <div
+              className="close"
+              onClick={() => {
+                setOpen(false);
+              }}
+            />
             <div className="branding">
               <div className="avatar is-online">
                 <img src={info?.reloadUserInfo?.photoUrl} alt="" />
@@ -116,7 +115,7 @@ const ChatBox = () => {
               <a className="button-icon">
                 <i className="fas fa-paperclip" />
               </a>
-              <a className="copyright">Powered by css &amp; js</a>
+              <a className="copyright">Talk With Manager</a>
             </div>
             <input className="chat-input" type="text" placeholder="Type..." />
           </div>

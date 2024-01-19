@@ -32,10 +32,10 @@ const Clients = () => {
         >
           <span className="w-full h-full absolute opacity-75 bg-black" />
         </div>
-        <div className="container relative mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-4 justify-center">
+        <div className="container px-28 relative mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-4 justify-center">
           {ClientData.map((person) => (
-            <Card className="w-80" key={person.name}>
-              <CardHeader floated={false} className="h-64">
+            <Card  key={person.name}>
+              <CardHeader floated={false} className="h-72">
                 <img
                   src="https://docs.material-tailwind.com/img/team-3.jpg"
                   alt="profile-picture"

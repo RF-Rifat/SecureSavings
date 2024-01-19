@@ -4,16 +4,16 @@ const AboutUsContact = () => {
   return (
     <>
       {/* Container for demo purpose */}
-      <div className="container my-24 mx-auto md:px-6">
+      <div className="container my-24 mx-auto md:px-6 -z-10">
         {/* Section: Design Block */}
         <section className="mb-32 text-center">
           <div className="py-12 md:px-12">
             <div className="container mx-auto xl:px-32">
               <div className="grid items-center lg:grid-cols-2">
                 <div className="mb-12 md:mt-12 lg:mt-0 lg:mb-0">
-                  <div className="relative z-[1] block rounded-lg bg-[hsla(0,0%,100%,0.55)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] backdrop-blur-[30px] dark:bg-[hsla(0,0%,5%,0.7)] dark:shadow-black/20 md:px-12 lg:-mr-14">
+                  <div className="relative -z-10 block rounded-lg bg-[hsla(0,0%,100%,0.55)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] backdrop-blur-[30px] dark:bg-[hsla(0,0%,5%,0.7)] dark:shadow-black/20 md:px-12 lg:-mr-14">
                     <h2 className="mb-6 text-3xl font-bold">Contact us</h2>
-                    <form>
+                    <form className="-z-10">
                       <div className="space-y-3">
                         <Input variant="standard" label="Name" />
                         <Input variant="standard" label="Email" />
@@ -38,7 +38,7 @@ const AboutUsContact = () => {
                     </form>
                   </div>
                 </div>
-                <div className="md:mb-12 lg:mb-0">
+                <div className="md:mb-12 lg:mb-0 -z-20">
                   <div className="relative h-[700px] rounded-lg shadow-lg dark:shadow-black/20">
                     <iframe
                       src="https://maps.google.com/maps?q=23.810331,90.412521&t=&z=13&ie=UTF8&iwloc=&output=embed"

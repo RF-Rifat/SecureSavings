@@ -96,7 +96,7 @@ const AboutUs = () => {
           </div>
         </section> */}
         <Clients />
-        <section className="pb-20 relative block bg-blue-gray-300">
+        <section className="pt-20 lg:pt-6 pb-14 relative block bg-blue-gray-300">
           {/* <div
             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
             style={{ transform: "translateZ(0px)" }}

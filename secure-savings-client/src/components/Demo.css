@@ -8,6 +8,7 @@
   bottom: 32px;
   right: 32px;
   color: #141e30;
+  z-index: 100;
 }
 .chat-app .title {
   font-size: 1.25em;
