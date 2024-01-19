@@ -45,8 +45,8 @@ const SignUp = () => {
   };
 
   const handleGoogleLogin = () => {
-    googleLogin()
-  }
+    googleLogin();
+  };
 
   return (
     // <div className="flex flex-col md:flex-row justify-center items-center lg:h-screen mb-14 mt-14">
@@ -181,8 +181,12 @@ const SignUp = () => {
                       SIGN UP
                     </Button>
                     <div className="text-center">
-                      <h2 className="py-3">Already have an account?
-                        <Link to={"/login"}>Sign In</Link></h2>
+                      <h2 className="py-3">
+                        Already have an account?
+                        <Link className="underline ml-3" to={"/login"}>
+                          Sign In
+                        </Link>
+                      </h2>
                       <p className="mb-6 dark:text-neutral-50">
                         or sign up with:
                       </p>
