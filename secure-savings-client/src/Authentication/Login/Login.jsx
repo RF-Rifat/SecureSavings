@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
+
   return (
     // <div className="flex flex-col md:flex-row justify-center items-center mt-14 mb-14 lg:h-screen">
     //   {/* Left Side: Image */}
@@ -190,13 +191,14 @@ const Login = () => {
                         or login with:
                       </p>
                     </div>
-                    <div className="flex justify-center">
+                    <SocialLogin/>
+                    {/* <div className="flex justify-center">
                       <a
                         href="#!"
                         role="button"
                         className="action:text-primary-700 dark:action:text-primary-600 text-primary transition duration-200 ease-in-out hover:text-primary-600 focus:text-primary-600 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500"
                       >
-                        {/* Facebook */}
+                       
                         <span className="[&>svg]:mx-4 [&>svg]:h-4 [&>svg]:w-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -212,13 +214,13 @@ const Login = () => {
                         role="button"
                         className="action:text-primary-700 dark:action:text-primary-600 text-primary transition duration-200 ease-in-out hover:text-primary-600 focus:text-primary-600 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500"
                       >
-                        {/* Google */}
+                        
                         <span className="[&>svg]:mx-4 [&>svg]:h-4 [&>svg]:w-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 488 512"
                           >
-                            {/*! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. */}
+                          
                             <path
                               fill="currentColor"
                               d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
@@ -227,11 +229,11 @@ const Login = () => {
                         </span>
                       </a>
                       <a
-                        href="#!"
+                        href=""
                         role="button"
                         className="action:text-primary-700 dark:action:text-primary-600 text-primary transition duration-200 ease-in-out hover:text-primary-600 focus:text-primary-600 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500"
                       >
-                        {/* Twitter */}
+                       
                         <span className="[&>svg]:mx-4 [&>svg]:h-4 [&>svg]:w-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -243,11 +245,11 @@ const Login = () => {
                         </span>
                       </a>
                       <a
-                        href="#!"
+                        href=""
                         role="button"
                         className="action:text-primary-700 dark:action:text-primary-600 text-primary transition duration-200 ease-in-out hover:text-primary-600 focus:text-primary-600 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500"
                       >
-                        {/* Github */}
+                      
                         <span className="[&>svg]:mx-4 [&>svg]:h-4 [&>svg]:w-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -258,16 +260,14 @@ const Login = () => {
                           </svg>
                         </span>
                       </a>
-                    </div>
+                    </div> */}
                   </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* Jumbotron */}
       </section>
-      {/* Section: Design Block */}
     </>
   );
 };

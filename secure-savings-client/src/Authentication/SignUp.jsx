@@ -17,7 +17,8 @@ import SocialLogin from "./SocialLogin";
 const SignUp = () => {
   const { register, handleSubmit, reset } = useForm();
 
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, googleLogin } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
@@ -42,6 +43,10 @@ const SignUp = () => {
         .catch((error) => console.log(error));
     });
   };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+  }
 
   return (
     // <div className="flex flex-col md:flex-row justify-center items-center lg:h-screen mb-14 mt-14">
@@ -152,39 +157,42 @@ const SignUp = () => {
                 />
                 <div id="radius-shape-2" className="absolute shadow-lg" />
                 <div className="relative bg-[hsla(0,0%,100%,0.9)] backdrop-blur-[25px] backdrop-saturate-[200%] block rounded-lg px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-[hsla(0,0%,15%,0.9)] dark:shadow-black/20 md:px-12">
-                  <form className="space-y-6">
-                    <div className="grid md:grid-cols-2 md:gap-6 mb-6">
-                      <Input color="teal" label="First Name" />
-                      <Input color="teal" label="Last Name" />
+                  <form>
+                    <div className="space-y-6">
+                      <div className="grid md:grid-cols-2 md:gap-6 mb-6">
+                        <Input color="teal" label="First Name" />
+                        <Input color="teal" label="Last Name" />
+                      </div>
+                      <Input className="mb-6" color="teal" label="Email" />
+
+                      <Input className="mb-6" color="teal" label="Password" />
                     </div>
-                    <Input className="mb-6" color="teal" label="Email" />
 
-                    <Input className="mb-6" color="teal" label="Password" />
-
-                    <Button color="green" fullWidth>
-                      SIGN UP
-                    </Button>
-                    <div className="flex justify-center items-center">
+                    <div className="flex items-center mt-2">
                       <Checkbox color="green" defaultChecked />
                       <label
                         className="inline-block hover:cursor-pointer dark:text-neutral-50"
                         htmlFor="flexCheckChecked"
                       >
-                        Remember
+                        Remember Me
                       </label>
                     </div>
+                    <Button className="my-2" color="green" fullWidth>
+                      SIGN UP
+                    </Button>
                     <div className="text-center">
                       <p className="mb-6 dark:text-neutral-50">
                         or sign up with:
                       </p>
                     </div>
-                    <div className="flex justify-center">
+                    <SocialLogin/>
+                    {/* <div className="flex justify-center">
                       <a
                         href="#!"
                         role="button"
                         className="action:text-primary-700 dark:action:text-primary-600 text-primary transition duration-200 ease-in-out hover:text-primary-600 focus:text-primary-600 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500"
                       >
-                        {/* Facebook */}
+                        
                         <span className="[&>svg]:mx-4 [&>svg]:h-4 [&>svg]:w-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -195,12 +203,13 @@ const SignUp = () => {
                           </svg>
                         </span>
                       </a>
-                      <a
-                        href="#!"
+                      <Button
+                        onClick={googleLogin}
+                        
                         role="button"
                         className="action:text-primary-700 dark:action:text-primary-600 text-primary transition duration-200 ease-in-out hover:text-primary-600 focus:text-primary-600 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500"
                       >
-                        {/* Google */}
+                       
                         <span className="[&>svg]:mx-4 [&>svg]:h-4 [&>svg]:w-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -212,13 +221,13 @@ const SignUp = () => {
                             />
                           </svg>
                         </span>
-                      </a>
+                      </Button>
                       <a
                         href="#!"
                         role="button"
                         className="action:text-primary-700 dark:action:text-primary-600 text-primary transition duration-200 ease-in-out hover:text-primary-600 focus:text-primary-600 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500"
                       >
-                        {/* Twitter */}
+                       
                         <span className="[&>svg]:mx-4 [&>svg]:h-4 [&>svg]:w-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -234,7 +243,7 @@ const SignUp = () => {
                         role="button"
                         className="action:text-primary-700 dark:action:text-primary-600 text-primary transition duration-200 ease-in-out hover:text-primary-600 focus:text-primary-600 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500"
                       >
-                        {/* Github */}
+                       
                         <span className="[&>svg]:mx-4 [&>svg]:h-4 [&>svg]:w-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -245,7 +254,7 @@ const SignUp = () => {
                           </svg>
                         </span>
                       </a>
-                    </div>
+                    </div> */}
                   </form>
                 </div>
               </div>
