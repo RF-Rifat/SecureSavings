@@ -1,97 +1,82 @@
 [
-    {
-        "name": "Alexa Smith",
-        "role": "UI/UX Designer",
-        "image": "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyc29ufGVufDB8fDB8fHww",
-        "skills": [
-            "UI Design",
-            "UX Design"
-        ],
-        "socialLinks": [
-            {
-                "icon": "bg-red-600",
-                "url": "https://www.linkedin.com"
-            },
-            {
-                "icon": "bg-light-blue-400",
-                "url": "https://www.twitter.com"
-            },
-            {
-                "icon": "bg-blue-gray-700",
-                "url": "https://www.linkedin.com"
-            }
-        ]
-    },
-    {
-        "name": "John Doe",
-        "role": "Front-end Developer",
-        "image": "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D",
-        "skills": [
-            "HTML",
-            "CSS",
-            "JavaScript"
-        ],
-        "socialLinks": [
-            {
-                "icon": "bg-red-600",
-                "url": "https://www.facebook.com"
-            },
-            {
-                "icon": "bg-light-blue-400",
-                "url": "https://www.twitter.com"
-            },
-            {
-                "icon": "bg-blue-gray-700",
-                "url": "https://www.linkedin.com"
-            }
-        ]
-    },
-    {
-        "name": "Emily Johnson",
-        "role": "Backend Developer",
-        "image": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D",
-        "skills": [
-            "Node.js",
-            "Express",
-            "MongoDB"
-        ],
-        "socialLinks": [
-            {
-                "icon": "bg-red-600",
-                "url": "https://www.facebook.com"
-            },
-            {
-                "icon": "bg-light-blue-400",
-                "url": "https://www.twitter.com"
-            },
-            {
-                "icon": "bg-blue-gray-700",
-                "url": "https://www.linkedin.com"
-            }
-        ]
-    },
-    {
-        "name": "Chris Taylor",
-        "role": "Graphic Designer",
-        "image": "https://media.istockphoto.com/id/1820520969/photo/little-boy-playing-on-the-seesaw-in-the-playground-in-autumn.jpg?s=2048x2048&w=is&k=20&c=q374Um_YRWXFqwUCSXP9VzjZJSRiLLR_BpnhBJPdVHY=",
-        "skills": [
-            "Adobe Photoshop",
-            "Illustrator",
-            "InDesign"
-        ],
-        "socialLinks": [
-            {
-                "icon": "bg-red-600",
-                "url": "https://www.facebook.com"
-            },
-            {
-                "icon": "bg-light-blue-400",
-                "url": "https://www.twitter.com"
-            },
-            {
-                "icon": "bg-blue-gray-700",
-                "url": "https://www.linkedin.com"
-            }
-        ]
-    }
+  {
+    "name": "Alexa Smith",
+    "role": "UI/UX Designer",
+    "image": "https://i.ibb.co/MZdf7Rx/member4.png",
+    "skills": ["UI Design", "UX Design"],
+    "socialLinks": [
+      {
+        "icon": "bg-red-600",
+        "url": "https://www.linkedin.com"
+      },
+      {
+        "icon": "bg-light-blue-400",
+        "url": "https://www.twitter.com"
+      },
+      {
+        "icon": "bg-blue-gray-700",
+        "url": "https://www.linkedin.com"
+      }
+    ]
+  },
+  {
+    "name": "John Doe",
+    "role": "Front-end Developer",
+    "image": "https://i.ibb.co/3BZH7PN/user-1.png",
+    "skills": ["HTML", "CSS", "JavaScript"],
+    "socialLinks": [
+      {
+        "icon": "bg-red-600",
+        "url": "https://www.facebook.com"
+      },
+      {
+        "icon": "bg-light-blue-400",
+        "url": "https://www.twitter.com"
+      },
+      {
+        "icon": "bg-blue-gray-700",
+        "url": "https://www.linkedin.com"
+      }
+    ]
+  },
+  {
+    "name": "Emily Johnson",
+    "role": "Backend Developer",
+    "image": "https://i.ibb.co/WGWPRWw/member2.png",
+    "skills": ["Node.js", "Express", "MongoDB"],
+    "socialLinks": [
+      {
+        "icon": "bg-red-600",
+        "url": "https://www.facebook.com"
+      },
+      {
+        "icon": "bg-light-blue-400",
+        "url": "https://www.twitter.com"
+      },
+      {
+        "icon": "bg-blue-gray-700",
+        "url": "https://www.linkedin.com"
+      }
+    ]
+  },
+  {
+    "name": "Chris Taylor",
+    "role": "Graphic Designer",
+    "image": "https://i.ibb.co/bmq3YNy/member3.png",
+    "skills": ["Adobe Photoshop", "Illustrator", "InDesign"],
+    "socialLinks": [
+      {
+        "icon": "bg-red-600",
+        "url": "https://www.facebook.com"
+      },
+      {
+        "icon": "bg-light-blue-400",
+        "url": "https://www.twitter.com"
+      },
+      {
+        "icon": "bg-blue-gray-700",
+        "url": "https://www.linkedin.com"
+      }
+    ]
+  }
 ]
