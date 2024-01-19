@@ -12,7 +12,7 @@ const SocialLogin = () => {
       .then((result) => {
         console.log(result.user);
 
-        toast.success("Successfully toasted!");
+        toast.success("Successfully login");
         navigate("/");
       })
       .catch((error) => {
@@ -21,7 +21,6 @@ const SocialLogin = () => {
   };
   return (
     <div>
-      
       <div
         onClick={() => handleSocialLogin(googleLogin)}
         className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"

@@ -168,7 +168,9 @@ const Login = () => {
                       className="mt-6 mb-4 flex justify-center"
                     >
                       Don&apos;t have an account?
-                      <Link to={"/signUp"}>Sign up</Link>
+                      <Link className="underline ml-3" to={"/signUp"}>
+                        Sign up
+                      </Link>
                     </Typography>
                     <button
                       type="button"
