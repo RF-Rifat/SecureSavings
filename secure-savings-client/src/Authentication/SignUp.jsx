@@ -181,11 +181,13 @@ const SignUp = () => {
                       SIGN UP
                     </Button>
                     <div className="text-center">
+                      <h2 className="py-3">Already have an account?
+                        <Link to={"/login"}>Sign In</Link></h2>
                       <p className="mb-6 dark:text-neutral-50">
                         or sign up with:
                       </p>
                     </div>
-                    <SocialLogin/>
+                    <SocialLogin />
                     {/* <div className="flex justify-center">
                       <a
                         href="#!"
