@@ -4,7 +4,6 @@ import SignUp from "../Authentication/SignUp";
 import Home from "../pages/Home";
 import Root from "./Root";
 import ErrorPage from "../pages/ErrorPage";
-import MyWallet from "../pages/MyWallet";
 import AboutUs from "../pages/AboutUs";
 import SavingCards from "../components/Saving/SavingCards";
 
@@ -18,10 +17,7 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      {
-        path: "/wallet",
-        element: <MyWallet />,
-      },
+
       {
         path: "/aboutUs",
         element: <AboutUs />,

@@ -21,7 +21,7 @@ const Banner = () => {
         </h2>
         <p className="text-2xl">Believing, Banking and Achieving Different</p>
       </div>
-      <div className="2xl:w-1/2">
+      <div className="2xl:w-1/2 -z-10">
         <Swiper
           effect={"coverflow"}
           grabCursor={true}

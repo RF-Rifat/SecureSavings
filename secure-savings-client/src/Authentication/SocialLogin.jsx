@@ -10,8 +10,6 @@ const SocialLogin = () => {
   const handleSocialLogin = () => {
     googleLogin()
       .then((result) => {
-        console.log(result.user);
-
         toast.success("Successfully login");
         navigate("/");
       })
