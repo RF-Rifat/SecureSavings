@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="flex justify-center md:justify-start">
               <img className="w-40" src={logo} alt="logo" />
             </div>
-            <h1 className="text-center md:text-start">
+            <h1 className="text-center  mb-2 md:text-start">
               Bank Tower 40, <br /> Dilkusha C/A <br />
               Dhaka - 1000, Bangladesh
             </h1>
@@ -50,7 +50,7 @@ const Footer = () => {
               </h1>
               <div className="flex flex-col ">
                 <a
-                  href=""
+                  href="contact"
                   className="transition-transform hover:scale-105 py-1"
                 >
                   Contact Us
@@ -100,10 +100,10 @@ const Footer = () => {
             <h1 className="mb-4 font-bold text-center  uppercase text-green-700">
               Subscribe for newsletter
             </h1>
-            <div className="flex  flex-col items-center justify-center gap-2 mt-3">
+            <div className="flex  flex-col items-center justify-center gap-5 mt-3">
               <Input className="" size="md" label="Your name" />
               <Input className="" size="md" label="Your Email" />
-              <Button fullWidth variant="gradient">
+              <Button className="mb-5" fullWidth variant="gradient">
                 Subscribe
               </Button>
             </div>
