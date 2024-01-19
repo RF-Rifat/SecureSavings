@@ -28,7 +28,7 @@ const Features = () => {
               <img
                 src={img}
                 alt="feature-img"
-                className="h-32 w-2/4 mx-auto object-cover"
+                className="h-32 w-2/4 mx-auto object-cover rounded-sm"
               />
               <h2 className="text-2xl font-semibold my-3">{title}</h2>
               <ul className="list-disc list-inside">

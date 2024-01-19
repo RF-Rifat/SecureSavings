@@ -100,13 +100,13 @@ const Footer = () => {
             <h1 className="mb-4 font-bold text-center  uppercase text-green-700">
               Subscribe for newsletter
             </h1>
-            <div className="flex  flex-col items-center justify-center gap-5 mt-3">
+            <div className="flex  flex-col items-center justify-center gap-5">
               <Input className="" size="md" label="Your name" />
               <Input className="" size="md" label="Your Email" />
-              <Button className="mb-5" fullWidth variant="gradient">
-                Subscribe
-              </Button>
             </div>
+            <Button className="mb-5 mt-2" fullWidth variant="gradient">
+              Subscribe
+            </Button>
           </div>
         </div>
         <div className="flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">

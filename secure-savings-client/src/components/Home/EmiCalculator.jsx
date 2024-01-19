@@ -82,10 +82,13 @@ const EmiCalculator = () => {
                   </Button>
                 </div>
               </div>
-              <Input
+              {/* <Input
                 label="Calculated Interest:"
-                value={calculatedInterest > 0 ? calculatedInterest : ""}
-              />
+                value=
+              /> */}
+              <h1 className="text-xl h-10">
+                {calculatedInterest > 0 ? calculatedInterest : ""}
+              </h1>
             </div>
           </div>
           <div className="lg:w-1/2 w-full">
