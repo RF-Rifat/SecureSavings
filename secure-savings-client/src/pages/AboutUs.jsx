@@ -1,8 +1,7 @@
 import { FcBullish, FcMiddleBattery, FcServices } from "react-icons/fc";
 import AboutBanner from "../components/About Us/AboutBanner";
 import Clients from "../components/About Us/Clients";
-
-
+import AboutUsContact from "../components/About Us/AboutUsContact";
 
 const AboutUs = () => {
   return (
@@ -238,6 +237,7 @@ const AboutUs = () => {
             </div>
           </div>
         </section> */}
+        <AboutUsContact />
       </main>
     </>
   );

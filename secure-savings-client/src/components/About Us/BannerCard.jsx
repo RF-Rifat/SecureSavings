@@ -63,7 +63,7 @@ const BannerCard = () => {
               Empowering Your Financial Journey
             </h3>
             <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-              At [Your Bank Name], we believe that financial success is a
+              At Secure-Savings, we believe that financial success is a
               journey, not a destination. Our commitment is to empower you with
               the tools and resources needed to achieve your financial goals.
             </p>
