@@ -69,7 +69,7 @@ const ChatBox = () => {
             <div
               className="close"
               onClick={() => {
-                setOpen(false);
+                setOpen(!open);
               }}
             />
             <div className="branding">

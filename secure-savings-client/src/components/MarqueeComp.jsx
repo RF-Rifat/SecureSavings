@@ -9,7 +9,7 @@ const MarqueeComp = () => {
     <div className="h-44 max-w-screen-2xl mx-auto">
       <h1 className="text-center text-4xl font-medium">Our partner</h1>
       <div>
-        <Marquee className="mt-5 -z-10" autoFill={true} pauseOnHover={true}>
+        <Marquee className="mt-5" autoFill={true} pauseOnHover={true}>
           <img className="h-36 px-5 " src={visa} alt="" />
           <img className="h-36 px-5" src={masterCard} alt="" />
           <img className="h-36 px-5" src={paypal} alt="" />

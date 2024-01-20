@@ -133,11 +133,6 @@ const navListItems = [
     icon: UserCircleIcon,
   },
   {
-    label: "My Wallet",
-    link: "wallet",
-    icon: WalletIcon,
-  },
-  {
     label: "Saving",
     link: "saving",
     icon: CurrencyBangladeshiIcon,
@@ -146,6 +141,11 @@ const navListItems = [
     label: "About Us",
     link: "aboutUs",
     icon: UserPlusIcon,
+  },
+  {
+    label: "Blog",
+    link: "blog",
+    icon: WalletIcon,
   },
   {
     label: "Contact",

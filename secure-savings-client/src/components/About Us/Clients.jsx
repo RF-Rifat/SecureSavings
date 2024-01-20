@@ -32,7 +32,7 @@ const Clients = () => {
         >
           <span className="w-full h-full absolute opacity-75 bg-black" />
         </div>
-        <div className="container px-28 relative mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-4 justify-center">
+        <div className="container px-6 lg:px-28 relative mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-4 justify-center">
           {ClientData.map((person) => (
             <Card  key={person.name}>
               <CardHeader floated={false} className="h-72">

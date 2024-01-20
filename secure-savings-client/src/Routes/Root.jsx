@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
 import { ComplexNavbar } from "../Shared/Navbar";
 import Footer from "../components/Footer";
-import MyWallet from "../components/ChatBox";
+
 import { useContext } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
+import ChatBox from "../components/ChatBox";
 
 const Root = () => {
   const authInfo = useContext(AuthContext);
@@ -14,7 +15,7 @@ const Root = () => {
       <ComplexNavbar />
       <Outlet></Outlet>
       <Footer />
-      {authInfo.user && <MyWallet />}
+      {authInfo.user && <ChatBox />}
     </div>
   );
 };
