@@ -13,7 +13,7 @@ const AboutUsContact = () => {
                 <div className="mb-12 md:mt-12 lg:mt-0 lg:mb-0">
                   <div className="relative block rounded-lg bg-[hsla(0,0%,100%,0.55)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] backdrop-blur-[30px] dark:bg-[hsla(0,0%,5%,0.7)] dark:shadow-black/20 md:px-12 lg:-mr-14">
                     <h2 className="mb-6 text-3xl font-bold">Contact us</h2>
-                    <form className="">
+                    <form className="z-10">
                       <div className="space-y-3">
                         <Input variant="standard" label="Name" />
                         <Input variant="standard" label="Email" />
