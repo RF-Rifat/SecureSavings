@@ -4,6 +4,8 @@ import { TbMessageCircle2 } from "react-icons/tb";
 
 import useAuth from "../Hooks/useAuth";
 
+import { BsSend } from "react-icons/bs";
+
 const ChatBox = () => {
   const [open, setOpen] = useState(false);
   const { authInfo } = useAuth();
@@ -57,14 +59,18 @@ const ChatBox = () => {
       />
       <div
         id="chat-app"
-        className={`chat-app w-0 h-0 ${!open && "is-active !h-[600px] !w-[360px]"}`}
+        className={`chat-app w-0 h-0 ${
+          !open && "is-active !h-[600px] !w-[360px]"
+        }`}
       >
-        <div className="chat-app_toggle toggle" onClick={() => setOpen(!open)}>
+        <div className="chat-app_toggle toggle">
           <div className="icon send">
-            <i className="fas fa-paper-plane" />
+            {/* send icon */}
+            <BsSend />
           </div>
-          <div className="icon open">
+          <div className="icon open" onClick={() => setOpen(!open)}>
             <TbMessageCircle2 />
+            {/* <FcSms /> */}
           </div>
         </div>
         <div className="chat-app_box">
