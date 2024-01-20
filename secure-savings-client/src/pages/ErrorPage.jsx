@@ -4,10 +4,10 @@ const ErrorPage = () => {
 
     return (
         <>
-            <div className="bg-[#1A2238]">
+            <div className="bg-[#1A2238] h-screen">
                 <div className="max-w-screen-2xl mx-auto lg:flex gap-5">
                     <div className="text-white w-full lg:w-1/2">
-                        <div className="flex h-screen">
+                        <div className="flex lg:h-screen">
                             <div className="m-auto text-center">
                                 <div>
                                     <svg
@@ -150,7 +150,7 @@ const ErrorPage = () => {
                             </div>
                         </div>
                     </div>
-                    <main className="h-screen w-full lg:w-1/2 flex flex-col justify-center items-center bg-[#1A2238]">
+                    <main className="lg:h-screen w-full lg:w-1/2 flex flex-col justify-center items-center bg-[#1A2238]">
                         <h1 className="text-9xl font-extrabold text-white tracking-widest">404</h1>
                         <div className="bg-[#FF6A3D] px-2 text-sm rounded rotate-12 absolute">
                             Page Not Found
