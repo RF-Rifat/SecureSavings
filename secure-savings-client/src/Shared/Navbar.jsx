@@ -203,7 +203,7 @@ export function ComplexNavbar() {
 
   return (
     <>
-      <nav className="max-w-screen-2xl bg-white mx-auto z-50 w-full p-2 lg:pl-6 sticky h-20 top-0 rounded-b-md">
+      <nav className="max-w-screen-2xl bg-white dark:bg-blue-gray-700 mx-auto z-50 w-full p-2 lg:pl-6 sticky h-20 top-0 rounded-b-md">
         <div className="mx-auto">
           <div className="mx-auto flex items-center justify-between gap-3">
             <Link

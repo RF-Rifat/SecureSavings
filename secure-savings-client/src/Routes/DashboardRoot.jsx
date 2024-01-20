@@ -1,23 +1,20 @@
-import { Outlet } from "react-router-dom";
-import { ComplexNavbar } from "../Shared/Navbar";
-import Footer from "../components/Footer";
-
 import { useContext } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
+import { Outlet } from "react-router-dom";
 import ChatBox from "../components/ChatBox";
+import SideNav from "../DashBoard/SideBar/SideBar";
 
-const Root = () => {
+const DashboardRoot = () => {
   const authInfo = useContext(AuthContext);
 
   return (
     // toggle theme bg color
     <div className="dark:bg-[#003e5b] dark:text-white">
-      <ComplexNavbar />
+      <SideNav />
       <Outlet></Outlet>
-      <Footer />
       {authInfo.user && <ChatBox />}
     </div>
   );
 };
 
-export default Root;
+export default DashboardRoot;

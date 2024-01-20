@@ -7,6 +7,8 @@ import ErrorPage from "../pages/ErrorPage";
 import AboutUs from "../pages/AboutUs";
 import SavingCards from "../components/Saving/SavingCards";
 import Dashboard from "../DashBoard/Dashboard";
+import Profile from "../DashBoard/DashBoard-Pages/Profile";
+import DashboardRoot from "./DashboardRoot";
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +33,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <DashboardRoot />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -40,12 +42,8 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/aboutUs",
-        element: <AboutUs />,
-      },
-      {
-        path: "/saving",
-        element: <SavingCards />,
+        path: "/dashboard/profile",
+        element: <Profile />,
       },
     ],
   },
