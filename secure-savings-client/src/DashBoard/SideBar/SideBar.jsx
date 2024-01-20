@@ -1,8 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Button, IconButton, Typography } from "@material-tailwind/react";
-import { useMaterialTailwindController, setOpenSidenav } from "../../Context/index.jsx";
-import { RectangleStackIcon, ServerStackIcon, TableCellsIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import {
+  useMaterialTailwindController,
+  setOpenSidenav,
+} from "../../Context/index.jsx";
+import {
+  TableCellsIcon,
+  UserCircleIcon,
+  HomeIcon,
+} from "@heroicons/react/24/solid";
 import PrivateRoute from "../../Routes/PrivateRoute.jsx";
 import Profile from "../DashBoard-Pages/Profile.jsx";
 import DashHome from "../DashBoard-Pages/DashHome.jsx";
@@ -16,45 +23,17 @@ export function SideNav() {
       layout: "dashboard",
       pages: [
         {
+          icon: <HomeIcon {...icon} />,
+          name: "Dashboard",
+          path: "/home",
+        },
+        {
           icon: <UserCircleIcon {...icon} />,
           name: "profile",
           path: "/profile",
-          element: (
-            <PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-          ),
-        },
-        {
-          icon: <TableCellsIcon {...icon} />,
-          name: "Task-Manager",
-          path: "/dashboard/home",
-          element: (
-            <PrivateRoute>
-              <DashHome />
-            </PrivateRoute>
-          ),
         },
       ],
     },
-    // {
-    //   title: "auth pages",
-    //   layout: "auth",
-    //   pages: [
-    //     {
-    //       icon: <ServerStackIcon {...icon} />,
-    //       name: "sign in",
-    //       path: "/signIn",
-    //       element: <SignIn />,
-    //     },
-    //     {
-    //       icon: <RectangleStackIcon {...icon} />,
-    //       name: "sign up",
-    //       path: "/signUp",
-    //       element: <SignUp />,
-    //     },
-    //   ],
-    // },
   ];
 
   const [controller, dispatch] = useMaterialTailwindController();
@@ -78,10 +57,10 @@ export function SideNav() {
         >
           <img className="h-12" src="/logo.png" alt="brand image" />
           <Typography
-            variant="h4"
+            variant="h6"
             color={sidenavType === "dark" ? "white" : "blue-gray"}
           >
-            {"Secure-Savings"}
+            Secure-Savings
           </Typography>
         </Link>
         <IconButton
@@ -143,6 +122,5 @@ export function SideNav() {
     </aside>
   );
 }
-
 
 export default SideNav;
