@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Demo.css";
+import "./ChatBox.css";
 import { TbMessageCircle2 } from "react-icons/tb";
 
 import useAuth from "../Hooks/useAuth";
@@ -55,7 +55,10 @@ const ChatBox = () => {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
       />
-      <div id="chat-app" className={`chat-app ${open && "is-active"}`}>
+      <div
+        id="chat-app"
+        className={`chat-app w-0 h-0 ${!open && "is-active !h-[600px] !w-[360px]"}`}
+      >
         <div className="chat-app_toggle toggle" onClick={() => setOpen(!open)}>
           <div className="icon send">
             <i className="fas fa-paper-plane" />

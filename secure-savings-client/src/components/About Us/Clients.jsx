@@ -6,7 +6,7 @@ import {
   CardHeader,
   Typography,
 } from "@material-tailwind/react";
-import "./ClientsStyle.css"
+import "./ClientsStyle.css";
 
 const Clients = () => {
   const [ClientData, setClientData] = useState([]);
@@ -30,15 +30,12 @@ const Clients = () => {
         >
           <span className="w-full h-full absolute opacity-75 bg-black" />
         </div>
-<<<<<<< HEAD
-        <div className="container px-6 lg:px-28 relative mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-4 justify-center">
-=======
         <div className="container lg:px-20 relative mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-4 justify-center">
->>>>>>> fb6aff27ac5cc86dd85c0433407c25b72cf4ef0a
           {ClientData.map((person) => (
             <Card key={person.name}>
               <CardHeader floated={false} className="h-72">
-                <img className="object-cover w-full h-full"
+                <img
+                  className="object-cover w-full h-full"
                   src={person?.image}
                   alt="profile-picture"
                 />
@@ -59,35 +56,40 @@ const Clients = () => {
                 <div className="flex gap-4">
                   <ul className="wrapper">
                     <li className="icon facebook">
-                      <a href="https://www.facebook.com/" rel="noreferrer" target="_blank">
+                      <a
+                        href="https://www.facebook.com/"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
                         <span className="tooltip">Facebook</span>
-                        <span><i className="fab fa-facebook-f"></i></span>
+                        <span>
+                          <i className="fab fa-facebook-f"></i>
+                        </span>
                       </a>
                     </li>
                     <li className="icon instagram">
-                      <a href="https://www.instagram.com/" rel="noreferrer" target="_blank">
+                      <a
+                        href="https://www.instagram.com/"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
                         <span className="tooltip">Instagram</span>
-                        <span><i className="fab fa-instagram"></i></span>
+                        <span>
+                          <i className="fab fa-instagram"></i>
+                        </span>
                       </a>
                     </li>
                     <li className="icon youtube">
-                      <a href="https://www.youtube.com/" rel="noreferrer" target="_blank">
+                      <a
+                        href="https://www.youtube.com/"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
                         <span className="tooltip">YouTube</span>
-                        <span><i className="fab fa-youtube"></i></span>
+                        <span>
+                          <i className="fab fa-youtube"></i>
+                        </span>
                       </a>
-                    </li>
-                    <li className="icon github">
-                      <a href="https://github.com/" rel="noreferrer" target="_blank">
-                        <span className="tooltip">Github</span>
-                        <span><i className="fab fa-github"></i></span>
-                      </a>
-                    </li>
-                    <li className="icon twitter">
-                      <a href="https://twitter.com/" rel="noreferrer" target="_blank">
-                        <span className="tooltip">Twitter</span>
-                        <span><i className="fab fa-twitter"></i></span>
-                      </a>
-
                     </li>
                   </ul>
                 </div>
