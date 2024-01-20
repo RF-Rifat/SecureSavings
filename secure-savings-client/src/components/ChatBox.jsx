@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import "./ChatBox.css";
 import { TbMessageCircle2 } from "react-icons/tb";
 import { MdOutlineAddReaction } from "react-icons/md";
+import { HiOutlinePaperClip } from "react-icons/hi2";
 import useAuth from "../Hooks/useAuth";
 
 import { BsSend } from "react-icons/bs";
@@ -10,11 +11,11 @@ const ChatBox = () => {
   const chat = [
     {
       id: 1,
-      send: "hi",
+      send: "hi.Believing, Banking and Achieving Different",
     },
     {
       id: 2,
-      reply: "hello",
+      reply: "hello.Believing, Banking and Achieving Different",
     },
   ];
 
@@ -98,46 +99,23 @@ const ChatBox = () => {
             <div className="messages">
               {chat.map((message) => (
                 <Fragment key={message.id}>
-                  <div className="message">
-                    <p className="text">{message?.send}</p>
+                  <div className={message?.send && "message"}>
+                    <p className={message?.send && "text"}>{message?.send}</p>
                   </div>
-                  <div className="message reply">
-                    <p className="text">{message?.reply}</p>
+                  <div className={message?.reply && "message reply"}>
+                    <p className={message?.send && "text"}>{message?.reply}</p>
                   </div>
                 </Fragment>
               ))}
-
-              {/* <div className="message">
-                <p className="text">Cras at dapibus nisi, vel commodo ex.</p>
-              </div>
-              <div className="message reply">
-                <p className="text">
-                  Pellentesque sagittis, velit sed vehicula rhoncus, orci risus
-                  tempus arcu, eu rhoncus ex diam id felis
-                </p>
-              </div>
-              <div className="message">
-                <p className="text">Ut ac ante ut quam pharetra.</p>
-              </div>
-              <div className="message reply">
-                <p className="text">
-                  Pellentesque sagittis, velit sed vehicula rhoncus, orci risus
-                  tempus arcu, eu rhoncus ex diam id felis
-                </p>
-              </div>
-              <div className="message">
-                <p className="text">Ut ac ante ut quam pharetra faucibus.</p>
-              </div> */}
             </div>
           </div>
           <div className="chat-app_footer">
             <div className="tools">
               <a className="button-icon">
-                {/* <i className="far fa-smile-wink" /> */}
                 <MdOutlineAddReaction className="h-5 w-5 hover:text-green-700" />
               </a>
               <a className="button-icon">
-                <i className="fas fa-paperclip" />
+                <HiOutlinePaperClip className="h-5 w-5 icon !hover:text-white" />
               </a>
               <a className="copyright">Talk With Manager</a>
             </div>

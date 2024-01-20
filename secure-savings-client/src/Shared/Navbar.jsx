@@ -24,7 +24,7 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import ToggleTheme from "../components/ToggleTheme";
 import useAuth from "../Hooks/useAuth";
-// import AuthProvider from "../Authentication/AuthProvider";
+import { LuLayoutDashboard } from "react-icons/lu";
 
 function ProfileMenu() {
   // const  authInfo  = useContext(AuthProvider);
@@ -44,6 +44,11 @@ function ProfileMenu() {
       label: `${email}`,
       link: "/",
       icon: InboxArrowDownIcon,
+    },
+    {
+      label: "DashBoard",
+      link: "/dashboard",
+      icon: LuLayoutDashboard,
     },
   ];
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -80,21 +85,22 @@ function ProfileMenu() {
         </Button>
       </MenuHandler>
       <MenuList className="p-1">
-        {profileMenuItems.map(({ label, icon }) => {
+        {profileMenuItems.map(({ label, icon, link }) => {
           return (
-            <MenuItem
-              key={label}
-              onClick={closeMenu}
-              className="flex items-center gap-2 rounded"
-            >
-              {React.createElement(icon, {
-                className: `h-4 w-4`,
-                strokeWidth: 2,
-              })}
-              <Typography as="span" variant="small" className="font-normal">
-                {label}
-              </Typography>
-            </MenuItem>
+            <Link to={link} key={label}>
+              <MenuItem
+                onClick={closeMenu}
+                className="flex items-center gap-2 rounded"
+              >
+                {React.createElement(icon, {
+                  className: `h-4 w-4`,
+                  strokeWidth: 2,
+                })}
+                <Typography as="span" variant="small" className="font-normal">
+                  {label}
+                </Typography>
+              </MenuItem>
+            </Link>
           );
         })}
         <button

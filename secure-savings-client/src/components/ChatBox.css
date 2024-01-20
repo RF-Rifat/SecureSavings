@@ -307,6 +307,9 @@
 .chat-app_footer .tools .button-icon:hover:after, .chat-app_footer .tools .button-icon:focus:after {
   opacity: 1;
 }
+.icon:hover{
+  color: white;
+}
 
 .chat-input {
   height: 2.5em;
