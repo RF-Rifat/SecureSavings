@@ -47,7 +47,7 @@ function ProfileMenu() {
     },
     {
       label: "DashBoard",
-      link: "/dashboard",
+      link: "/dashboard/home",
       icon: LuLayoutDashboard,
     },
   ];
@@ -61,7 +61,7 @@ function ProfileMenu() {
         <Button
           variant="text"
           color="blue-gray"
-          className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
+          className="flex items-center gap-1 rounded-sm py-0.5 pr-2 pl-0.5 lg:ml-auto"
         >
           <Badge color="green" className="m-1">
             <Avatar
@@ -106,7 +106,7 @@ function ProfileMenu() {
         <button
           onClick={logOut}
           role="menuitem"
-          className="w-full pt-[9px] pb-2 px-3 text-start leading-tight cursor-pointer select-none transition-all hover:bg-opacity-80 focus:bg-opacity-80 active:bg-opacity-80 hover:text-blue-gray-900 focus:text-blue-gray-900 active:text-blue-gray-900 outline-none flex items-center gap-2 rounded hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+          className="w-full pt-[9px] pb-2 px-3 text-start leading-tight cursor-pointer select-none transition-all hover:bg-opacity-80 focus:bg-opacity-80 active:bg-opacity-80 hover:text-blue-gray-900 focus:text-blue-gray-900 active:text-blue-gray-900 outline-none flex items-center gap-2  hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -169,10 +169,10 @@ function NavList() {
           key={label}
           className={({ isActive, isPending }) =>
             isPending
-              ? "pending"
+              ? "pending bg-none"
               : isActive
-              ? "active bg-blue-gray-200 rounded-3xl"
-              : ""
+              ? "active bg-dark dark:text-black dark:bg-blue-gray-100 rounded"
+              : "dark:text-black"
           }
         >
           <Typography
@@ -181,9 +181,9 @@ function NavList() {
             color="gray"
             className={`font-medium text-lg text-center`}
           >
-            <MenuItem className="flex items-center gap-2 lg:rounded-full">
+            <MenuItem className="flex items-center gap-2 lg:rounded-full text-darkText hover:bg-none">
               {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
-              <span className=""> {label}</span>
+              <span className="dark:text-darkText"> {label}</span>
             </MenuItem>
           </Typography>
         </NavLink>
@@ -194,8 +194,6 @@ function NavList() {
 
 export function ComplexNavbar() {
   const { authInfo } = useAuth();
-  const { displayName, email } = authInfo?.user || {};
-  console.log(displayName, email);
   const [open, setOpen] = useState(false);
 
   const openDrawer = () => setOpen(true);
@@ -203,7 +201,7 @@ export function ComplexNavbar() {
 
   return (
     <>
-      <nav className="max-w-screen-2xl bg-white dark:bg-blue-gray-700 mx-auto z-50 w-full p-2 lg:pl-6 sticky h-20 top-0 rounded-b-md">
+      <nav className="max-w-screen-2xl bg-white dark:bg-dark dark:text-darkText mx-auto z-50 w-full p-2 lg:pl-6 sticky h-20 top-0 rounded-b-md">
         <div className="mx-auto">
           <div className="mx-auto flex items-center justify-between gap-3">
             <Link
@@ -247,7 +245,7 @@ export function ComplexNavbar() {
       <Drawer
         open={open}
         onClose={closeDrawer}
-        className={`p-4 lg:hidden ${"drawerBgColor"}`}
+        className={`p-4 lg:hidden dark:bg-blue-gray-700 dark:text-white`}
       >
         <div className="mb-6 flex items-center justify-between">
           <Link

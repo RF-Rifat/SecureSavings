@@ -11,7 +11,7 @@ const BannerCard = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap">
           <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-            <div className="relative flex flex-col min-w-0 break-words bg-gray-200 w-full mb-8 shadow-xl rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+            <div className="relative flex flex-col min-w-0 break-words bg-gray-200 dark:bg-dark w-full mb-8 shadow-xl rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
               <div className="px-4 py-5 flex-auto">
                 <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
                   <FcPositiveDynamic className="h-20 w-10" />
@@ -26,7 +26,7 @@ const BannerCard = () => {
           </div>
 
           <div className="w-full md:w-4/12 px-4 text-center">
-            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+            <div className="relative flex flex-col min-w-0 break-words bg-gray-200 dark:bg-dark w-full mb-8 shadow-xl rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
               <div className="px-4 py-5 flex-auto">
                 <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-amber-400">
                   <FcGraduationCap className="w-12 h-12" />
@@ -40,7 +40,7 @@ const BannerCard = () => {
             </div>
           </div>
           <div className="pt-6 w-full md:w-4/12 px-4 text-center">
-            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+            <div className="relative flex flex-col min-w-0 break-words bg-gray-200 dark:bg-dark w-full mb-8 shadow-xl rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
               <div className="px-4 py-5 flex-auto">
                 <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lime-700">
                   <FcCheckmark className="h-20 w-10" />
@@ -63,9 +63,9 @@ const BannerCard = () => {
               Empowering Your Financial Journey
             </h3>
             <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-              At Secure-Savings, we believe that financial success is a
-              journey, not a destination. Our commitment is to empower you with
-              the tools and resources needed to achieve your financial goals.
+              At Secure-Savings, we believe that financial success is a journey,
+              not a destination. Our commitment is to empower you with the tools
+              and resources needed to achieve your financial goals.
             </p>
             <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
               Explore a seamless banking experience with us. Whether

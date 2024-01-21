@@ -11,7 +11,7 @@ const Root = () => {
 
   return (
     // toggle theme bg color
-    <div className="dark:bg-[#003e5b] dark:text-white">
+    <div className="dark:bg-dark dark:text-darkText">
       <ComplexNavbar />
       <Outlet></Outlet>
       <Footer />

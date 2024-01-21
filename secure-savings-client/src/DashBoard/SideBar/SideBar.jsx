@@ -10,9 +10,6 @@ import {
   UserCircleIcon,
   HomeIcon,
 } from "@heroicons/react/24/solid";
-import PrivateRoute from "../../Routes/PrivateRoute.jsx";
-import Profile from "../DashBoard-Pages/Profile.jsx";
-import DashHome from "../DashBoard-Pages/DashHome.jsx";
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
@@ -31,6 +28,11 @@ export function SideNav() {
           icon: <UserCircleIcon {...icon} />,
           name: "profile",
           path: "/profile",
+        },
+        {
+          icon: <TableCellsIcon {...icon} />,
+          name: "Users",
+          path: "/users",
         },
       ],
     },

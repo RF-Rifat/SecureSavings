@@ -19,13 +19,13 @@ const ChatBox = () => {
     },
   ];
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const { authInfo } = useAuth();
   const info = authInfo?.user || {};
   const { displayName, email } = authInfo?.user || {};
   useEffect(() => {
     const chatInit = (selector) => {
-      if (!window.LIVE_CHAT_UI) {
+      if (window.LIVE_CHAT_UI) {
         let chat = document.getElementById(selector);
         let toggles = chat.querySelectorAll(".toggle");
 
