@@ -4,7 +4,12 @@ import {
   CardBody,
   Typography,
 } from "@material-tailwind/react";
-import { FcCheckmark, FcGraduationCap, FcPositiveDynamic, FcVoicePresentation } from "react-icons/fc";
+import {
+  FcCheckmark,
+  FcGraduationCap,
+  FcPositiveDynamic,
+  FcVoicePresentation,
+} from "react-icons/fc";
 const BannerCard = () => {
   return (
     <section className="pb-20 bg-blue-gray-300 -mt-24">
@@ -55,7 +60,7 @@ const BannerCard = () => {
           </div>
         </div>
         <div className="flex flex-wrap items-center mt-32">
-          <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+          <div className="w-full md:w-7/12 px-4 mr-auto ml-auto">
             <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white dark:bg-dark">
               <FcVoicePresentation className="h-20 w-10" />
             </div>
@@ -67,15 +72,9 @@ const BannerCard = () => {
               not a destination. Our commitment is to empower you with the tools
               and resources needed to achieve your financial goals.
             </p>
-            <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-              Explore a seamless banking experience with us. Whether
-              you&lsquo;re saving for the future, planning investments, or
-              managing day-to-day transactions, we&lsquo;re here to support you
-              every step of the way.
-            </p>
           </div>
 
-          <Card className="mt-6 w-96 dark:bg-dark dark:text-darkText">
+          <Card className="mt-6 w-96 dark:bg-dark dark:text-darkText md:w-5/12">
             <CardHeader color="blue-gray" className="relative h-56">
               <img
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
@@ -83,7 +82,11 @@ const BannerCard = () => {
               />
             </CardHeader>
             <CardBody>
-              <Typography variant="h5" color="blue-gray" className="mb-2 dark:text-darkText">
+              <Typography
+                variant="h5"
+                color="blue-gray"
+                className="mb-2 dark:text-darkText"
+              >
                 Our Journey: Crafting Exceptional Experiences
               </Typography>
               <Typography>

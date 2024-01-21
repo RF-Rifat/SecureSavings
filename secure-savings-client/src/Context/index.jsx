@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react-refresh/only-export-components */
 import React from "react";
-import PropTypes from "prop-types";
-
 export const MaterialTailwind = React.createContext(null);
 MaterialTailwind.displayName = "MaterialTailwindContext";
 
@@ -67,9 +67,7 @@ export function useMaterialTailwindController() {
 
 MaterialTailwindControllerProvider.displayName = "/src/context/index.jsx";
 
-MaterialTailwindControllerProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+
 
 export const setOpenSidenav = (dispatch, value) =>
   dispatch({ type: "OPEN_SIDENAV", value });
