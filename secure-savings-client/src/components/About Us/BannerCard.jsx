@@ -75,7 +75,7 @@ const BannerCard = () => {
             </p>
           </div>
 
-          <Card className="mt-6 w-96">
+          <Card className="mt-6 w-96 dark:bg-dark dark:text-darkText">
             <CardHeader color="blue-gray" className="relative h-56">
               <img
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
@@ -83,7 +83,7 @@ const BannerCard = () => {
               />
             </CardHeader>
             <CardBody>
-              <Typography variant="h5" color="blue-gray" className="mb-2">
+              <Typography variant="h5" color="blue-gray" className="mb-2 dark:text-darkText">
                 Our Journey: Crafting Exceptional Experiences
               </Typography>
               <Typography>

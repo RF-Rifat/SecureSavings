@@ -10,7 +10,7 @@ const AboutUs = () => {
         <AboutBanner />
 
         <Clients />
-        <section className="pt-20 lg:pt-6 pb-14 relative block bg-blue-gray-300">
+        <section className="pt-20 lg:pt-6 pb-14 relative block bg-blue-gray-300 dark:bg-dark">
           <div className="container mx-auto px-4 lg:pt-24 lg:pb-12">
             <div className="flex flex-wrap text-center justify-center">
               <div className="w-full lg:w-6/12 px-4">
