@@ -21,11 +21,11 @@ import {
 
 import { useContext, useState } from "react";
 import { setOpenConfigurator, setOpenSidenav, useMaterialTailwindController } from "../../Context";
-import AuthProvider from "../../Authentication/AuthProvider";
+import { AuthContext } from "../../Authentication/AuthProvider";
 
 
 export function DashboardNavbar() {
-//   const { user, logOut } = useContext(AuthProvider);
+  const { user, logOut } = useContext(AuthContext)
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
 //   const filteredUser = useContext(UserContext);
@@ -119,8 +119,8 @@ export function DashboardNavbar() {
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
           </IconButton>
-          {/* {!user ? (
-            <Link to="/auth/signIn">
+          {!user ? (
+            <Link to="/login">
               <Button
                 variant="text"
                 color="blue-gray"
@@ -157,7 +157,7 @@ export function DashboardNavbar() {
                 <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
               </IconButton>
             </>
-          )} */}
+          )}
           <Menu>
             <MenuHandler>
               <IconButton variant="text" color="blue-gray" className="relative">
@@ -203,6 +203,5 @@ export function DashboardNavbar() {
   );
 }
 
-DashboardNavbar.displayName = "/src/widgets/layout/dashboard-navbar.jsx";
 
 export default DashboardNavbar;

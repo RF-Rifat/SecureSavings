@@ -47,53 +47,53 @@ async function run() {
         const size = parseInt(req.query.size);
         const type = req.params.type;
 
-        const { field, search } = req.query;
-        const searchQuery = {};
+        // const { field, search } = req.query;
+        // const searchQuery = {};
 
-        if (search && field) {
-          const searchRegex = new RegExp(`^${search}$`, "i");
+        // if (search && field) {
+        //   const searchRegex = new RegExp(`^${search}$`, "i");
 
-          // "person" collection
-          const personSearchField = [
-            "holding_number",
-            "national_id",
-            "head_of_household_mobile",
-            "head_of_household_name",
-            "father_or_husband_name",
-            "word",
-          ];
+        //   // "person" collection
+        //   const personSearchField = [
+        //     "holding_number",
+        //     "national_id",
+        //     "head_of_household_mobile",
+        //     "head_of_household_name",
+        //     "father_or_husband_name",
+        //     "word",
+        //   ];
 
-          if (personSearchField.includes(field)) {
-            searchQuery[field] = searchRegex;
-          }
+        //   if (personSearchField.includes(field)) {
+        //     searchQuery[field] = searchRegex;
+        //   }
 
-          // "business" collection
-          if (type.toLowerCase() === "business") {
-            const businessSearchField = ["shop_no", "owner_name", "phone"];
+        //   // "business" collection
+        //   if (type.toLowerCase() === "business") {
+        //     const businessSearchField = ["shop_no", "owner_name", "phone"];
 
-            if (businessSearchField.includes(field)) {
-              searchQuery[field] = searchRegex;
-            }
-          }
-        }
+        //     if (businessSearchField.includes(field)) {
+        //       searchQuery[field] = searchRegex;
+        //     }
+        //   }
+        // }
 
         let result;
 
-        if (type.toLowerCase().trim() === "house") {
+        if (type.toLowerCase().trim() === "user") {
           result = await houseHolderCollection
-            .find(searchQuery)
+            .find()
             .sort({ _id: -1 })
             .skip(page * size)
             .limit(size)
             .toArray();
-        } else if (type.toLowerCase().trim() === "business") {
+        } else if (type.toLowerCase().trim() === "blog") {
           result = await businessCollection
-            .find(searchQuery)
+            .find()
             .sort({ _id: -1 })
             .skip(page * size)
             .limit(size)
             .toArray();
-        } else if (type.toLowerCase().trim() === "villages") {
+        } else if (type.toLowerCase().trim() === "message") {
           result = await villagesCollection
             .find()
             .sort({ _id: -1 })
