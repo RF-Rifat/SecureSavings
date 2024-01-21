@@ -3,8 +3,8 @@ const MyWallet = () => {
     <>
       {/* user credit details */}
 
-      <div className="py-7 px-7 flex w-full gap-7 transition-all duration-1000 ease-in-out sm:max-w-[calc(100vw_-_99px)] lg:max-w-[calc(100vw_-_110px)] xl:max-w-[calc(100vw_-_138px)]">
-        <div className="flex flex-col w-full gap-7 md:max-w-[calc(100%_-_255px)] lg:max-w-[calc(100%_-_420px)] xl:max-w-[calc(100%_-_390px)]">
+      <div className="py-7 px-7 flex w-full gap-7 transition-all duration-1000 ease-in-out ">
+        <div className="flex flex-col w-full gap-7">
           <div className="bg-gradient-to-tl to-[#7851BD] from-[#4E4BCF] rounded-xl p-5 relative overflow-hidden">
             <svg
               width={581}
@@ -183,7 +183,7 @@ const MyWallet = () => {
           <div className="bg-[#FDFDFF] rounded-md ">
             <div className="p-5 flex flex-col overflow-hidden overflow-x-auto gap-5 scrollbar-thin !scrollbar-thumb-[#7851BD] scrollbar-track-[#EDEDED] rounded-xl">
               <span className="text-[#212B36] text-lg font-semibold">
-                Watch list
+                Payment list
               </span>
               <div className="flex flex-col sm:flex-row gap-5">
                 <div className="flex flex-col gap-5 border border-[#7851bd33] p-5 rounded-xl w-full sm:max-w-xs">
@@ -192,7 +192,7 @@ const MyWallet = () => {
                       Bitcoin
                     </span>
                     <img
-                      src="/assets/admin/analytics-dashboard/dots.svg"
+                      src="/logo.png"
                       alt="dots"
                       className="cursor-pointer"
                     />
@@ -238,7 +238,7 @@ const MyWallet = () => {
                       Ethereum
                     </span>
                     <img
-                      src="/assets/admin/analytics-dashboard/dots.svg"
+                      src="/logo.png"
                       alt="dots"
                       className="cursor-pointer"
                     />
@@ -284,7 +284,7 @@ const MyWallet = () => {
                       Litecoin
                     </span>
                     <img
-                      src="/assets/admin/analytics-dashboard/dots.svg"
+                      src="/logo.png"
                       alt="dots"
                       className="cursor-pointer"
                     />
@@ -330,7 +330,7 @@ const MyWallet = () => {
                       Ripple
                     </span>
                     <img
-                      src="/assets/admin/analytics-dashboard/dots.svg"
+                      src="/logo.png"
                       alt="dots"
                       className="cursor-pointer"
                     />
@@ -437,7 +437,7 @@ const MyWallet = () => {
                     <div className="py-2 pl-1.5 bg-[#EDEDED] flex justify-between flex-wrap gap-3 rounded-lg">
                       <div className="relative mt-1">
                         <button
-                          className="flex p-1.5 bg-[#FDFDFF] gap-2 items-center w-fit rounded-lg tracking-[1.4px] uppercase w-[95px]"
+                          className="flex p-1.5 bg-[#FDFDFF] gap-2 items-center w-fit rounded-lg tracking-[1.4px] uppercase"
                           id="headlessui-listbox-button-:Rpja6l6:"
                           type="button"
                           aria-haspopup="listbox"
@@ -494,7 +494,7 @@ const MyWallet = () => {
                     <div className="py-2 pl-1.5 bg-[#EDEDED] flex justify-between flex-wrap gap-3 rounded-lg">
                       <div className="relative mt-1">
                         <button
-                          className="flex p-1.5 bg-[#FDFDFF] gap-2 items-center w-fit rounded-lg tracking-[1.4px] uppercase w-[95px]"
+                          className="flex p-1.5 bg-[#FDFDFF] gap-2 items-center w-fit rounded-lg tracking-[1.4px] uppercase"
                           id="headlessui-listbox-button-:Rpna6l6:"
                           type="button"
                           aria-haspopup="listbox"
@@ -567,9 +567,9 @@ const MyWallet = () => {
                         <div className="relative flex gap-3 items-center">
                           <div className="">
                             <img
-                              src="/assets/admin/analytics-dashboard/table-icon1.svg"
+                              src="/logo.png"
                               alt="hepta-brown"
-                              className="min-w-[42px] min-h-[42px]"
+                              className="w-12 h-12"
                             />
                           </div>
                           <div className="flex flex-col whitespace-nowrap">
@@ -597,9 +597,9 @@ const MyWallet = () => {
                         <div className="relative flex gap-3 items-center">
                           <div className="">
                             <img
-                              src="/assets/admin/analytics-dashboard/table-icon2.svg"
+                              src="/logo.png"
                               alt="hepta-brown"
-                              className="min-w-[42px] min-h-[42px]"
+                              className="w-12 h-12"
                             />
                           </div>
                           <div className="flex flex-col whitespace-nowrap">
@@ -627,9 +627,9 @@ const MyWallet = () => {
                         <div className="relative flex gap-3 items-center">
                           <div className="">
                             <img
-                              src="/assets/admin/analytics-dashboard/table-icon3.svg"
+                              src="/logo.png"
                               alt="hepta-brown"
-                              className="min-w-[42px] min-h-[42px]"
+                              className="w-12 h-12"
                             />
                           </div>
                           <div className="flex flex-col whitespace-nowrap">
@@ -657,9 +657,9 @@ const MyWallet = () => {
                         <div className="relative flex gap-3 items-center">
                           <div className="">
                             <img
-                              src="/assets/admin/analytics-dashboard/table-icon4.svg"
+                              src="/logo.png"
                               alt="hepta-brown"
-                              className="min-w-[42px] min-h-[42px]"
+                              className="w-12 h-12"
                             />
                           </div>
                           <div className="flex flex-col whitespace-nowrap">
@@ -689,9 +689,9 @@ const MyWallet = () => {
                         <div className="relative flex gap-3 items-center">
                           <div className="">
                             <img
-                              src="/assets/admin/analytics-dashboard/table-icon5.svg"
+                              src="/logo.png"
                               alt="hepta-brown"
-                              className="min-w-[42px] min-h-[42px]"
+                              className="w-12 h-12"
                             />
                           </div>
                           <div className="flex flex-col whitespace-nowrap">
@@ -720,9 +720,9 @@ const MyWallet = () => {
                         <div className="relative flex gap-3 items-center">
                           <div className="">
                             <img
-                              src="/assets/admin/analytics-dashboard/table-icon6.svg"
+                              src="/logo.png"
                               alt="hepta-brown"
-                              className="min-w-[42px] min-h-[42px]"
+                              className="w-12 h-12"
                             />
                           </div>
                           <div className="flex flex-col whitespace-nowrap">
@@ -751,9 +751,9 @@ const MyWallet = () => {
                         <div className="relative flex gap-3 items-center">
                           <div className="">
                             <img
-                              src="/assets/admin/analytics-dashboard/table-icon7.svg"
+                              src="/logo.png"
                               alt="hepta-brown"
-                              className="min-w-[42px] min-h-[42px]"
+                              className="w-12 h-12"
                             />
                           </div>
                           <div className="flex flex-col whitespace-nowrap">
@@ -1806,242 +1806,8 @@ const MyWallet = () => {
             </div>
           </div>
         </div>
-        <div className="flex-col gap-7 w-full max-w-[230px] lg:max-w-[400px] xl:max-w-[390px] hidden sm:flex">
-          <div className="">
-            <div className="flex flex-col gap-3.5 w-ful justify-between h-full">
-              <div className="flex justify-between items-center">
-                <span className="text-lg font-semibold text-[#212B36]">
-                  Assets
-                </span>
-                <span className="text-sm font-medium text-[#637381] cursor-pointer hover:text-[#7851BD] mr-2">
-                  View All
-                </span>
-              </div>
-              <div className="overflow-hidden overflow-x-auto flex gap-5 pb-2 scrollbar-thumb-[#7851BD] scrollbar-track-[#EDEDED] scrollbar-thin">
-                <div className="py-5 px-3.5 flex gap-3.5 flex-col min-w-[183px] rounded-lg bg-white border border-[#7851bd33]">
-                  <div className="flex gap-2.5 items-center">
-                    <img src="/assets/admin/analytics-dashboard/btc.png" />
-                    <span className="text-lg font-medium tracking-[1.8px] text-[#637381] uppercase">
-                      btc
-                    </span>
-                  </div>
-                  <span className="text-lg font-semibold text-[#212B36] tracking-[1.8px]">
-                    $224,300.40
-                  </span>
-                  <span className="text-sm font-medium text-[#DA1818] ">
-                    7.2526
-                  </span>
-                </div>
-                <div className="py-5 px-3.5 flex gap-3.5 flex-col min-w-[183px] rounded-lg bg-white border border-[#7851bd33]">
-                  <div className="flex gap-2.5 items-center">
-                    <img src="/assets/admin/analytics-dashboard/ust.png" />
-                    <span className="text-lg font-medium tracking-[1.8px] text-[#637381] uppercase">
-                      ust
-                    </span>
-                  </div>
-                  <span className="text-lg font-semibold text-[#212B36] tracking-[1.8px]">
-                    $224,300.40
-                  </span>
-                  <span className="text-sm font-medium text-[#32A953] ">
-                    7.2526
-                  </span>
-                </div>
-                <div className="py-5 px-3.5 flex gap-3.5 flex-col min-w-[183px] rounded-lg bg-white border border-[#7851bd33]">
-                  <div className="flex gap-2.5 items-center">
-                    <img src="/assets/admin/analytics-dashboard/eth.png" />
-                    <span className="text-lg font-medium tracking-[1.8px] text-[#637381] uppercase">
-                      eth
-                    </span>
-                  </div>
-                  <span className="text-lg font-semibold text-[#212B36] tracking-[1.8px]">
-                    $224,300.40
-                  </span>
-                  <span className="text-sm font-medium text-[#32A953] ">
-                    7.2526
-                  </span>
-                </div>
-                <div className="py-5 px-3.5 flex gap-3.5 flex-col min-w-[183px] rounded-lg bg-white border border-[#7851bd33]">
-                  <div className="flex gap-2.5 items-center">
-                    <img src="/assets/admin/analytics-dashboard/car.png" />
-                    <span className="text-lg font-medium tracking-[1.8px] text-[#637381] uppercase">
-                      car
-                    </span>
-                  </div>
-                  <span className="text-lg font-semibold text-[#212B36] tracking-[1.8px]">
-                    $224,300.40
-                  </span>
-                  <span className="text-sm font-medium text-[#DA1818] ">
-                    7.2526
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="bg-[#FDFDFF] rounded-2xl">
-            <div className="py-6 flex flex-col gap-5 ">
-              <div className="flex flex-col gap-3 px-5">
-                <div className="flex justify-between md:flex-col gap-3 lg:flex-row lg:justify-between">
-                  <span className="text-lg font-semibold text-[#212B36] whitespace-nowrap">
-                    Send Money
-                  </span>
-                  <button className="px-5 py-1.5 text-[#637381] hover:bg-gradient-to-tl hover:to-[#7851BD] hover:from-[#4E4BCF] text-base tracking-[1.6px] bg-[#EDEDED] rounded-[40px] text-center h-fit w-fi hover:text-white whitespace-nowrap self-end">
-                    View All
-                  </button>
-                </div>
-                <div className="flex justify-between flex-wrap gap-2 lg:gap-0 lg:flex-nowrap ">
-                  <div className="flex gap-7 flex-wrap">
-                    <img
-                      src="/assets/admin/analytics-dashboard/user1.svg"
-                      alt="user"
-                      className="h-9 w-9"
-                    />
-                    <img
-                      src="/assets/admin/analytics-dashboard/user2.svg"
-                      alt="user"
-                      className="h-9 w-9"
-                    />
-                    <img
-                      src="/assets/admin/analytics-dashboard/user3.svg"
-                      alt="user"
-                      className="h-9 w-9"
-                    />
-                    <img
-                      src="/assets/admin/analytics-dashboard/user4.svg"
-                      alt="user"
-                      className="h-9 w-9"
-                    />
-                    <img
-                      src="/assets/admin/analytics-dashboard/user5.svg"
-                      alt="user"
-                      className="h-9 w-9"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="border-t border-[#7851bd33] px-5 pt-5 flex gap-7 flex-col">
-                <div className="flex flex-col gap-2 xl:flex-row xl:justify-between w-full">
-                  <span className="font-semibold text-lg text-[#212B36] tracking-[1px]">
-                    Operations
-                  </span>
-                  <div className="p-2 bg-[#EDEDED] rounded-lg flex flex-wrap">
-                    <span className="bg-[#EDEDED] hover:bg-white text-sm px-2.5 py-1.5 rounded-md tracking-[1.5px] cursor-pointer hover:shadow-[0_2px_10px_0_rgba(0,0,0,0.1)]">
-                      Buy
-                    </span>
-                    <span className="bg-[#EDEDED] hover:bg-white text-sm px-2.5 py-1.5 rounded-md tracking-[1.5px] cursor-pointer hover:shadow-[0_2px_10px_0_rgba(0,0,0,0.1)]">
-                      Sell
-                    </span>
-                    <span className="bg-[#EDEDED] hover:bg-white text-sm px-2.5 py-1.5 rounded-md cursor-pointer tracking-[1.5px] hover:shadow-[0_2px_10px_0_rgba(0,0,0,0.1)]">
-                      Exchange
-                    </span>
-                  </div>
-                </div>
-                <div className="">
-                  <div className="">
-                    <span className="text-sm text-[#637381]">You pay</span>
-                    <div className="py-2 pl-1.5 bg-[#EDEDED] flex justify-between flex-wrap gap-3 rounded-lg">
-                      <div className="relative mt-1">
-                        <button
-                          className="flex p-1.5 bg-[#FDFDFF] gap-2 items-center w-fit rounded-lg tracking-[1.4px] uppercase"
-                          id="headlessui-listbox-button-:Rcplal6:"
-                          type="button"
-                          aria-haspopup="listbox"
-                          aria-expanded="false"
-                          data-headlessui-state=""
-                        >
-                          <img
-                            src="/assets/admin/analytics-dashboard/ust.png"
-                            className="h-5 w-5"
-                          />
-                          ust
-                          <svg
-                            width={7}
-                            height={5}
-                            viewBox="0 0 7 5"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-2 w-1.5"
-                          >
-                            <path
-                              d="M0.420825 1.61555L2.84342 4.19964C3.19898 4.57891 3.80102 4.57891 4.15658 4.19964L6.57918 1.61555C7.11805 1.04075 6.71049 0.099999 5.92259 0.099999L1.07741 0.099999C0.289513 0.099999 -0.118049 1.04075 0.420825 1.61555Z"
-                              fill="#212B36"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                      <div className="flex gap-4 items-center mr-4 ml-1.5">
-                        <span className="text-[#212B36] font-semibold text-sm tracking-[1.5px]">
-                          $321.40
-                        </span>
-                        <button className="px-2 py-0.5 text-xs uppercase bg-[#7851BD] rounded-[20px] text-[#FDFDFF] font-bold tracking-[1px]">
-                          Max
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <svg
-                      width={12}
-                      height={16}
-                      viewBox="0 0 12 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="mx-auto"
-                    >
-                      <path
-                        d="M8.32195 15.7694L11.7481 12.5688C11.828 12.4942 11.8913 12.4057 11.9345 12.3082C11.9778 12.2107 12 12.1062 12 12.0007C12 11.7876 11.9094 11.5833 11.7481 11.4326C11.5868 11.282 11.3681 11.1973 11.14 11.1973C10.9119 11.1973 10.6931 11.282 10.5318 11.4326L8.57034 13.273L8.57034 3.99927C8.57034 3.78706 8.4801 3.58354 8.31947 3.43349C8.15884 3.28343 7.94097 3.19913 7.71381 3.19913C7.48664 3.19913 7.26877 3.28343 7.10814 3.43349C6.94751 3.58354 6.85727 3.78706 6.85727 3.99927L6.85727 15.2013C6.85811 15.3593 6.90899 15.5135 7.0035 15.6445C7.098 15.7755 7.2319 15.8774 7.38832 15.9374C7.54431 15.9987 7.71622 16.0155 7.88238 15.9856C8.04854 15.9556 8.2015 15.8804 8.32195 15.7694ZM5.14419 12.0007L5.14419 0.798694C5.14335 0.640725 5.09247 0.486524 4.99796 0.355524C4.90346 0.224524 4.76956 0.122587 4.61314 0.0625601C4.45715 0.00128542 4.28524 -0.0154558 4.11908 0.014449C3.95292 0.0443537 3.79996 0.119564 3.67951 0.230591L0.253364 3.43117C0.173082 3.50556 0.109359 3.59405 0.0658735 3.69156C0.0223882 3.78906 3.81443e-07 3.89365 3.76826e-07 3.99927C3.72209e-07 4.1049 0.0223881 4.20949 0.0658734 4.30699C0.109359 4.4045 0.173082 4.49299 0.253364 4.56738C0.33299 4.64237 0.427723 4.7019 0.5321 4.74252C0.636477 4.78314 0.748431 4.80406 0.861505 4.80406C0.974578 4.80406 1.08653 4.78314 1.19091 4.74252C1.29529 4.7019 1.39002 4.64237 1.46965 4.56738L3.43112 2.72704L3.43112 12.0007C3.43112 12.2129 3.52136 12.4165 3.68199 12.5665C3.84262 12.7166 4.06049 12.8009 4.28766 12.8009C4.51482 12.8009 4.73269 12.7166 4.89332 12.5665C5.05395 12.4165 5.14419 12.2129 5.14419 12.0007Z"
-                        fill="#212B36"
-                      />
-                    </svg>
-                  </div>
-                  <div className="mt-0.5">
-                    <span className="text-sm text-[#637381]">You get</span>
-                    <div className="py-2 pl-1.5 bg-[#EDEDED] flex justify-between flex-wrap gap-3 rounded-lg">
-                      <div className="relative mt-1">
-                        <button
-                          className="flex p-1.5 bg-[#FDFDFF] gap-2 items-center w-fit rounded-lg tracking-[1.4px] uppercase w-[95px]"
-                          id="headlessui-listbox-button-:Rcrlal6:"
-                          type="button"
-                          aria-haspopup="listbox"
-                          aria-expanded="false"
-                          data-headlessui-state=""
-                        >
-                          <img
-                            src="/assets/admin/analytics-dashboard/btc.png"
-                            className="h-5 w-5"
-                          />
-                          btc
-                          <svg
-                            width={7}
-                            height={5}
-                            viewBox="0 0 7 5"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-2 w-1.5"
-                          >
-                            <path
-                              d="M0.420825 1.61555L2.84342 4.19964C3.19898 4.57891 3.80102 4.57891 4.15658 4.19964L6.57918 1.61555C7.11805 1.04075 6.71049 0.099999 5.92259 0.099999L1.07741 0.099999C0.289513 0.099999 -0.118049 1.04075 0.420825 1.61555Z"
-                              fill="#212B36"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                      <div className="flex gap-4 items-center mr-4 ml-1.5">
-                        <span className="text-[#212B36] font-semibold text-sm tracking-[1.5px]">
-                          0.05BTC
-                        </span>
-                        <button className="px-2 py-0.5 text-xs uppercase bg-[#7851BD] rounded-[20px] text-[#FDFDFF] font-bold tracking-[1px]">
-                          min
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button className="px-5 py-5 bg-gradient-to-tl to-[#7851BD] from-[#4E4BCF] rounded-xl text-lg font-semibold mt-3 text-white hover:scale-105">
-                  Buy Bitcoin
-                </button>
-              </div>
-            </div>
-          </div>
+        
+      </div>
           <div className="bg-white rounded-2xl">
             <div className="py-5 pl-5 pr-10 flex flex-col gap-5 overflow-hidden overflow-x-auto scrollbar-thumb-[#7851BD] scrollbar-track-[#EDEDED] scrollbar-thin">
               <div className="flex gap-60">
@@ -3087,7 +2853,7 @@ const MyWallet = () => {
                         >
                           <tspan style={{ fontSize: "0.8em" }}>Mar</tspan>
                           <tspan className="highcharts-br" dy={15} x={8}>
-                            ​
+                           {""} 
                           </tspan>
                           <tspan
                             style={{
@@ -3108,8 +2874,6 @@ const MyWallet = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
     </>
   );
 }
