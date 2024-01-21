@@ -169,23 +169,62 @@ function NavList() {
           key={label}
           className={({ isActive, isPending }) =>
             isPending
-              ? "pending bg-none"
+              ? "pending"
               : isActive
-              ? "active bg-dark dark:text-black dark:bg-blue-gray-100 rounded"
-              : "dark:text-black"
+              ? "active bg-dark text-white rounded"
+              : ""
           }
         >
-          <Typography
-            as="div"
-            variant="small"
-            color="gray"
-            className={`font-medium text-lg text-center`}
-          >
-            <MenuItem className="flex items-center gap-2 lg:rounded-full text-darkText hover:bg-none">
-              {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
-              <span className="dark:text-darkText"> {label}</span>
-            </MenuItem>
-          </Typography>
+          <div className="font-medium text-lg text-center">
+            <div className="flex items-center gap-1 lg:rounded-full hover:bg-none mt-2 mb-4  flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3">
+              {React.createElement(icon, {
+                className:
+                  "h-[18px] w-[18px] antialiased mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
+              })}{" "}
+              <span
+                className={`py-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+              >
+                {" "}
+                {label}
+              </span>
+            </div>
+          </div>
+        </NavLink>
+      ))}
+    </ul>
+  );
+}
+
+
+function DrawerNavList() {
+  return (
+    <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+      {navListItems.map(({ label, icon, link }) => (
+        <NavLink
+          to={`/${link}`}
+          key={label}
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "bg-dark text-white rounded"
+              : ""
+          }
+        >
+          <div className="font-medium text-lg text-center">
+            <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none mt-2 mb-4   lg:mb-0 lg:mt-0 lg:items-center px-3">
+              {React.createElement(icon, {
+                className:
+                  "h-[18px] w-[18px] antialiased mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
+              })}{" "}
+              <span
+                className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+              >
+                {" "}
+                {label}
+              </span>
+            </div>
+          </div>
         </NavLink>
       ))}
     </ul>
@@ -201,7 +240,7 @@ export function ComplexNavbar() {
 
   return (
     <>
-      <nav className="max-w-screen-2xl bg-white dark:bg-dark dark:text-darkText mx-auto z-50 w-full p-2 lg:pl-6 sticky h-20 top-0 rounded-b-md">
+      <nav className="max-w-screen-2xl bg-white dark:bg-primary dark:text-darkText mx-auto z-50 w-full p-2 lg:pl-6 sticky h-20 top-0 rounded-b-md">
         <div className="mx-auto">
           <div className="mx-auto flex items-center justify-between gap-3">
             <Link
@@ -271,7 +310,9 @@ export function ComplexNavbar() {
             </svg>
           </IconButton>
         </div>
-        <NavList></NavList>
+        <DrawerNavList></DrawerNavList>
+        
+
         {!authInfo?.user && (
           <div className="flex gap-2">
             <Button variant="outlined">SIGN UP</Button>
