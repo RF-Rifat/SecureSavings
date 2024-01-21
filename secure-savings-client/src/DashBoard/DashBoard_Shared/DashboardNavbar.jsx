@@ -19,7 +19,7 @@ import {
   Bars3Icon,
 } from "@heroicons/react/24/solid";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { setOpenConfigurator, setOpenSidenav, useMaterialTailwindController } from "../../Context";
 import { AuthContext } from "../../Authentication/AuthProvider";
 

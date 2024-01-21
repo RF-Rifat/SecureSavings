@@ -10,6 +10,7 @@ import {
   UserCircleIcon,
   HomeIcon,
 } from "@heroicons/react/24/solid";
+import Profile from "../DashBoard-Pages/Profile.jsx";
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
@@ -28,6 +29,7 @@ export function SideNav() {
           icon: <UserCircleIcon {...icon} />,
           name: "profile",
           path: "/profile",
+        
         },
         {
           icon: <TableCellsIcon {...icon} />,
