@@ -37,13 +37,13 @@ const EmiCalculator = () => {
 
   return (
     <>
-      <div className="my-24 max-w-screen-2xl mx-auto bg-[#fff8f8]">
+      <div className="my-24 max-w-screen-2xl mx-auto dark:bg-dark">
         <div className="flex lg:flex-row flex-col-reverse items-center gap-5 p-3">
           <div className="lg:w-1/2 w-full md:p-20 p-5">
             <h4 className="text-red-400 text-[18px] font-semibold">
               CALCULATE LOAN
             </h4>
-            <h2 className="text-blue-gray-900 font-bold xl:text-4xl text-2xl mt-4 mb-10">
+            <h2 className="text-blue-gray-900 dark:text-darkText font-bold xl:text-4xl text-2xl mt-4 mb-10">
               Online EMI Calculator
             </h2>
             <div className="flex flex-col gap-6">
