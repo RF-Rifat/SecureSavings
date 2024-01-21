@@ -4,7 +4,7 @@ const Dashboard = () => {
      
         {/* component */}
         <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-          <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800">
+          <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800 hover:drop-shadow-2xl">
             <div className="p-4 flex items-center">
               <div className="p-3 rounded-full text-orange-500 dark:text-orange-100 bg-orange-100 dark:bg-orange-500 mr-4">
                 <svg
@@ -25,7 +25,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800">
+          <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800 hover:drop-shadow-2xl">
             <div className="p-4 flex items-center">
               <div className="p-3 rounded-full text-green-500 dark:text-green-100 bg-green-100 dark:bg-green-500 mr-4">
                 <svg
@@ -50,7 +50,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800">
+          <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800 hover:drop-shadow-2xl">
             <div className="p-4 flex items-center">
               <div className="p-3 rounded-full text-blue-500 dark:text-blue-100 bg-blue-100 dark:bg-blue-500 mr-4">
                 <svg
@@ -71,7 +71,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800">
+          <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800 hover:drop-shadow-2xl">
             <div className="p-4 flex items-center">
               <div className="p-3 rounded-full text-teal-500 dark:text-teal-100 bg-teal-100 dark:bg-teal-500 mr-4">
                 <svg

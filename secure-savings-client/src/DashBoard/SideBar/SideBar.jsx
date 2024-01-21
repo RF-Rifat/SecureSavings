@@ -9,8 +9,8 @@ import {
   TableCellsIcon,
   UserCircleIcon,
   HomeIcon,
+  WalletIcon,
 } from "@heroicons/react/24/solid";
-import Profile from "../DashBoard-Pages/Profile.jsx";
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
@@ -29,7 +29,11 @@ export function SideNav() {
           icon: <UserCircleIcon {...icon} />,
           name: "profile",
           path: "/profile",
-        
+        },
+        {
+          icon: <WalletIcon {...icon} />,
+          name: "My-Wallet",
+          path: "/wallet",
         },
         {
           icon: <TableCellsIcon {...icon} />,
