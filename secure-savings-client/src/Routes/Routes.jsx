@@ -5,10 +5,10 @@ import Home from "../pages/Home";
 import Root from "./Root";
 import ErrorPage from "../pages/ErrorPage";
 import AboutUs from "../pages/AboutUs";
-import SavingCards from "../components/Saving/SavingCards";
 import Dashboard from "../DashBoard/Dashboard";
 import Profile from "../DashBoard/DashBoard-Pages/Profile";
 import DashboardRoot from "./DashboardRoot";
+import Saving from "../pages/Saving";
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/saving",
-        element: <SavingCards />,
+        element: <Saving />,
       },
     ],
   },
