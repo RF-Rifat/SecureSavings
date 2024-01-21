@@ -5,6 +5,7 @@ import Features from "../components/Home/Features";
 
 import Banner from "../components/Home/Banner";
 import MarqueeComp from "../components/MarqueeComp";
+import LatestBlogs from "../components/Home/LatestBlogs";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Banner />
       <MarqueeComp></MarqueeComp>
       <Features />
+      <LatestBlogs />
       <EmiCalculator />
     </div>
   );

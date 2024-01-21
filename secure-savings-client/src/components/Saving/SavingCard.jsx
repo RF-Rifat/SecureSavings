@@ -16,7 +16,7 @@ const SavingCard = ({ card }) => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.9 }}
                 >
-                    <div className="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+                    <div className="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white dark:bg-dark bg-clip-border text-gray-700 shadow-lg">
                         <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
                             <img className='object-cover w-full h-60'
                                 src={imageUrl}
@@ -43,7 +43,7 @@ const SavingCard = ({ card }) => {
                         </div>
                         <div className="p-6">
                             <div className="mb-3 flex items-center justify-between">
-                                <h5 className="block font-sans text-xl font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
+                                <h5 className="block dark:text-darkText font-sans text-xl font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
                                     {bankName}
                                 </h5>
                                 <p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
@@ -63,7 +63,7 @@ const SavingCard = ({ card }) => {
                                     {rating}
                                 </p>
                             </div>
-                            <p className="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased">
+                            <p className="block font-sans text-base font-light leading-relaxed dark:text-darkText text-gray-700 antialiased">
                                 {description}
                             </p>
                             <div className="group mt-8 inline-flex flex-wrap items-center gap-3">

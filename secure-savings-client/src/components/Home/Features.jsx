@@ -12,9 +12,9 @@ const Features = () => {
 
   return (
     <div className="px-2 mt-32">
-      <h1 className="md:text-4xl text-2xl text-center font-medium">
-        Online Banking at your <br /> fingerprints
-      </h1>
+      <div className="text-center mt-20">
+        <h2 className="md:text-4xl text-3xl font-semibold uppercase teb dark:text-darkText">Online Banking at your <br /> fingerprints</h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-screen-2xl mx-auto gap-5 mt-16">
         {
           features.map((feature) => {
