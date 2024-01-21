@@ -9,6 +9,7 @@ import Dashboard from "../DashBoard/Dashboard";
 import Profile from "../DashBoard/DashBoard-Pages/Profile";
 import DashboardRoot from "./DashboardRoot";
 import Saving from "../pages/Saving";
+import Contact from "../pages/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
         path: "/saving",
         element: <Saving />,
       },
+      {
+        path: "/contact",
+        element: <Contact />
+      }
     ],
   },
   {
