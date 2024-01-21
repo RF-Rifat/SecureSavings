@@ -4,7 +4,6 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
-  Typography,
 } from "@material-tailwind/react";
 import "./ClientsStyle.css";
 
@@ -32,7 +31,7 @@ const Clients = () => {
         </div>
         <div className="container lg:px-20 relative mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-4 justify-center">
           {ClientData.map((person) => (
-            <Card key={person.name}>
+            <Card key={person.name} className="dark:bg-dark">
               <CardHeader floated={false} className="h-72">
                 <img
                   className="object-cover w-full h-full"
@@ -40,17 +39,11 @@ const Clients = () => {
                   alt="profile-picture"
                 />
               </CardHeader>
-              <CardBody className="text-center">
-                <Typography variant="h4" color="blue-gray" className="mb-2">
-                  {person.name}
-                </Typography>
-                <Typography
-                  color="blue-gray"
-                  className="font-medium"
-                  textGradient
-                >
+              <CardBody className="text-center ">
+                <div className="mb-2 dark:text-darkText">{person.name}</div>
+                <div className="font-medium dark:text-darkText">
                   {person.role}
-                </Typography>
+                </div>
               </CardBody>
               <CardFooter className="flex justify-center gap-7 pt-2">
                 <div className="flex gap-4">
