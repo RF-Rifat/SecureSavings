@@ -21,33 +21,15 @@ const Features = () => {
             const { id, img, title, description } = feature;
             return (
               <>
-                {/* <div
-                  key={id}
-                  className="border border-gray-300 p-4 rounded-lg shadow-xl duration-300 hover:scale-105"
-                >
-                  <img
-                    src={img}
-                    alt="feature-img"
-                    className="h-32 w-2/4 mx-auto object-cover rounded-sm"
-                  />
-                  <h2 className="text-2xl font-semibold my-3">{title}</h2>
-                  <ul className="list-disc list-inside">
-                    {lists.map((list, idx) => (
-                      <li key={idx} className="text-black">
-                        {list.name}
-                      </li>
-                    ))}
-                  </ul>
-                </div> */}
                 <main className="main" key={id}>
                   <div className="container">
-                    <div className="card" style={{ "--clr": "#009688" }}>
+                    <div className="card dark:!bg-dark" style={{ "--clr": "#009688" }}>
                       <div className="img-box">
                         <img src={img} className="w-full h-full object-cover" alt="Image" />
                       </div>
                       <div className="content">
-                        <h2>{title}</h2>
-                        <p>
+                        <h2 className="dark:!text-darkText">{title}</h2>
+                        <p className="dark:!text-darkText">
                           {description}
                         </p>
                         <a href="">Read More</a>
