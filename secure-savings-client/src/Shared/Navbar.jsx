@@ -171,7 +171,7 @@ function NavList() {
             isPending
               ? "pending"
               : isActive
-              ? "active bg-dark text-white rounded"
+              ? "active bg-dark dark:bg-white text-white dark:text-dark rounded"
               : ""
           }
         >
