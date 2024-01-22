@@ -13,18 +13,13 @@ import {
 } from "@material-tailwind/react";
 import {
   UserCircleIcon,
-  Cog6ToothIcon,
   BellIcon,
   ClockIcon,
   Bars3Icon,
 } from "@heroicons/react/24/solid";
 
 import { useContext } from "react";
-import {
-  setOpenConfigurator,
-  setOpenSidenav,
-  useMaterialTailwindController,
-} from "../../Context";
+import { setOpenSidenav, useMaterialTailwindController } from "../../Context";
 import { AuthContext } from "../../Authentication/AuthProvider";
 import ToggleTheme from "../../components/ToggleTheme";
 
@@ -32,8 +27,7 @@ export function DashboardNavbar() {
   const { user, logOut } = useContext(AuthContext);
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
-  //   const filteredUser = useContext(UserContext);
-  //   const [donorsReq, setDonorsReq] = useState([]);
+
   const donorsReq = [];
 
   //   const { _id } = filteredUser || {};
@@ -90,7 +84,7 @@ export function DashboardNavbar() {
               fixedNavbar ? "mt-1" : ""
             }`}
           >
-            <Link to={`/${layout}`}>
+            <Link to={`/dashboard/home`}>
               <Typography
                 variant="small"
                 color="blue-gray"
