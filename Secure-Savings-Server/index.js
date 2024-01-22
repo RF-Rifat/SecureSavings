@@ -31,8 +31,8 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     // await client.connect();
 
-    const villagesCollection = client.db("unionCouncil").collection("villages");
-    const taxCollection = client.db("unionCouncil").collection("tax");
+    const userCollection = client.db("UserList").collection("users");
+    const messageCollection = client.db("Messages").collection("UserMessage");
 
     /*
      * GET METHODS
@@ -41,7 +41,7 @@ async function run() {
 
     // get all documents data  from a collection based on types and paginated value
     // [userCollection, userMessageCollection]
-    app.get("/collection/:type", async (req, res) => {
+    app.get("/api/:type", async (req, res) => {
       try {
         const page = parseInt(req.query.page);
         const size = parseInt(req.query.size);
@@ -94,7 +94,7 @@ async function run() {
             .limit(size)
             .toArray();
         } else if (type.toLowerCase().trim() === "message") {
-          result = await villagesCollection
+          result = await userCollection
             .find()
             .sort({ _id: -1 })
             .skip(page * size)
@@ -110,7 +110,7 @@ async function run() {
         }
         /////
         else if (type.toLowerCase().trim() === "tax") {
-          result = await taxCollection
+          result = await messageCollection
             .find()
             .sort({ _id: -1 })
             .skip(page * size)
@@ -135,25 +135,25 @@ async function run() {
  
     // add a document in a collection based on type
     // [userCollection, userMessageCollection]
-    app.post("/collection/:type", async (req, res) => {
+    app.post("/api/:type", async (req, res) => {
       try {
         const type = req.params.type;
 
         const data = req.body;
 
         let result;
-        if (type.toLowerCase().trim() === "business") {
-          result = await businessCollection.insertOne(data);
-        } else if (type.toLowerCase().trim() === "house") {
-          result = await houseHolderCollection.insertOne(data);
-        } else if (type.toLowerCase().trim() === "users") {
-          result = await usersCollection.insertOne(data);
-        } else if (type.toLowerCase().trim() === "villages") {
-          result = await villagesCollection.insertOne(data);
+        if (type.toLowerCase().trim() === "user") {
+          result = await userCollection.insertOne(data);
+        } else if (type.toLowerCase().trim() === "message") {
+          result = await messageCollection.insertOne(data);
         }
-        else if (type.toLowerCase().trim() === "tax") {
-          result = await taxCollection.insertOne(data);
-        }
+        //  else if (type.toLowerCase().trim() === "users") {
+        //   result = await usersCollection.insertOne(data);
+        // } else if (type.toLowerCase().trim() === "villages") {
+        //   result = await userCollection.insertOne(data);
+        // } else if (type.toLowerCase().trim() === "tax") {
+        //   result = await messageCollection.insertOne(data);
+        // }
 
         res.send(result);
       } catch (error) {

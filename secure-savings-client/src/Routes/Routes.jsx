@@ -10,6 +10,8 @@ import Profile from "../DashBoard/DashBoard-Pages/Profile";
 import DashboardRoot from "./DashboardRoot";
 import Saving from "../pages/Saving";
 import Contact from "../pages/Contact";
+import PrivateRoute from "./PrivateRoute";
+import MyWallet from "../DashBoard/DashBoard-Pages/MyWallet";
 
 export const router = createBrowserRouter([
   {
@@ -32,22 +34,33 @@ export const router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact />
-      }
+        element: <Contact />,
+      },
     ],
   },
   {
     path: "/",
-    element: <DashboardRoot />,
+    element: (
+      <PrivateRoute>
+        <DashboardRoot />
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
         path: "/dashboard/home",
         element: <Dashboard />,
       },
-
       {
         path: "/dashboard/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/dashboard/wallet",
+        element: <MyWallet />,
+      },
+      {
+        path: "/dashboard/users",
         element: <Profile />,
       },
     ],

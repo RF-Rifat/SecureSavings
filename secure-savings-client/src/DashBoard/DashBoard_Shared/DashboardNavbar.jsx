@@ -13,32 +13,30 @@ import {
 } from "@material-tailwind/react";
 import {
   UserCircleIcon,
-  Cog6ToothIcon,
   BellIcon,
   ClockIcon,
   Bars3Icon,
 } from "@heroicons/react/24/solid";
 
-import { useContext, useState } from "react";
-import { setOpenConfigurator, setOpenSidenav, useMaterialTailwindController } from "../../Context";
+import { useContext } from "react";
+import { setOpenSidenav, useMaterialTailwindController } from "../../Context";
 import { AuthContext } from "../../Authentication/AuthProvider";
-
+import ToggleTheme from "../../components/ToggleTheme";
 
 export function DashboardNavbar() {
-  const { user, logOut } = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext);
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
-//   const filteredUser = useContext(UserContext);
-    //   const [donorsReq, setDonorsReq] = useState([]);
-    const donorsReq = []
 
-//   const { _id } = filteredUser || {};
+  const donorsReq = [];
+
+  //   const { _id } = filteredUser || {};
 
   const { pathname } = useLocation();
   const [layout, page] = pathname.split("/").filter((el) => el !== "");
 
   const handleLogOut = async () => {
-      logOut();
+    logOut();
     // try {
     //   const response = await axios.put(
     //     `https://task-manager-server-woad.vercel.app/user/${_id}/update-status`,
@@ -46,7 +44,7 @@ export function DashboardNavbar() {
     //       status: false,
     //     }
     //     );
-        
+
     //   logOut();
     //   console.log("Updated user status:", response.data);
     // } catch (error) {
@@ -54,20 +52,20 @@ export function DashboardNavbar() {
     // }
   };
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get(
-//           "https://blood-bond-server-nine.vercel.app/bloodDonation"
-//         );
-//         setDonorsReq(response.data);
-//       } catch (error) {
-//         setError(error);
-//       }
-//     };
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //       try {
+  //         const response = await axios.get(
+  //           "https://blood-bond-server-nine.vercel.app/bloodDonation"
+  //         );
+  //         setDonorsReq(response.data);
+  //       } catch (error) {
+  //         setError(error);
+  //       }
+  //     };
 
-//     fetchData();
-//   }, []);
+  //     fetchData();
+  //   }, []);
 
   return (
     <Navbar
@@ -86,7 +84,7 @@ export function DashboardNavbar() {
               fixedNavbar ? "mt-1" : ""
             }`}
           >
-            <Link to={`/${layout}`}>
+            <Link to={`/dashboard/home`}>
               <Typography
                 variant="small"
                 color="blue-gray"
@@ -111,14 +109,7 @@ export function DashboardNavbar() {
           <div className="mr-auto md:mr-4 md:w-56">
             <Input label="Search" />
           </div>
-          <IconButton
-            variant="text"
-            color="blue-gray"
-            className="grid xl:hidden"
-            onClick={() => setOpenSidenav(dispatch, !openSidenav)}
-          >
-            <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
-          </IconButton>
+          <ToggleTheme />
           {!user ? (
             <Link to="/login">
               <Button
@@ -190,18 +181,26 @@ export function DashboardNavbar() {
               ))}
             </MenuList>
           </Menu>
+
           <IconButton
+            variant="text"
+            color="blue-gray"
+            className="grid xl:hidden"
+            onClick={() => setOpenSidenav(dispatch, !openSidenav)}
+          >
+            <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
+          </IconButton>
+          {/* <IconButton
             variant="text"
             color="blue-gray"
             onClick={() => setOpenConfigurator(dispatch, true)}
           >
             <Cog6ToothIcon className="h-5 w-5 text-blue-gray-500" />
-          </IconButton>
+          </IconButton> */}
         </div>
       </div>
     </Navbar>
   );
 }
-
 
 export default DashboardNavbar;

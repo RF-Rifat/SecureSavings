@@ -9,6 +9,7 @@ import {
   TableCellsIcon,
   UserCircleIcon,
   HomeIcon,
+  WalletIcon,
 } from "@heroicons/react/24/solid";
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -28,6 +29,11 @@ export function SideNav() {
           icon: <UserCircleIcon {...icon} />,
           name: "profile",
           path: "/profile",
+        },
+        {
+          icon: <WalletIcon {...icon} />,
+          name: "My-Wallet",
+          path: "/wallet",
         },
         {
           icon: <TableCellsIcon {...icon} />,
@@ -50,7 +56,7 @@ export function SideNav() {
     <aside
       className={`${sidenavTypes[sidenavType]} ${
         openSidenav ? "translate-x-0" : "-translate-x-80"
-      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100`}
+      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100 dark:bg-blue-gray-100 shadow-md shadow-blue-gray-500/5 `}
     >
       <div className={`relative`}>
         <Link
