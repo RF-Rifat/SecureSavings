@@ -1808,7 +1808,7 @@ const MyWallet = () => {
         </div>
         
       </div>
-          <div className="bg-white rounded-2xl">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl px-6">
             <div className="py-5 pl-5 pr-10 flex flex-col gap-5 overflow-hidden overflow-x-auto scrollbar-thumb-[#7851BD] scrollbar-track-[#EDEDED] scrollbar-thin">
               <div className="flex gap-60">
                 <div className="flex flex-col gap-2.5 ">
