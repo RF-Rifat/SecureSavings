@@ -105,7 +105,7 @@ const ChatBox = () => {
             {/* <FcSms /> */}
           </div>
         </div>
-        <div className="chat-app_box md:h-[500px]">
+        <div className="chat-app_box md:!h-[500px] xl:!h-[600px]">
           <div className="chat-app_header">
             <div
               className="close"
