@@ -37,7 +37,7 @@ const EmiCalculator = () => {
 
   return (
     <>
-      <div className="my-24 max-w-screen-2xl mx-auto dark:bg-dark">
+      <div className="mb-24 max-w-screen-2xl mx-auto dark:bg-dark">
         <div className="flex lg:flex-row flex-col-reverse items-center gap-5 p-3">
           <div className="lg:w-1/2 w-full md:p-20 p-5">
             <h4 className="text-red-400 text-[18px] font-semibold">
@@ -87,7 +87,7 @@ const EmiCalculator = () => {
               </h1>
             </div>
           </div>
-          <div className="lg:w-1/2 w-full">
+          <div className="lg:w-1/2 mt-10 lg:mt-0 w-full">
             <img
               className="w-full h-full rounded-lg"
               src="https://plus.unsplash.com/premium_photo-1680721445122-a61ab431cf8d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
