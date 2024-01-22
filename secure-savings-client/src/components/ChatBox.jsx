@@ -92,7 +92,7 @@ const ChatBox = () => {
       <div
         id="chat-app"
         className={`chat-app w-0 h-0 ${
-          !open && "is-active md:!h-[500px] xl:!h-[600px] !w-[360px]"
+          !open && "is-active h-[75svh] !w-[350px]"
         }`}
       >
         <div className="chat-app_toggle toggle">
@@ -105,7 +105,7 @@ const ChatBox = () => {
             {/* <FcSms /> */}
           </div>
         </div>
-        <div className="chat-app_box md:!h-[500px] xl:!h-[600px]">
+        <div className="chat-app_box h-[75svh]">
           <div className="chat-app_header">
             <div
               className="close"
