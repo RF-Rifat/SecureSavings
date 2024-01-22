@@ -1,18 +1,8 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Input,
-  Checkbox,
-  Button,
-} from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "./AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
-import SocialLogin from "./SocialLogin";
 import Lottie from "lottie-react";
 import signUpImage from "../../public/image/signUp-svg.json";
 import toast from "react-hot-toast";
@@ -34,13 +24,6 @@ const SignUp = () => {
         .then(() => {
           console.log("user profile info updated");
           reset();
-          // Swal.fire({
-          //   position: "top-end",
-          //   icon: "success",
-          //   title: "User created successfully",
-          //   showConfirmButton: false,
-          //   timer: 1500,
-          // });
           navigate("/");
         })
         .catch((error) => console.log(error));
@@ -49,7 +32,7 @@ const SignUp = () => {
 
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((result) => {
+      .then(() => {
         toast.success("Your Email is successfully logIn");
         navigate("/dashboard/home");
       })
@@ -128,92 +111,17 @@ const SignUp = () => {
     //   </div>
     // </div>
     <>
-      {/* <section className="background-radial-gradient mb-40 overflow-hidden">
-        <style
-          dangerouslySetInnerHTML={{
-            __html:
-              "\n    .background-radial-gradient {\n      background-color: hsl(218, 41%, 15%);\n      background-image: radial-gradient(650px circle at 0% 0%,\n          hsl(218, 41%, 35%) 15%,\n          hsl(218, 41%, 30%) 35%,\n          hsl(218, 41%, 20%) 75%,\n          hsl(218, 41%, 19%) 80%,\n          transparent 100%),\n        radial-gradient(1250px circle at 100% 100%,\n          hsl(218, 41%, 45%) 15%,\n          hsl(218, 41%, 30%) 35%,\n          hsl(218, 41%, 20%) 75%,\n          hsl(218, 41%, 19%) 80%,\n          transparent 100%);\n    }\n\n    #radius-shape-1 {\n      height: 220px;\n      width: 220px;\n      top: -60px;\n      left: -130px;\n      background: radial-gradient(#44006b, #ad1fff);\n      overflow: hidden;\n    }\n\n    #radius-shape-2 {\n      border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;\n      bottom: -60px;\n      right: -110px;\n      width: 300px;\n      height: 300px;\n      background: radial-gradient(#44006b, #ad1fff);\n      overflow: hidden;\n    }\n  ",
-          }}
-        />
-
-        <div className="px-6 py-12 text-center md:px-12 lg:py-24 lg:text-left">
-          <div className="w-100 mx-auto text-neutral-800 sm:max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
-            <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div className="mt-12 lg:mt-0" style={{ zIndex: 10 }}>
-                <h1 className="mt-0 mb-12 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl text-[hsl(218,81%,95%)]">
-                  Unlock the Best <br />
-                  <span className="text-[hsl(218,81%,75%)]">
-                    Banking Experience
-                  </span>
-                </h1>
-                <p className="opacity-70 text-[hsl(218,81%,85%)]">
-                  Welcome to Secure-Savings, where we empower you to achieve
-                  your financial goals. Join us on a journey of financial
-                  well-being, designed with you in mind. At Secure-Savings, we
-                  believe in transparency, security, and personalized
-                  service.Explore a world of possibilities with Secure-Savings.
-                  From saving for your dreams to handling daily expenses, we are
-                  here to support you at every turn.
-                </p>
-              </div>
-              <div className="relative mb-12 lg:mb-0">
-                <div
-                  id="radius-shape-1"
-                  className="absolute rounded-full shadow-lg"
-                />
-                <div id="radius-shape-2" className="absolute shadow-lg" />
-                <div className="relative bg-[hsla(0,0%,100%,0.9)] backdrop-blur-[25px] backdrop-saturate-[200%] block rounded-lg px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-[hsla(0,0%,15%,0.9)] dark:shadow-black/20 md:px-12">
-                  <form>
-                    <div className="space-y-6">
-                      <div className="grid md:grid-cols-2 md:gap-6 mb-6">
-                        <Input color="teal" label="First Name" />
-                        <Input color="teal" label="Last Name" />
-                      </div>
-                      <Input className="mb-6" color="teal" label="Email" />
-
-                      <Input className="mb-6" color="teal" label="Password" />
-                    </div>
-
-                    <div className="flex items-center mt-2">
-                      <Checkbox color="green" defaultChecked />
-                      <label
-                        className="inline-block hover:cursor-pointer dark:text-neutral-50"
-                        htmlFor="flexCheckChecked"
-                      >
-                        Remember Me
-                      </label>
-                    </div>
-                    <Button className="my-2" color="green" fullWidth>
-                      SIGN UP
-                    </Button>
-                    <div className="text-center">
-                      <h2 className="py-3">
-                        Already have an account?
-                        <Link className="underline ml-3" to={"/login"}>
-                          Sign In
-                        </Link>
-                      </h2>
-                      <p className="mb-6 dark:text-neutral-50">
-                        or sign up with:
-                      </p>
-                    </div>
-                    <SocialLogin />
-                    
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
       <div className="flex flex-col justify-center items-center font-[sans-serif] bg-gradient-to-r from-blue-800 to-blue-500 text-[#333] lg:h-screen">
         <div className="grid lg:grid-cols-2 items-center gap-y-8 h-[100svh] w-full shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
           <div className="max-md:order-1 flex flex-col justify-center sm:p-6 p-4  w-full h-full space-y-16">
             <Lottie animationData={signUpImage} />
           </div>
           <div className="lg:rounded-tl-[55px] lg:rounded-bl-[55px] h-full bg-white py-6">
-            <form className="md:px-16 pt-6 px-6 w-full my-auto">
-              <div className="mb-4">
+            <form
+              className="md:px-16 pt-6 px-6 w-full my-auto"
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <div className="mb-10">
                 <h3 className="text-blue-500 text-3xl font-extrabold max-md:text-center">
                   Register
                 </h3>
@@ -233,33 +141,38 @@ const SignUp = () => {
                   <input
                     name="name"
                     type="text"
+                    {...register("name")}
+                    required
                     className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                     placeholder="Enter name"
                   />
                 </div>
                 <div>
-                  <label className="text-sm mb-2 block">Last Name</label>
+                  <label className="text-sm mb-2 block">Address</label>
                   <input
-                    name="lname"
+                    name="address"
                     type="text"
+                    {...register("address")}
                     className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                     placeholder="Enter last name"
                   />
                 </div>
                 <div>
-                  <label className="text-sm mb-2 block">Email Id</label>
+                  <label className="text-sm mb-2 block">Email</label>
                   <input
                     name="email"
                     type="text"
+                    {...register("email")}
                     className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                     placeholder="Enter email"
                   />
                 </div>
                 <div>
-                  <label className="text-sm mb-2 block">Mobile No.</label>
+                  <label className="text-sm mb-2 block">Image Url</label>
                   <input
-                    name="number"
-                    type="number"
+                    name="image"
+                    type="text"
+                    {...register("image")}
                     className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                     placeholder="Enter mobile number"
                   />
@@ -269,17 +182,20 @@ const SignUp = () => {
                   <input
                     name="password"
                     type="password"
+                    {...register("password")}
                     className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                     placeholder="Enter password"
+                    required
                   />
                 </div>
                 <div>
                   <label className="text-sm mb-2 block">Confirm Password</label>
                   <input
-                    name="cpassword"
+                    name="password"
                     type="password"
                     className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                     placeholder="Enter confirm password"
+                    required
                   />
                 </div>
               </div>
@@ -301,15 +217,15 @@ const SignUp = () => {
                 </label>
               </div>
               <div className="mt-10">
-                <button
-                  type="button"
-                  className="min-w-[150px] py-3 px-4 text-sm font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none transition-all"
+                <Button
+                  type="submit"
+                  className="min-w-[150px] py-3 px-4 text-sm font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none transition-all mx-auto w-full"
                 >
                   Sign up
-                </button>
+                </Button>
               </div>
             </form>
-            <p className="mb-8 text-sm text-gray-800 text-center">
+            <p className="my-4 text-sm text-gray-800 text-center">
               or continue with
             </p>
             <div className="space-x-8 flex justify-center">
