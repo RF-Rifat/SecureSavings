@@ -1,9 +1,10 @@
-import ContactBanner from "../components/Contact/ContactBanner";
+import ContactPage from "../components/Contact/ContactPage";
 
 const Contact = () => {
+
     return (
-        <div className="max-w-7xl mx-auto">
-            <ContactBanner />
+        <div className="max-w-7xl mx-auto px-6 lg:px-0">
+            <ContactPage />
         </div>
     );
 };
