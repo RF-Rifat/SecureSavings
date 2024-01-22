@@ -171,7 +171,7 @@ function NavList() {
             isPending
               ? "pending"
               : isActive
-              ? "active bg-dark dark:bg-white text-white dark:text-dark rounded"
+              ? "active bg-dark dark:bg-white text-white dark:text-dark rounded-md"
               : ""
           }
         >
@@ -204,7 +204,7 @@ function DrawerNavList() {
           to={`/${link}`}
           key={label}
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "bg-dark text-white rounded" : ""
+            isPending ? "pending" : isActive ? "bg-dark text-white rounded-md" : ""
           }
         >
           <div className="font-medium text-lg text-center ml-4">

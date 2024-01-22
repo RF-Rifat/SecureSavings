@@ -14,8 +14,36 @@ const ChatBox = () => {
       send: "hi.Believing, Banking and Achieving Different",
     },
     {
-      id: 2,
+      id: 6,
       reply: "hello.Believing, Banking and Achieving Different",
+    },
+    {
+      id: 11,
+      reply: "hello.Believing, Banking and Achieving Different",
+    },
+    {
+      id: 5,
+      send: "hello.Believing, Banking and Achieving Different",
+    },
+    {
+      id: 3,
+      reply: "hello.Believing, Banking and Achieving Different",
+    },
+    {
+      id: 4,
+      send: "hello.Believing, Banking and Achieving Different",
+    },
+    {
+      id: 10,
+      reply: "hello.Believing, Banking and Achieving Different",
+    },
+    {
+      id: 12,
+      reply: "hello.Believing, Banking and Achieving Different",
+    },
+    {
+      id: 13,
+      send: "hello.Believing, Banking and Achieving Different",
     },
   ];
 
@@ -60,11 +88,11 @@ const ChatBox = () => {
   }, []);
 
   return (
-    <div className="main z-50">
+    <div className="main z-50 h-[600px]">
       <div
         id="chat-app"
         className={`chat-app w-0 h-0 ${
-          !open && "is-active !h-[600px] !w-[360px]"
+          !open && "is-active md:!h-[500px] xl:!h-[600px] !w-[360px]"
         }`}
       >
         <div className="chat-app_toggle toggle">
@@ -77,7 +105,7 @@ const ChatBox = () => {
             {/* <FcSms /> */}
           </div>
         </div>
-        <div className="chat-app_box">
+        <div className="chat-app_box md:h-[500px]">
           <div className="chat-app_header">
             <div
               className="close"
