@@ -88,7 +88,7 @@ const ChatBox = () => {
   }, []);
 
   return (
-    <div className="main z-50 h-[600px]">
+    <div className="main z-50">
       <div
         id="chat-app"
         className={`chat-app w-0 h-0 ${
