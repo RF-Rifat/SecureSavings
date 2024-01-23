@@ -4,17 +4,16 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full">
-      <div className="mx-auto w-full max-w-7xl px-2">
-        <div className="flex flex-col md:flex-row  gap-5">
+    <footer className="relative w-full mt-10">
+      <div className="max-w-7xl mx-auto px-2">
+        <div className="flex flex-col md:flex-row gap-5 ">
           <div className="flex flex-col item-center ">
             {/* logo */}
             <div className="flex justify-center md:justify-start">
-              <img className="w-40" src={logo} alt="logo" />
+              <img className="w-28" src={logo} alt="logo" />
             </div>
             <h1 className="text-center  mb-2 md:text-start">
-              Bank Tower 40, <br /> Dilkusha C/A <br />
-              Dhaka - 1000, Bangladesh
+              Bank Tower 40, <br /> Dhaka, Bangladesh.
             </h1>
           </div>
           {/* footer links */}
@@ -96,7 +95,7 @@ const Footer = () => {
             </div>
           </div>
           {/* subscribe section */}
-          <div className="  mt-5 md:w-[500px]  md:mt-0">
+          <div className="  mt-5 md:w-[600px]  md:mt-0">
             <h1 className="mb-4 font-bold text-center  uppercase text-green-700">
               Subscribe for newsletter
             </h1>

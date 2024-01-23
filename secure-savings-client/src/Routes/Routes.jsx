@@ -12,6 +12,7 @@ import Saving from "../pages/Saving";
 import Contact from "../pages/Contact";
 import PrivateRoute from "./PrivateRoute";
 import MyWallet from "../DashBoard/DashBoard-Pages/MyWallet";
+import Blogs from "../pages/blogs/Blogs";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/blog",
+        element: <Blogs></Blogs>,
       },
     ],
   },
