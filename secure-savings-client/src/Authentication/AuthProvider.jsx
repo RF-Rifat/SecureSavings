@@ -10,8 +10,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { modifyData } from "../Hooks/Api";
-import toast from "react-hot-toast";
+
 
 export const AuthContext = createContext(null);
 
@@ -29,16 +28,6 @@ const AuthProvider = ({ children }) => {
   // createUserWithEmailAndPassword
   const createUser = async (auth, email, password) => {
     setLoading(true);
-    const user = { email, password };
-    try {
-      const res = await modifyData("/api/user", "POST", user);
-      console.log(res.acknowledged);
-      if (res.acknowledged) {
-        toast.success("Successfully Account Created");
-      }
-    } catch (error) {
-      console.log(error);
-    }
     return createUserWithEmailAndPassword(auth, email, password);
   };
 

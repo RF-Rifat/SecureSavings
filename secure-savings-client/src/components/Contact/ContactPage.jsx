@@ -1,5 +1,25 @@
 /* eslint-disable react/no-unknown-property */
+import { useRef } from "react";
+import emailjs from '@emailjs/browser';
+import toast from 'react-hot-toast';
+
 const ContactPage = () => {
+  const form = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs.sendForm('service_63w3b6l', 'template_qogzozb', form.current, 'xAANWO-JrHiacXa_o')
+      .then((result) => {
+        console.log(result.text);
+        toast.success('Welcome to contact!');
+      })
+      .catch((error) => {
+        console.log(error.text);
+      });
+
+    e.target.reset();
+  };
+
   return (
     <>
       <section className="relative z-10 overflow-hidden bg-white py-20 dark:bg-dark lg:py-[120px]">
@@ -110,33 +130,36 @@ const ContactPage = () => {
               </div>
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
-              <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
-                <form>
-                  <ContactInputBox
+              <div className="relative rounded-lg p-8 shadow-lg dark:bg-dark-2 sm:p-12">
+                <form ref={form} onSubmit={handleSubmit}>
+                  <input
                     type="text"
                     name="name"
                     placeholder="Your Name"
+                    className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3"
                   />
-                  <ContactInputBox
+                  <input
                     type="text"
                     name="email"
                     placeholder="Your Email"
+                    className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3 mt-3"
                   />
-                  <ContactInputBox
+                  <input
                     type="text"
                     name="phone"
                     placeholder="Your Phone"
+                    className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3 mt-3"
                   />
-                  <ContactTextArea
-                    row="6"
+                  <textarea
+                    rows="6"
                     placeholder="Your Message"
-                    name="details"
-                    defaultValue=""
+                    name="message"
+                    className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3 mt-3"
                   />
                   <div>
                     <button
                       type="submit"
-                      className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
+                      className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90 mt-3"
                     >
                       Send Message
                     </button>
@@ -960,34 +983,3 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
-
-const ContactTextArea = () => {
-  return (
-    <>
-      <div className="mb-6">
-        <textarea
-          rows={'row'}
-          placeholder={'placeholder'}
-          name={name}
-          className="w-full resize-none rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
-          defaultValue={'defaultValue'}
-        />
-      </div>
-    </>
-  );
-};
-
-const ContactInputBox = () => {
-  return (
-    <>
-      <div className="mb-6">
-        <input
-          type={'type'}
-          placeholder={'placeholder'}
-          name={'name'}
-          className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
-        />
-      </div>
-    </>
-  );
-};

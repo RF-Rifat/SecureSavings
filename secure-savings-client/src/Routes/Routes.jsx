@@ -13,6 +13,7 @@ import Contact from "../pages/Contact";
 import PrivateRoute from "./PrivateRoute";
 import MyWallet from "../DashBoard/DashBoard-Pages/MyWallet";
 import Blogs from "../pages/blogs/Blogs";
+import UserList from "../DashBoard/DashBoard-Pages/UserList";
 
 export const router = createBrowserRouter([
   {
@@ -66,7 +67,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/users",
-        element: <Profile />,
+        element: <UserList />,
       },
     ],
   },

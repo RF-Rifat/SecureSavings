@@ -6,11 +6,24 @@ import "swiper/css/pagination";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 
 import "./Banner.css";
+import { useState } from "react";
 
 const Banner = () => {
+  // const [currentSlide, setCurrentSlide] = useState(0);
+  // const handleSlideChange = (swiper) => {
+  //   const imageData = imageArray[swiper.realIndex];
+  //   setCurrentSlide(imageData);
+  // };
+
+  const imageArray = [
+    "https://i.postimg.cc/wMXFJH3b/worldbankday.png",
+    "https://i.postimg.cc/Z5LV7Tb8/cards.png",
+    "https://i.postimg.cc/fTwR6NYz/homeLoan.png",
+    "https://i.postimg.cc/QxLDj0NG/Financial-Planning-Services-Instagram-Post.png",
+  ];
   return (
-    <div className="2xl:flex px-6 justify-between lg:my-10 gap-6 max-w-screen-2xl mx-auto p-4">
-      <div className="grid py-6 lg:py-20 items-center space-y-2 text-center 2xl:text-left 2xl:w-1/2">
+    <div className="2xl:flex px-6 justify-between h-[70svh] lg:my-10 gap-6 max-w-screen-2xl mx-auto p-4">
+      <div className="grid py-6 lg:py-24 items-center space-y-2 text-center 2xl:text-left 2xl:w-1/2">
         <h4 className="text-2xl lg:text-2xl text-green-500 font-semibold">
           Simple. Transparent. Secure
         </h4>
@@ -19,8 +32,9 @@ const Banner = () => {
         </h2>
         <p className="text-2xl">Believing, Banking and Achieving Different</p>
       </div>
-      <div className="2xl:w-1/2">
+      <div className="2xl:w-1/2 my-auto">
         <Swiper
+          // onSlideChange={handleSlideChange}
           effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
@@ -29,6 +43,7 @@ const Banner = () => {
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
+            speed: 800,
           }}
           slidesPerView={"auto"}
           coverflowEffect={{
@@ -37,12 +52,21 @@ const Banner = () => {
             depth: 100,
             modifier: 1,
             slideShadows: true,
+            speed: 800,
+            effectParams: {
+              cubicBezier: "0.16, 1, 0.3, 1",
+            },
           }}
           pagination={true}
           modules={[EffectCoverflow, Pagination, Autoplay]}
           className="mySwiper"
         >
-          <SwiperSlide>
+          {imageArray.map((imageUrl, index) => (
+            <SwiperSlide key={index}>
+              <img src={imageUrl} alt={`Slide ${index + 1}`} />
+            </SwiperSlide>
+          ))}
+          {/* <SwiperSlide>
             <img src="https://i.postimg.cc/wMXFJH3b/worldbankday.png" />
           </SwiperSlide>
           <SwiperSlide>
@@ -53,7 +77,7 @@ const Banner = () => {
           </SwiperSlide>
           <SwiperSlide>
             <img src="https://i.postimg.cc/QxLDj0NG/Financial-Planning-Services-Instagram-Post.png" />
-          </SwiperSlide>
+          </SwiperSlide> */}
         </Swiper>
       </div>
     </div>

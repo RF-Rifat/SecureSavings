@@ -11,7 +11,9 @@ const Blogs = () => {
   //   console.log(blogs);
   return (
     <div className="max-w-7xl mx-auto mt-5">
-      {/* <h1>ALL BLOG</h1> */}
+      <h1 className="dark:text-white font-semibold text-5xl text-center mb-5">
+        All Blogs
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 ">
         {blogs?.map((blog) => (
           <BlogCard key={blog.id} blog={blog}></BlogCard>

@@ -44,12 +44,13 @@ const BlogCard = ({ blog }) => {
                 <h2 className="mb-3 text-2xl font-bold leading-9 text-blue-800 dark:text-white">
                   {title}
                 </h2>
-                <p className="mb-4 text-base leading-7 text-gray-400">
-                  {blogPost}
+                <p className="mb-4 text-base leading-7 dark:text-gray-400">
+                  {blogPost?.slice(0, 120)}
+                  {"  "} . . .
                 </p>
                 <Link className="flex items-center text-sm font-semibold">
                   <div className="flex items-center px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
-                    More Details
+                    Read More
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="12"
