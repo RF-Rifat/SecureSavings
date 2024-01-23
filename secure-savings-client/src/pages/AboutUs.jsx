@@ -13,9 +13,17 @@ const AboutUs = () => {
           <div className="container mx-auto px-4 lg:pt-24 lg:pb-12">
             <div className="flex flex-wrap text-center justify-center">
               <div className="w-full lg:w-6/12 px-4">
-                <h2 className="text-4xl font-semibold text-white">
-                  Build something
-                </h2>
+                
+                <div className="px-4 md:text-center">
+                  <h2 className="pb-2 text-2xl font-bold text-gray-800 md:text-4xl dark:text-gray-300">
+                    Build something
+                  </h2>
+                  <div className="flex w-32 mt-1 overflow-hidden rounded md:mx-auto md:mb-14">
+                    <div className="flex-1 h-2 bg-teal-200"></div>
+                    <div className="flex-1 h-2 bg-teal-400"></div>
+                    <div className="flex-1 h-2 bg-teal-300"></div>
+                  </div>
+                </div>
                 <p className="text-lg leading-relaxed mt-4 mb-4 text-blueGray-400">
                   Put the potentially record low maximum sea ice extent tihs
                   year down to low ice. According to the National Oceanic and
@@ -29,7 +37,7 @@ const AboutUs = () => {
                   <FcServices className="h-12 w-12" />
                 </div>
                 <h6 className="text-xl mt-5 font-semibold text-white">
-                  Excelent Services
+                  Excellent Services
                 </h6>
                 <p className="mt-2 mb-4 text-blueGray-400">
                   Some quick example text to build on the card title and make up

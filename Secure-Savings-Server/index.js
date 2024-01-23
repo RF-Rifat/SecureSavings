@@ -31,13 +31,17 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     // await client.connect();
 
-    const userCollection = client.db("UserList").collection("users");
-    const messageCollection = client.db("Messages").collection("UserMessage");
+    const userCollection = client.db("Secure-Savings").collection("UserList");
+    const messageCollection = client
+      .db("Secure-Savings")
+      .collection("Messages");
+    const blogCollection = client
+      .db("Secure-Savings")
+      .collection("blogs");
 
     /*
      * GET METHODS
      */
-
 
     // get all documents data  from a collection based on types and paginated value
     // [userCollection, userMessageCollection]
@@ -94,36 +98,37 @@ async function run() {
             .limit(size)
             .toArray();
         } else if (type.toLowerCase().trim() === "message") {
-          result = await userCollection
-            .find()
-            .sort({ _id: -1 })
-            .skip(page * size)
-            .limit(size)
-            .toArray();
-        } else if (type.toLowerCase().trim() === "users") {
-          result = await usersCollection
+          result = await blogCollection
             .find()
             .sort({ _id: -1 })
             .skip(page * size)
             .limit(size)
             .toArray();
         }
-        /////
-        else if (type.toLowerCase().trim() === "tax") {
-          result = await messageCollection
-            .find()
-            .sort({ _id: -1 })
-            .skip(page * size)
-            .limit(size)
-            .toArray();
-        } else if (type.toLowerCase().trim() === "settings") {
-          result = await settingsCollection
-            .find()
-            .sort({ _id: -1 })
-            .skip(page * size)
-            .limit(size)
-            .toArray();
-        }
+        // else if (type.toLowerCase().trim() === "users") {
+        //   result = await usersCollection
+        //     .find()
+        //     .sort({ _id: -1 })
+        //     .skip(page * size)
+        //     .limit(size)
+        //     .toArray();
+        // }
+        // /////
+        // else if (type.toLowerCase().trim() === "invoice") {
+        //   result = await messageCollection
+        //     .find()
+        //     .sort({ _id: -1 })
+        //     .skip(page * size)
+        //     .limit(size)
+        //     .toArray();
+        // } else if (type.toLowerCase().trim() === "settings") {
+        //   result = await settingsCollection
+        //     .find()
+        //     .sort({ _id: -1 })
+        //     .skip(page * size)
+        //     .limit(size)
+        //     .toArray();
+        // }
 
         res.send(result);
       } catch (error) {
@@ -132,7 +137,6 @@ async function run() {
       }
     });
 
- 
     // add a document in a collection based on type
     // [userCollection, userMessageCollection]
     app.post("/api/:type", async (req, res) => {
@@ -160,7 +164,6 @@ async function run() {
         res.send(error);
       }
     });
-
 
     // Send a ping to confirm a successful connection
     await client.db("users").command({ ping: 1 });

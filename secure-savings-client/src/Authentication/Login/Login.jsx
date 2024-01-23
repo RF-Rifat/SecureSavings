@@ -1,13 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Input,
-  Checkbox,
-  Button,
-} from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import loginImage from "../../../public/image/login-svg.json";
@@ -19,8 +10,7 @@ import { useContext } from "react";
 const Login = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
-  const { createUser, updateUserProfile, googleLogin } =
-    useContext(AuthContext);
+  const { login, googleLogin } = useContext(AuthContext);
 
   const handleGoogleLogin = () => {
     googleLogin()
@@ -34,64 +24,7 @@ const Login = () => {
       });
   };
   return (
-    // <div className="flex flex-col md:flex-row justify-center items-center mt-14 mb-14 lg:h-screen">
-    //   {/* Left Side: Image */}
-    //   <div className="w-full md:w-1/2 mb-6 md:mb-0">
-    //     <img
-    //       src="https://i.ibb.co/MBhxsyT/open-banking-platform-online-banking-system-finance-digital-transformation-concept-688351-161.jpg"
-    //       alt="Left Side Image"
-    //       className="w-full h-full object-cover"
-    //     />
-    //   </div>
-
-    //   {/* Right Side: Login Card */}
-    //   <Card className="w-full md:w-96 mb-14 mt-14 md:ml-6">
-    //     <CardHeader
-    //       variant="gradient"
-    //       color="gray"
-    //       className="mb-4 grid h-28 place-items-center"
-    //     >
-    //       <Typography variant="h3" color="white">
-    //         Login
-    //       </Typography>
-    //     </CardHeader>
-    //     <CardBody className="flex flex-col gap-4">
-    //       <Input label="Name" size="lg" />
-    //       <Input label="Email" size="lg" />
-    //       <Input label="Password" size="lg" />
-    //       <div className="-ml-2.5">
-    //         <Checkbox label="Remember Me" />
-    //       </div>
-    //     </CardBody>
-    //     <CardFooter className="pt-0">
-    //       <Button variant="gradient" fullWidth>
-    //         Login
-    //       </Button>
-    //       <Typography variant="small" className="mt-6 flex justify-center">
-    //         Don&apos;t have an account?
-    //         <Typography
-    //           as="a"
-    //           href="/signUp"
-    //           variant="small"
-    //           color="blue-gray"
-    //           className="ml-1 font-bold"
-    //         >
-    //           Sign up
-    //         </Typography>
-    //       </Typography>
-    //     </CardFooter>
-    //     <div className="flex items-center  space-x-1">
-    //       <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-    //       <p className="px-3 text-sm dark:text-gray-400">
-    //         Login with social accounts
-    //       </p>
-    //       <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-    //     </div>
-    //     <SocialLogin></SocialLogin>
-    //   </Card>
-    // </div>
     <>
-      {/* Section: Design Block */}
       <div className="font-[sans-serif] bg-gray-900 text-[#333] md:h-screen">
         <div className="grid md:grid-cols-2 items-center gap-8 h-full">
           <div className="max-md:order-1 p-4">
@@ -205,7 +138,6 @@ const Login = () => {
               <div className="mt-12">
                 <Button
                   type="button"
-                  
                   className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-[#333] hover:bg-[#222] focus:outline-none"
                 >
                   Sign in
