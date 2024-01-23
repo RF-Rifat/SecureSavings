@@ -1,5 +1,25 @@
 [
   {
+    "name": "Mosaddek Hossen",
+    "role": "Web Developer",
+    "image": "https://avatars.githubusercontent.com/u/138000438?v=4",
+    "skills": ["Frontend", "Backend"],
+    "socialLinks": [
+      {
+        "icon": "bg-red-600",
+        "url": "https://www.linkedin.com"
+      },
+      {
+        "icon": "bg-light-blue-400",
+        "url": "https://www.twitter.com"
+      },
+      {
+        "icon": "bg-blue-gray-700",
+        "url": "https://www.linkedin.com"
+      }
+    ]
+  },
+  {
     "name": "Alexa Smith",
     "role": "UI/UX Designer",
     "image": "https://docs.material-tailwind.com/img/team-3.jpg",
