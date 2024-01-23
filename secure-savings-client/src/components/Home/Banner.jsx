@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 
 import "./Banner.css";
-import { useState } from "react";
+
 
 const Banner = () => {
   // const [currentSlide, setCurrentSlide] = useState(0);

@@ -1,31 +1,70 @@
-import React, { useRef, useState } from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import "./swiper.css";
-import SavingBanner from "./SavingBanner";
 
-// import "./styles.css";
-const SecureBanner = () => {
+// import required modules
+import { EffectFade, Navigation, Pagination, Autoplay } from "swiper/modules";
+import ServiceBannerImg from "./ServiceBannerImg";
+
+export default function SecureBanner() {
+  const bannerData = [
+    {
+      header: "SEO Optimization",
+      para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ulabore et dolore magna aliqua. Utenim ad minim veniam",
+      img: "https://i.postimg.cc/GtLq0f0d/pexels-vlada-karpovich-4050291.jpg",
+    },
+    {
+      header: "Second Heading",
+      para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ulabore et dolore magna aliqua. Utenim ad minim veniam",
+      img: "https://swiperjs.com/demos/images/nature-4.jpg",
+    },
+    {
+      header: "third Heading",
+      para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ulabore et dolore magna aliqua. Utenim ad minim veniam",
+      img: "https://swiperjs.com/demos/images/nature-3.jpg",
+    },
+    {
+      header: "Fourth Heading",
+      para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ulabore et dolore magna aliqua. Utenim ad minim veniam",
+      img: "https://swiperjs.com/demos/images/nature-2.jpg",
+    },
+  ];
   return (
-    <div className="mb-12  !h-[100svh]">
-      <Swiper className="mySwiper !h-[100svh]">
-        <SwiperSlide>
-          <SavingBanner></SavingBanner>
-        </SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+    <>
+      <Swiper
+        spaceBetween={30}
+        effect={"fade"}
+        grabCursor={true}
+        navigation={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[EffectFade, Navigation, Pagination, Autoplay]}
+        className="mySwiper"
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+          speed: 800,
+        }}
+        loop={true}
+        style={{ height: "90vh" }}
+      >
+        {bannerData.map((data) => (
+          <SwiperSlide key={data.img} aria-disabled>
+            <ServiceBannerImg
+              img={data?.img}
+              header={data?.header}
+              para={data.para}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
-    </div>
+    </>
   );
-};
-
-export default SecureBanner;
+}
