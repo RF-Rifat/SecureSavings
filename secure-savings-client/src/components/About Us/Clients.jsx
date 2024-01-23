@@ -27,7 +27,7 @@ const Clients = () => {
 
         <div className="container">
           <div className="px-4 md:text-center">
-            <h2 className="pb-2 text-2xl font-bold text-gray-800 md:text-4xl dark:text-gray-300">
+            <h2 className="pb-2 text-2xl font-bold md:text-4xl text-gray-300">
               Meet Our Team
             </h2>
             <div className="flex w-32 mt-1 overflow-hidden rounded md:mx-auto md:mb-14">
