@@ -1,24 +1,23 @@
-import { useState } from "react";
-
 /* eslint-disable react/no-unknown-property */
-const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    details: 'ddddddddddddddddddd',
-  });
+import { useRef } from "react";
+import emailjs from '@emailjs/browser';
+import toast from 'react-hot-toast';
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+const ContactPage = () => {
+  const form = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Access form data in the formData state
-    console.log('Form Data:', formData);
-    // Perform further actions with the form data
+    emailjs.sendForm('service_63w3b6l', 'template_qogzozb', form.current, 'xAANWO-JrHiacXa_o')
+      .then((result) => {
+        console.log(result.text);
+        toast.success('Welcome to contact!');
+      })
+      .catch((error) => {
+        console.log(error.text);
+      });
+
+    e.target.reset();
   };
 
   return (
@@ -131,40 +130,30 @@ const ContactPage = () => {
               </div>
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
-
-
               <div className="relative rounded-lg p-8 shadow-lg dark:bg-dark-2 sm:p-12">
-                <form onSubmit={handleSubmit}>
+                <form ref={form} onSubmit={handleSubmit}>
                   <input
                     type="text"
                     name="name"
                     placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleChange}
                     className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3"
                   />
                   <input
                     type="text"
                     name="email"
                     placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleChange}
                     className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3 mt-3"
                   />
                   <input
                     type="text"
                     name="phone"
                     placeholder="Your Phone"
-                    value={formData.phone}
-                    onChange={handleChange}
                     className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3 mt-3"
                   />
                   <textarea
                     rows="6"
                     placeholder="Your Message"
-                    name="details"
-                    value={formData.details}
-                    onChange={handleChange}
+                    name="message"
                     className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3 mt-3"
                   />
                   <div>
@@ -985,10 +974,6 @@ const ContactPage = () => {
                   </span>
                 </div>
               </div>
-
-
-
-
             </div>
           </div>
         </div>
