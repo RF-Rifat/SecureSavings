@@ -15,24 +15,24 @@ import ServiceBannerImg from "./ServiceBannerImg";
 export default function SecureBanner() {
   const bannerData = [
     {
-      header: "SEO Optimization",
-      para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ulabore et dolore magna aliqua. Utenim ad minim veniam",
-      img: "https://i.postimg.cc/GtLq0f0d/pexels-vlada-karpovich-4050291.jpg",
+      header: "Bank with Confidence",
+      para: "this statistic is based on our average personal current account online opening time from the last 12 month",
+      img: "https://i.ibb.co/Kct2CFg/pexels-tima-miroshnichenko-6694569.jpg",
     },
     {
-      header: "Second Heading",
-      para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ulabore et dolore magna aliqua. Utenim ad minim veniam",
-      img: "https://swiperjs.com/demos/images/nature-4.jpg",
+      header: "Your Money, Your Way",
+      para: "Our bank's average online personal current account opening time over the past 12 months is 15 minutes. We are committed to providing a quick and efficient account opening process for our customers. Experience the ease of opening your account online with us",
+      img: "https://i.ibb.co/ZXrr56s/pexels-karolina-grabowska-4386158.jpg",
     },
     {
-      header: "third Heading",
-      para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ulabore et dolore magna aliqua. Utenim ad minim veniam",
-      img: "https://swiperjs.com/demos/images/nature-3.jpg",
+      header: "Smart Banking",
+      para: "Our commitment to innovation and customer satisfaction drives us to continually enhance our digital services. We understand the importance of your time, and our user-friendly online account opening process reflects our dedication to providing a quick, secure, and hassle-free experience for our valued customers.",
+      img: "https://i.ibb.co/SQrVzqx/pexels-cottonbro-studio-3943719.jpg",
     },
     {
-      header: "Fourth Heading",
-      para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ulabore et dolore magna aliqua. Utenim ad minim veniam",
-      img: "https://swiperjs.com/demos/images/nature-2.jpg",
+      header: "Unlock Financial Freedom",
+      para: "Whether you're a new customer or an existing one looking to expand your banking relationship with us, you can trust that opening a personal current account with SecureSavings is a seamless and prompt process. Join us in embracing the convenience of online banking and experience the difference with SecureSavings.",
+      img: "https://i.ibb.co/z4qYfK9/pexels-pixabay-50987.jpg",
     },
   ];
   return (

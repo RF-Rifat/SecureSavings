@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: "/saving",
+        path: "/services",
         element: <Saving />,
       },
       {

@@ -139,8 +139,8 @@ const navListItems = [
     icon: UserCircleIcon,
   },
   {
-    label: "Saving",
-    link: "saving",
+    label: "Services",
+    link: "services",
     icon: CurrencyBangladeshiIcon,
   },
   {

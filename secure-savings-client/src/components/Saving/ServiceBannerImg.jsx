@@ -42,7 +42,7 @@ const ServiceBannerImg = ({ img, header, para }) => {
                 href="#"
               >
                 {" "}
-                Get Started{" "}
+                Make an Appointment{" "}
               </a>
             </div>
           </div>
