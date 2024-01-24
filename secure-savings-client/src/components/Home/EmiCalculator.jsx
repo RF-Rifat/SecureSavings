@@ -37,7 +37,7 @@ const EmiCalculator = () => {
 
   return (
     <>
-      <div className="mb-24 max-w-screen-2xl mx-auto dark:bg-dark">
+      <div className="md:mb-24 mb-5 max-w-screen-2xl mx-auto dark:bg-dark">
         <div className="flex lg:flex-row flex-col-reverse items-center gap-5 p-3">
           <div className="lg:w-1/2 w-full md:p-20 p-5">
             <h4 className="text-red-400 text-[18px] font-semibold">
