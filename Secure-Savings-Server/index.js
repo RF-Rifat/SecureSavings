@@ -35,9 +35,7 @@ async function run() {
     const messageCollection = client
       .db("Secure-Savings")
       .collection("Messages");
-    const blogCollection = client
-      .db("Secure-Savings")
-      .collection("blogs");
+    const blogCollection = client.db("Secure-Savings").collection("blogs");
 
     /*
      * GET METHODS
@@ -105,30 +103,6 @@ async function run() {
             .limit(size)
             .toArray();
         }
-        // else if (type.toLowerCase().trim() === "users") {
-        //   result = await usersCollection
-        //     .find()
-        //     .sort({ _id: -1 })
-        //     .skip(page * size)
-        //     .limit(size)
-        //     .toArray();
-        // }
-        // /////
-        // else if (type.toLowerCase().trim() === "invoice") {
-        //   result = await messageCollection
-        //     .find()
-        //     .sort({ _id: -1 })
-        //     .skip(page * size)
-        //     .limit(size)
-        //     .toArray();
-        // } else if (type.toLowerCase().trim() === "settings") {
-        //   result = await settingsCollection
-        //     .find()
-        //     .sort({ _id: -1 })
-        //     .skip(page * size)
-        //     .limit(size)
-        //     .toArray();
-        // }
 
         res.send(result);
       } catch (error) {
@@ -150,14 +124,9 @@ async function run() {
           result = await userCollection.insertOne(data);
         } else if (type.toLowerCase().trim() === "message") {
           result = await messageCollection.insertOne(data);
+        } else if (type.toLowerCase().trim() === "users") {
+          result = await usersCollection.insertOne(data);
         }
-        //  else if (type.toLowerCase().trim() === "users") {
-        //   result = await usersCollection.insertOne(data);
-        // } else if (type.toLowerCase().trim() === "villages") {
-        //   result = await userCollection.insertOne(data);
-        // } else if (type.toLowerCase().trim() === "tax") {
-        //   result = await messageCollection.insertOne(data);
-        // }
 
         res.send(result);
       } catch (error) {
