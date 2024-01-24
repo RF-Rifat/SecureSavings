@@ -139,8 +139,8 @@ const navListItems = [
     icon: UserCircleIcon,
   },
   {
-    label: "Saving",
-    link: "saving",
+    label: "Services",
+    link: "services",
     icon: CurrencyBangladeshiIcon,
   },
   {
@@ -195,7 +195,6 @@ function NavList() {
   );
 }
 
-
 function DrawerNavList() {
   return (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
@@ -204,7 +203,11 @@ function DrawerNavList() {
           to={`/${link}`}
           key={label}
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "bg-dark text-white rounded-md" : ""
+            isPending
+              ? "pending"
+              : isActive
+              ? "bg-dark text-white rounded-md"
+              : ""
           }
         >
           <div className="font-medium text-lg text-center ml-4">
@@ -307,7 +310,6 @@ export function ComplexNavbar() {
           </IconButton>
         </div>
         <DrawerNavList></DrawerNavList>
-        
 
         {!authInfo?.user && (
           <div className="flex gap-2">
