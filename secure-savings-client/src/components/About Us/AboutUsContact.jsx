@@ -1,7 +1,7 @@
 const AboutUsContact = () => {
   return (
     <>
-      <section className="flex items-center bg-stone-100 lg:h-screen font-poppins dark:bg-dark pb-10">
+      <section className="flex items-center bg-stone-100 lg:h-screen font-poppins dark:bg-dark">
         <div className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
           <div className="px-4 mb-10 md:text-center md:mb-20">
             <h2 className="pb-2 text-2xl font-bold text-gray-800 md:text-4xl dark:text-gray-300">

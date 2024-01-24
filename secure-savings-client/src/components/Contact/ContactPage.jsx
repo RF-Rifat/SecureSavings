@@ -22,14 +22,19 @@ const ContactPage = () => {
 
   return (
     <>
-      <section className="relative z-10 overflow-hidden bg-white py-20 dark:bg-dark lg:py-[120px]">
+      <section className="relative z-10 overflow-hidden bg-white py-10 dark:bg-dark lg:py-24">
         <div className="container">
           <div className="-mx-4 flex flex-wrap lg:justify-between">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">
-                <span className="mb-4 block text-base font-semibold text-primary">
+                <span className="mb-4 block md:text-3xl text-2xl font-semibold text-primary">
                   Contact Us
                 </span>
+                <div className="flex w-32 mt-1 overflow-hidden rounded mb-2 md:mb-5">
+                  <div className="flex-1 h-2 bg-teal-200"></div>
+                  <div className="flex-1 h-2 bg-teal-400"></div>
+                  <div className="flex-1 h-2 bg-teal-300"></div>
+                </div>
                 <h2 className="mb-6 text-[32px] font-bold uppercase text-dark dark:text-white sm:text-[40px] lg:text-[36px] xl:text-[40px]">
                   GET IN TOUCH WITH US
                 </h2>
