@@ -15,8 +15,8 @@ const BannerCard = () => {
     <section className="pb-20 bg-blue-gray-300 -mt-24">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap">
-          <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-            <div className="relative flex flex-col min-w-0 break-words bg-gray-200 dark:bg-dark w-full mb-8 shadow-xl rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+          <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center ">
+            <div className="relative flex flex-col min-w-0 break-words bg-gray-200 dark:bg-dark w-full mb-8 shadow-xl rounded-lg transition duration-300 ease-in-out transform hover:scale-105 dark:shadow-md dark:shadow-white">
               <div className="px-4 py-5 flex-auto">
                 <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
                   <FcPositiveDynamic className="h-20 w-10" />
@@ -31,7 +31,7 @@ const BannerCard = () => {
           </div>
 
           <div className="w-full md:w-4/12 px-4 text-center">
-            <div className="relative flex flex-col min-w-0 break-words bg-gray-200 dark:bg-dark w-full mb-8 shadow-xl rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+            <div className="relative flex flex-col min-w-0 break-words bg-gray-200 dark:bg-dark w-full mb-8 shadow-xl rounded-lg transition duration-300 ease-in-out transform hover:scale-105 dark:shadow-md dark:shadow-white">
               <div className="px-4 py-5 flex-auto">
                 <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-amber-400">
                   <FcGraduationCap className="w-12 h-12" />
@@ -45,7 +45,7 @@ const BannerCard = () => {
             </div>
           </div>
           <div className="pt-6 w-full md:w-4/12 px-4 text-center">
-            <div className="relative flex flex-col min-w-0 break-words bg-gray-200 dark:bg-dark w-full mb-8 shadow-xl rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+            <div className="relative flex flex-col min-w-0 break-words bg-gray-200 dark:bg-dark w-full mb-8 shadow-xl rounded-lg transition duration-300 ease-in-out transform hover:scale-105 dark:shadow-md dark:shadow-white">
               <div className="px-4 py-5 flex-auto">
                 <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lime-700">
                   <FcCheckmark className="h-20 w-10" />

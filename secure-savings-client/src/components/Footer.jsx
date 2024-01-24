@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="flex justify-center md:justify-start">
               <img className="w-28" src={logo} alt="logo" />
             </div>
-            <h1 className="text-center  mb-2 md:text-start">
+            <h1 className="text-center mt-4 mb-2 md:text-start">
               Bank Tower 40, <br /> Dhaka, Bangladesh.
             </h1>
           </div>
@@ -110,7 +110,7 @@ const Footer = () => {
         </div>
         <div className="flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
           <div>
-            <h1 className="font-bold ">Follow Us On</h1>
+            <h1 className="font-bold pb-3">Follow Us On</h1>
             <div className="flex flex-row gap-4 text-black sm:justify-center">
               <Typography
                 as="a"
@@ -186,7 +186,7 @@ const Footer = () => {
           </div>
           <Typography
             variant="small"
-            className="mb-4 text-center font-normal text-black md:mb-0"
+            className="mb-4 pt-2 text-center font-normal text-black md:mb-0"
           >
             &copy; {currentYear}{" "}
             <a href="https://material-tailwind.com/">

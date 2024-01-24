@@ -30,7 +30,7 @@ const Clients = () => {
             <h2 className="pb-2 text-2xl font-bold md:text-4xl text-gray-300">
               Meet Our Team
             </h2>
-            <div className="flex w-32 mt-1 overflow-hidden rounded md:mx-auto md:mb-14">
+            <div className="flex w-32 mt-1 overflow-hidden rounded md:mx-auto mb-4 md:mb-14">
               <div className="flex-1 h-2 bg-teal-200"></div>
               <div className="flex-1 h-2 bg-teal-400"></div>
               <div className="flex-1 h-2 bg-teal-300"></div>

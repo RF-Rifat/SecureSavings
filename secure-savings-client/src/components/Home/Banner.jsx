@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 
 import "./Banner.css";
-import { useState } from "react";
 
 const Banner = () => {
   // const [currentSlide, setCurrentSlide] = useState(0);
@@ -22,7 +21,7 @@ const Banner = () => {
     "https://i.postimg.cc/QxLDj0NG/Financial-Planning-Services-Instagram-Post.png",
   ];
   return (
-    <div className="2xl:flex px-6 justify-between  lg:my-10 gap-6 max-w-screen-2xl mx-auto p-4">
+    <div className="2xl:flex px-6 justify-between lg:my-10 gap-6 max-w-screen-2xl mx-auto p-4">
       <div className="grid py-6 lg:py-24 items-center space-y-2 text-center 2xl:text-left 2xl:w-1/2">
         <h4 className="text-2xl lg:text-2xl text-green-500 font-semibold">
           Simple. Transparent. Secure
