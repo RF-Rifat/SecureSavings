@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import { useSpring, animated } from "react-spring";
 import "./ServiceBannerImg.css";
 
