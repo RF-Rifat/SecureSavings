@@ -4,6 +4,8 @@ import { TbMessageCircle2 } from "react-icons/tb";
 import { MdOutlineAddReaction } from "react-icons/md";
 import { HiOutlinePaperClip } from "react-icons/hi2";
 import useAuth from "../Hooks/useAuth";
+import io from "socket.io-client";
+const socket = io("http://localhost:5000");
 
 import { BsSend } from "react-icons/bs";
 
@@ -51,6 +53,23 @@ const ChatBox = () => {
   const { authInfo } = useAuth();
   const info = authInfo?.user || {};
   const { displayName, email } = authInfo?.user || {};
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
+
+  useEffect(() => {
+    socket.on("message", (data) => {
+      setMessages((prevMessages) => [...prevMessages, data]);
+    });
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  const sendMessage = () => {
+    socket.emit("message", { text: newMessage, user: "admin" });
+    setNewMessage("");
+  };
+
   useEffect(() => {
     const chatInit = (selector) => {
       if (window.LIVE_CHAT_UI) {
@@ -96,7 +115,7 @@ const ChatBox = () => {
         }`}
       >
         <div className="chat-app_toggle toggle">
-          <div className="icon send">
+          <div className="icon send" onClick={sendMessage}>
             {/* send icon */}
             <BsSend />
           </div>

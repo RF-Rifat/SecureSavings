@@ -11,15 +11,16 @@ import { AuthProvider } from "./AuthProvider";
 const SignUp = () => {
   const { register, handleSubmit, reset } = useForm();
 
-  const { createUser, updateUser, signWithGooglePop } = useContext(AuthProvider);
+  const { createUser, updateUser, signWithGooglePop } =
+    useContext(AuthProvider);
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data, "form submitted");
     createUser(data?.email, data?.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      updateUser(data.name, data.photoURL)
+      console.log(data);
+      updateUser(data.name, data.image)
         .then(() => {
           console.log("user profile info updated");
           reset();

@@ -29,9 +29,10 @@ const Provider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const updateUser = (name) => {
+  const updateUser = (name,photoURL) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
+      photoURL: photoURL,
     });
   };
 
@@ -49,8 +50,8 @@ const Provider = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      const userEmail = currentUser?.email || user?.email;
-      const loggedUser = { email: userEmail };
+      // const userEmail = currentUser?.email || user?.email;
+      // const loggedUser = { email: userEmail };
       setUser(currentUser);
       setLoading(false);
       // if (currentUser) {

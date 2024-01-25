@@ -1,26 +1,35 @@
 import toast from "react-hot-toast";
 import { modifyData } from "../../Hooks/Api";
+import { useContext } from "react";
+import { AuthProvider } from "../../Authentication/AuthProvider";
 const AddBlog = () => {
+  const { user } = useContext(AuthProvider);
+
   const handleNewBlog = async (e) => {
     e.preventDefault();
 
     const form = e.target;
-    const name = form.name.value;
-    const title = form.title.value;
-    const date = form.date.value;
-    const image = form.image.value;
-    const post = form.post.value;
-    const type = form.name.value;
+    const currentDate = new Date();
+    const formattedDate = currentDate.toDateString();
 
     const newBlog = {
-      name: form.name.value,
+      name: user?.displayName,
       title: form.title.value,
       type: form.type.value,
       date: formattedDate,
-      image: form.image.value,
+      image: user?.photoURL,
       post: form.post.value,
     };
-    console.log(newBlog);
+
+    try {
+      const res = await modifyData("/api/blog", "POST", newBlog);
+      console.log(res.acknowledged);
+      if (res.acknowledged) {
+        toast.success("blog Post Successful");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
@@ -28,35 +37,8 @@ const AddBlog = () => {
         <h2 className="text-2xl font-medium mb-4 text-center">Add blog</h2>
         <form onSubmit={handleNewBlog} className="md:px-32 lg:px-80">
           {/* 1st row */}
-          <div className="flex gap-5">
-            <div className="mb-4">
-              <label className="block text-gray-700 font-medium mb-2">
-                Author Name
-              </label>
-              <input
-                type="text"
-                placeholder="Author Name"
-                id="name"
-                name="name"
-                className="border border-gray-400 p-2  w-full rounded-lg focus:outline-none focus:border-blue-400"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 font-medium mb-2">
-                Author Image
-              </label>
-              <input
-                type="text"
-                placeholder="Author Image"
-                id=""
-                name="authorImg"
-                className="border border-gray-400 p-2  w-full rounded-lg focus:outline-none focus:border-blue-400"
-                required
-              />
-            </div>
-          </div>
-          {/* 2nd row */}
+         
+        
           <div className="flex gap-5">
             <div className="mb-4">
               <label className="block text-gray-700 font-medium mb-2">
@@ -86,21 +68,7 @@ const AddBlog = () => {
             </div>
           </div>
           {/* 3rd row */}
-          <div className="flex justify-center gap-5">
-            <div className="mb-4">
-              <label className="block text-gray-700 font-medium mb-2">
-                Date
-              </label>
-              <input
-                type="date"
-                placeholder="Blog title"
-                id="date"
-                name="date"
-                className="border border-gray-400 p-2  md:w-[200px] rounded-lg focus:outline-none focus:border-blue-400"
-                required
-              />
-            </div>
-
+          <div className="flex gap-5">
             <div className="mb-4">
               <label className="block text-gray-700 font-medium mb-2">
                 Blog Type
