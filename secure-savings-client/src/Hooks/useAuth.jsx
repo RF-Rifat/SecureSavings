@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { AuthContext } from "../Authentication/AuthProvider";
+import { AuthProvider } from "../Authentication/AuthProvider";
+
 
 const useAuth = () => {
-   const authInfo = useContext(AuthContext);
+   const authInfo = useContext(AuthProvider);
 
    if (authInfo.user === null) {
       return false

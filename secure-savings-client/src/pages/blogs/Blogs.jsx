@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import AddBlog from "./AddBlog";
-import { AuthContext } from "../../Authentication/AuthProvider";
+import { AuthProvider } from "../../Authentication/AuthProvider";
+
 const Blogs = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthProvider);
   // console.log(user);
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {

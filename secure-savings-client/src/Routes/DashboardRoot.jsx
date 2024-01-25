@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { AuthContext } from "../Authentication/AuthProvider";
+
 import ChatBox from "../components/ChatBox";
 import DashboardNavbar from "../DashBoard/DashBoard_Shared/DashboardNavbar";
 import SideNav from "../DashBoard/SideBar/SideBar";
 import { DashboardFooter } from "../DashBoard/DashBoard_Shared/DashboardFooter";
 import { Outlet } from "react-router-dom";
+import { AuthProvider } from "../Authentication/AuthProvider";
 
 const Root = () => {
-  const authInfo = useContext(AuthContext);
+  const authInfo = useContext(AuthProvider);
 
   return (
     // toggle theme bg color

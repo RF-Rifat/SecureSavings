@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 const BASE_URL = "http://localhost:5000";
 
 
@@ -9,6 +10,7 @@ export const getData = async (endpoint) => {
 
 
 export const modifyData = async (endpoint, method, data) => {
+  console.log(endpoint,method,data)
   try {
     const response = await fetch(BASE_URL + endpoint, {
       method,
@@ -19,14 +21,21 @@ export const modifyData = async (endpoint, method, data) => {
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Something went wrong");
+      const contentType = response.headers.get("Content-Type");
+
+      if (contentType && contentType.includes("application/json")) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Something went wrong");
+      } else {
+        throw new Error("Unexpected response from the server");
+      }
     }
 
     return response.json();
   } catch (error) {
-    throw new Error(error.message || "Something went wrong");
+    throw error;
   }
 };
+
 
 export default BASE_URL;

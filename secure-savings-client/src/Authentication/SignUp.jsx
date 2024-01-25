@@ -1,17 +1,17 @@
 import { Button } from "@material-tailwind/react";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "./AuthProvider";
+
 import { Link, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import signUpImage from "../../public/image/signUp-svg.json";
 import toast from "react-hot-toast";
+import { AuthProvider } from "./AuthProvider";
 
 const SignUp = () => {
   const { register, handleSubmit, reset } = useForm();
 
-  const { createUser, updateUserProfile, googleLogin } =
-    useContext(AuthContext);
+  const { createUser, updateUser, signWithGooglePop } = useContext(AuthProvider);
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
@@ -19,7 +19,7 @@ const SignUp = () => {
     createUser(data?.email, data?.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      updateUserProfile(data.name, data.photoURL)
+      updateUser(data.name, data.photoURL)
         .then(() => {
           console.log("user profile info updated");
           reset();
@@ -30,7 +30,7 @@ const SignUp = () => {
   };
 
   const handleGoogleLogin = () => {
-    googleLogin()
+    signWithGooglePop()
       .then(() => {
         toast.success("Your Email is successfully logIn");
         navigate("/dashboard/home");

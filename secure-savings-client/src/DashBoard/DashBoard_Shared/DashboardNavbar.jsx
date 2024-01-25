@@ -20,11 +20,12 @@ import {
 
 import { useContext } from "react";
 import { setOpenSidenav, useMaterialTailwindController } from "../../Context";
-import { AuthContext } from "../../Authentication/AuthProvider";
+
 import ToggleTheme from "../../components/ToggleTheme";
+import { AuthProvider } from "../../Authentication/AuthProvider";
 
 export function DashboardNavbar() {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthProvider);
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
 

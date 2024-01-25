@@ -3,11 +3,12 @@ import { ComplexNavbar } from "../Shared/Navbar";
 import Footer from "../components/Footer";
 
 import { useContext } from "react";
-import { AuthContext } from "../Authentication/AuthProvider";
+
 import ChatBox from "../components/ChatBox";
+import { AuthProvider } from "../Authentication/AuthProvider";
 
 const Root = () => {
-  const authInfo = useContext(AuthContext);
+  const authInfo = useContext(AuthProvider);
 
   return (
     // toggle theme bg color

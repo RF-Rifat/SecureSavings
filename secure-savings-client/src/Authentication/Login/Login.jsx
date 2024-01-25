@@ -4,16 +4,16 @@ import { useForm } from "react-hook-form";
 import loginImage from "../../../public/image/login-svg.json";
 import Lottie from "lottie-react";
 import toast from "react-hot-toast";
-import { AuthContext } from "../AuthProvider";
 import { useContext } from "react";
+import { AuthProvider } from "../AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
-  const { login, googleLogin } = useContext(AuthContext);
+  const { login, signWithGooglePop } = useContext(AuthProvider);
 
   const handleGoogleLogin = () => {
-    googleLogin()
+    signWithGooglePop()
       .then((result) => {
         toast.success("Your Email is successfully logIn");
         navigate("/dashboard/home");
