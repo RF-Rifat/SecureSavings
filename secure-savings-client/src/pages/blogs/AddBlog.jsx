@@ -1,5 +1,6 @@
 const AddBlog = () => {
-  const handleNewBlog = (e) => {
+  // const baseURL = BASE_URL;
+  const handleNewBlog = async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -8,7 +9,7 @@ const AddBlog = () => {
     const date = form.date.value;
     const image = form.image.value;
     const post = form.post.value;
-    const type = form.name.value;
+    const type = form.type.value;
 
     const newBlog = {
       name,
@@ -19,6 +20,24 @@ const AddBlog = () => {
       post,
     };
     console.log(newBlog);
+
+    fetch("http://localhost:5000/api/blog", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newBlog),
+    })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // const res = await modifyData("/api/blog", "POST", newBlog);
+    // if (res.acknowledged) {
+    //   console.log("success");
+    // }
+    // console.log(res);
   };
   return (
     <div>
@@ -94,7 +113,7 @@ const AddBlog = () => {
                 placeholder="Blog title"
                 id="date"
                 name="date"
-                className="border border-gray-400 p-2  md:w-[200px] rounded-lg focus:outline-none focus:border-blue-400"
+                className="border border-gray-400 p-2  md:w-[205px] rounded-lg focus:outline-none focus:border-blue-400"
                 required
               />
             </div>
@@ -106,7 +125,7 @@ const AddBlog = () => {
               <select
                 id="type"
                 name="type"
-                className="border border-gray-400 p-2  md:w-[200px] rounded-lg focus:outline-none focus:border-blue-400"
+                className="border border-gray-400 p-2  md:w-[205px] rounded-lg focus:outline-none focus:border-blue-400"
                 required
               >
                 <option value="default">Select blog type</option>

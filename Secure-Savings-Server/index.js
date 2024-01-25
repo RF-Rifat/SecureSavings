@@ -124,10 +124,10 @@ async function run() {
           result = await userCollection.insertOne(data);
         } else if (type.toLowerCase().trim() === "message") {
           result = await messageCollection.insertOne(data);
-        } else if (type.toLowerCase().trim() === "users") {
+        } else if (type.toLowerCase().trim() === "blog") {
           result = await blogCollection.insertOne(data);
         }
-
+        console.log(result);
         res.send(result);
       } catch (error) {
         res.send(error);
