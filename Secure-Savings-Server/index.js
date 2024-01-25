@@ -34,15 +34,15 @@ async function run() {
     const userCollection = client.db("Secure-Savings").collection("UserList");
     const messageCollection = client
       .db("Secure-Savings")
-      .collection("Messages");
-    const blogCollection = client.db("Secure-Savings").collection("blogs");
+      .collection("Message");
+    const blogCollection = client.db("Secure-Savings").collection("blog");
 
     /*
      * GET METHODS
      */
 
     // get all documents data  from a collection based on types and paginated value
-    // [userCollection, userMessageCollection]
+    // [userCollection, userMessageCollection, blogCollection]
     app.get("/api/:type", async (req, res) => {
       try {
         const page = parseInt(req.query.page);
@@ -88,14 +88,14 @@ async function run() {
             .skip(page * size)
             .limit(size)
             .toArray();
-        } else if (type.toLowerCase().trim() === "blog") {
+        } else if (type.toLowerCase().trim() === "message") {
           result = await messageCollection
             .find()
             .sort({ _id: -1 })
             .skip(page * size)
             .limit(size)
             .toArray();
-        } else if (type.toLowerCase().trim() === "message") {
+        } else if (type.toLowerCase().trim() === "blog") {
           result = await blogCollection
             .find()
             .sort({ _id: -1 })
@@ -112,22 +112,22 @@ async function run() {
     });
 
     // add a document in a collection based on type
-    // [userCollection, userMessageCollection]
+    // [userCollection, userMessageCollection,blogCollection]
     app.post("/api/:type", async (req, res) => {
       try {
         const type = req.params.type;
-
+       
         const data = req.body;
-
+        
         let result;
         if (type.toLowerCase().trim() === "user") {
           result = await userCollection.insertOne(data);
         } else if (type.toLowerCase().trim() === "message") {
           result = await messageCollection.insertOne(data);
-        } else if (type.toLowerCase().trim() === "users") {
+        } else if (type.toLowerCase().trim() === "blog") {
           result = await blogCollection.insertOne(data);
         }
-
+        
         res.send(result);
       } catch (error) {
         res.send(error);
