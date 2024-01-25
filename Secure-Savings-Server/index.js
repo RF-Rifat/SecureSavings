@@ -82,14 +82,14 @@ async function run() {
         let result;
 
         if (type.toLowerCase().trim() === "user") {
-          result = await houseHolderCollection
+          result = await userCollection
             .find()
             .sort({ _id: -1 })
             .skip(page * size)
             .limit(size)
             .toArray();
         } else if (type.toLowerCase().trim() === "blog") {
-          result = await businessCollection
+          result = await messageCollection
             .find()
             .sort({ _id: -1 })
             .skip(page * size)
@@ -125,7 +125,7 @@ async function run() {
         } else if (type.toLowerCase().trim() === "message") {
           result = await messageCollection.insertOne(data);
         } else if (type.toLowerCase().trim() === "users") {
-          result = await usersCollection.insertOne(data);
+          result = await blogCollection.insertOne(data);
         }
 
         res.send(result);
