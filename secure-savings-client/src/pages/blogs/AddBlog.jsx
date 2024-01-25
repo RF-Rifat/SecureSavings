@@ -5,8 +5,12 @@ const AddBlog = () => {
     e.preventDefault();
 
     const form = e.target;
-    const currentDate = new Date();
-    const formattedDate = currentDate.toDateString();
+    const name = form.name.value;
+    const title = form.title.value;
+    const date = form.date.value;
+    const image = form.image.value;
+    const post = form.post.value;
+    const type = form.name.value;
 
     const newBlog = {
       name: form.name.value,
@@ -16,34 +20,7 @@ const AddBlog = () => {
       image: form.image.value,
       post: form.post.value,
     };
-
-    try {
-      const res = await modifyData("/api/blog", "POST", newBlog);
-      console.log(res.acknowledged);
-      if (res.acknowledged) {
-        toast.success("blog Post Successful");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-
-    // try {
-    //   const response = await fetch("http://localhost:5000/api/blog", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(newBlog),
-    //   });
-
-    //   if (response.ok) {
-    //     console.log("Blog entry successfully added!");
-    //   } else {
-    //     console.error("Error adding blog entry:", response.statusText);
-    //   }
-    // } catch (error) {
-    //   console.error("Error:", error.message);
-    // }
+    console.log(newBlog);
   };
   return (
     <div>
@@ -109,7 +86,21 @@ const AddBlog = () => {
             </div>
           </div>
           {/* 3rd row */}
-          <div className="flex gap-5">
+          <div className="flex justify-center gap-5">
+            <div className="mb-4">
+              <label className="block text-gray-700 font-medium mb-2">
+                Date
+              </label>
+              <input
+                type="date"
+                placeholder="Blog title"
+                id="date"
+                name="date"
+                className="border border-gray-400 p-2  md:w-[200px] rounded-lg focus:outline-none focus:border-blue-400"
+                required
+              />
+            </div>
+
             <div className="mb-4">
               <label className="block text-gray-700 font-medium mb-2">
                 Blog Type
@@ -117,7 +108,7 @@ const AddBlog = () => {
               <select
                 id="type"
                 name="type"
-                className="border border-gray-400 p-2  md:w-[200px] rounded-lg focus:outline-none focus:border-blue-400"
+                className="border border-gray-400 p-2  md:w-[205px] rounded-lg focus:outline-none focus:border-blue-400"
                 required
               >
                 <option value="default">Select blog type</option>
