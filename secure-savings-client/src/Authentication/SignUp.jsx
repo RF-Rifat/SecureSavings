@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import signUpImage from "../../public/image/signUp-svg.json";
 import toast from "react-hot-toast";
 import { AuthProvider } from "./AuthProvider";
+import { modifyData } from "../Hooks/Api";
 
 const SignUp = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -19,9 +20,18 @@ const SignUp = () => {
     createUser(data?.email, data?.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      console.log(data);
+
       updateUser(data.name, data.image)
-        .then(() => {
+        .then(async () => {
+          try {
+            const res = await modifyData("/api/user", "POST", data);
+            console.log(res.acknowledged);
+            if (res.acknowledged) {
+              toast.success("User Register Successful");
+            }
+          } catch (error) {
+            console.log(error);
+          }
           console.log("user profile info updated");
           reset();
           navigate("/");
