@@ -134,6 +134,12 @@ async function run() {
       }
     });
 
+    // adding new blog
+    app.post("/api/blog", async (res, req) => {
+      const newBlog = req.body;
+      const result = await blogCollection.insertOne(newBlog);
+      res.send(result);
+    });
     // Send a ping to confirm a successful connection
     await client.db("users").command({ ping: 1 });
     console.log(

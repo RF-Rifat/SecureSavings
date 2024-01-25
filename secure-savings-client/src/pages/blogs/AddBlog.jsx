@@ -1,5 +1,8 @@
+import BASE_URL, { modifyData } from "../../Hooks/Api";
+
 const AddBlog = () => {
-  const handleNewBlog = (e) => {
+  const baseURL = BASE_URL;
+  const handleNewBlog = async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -19,6 +22,12 @@ const AddBlog = () => {
       post,
     };
     console.log(newBlog);
+
+    const res = await modifyData("/api/blog", "POST", newBlog);
+    if (res.acknowledged) {
+      console.log("success");
+    }
+    console.log(res);
   };
   return (
     <div>
@@ -94,7 +103,7 @@ const AddBlog = () => {
                 placeholder="Blog title"
                 id="date"
                 name="date"
-                className="border border-gray-400 p-2  md:w-[200px] rounded-lg focus:outline-none focus:border-blue-400"
+                className="border border-gray-400 p-2  md:w-[205px] rounded-lg focus:outline-none focus:border-blue-400"
                 required
               />
             </div>
@@ -106,7 +115,7 @@ const AddBlog = () => {
               <select
                 id="type"
                 name="type"
-                className="border border-gray-400 p-2  md:w-[200px] rounded-lg focus:outline-none focus:border-blue-400"
+                className="border border-gray-400 p-2  md:w-[205px] rounded-lg focus:outline-none focus:border-blue-400"
                 required
               >
                 <option value="default">Select blog type</option>
