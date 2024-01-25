@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
-
+import AddBlog from "./AddBlog";
+import { AuthContext } from "../../Authentication/AuthProvider";
 const Blogs = () => {
+  const { user } = useContext(AuthContext);
+  // console.log(user);
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     fetch("blogs.json")
@@ -24,6 +27,9 @@ const Blogs = () => {
           <BlogCard key={blog.id} blog={blog}></BlogCard>
         ))}
       </div>
+      {/* add blog */}
+
+      {user && <AddBlog></AddBlog>}
     </div>
   );
 };
