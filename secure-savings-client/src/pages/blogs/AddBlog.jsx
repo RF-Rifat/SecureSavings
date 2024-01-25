@@ -1,7 +1,5 @@
-import BASE_URL, { modifyData } from "../../Hooks/Api";
-
 const AddBlog = () => {
-  const baseURL = BASE_URL;
+  // const baseURL = BASE_URL;
   const handleNewBlog = async (e) => {
     e.preventDefault();
 
@@ -11,7 +9,7 @@ const AddBlog = () => {
     const date = form.date.value;
     const image = form.image.value;
     const post = form.post.value;
-    const type = form.name.value;
+    const type = form.type.value;
 
     const newBlog = {
       name,
@@ -23,11 +21,23 @@ const AddBlog = () => {
     };
     console.log(newBlog);
 
-    const res = await modifyData("/api/blog", "POST", newBlog);
-    if (res.acknowledged) {
-      console.log("success");
-    }
-    console.log(res);
+    fetch("http://localhost:5000/api/blog", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newBlog),
+    })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // const res = await modifyData("/api/blog", "POST", newBlog);
+    // if (res.acknowledged) {
+    //   console.log("success");
+    // }
+    // console.log(res);
   };
   return (
     <div>

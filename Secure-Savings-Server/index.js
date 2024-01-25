@@ -124,22 +124,16 @@ async function run() {
           result = await userCollection.insertOne(data);
         } else if (type.toLowerCase().trim() === "message") {
           result = await messageCollection.insertOne(data);
-        } else if (type.toLowerCase().trim() === "users") {
+        } else if (type.toLowerCase().trim() === "blog") {
           result = await blogCollection.insertOne(data);
         }
-
+        console.log(result);
         res.send(result);
       } catch (error) {
         res.send(error);
       }
     });
 
-    // adding new blog
-    app.post("/api/blog", async (res, req) => {
-      const newBlog = req.body;
-      const result = await blogCollection.insertOne(newBlog);
-      res.send(result);
-    });
     // Send a ping to confirm a successful connection
     await client.db("users").command({ ping: 1 });
     console.log(
