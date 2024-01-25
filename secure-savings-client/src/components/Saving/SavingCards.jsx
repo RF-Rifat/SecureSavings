@@ -13,7 +13,7 @@ const SavingCards = () => {
   return (
     <>
       <div className="text-center mt-20">
-        <h2 className="md:text-5xl text-4xl from-black uppercase font-semibold dark:text-darkText">
+        <h2 className="pb-2 text-2xl font-bold text-gray-800 md:text-4xl dark:text-gray-300">
           Credit cards
         </h2>
         <div className="flex w-44 mt-1 overflow-hidden rounded mb-2 mx-auto md:mb-5">
