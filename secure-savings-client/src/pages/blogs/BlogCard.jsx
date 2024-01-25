@@ -14,7 +14,7 @@ const BlogCard = ({ blog }) => {
   } = blog;
   return (
     <div>
-      <section className="flex items-center bg-gray-100   dark:bg-gray-800">
+      <section className="flex items-center bg-gray-300  h-[700px]  dark:bg-gray-800">
         <div className="p-4">
           <div className="">
             <div className="mb-0 overflow-hidden bg-white rounded shadow dark:bg-gray-700">
@@ -73,45 +73,3 @@ const BlogCard = ({ blog }) => {
 };
 
 export default BlogCard;
-
-{
-  /* <section classNameName="border-2 border-red-500 flex items-center bg-gray-100  dark:bg-gray-800">
-    <div classNameName="p-4">
-      <div classNameName="grid grid-cols-1 gap-4 lg:gap-8 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <a
-          classNameName="mb-0 overflow-hidden bg-white rounded shadow dark:bg-gray-700"
-          href="#"
-        >
-          <div classNameName="relative overflow-hidden h-72">
-            <img
-              classNameName="object-cover w-full h-full transition-all hover:scale-110"
-              src="https://i.postimg.cc/gJRggD6N/pexels-fox-1595385-1.jpg"
-              alt=""
-            />
-          </div>
-          <div classNameName="relative z-20 p-8 -mt-16 ">
-            <div classNameName="flex items-center">
-              <img
-                classNameName="object-cover w-20 h-20 mb-4 border-4 border-white rounded-full dark:border-gray-500"
-                src="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg?cs=srgb&amp;dl=pexels-thorn-yang-139829.jpg&amp;fm=jpg"
-                alt=""
-              />
-              <div classNameName="flex flex-col items-center ml-4">
-                <div>
-                  <span classNameName="px-3 py-1 text-xs text-white bg-blue-500 rounded">
-                    {blogType}
-                  </span>
-                </div>
-                <span classNameName="block mt-3 mb-2 text-xs font-semibold text-blue-700 uppercase dark:text-blue-300">
-                  {authorName} • {date}
-                </span>
-              </div>
-            </div>
-            <h2 classNameName="mb-3 text-2xl font-bold leading-9 text-blue-800 dark:text-white"></h2>
-            <p classNameName="text-base leading-7 text-gray-400">{blogPost}</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section> */
-}
