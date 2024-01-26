@@ -33,22 +33,17 @@ const TABS = [
   },
 ];
 
-const TABLE_HEAD = ["User-List", "Position", "Status", "Member-Since", "Action"];
-
-const TABLE_ROWS = [
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg",
-    name: "John Michael",
-    email: "john@creative-tim.com",
-    job: "Manager",
-    org: "Organization",
-    online: true,
-    date: "23/04/18",
-  },
+const TABLE_HEAD = [
+  "User-List",
+  "Position",
+  "Status",
+  "Member-Since",
+  "Action",
 ];
 
 export default function UserList() {
   const [userData] = useGetData("/api/user");
+  console.log(userData);
   return (
     <Card className="h-full w-full dark:bg-dark dark:text-darkText">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -110,8 +105,11 @@ export default function UserList() {
           </thead>
           <tbody>
             {userData.map(
-              ({ image, name, email, position, status, memberSince }, index) => {
-                const isLast = index === TABLE_ROWS.length - 1;
+              (
+                { image, name, email, position, status, memberSince },
+                index
+              ) => {
+                const isLast = index === userData.length - 1;
                 const classes = isLast
                   ? "p-4"
                   : "p-4 border-b border-blue-gray-50";

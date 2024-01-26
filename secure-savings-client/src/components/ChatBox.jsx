@@ -4,25 +4,10 @@ import { TbMessageCircle2 } from "react-icons/tb";
 import { MdOutlineAddReaction } from "react-icons/md";
 import { HiOutlinePaperClip } from "react-icons/hi2";
 import useAuth from "../Hooks/useAuth";
-import io from "socket.io-client";
 import { BsSend } from "react-icons/bs";
-import BASE_URL from "../Hooks/Api";
+
 
 const ChatBox = () => {
-  const [socket, setSocket] = useState(null);
-
-  useEffect(() => {
-    const socketConnection = io(BASE_URL);
-    setSocket(socketConnection);
-    socketConnection.on("message", (data) => {
-      setMessages((prevMessages) => [...prevMessages, data]);
-    });
-    return () => {
-      if (socketConnection) {
-        socketConnection.disconnect();
-      }
-    };
-  }, []);
 
   const chat = [
     {
@@ -63,12 +48,10 @@ const ChatBox = () => {
     },
   ];
   const [inputValue, setInputValue] = useState("");
-  const [inputMessage, setInputMessage] = useState("");
   const [open, setOpen] = useState(true);
   const { authInfo } = useAuth();
   const info = authInfo?.user || {};
   const { displayName, email } = authInfo?.user || {};
-  const [messages, setMessages] = useState([]);
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -77,15 +60,7 @@ const ChatBox = () => {
     setInputValue("");
   };
 
-  const handleSendMessage = () => {
-    if (socket) {
-      // Send a message to the server
-      socket.emit("message", inputMessage);
-
-      // Clear the input field
-      setInputMessage("");
-    }
-  };
+  
   useEffect(() => {
     const chatInit = (selector) => {
       if (window.LIVE_CHAT_UI) {
@@ -131,7 +106,7 @@ const ChatBox = () => {
         }`}
       >
         <div className="chat-app_toggle toggle">
-          <div className="icon send" onClick={handleSendMessage}>
+          <div className="icon send" onClick={handleSendClick}>
             {/* send icon */}
             <BsSend />
           </div>

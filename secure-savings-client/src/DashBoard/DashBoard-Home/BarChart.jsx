@@ -28,7 +28,7 @@ const chartConfig = {
     dataLabels: {
       enabled: false,
     },
-    colors: ["#020617"],
+    colors: ["#359BF0"],
     plotOptions: {
       bar: {
         columnWidth: "40%",
@@ -96,6 +96,7 @@ const chartConfig = {
 };
 
 export default function BarChart() {
+    
   return (
     <Card>
       <CardHeader
@@ -104,7 +105,7 @@ export default function BarChart() {
         color="transparent"
         className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
       >
-        <div className="w-max rounded-lg bg-gray-900 p-5 text-white">
+        <div className="w-max rounded-lg bg-[#359BF0] p-5 text-white">
           <Square3Stack3DIcon className="h-6 w-6" />
         </div>
         <div>
