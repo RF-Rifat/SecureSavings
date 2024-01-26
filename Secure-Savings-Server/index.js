@@ -1,16 +1,25 @@
 const express = require("express");
 const cors = require("cors");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const http = require("http");
-const { Server } = require("socket.io");
+// const http = require("http");
 
 require("dotenv").config();
 
 const app = express();
-const server = http.createServer(app);
-const io = new Server(server);
+// const server = http.createServer(app);
+// const io = new Server(server);
+// const io = require("socket.io")(server, {
+//   cors: {
+//     origin: "http://localhost:5173",
+//   },
+// });   
+    
+//  io.on("connection", (socket) => {
+//    console.log(socket);
+//  });
+
 
 app.use(cors());
 app.use(express.json());
@@ -41,16 +50,16 @@ async function run() {
 
     // Messaging App with socket.io
 
-    io.on("connection", (socket) => {
-      console.log("A user connected");
-      socket.on("message", (data) => {
-        console.log("Received message:", data);
-        io.emit("message", data);
-      });
-      socket.on("disconnect", () => {
-        console.log("User disconnected");
-      });
-    });
+    // io.on("connection", (socket) => {
+    //   console.log("A user connected");
+    //   socket.on("message", (data) => {
+    //     console.log("Received message:", data);
+    //     io.emit("message", data);
+    //   });
+    //   socket.on("disconnect", () => {
+    //     console.log("User disconnected");
+    //   });
+    // });
     // Messaging App with socket.io
 
     /*
