@@ -16,6 +16,7 @@ import {
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
+import useGetData from "../../Hooks/useGetData";
 
 const TABS = [
   {
@@ -32,7 +33,7 @@ const TABS = [
   },
 ];
 
-const TABLE_HEAD = ["Member", "Function", "Status", "Employed", ""];
+const TABLE_HEAD = ["User-List", "Position", "Status", "Member-Since", "Action"];
 
 const TABLE_ROWS = [
   {
@@ -44,45 +45,11 @@ const TABLE_ROWS = [
     online: true,
     date: "23/04/18",
   },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg",
-    name: "Alexa Liras",
-    email: "alexa@creative-tim.com",
-    job: "Programator",
-    org: "Developer",
-    online: false,
-    date: "23/04/18",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-1.jpg",
-    name: "Laurent Perrier",
-    email: "laurent@creative-tim.com",
-    job: "Executive",
-    org: "Projects",
-    online: false,
-    date: "19/09/17",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-4.jpg",
-    name: "Michael Levi",
-    email: "michael@creative-tim.com",
-    job: "Programator",
-    org: "Developer",
-    online: true,
-    date: "24/12/08",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-5.jpg",
-    name: "Richard Gran",
-    email: "richard@creative-tim.com",
-    job: "Manager",
-    org: "Executive",
-    online: false,
-    date: "04/10/21",
-  },
 ];
 
 export default function UserList() {
+  const [userData] = useGetData("/api/user");
+  console.log(userData);
   return (
     <Card className="h-full w-full dark:bg-dark dark:text-darkText">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -143,8 +110,8 @@ export default function UserList() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(
-              ({ img, name, email, job, org, online, date }, index) => {
+            {userData.map(
+              ({ image, name, email, position, status, memberSince }, index) => {
                 const isLast = index === TABLE_ROWS.length - 1;
                 const classes = isLast
                   ? "p-4"
@@ -154,7 +121,7 @@ export default function UserList() {
                   <tr key={name}>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
-                        <Avatar src={img} alt={name} size="sm" />
+                        <Avatar src={image} alt={name} size="sm" />
                         <div className="flex flex-col">
                           <Typography
                             variant="small"
@@ -180,23 +147,23 @@ export default function UserList() {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {job}
+                          {position}
                         </Typography>
-                        <Typography
+                        {/* <Typography
                           variant="small"
                           color="blue-gray"
                           className="font-normal opacity-70"
                         >
-                          {org}
-                        </Typography>
+                          User
+                        </Typography> */}
                       </div>
                     </td>
                     <td className={classes}>
                       <div className="w-max">
                         <Chip
                           variant="gradient"
-                          color={online ? "green" : "blue-gray"}
-                          value={online ? "online" : "offline"}
+                          color={status ? "green" : "blue-gray"}
+                          value={status ? "online" : "offline"}
                           className="py-0.5 px-2 text-[11px] font-medium w-fit"
                         />
                       </div>
@@ -207,7 +174,7 @@ export default function UserList() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {date}
+                        {memberSince}
                       </Typography>
                     </td>
                     <td className={classes}>
@@ -226,7 +193,7 @@ export default function UserList() {
       </CardBody>
       <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
         <Typography variant="small" color="blue-gray" className="font-normal">
-          Page 1 of 10
+          Page 1 of 1
         </Typography>
         <div className="flex gap-2">
           <Button variant="outlined" size="sm">

@@ -10,7 +10,7 @@ import { AuthProvider } from "./AuthProvider";
 import { modifyData } from "../Hooks/Api";
 
 const SignUp = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const { createUser, updateUser, signWithGooglePop } =
     useContext(AuthProvider);
@@ -20,11 +20,18 @@ const SignUp = () => {
     createUser(data?.email, data?.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      const currentDate = new Date();
+      const formattedDate = currentDate.toDateString();
 
       updateUser(data.name, data.image)
         .then(async () => {
           try {
-            const res = await modifyData("/api/user", "POST", data);
+            const res = await modifyData("/api/user", "POST", {
+              ...data,
+              memberSince: formattedDate,
+              status: true,
+              position: "Member",
+            });
             console.log(res.acknowledged);
             if (res.acknowledged) {
               toast.success("User Register Successful");
@@ -33,7 +40,7 @@ const SignUp = () => {
             console.log(error);
           }
           console.log("user profile info updated");
-          reset();
+
           navigate("/");
         })
         .catch((error) => console.log(error));

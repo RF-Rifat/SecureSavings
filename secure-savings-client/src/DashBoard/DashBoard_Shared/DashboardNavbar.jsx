@@ -29,6 +29,7 @@ export function DashboardNavbar() {
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
 
+  const email = user?.email
   const donorsReq = [];
 
   //   const { _id } = filteredUser || {};
@@ -36,21 +37,8 @@ export function DashboardNavbar() {
   const { pathname } = useLocation();
   const [layout, page] = pathname.split("/").filter((el) => el !== "");
 
-  const handleLogOut = async () => {
-    logOut();
-    // try {
-    //   const response = await axios.put(
-    //     `https://task-manager-server-woad.vercel.app/user/${_id}/update-status`,
-    //     {
-    //       status: false,
-    //     }
-    //     );
-
-    //   logOut();
-    //   console.log("Updated user status:", response.data);
-    // } catch (error) {
-    //   console.error("Error updating user status:", error.message);
-    // }
+  const handleLogOut = async (email) => {
+    logOut(email);
   };
 
   //   useEffect(() => {
@@ -132,7 +120,7 @@ export function DashboardNavbar() {
           ) : (
             <>
               <Button
-                onClick={() => handleLogOut()}
+                onClick={() => handleLogOut(email)}
                 variant="text"
                 color="blue-gray"
                 className="hidden items-center gap-1 px-4 xl:flex normal-case"
@@ -141,7 +129,7 @@ export function DashboardNavbar() {
                 Log Out
               </Button>
               <IconButton
-                onClick={() => handleLogOut()}
+                onClick={() => handleLogOut(email)}
                 variant="text"
                 color="blue-gray"
                 className="grid xl:hidden"

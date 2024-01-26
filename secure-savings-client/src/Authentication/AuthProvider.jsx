@@ -29,7 +29,7 @@ const Provider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const updateUser = (name,photoURL) => {
+  const updateUser = (name, photoURL) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photoURL,
@@ -43,8 +43,9 @@ const Provider = ({ children }) => {
     return signInWithPopup(auth, gitHubProvider);
   };
 
-  const logOut = async () => {
+  const logOut = async (email) => {
     setLoading(true);
+    console.log(email);
     return signOut(auth);
   };
 

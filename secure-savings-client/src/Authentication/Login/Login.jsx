@@ -9,12 +9,25 @@ import { AuthProvider } from "../AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const { login, signWithGooglePop } = useContext(AuthProvider);
+
+  const handleLogIn = (data) => {
+    console.log(data)
+    login(data.email, data.password)
+      .then(() => {
+        toast.success("Your Email is successfully logIn");
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error("Your LogIn is Invalid");
+        console.error(error);
+      });
+  };
 
   const handleGoogleLogin = () => {
     signWithGooglePop()
-      .then((result) => {
+      .then(() => {
         toast.success("Your Email is successfully logIn");
         navigate("/dashboard/home");
       })
@@ -55,6 +68,7 @@ const Login = () => {
                   <input
                     name="email"
                     type="text"
+                    {...register("email")}
                     required=""
                     className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
                     placeholder="Enter email"
@@ -97,6 +111,7 @@ const Login = () => {
                     name="password"
                     type="password"
                     required=""
+                    {...register("password")}
                     className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
                     placeholder="Enter password"
                   />
@@ -138,6 +153,7 @@ const Login = () => {
               <div className="mt-12">
                 <Button
                   type="button"
+                  onClick={handleSubmit(handleLogIn)}
                   className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-[#333] hover:bg-[#222] focus:outline-none"
                 >
                   Sign in
