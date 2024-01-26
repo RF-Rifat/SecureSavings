@@ -8,7 +8,7 @@ const Financial = () => {
               About Us
             </p> */}
             <h2 className="pb-2 text-2xl font-bold text-gray-800 md:text-4xl dark:text-gray-300">
-              What we do
+              Our activities
             </h2>
             <div className="flex w-32 mt-1 mb-6 overflow-hidden rounded md:mx-auto md:mb-14">
               <div className="flex-1 h-2 bg-teal-200"></div>
@@ -28,68 +28,7 @@ const Financial = () => {
                 strive to provide reliable and innovative financial products and
                 services
               </p>
-              <ul className="mb-10">
-                <li className="flex items-center mb-4 text-base text-gray-600 dark:text-gray-400">
-                  <span className="mr-3 text-blue-500 dark:text-blue-400 ">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={16}
-                      height={16}
-                      fill="currentColor"
-                      className="w-5 h-5 bi bi-arrow-right-circle-fill"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                    </svg>
-                  </span>
-                  Solution Focused
-                </li>
-                <li className="flex items-center mb-4 text-base text-gray-600 dark:text-gray-400">
-                  <span className="mr-3 text-blue-500 dark:text-blue-400">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={16}
-                      height={16}
-                      fill="currentColor"
-                      className="w-5 h-5 bi bi-arrow-right-circle-fill"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                    </svg>
-                  </span>
-                  99.99% Success
-                </li>
-                <li className="flex items-center mb-4 text-base text-gray-600 dark:text-gray-400">
-                  <span className="mr-3 text-blue-500 dark:text-blue-400">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={16}
-                      height={16}
-                      fill="currentColor"
-                      className="w-5 h-5 bi bi-arrow-right-circle-fill"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                    </svg>
-                  </span>
-                  dedicated team
-                </li>
-                <li className="flex items-center mb-4 text-base text-gray-600 dark:text-gray-400">
-                  <span className="mr-3 text-blue-500 dark:text-blue-400 ">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={16}
-                      height={16}
-                      fill="currentColor"
-                      className="w-5 h-5 bi bi-arrow-right-circle-fill"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-                    </svg>
-                  </span>
-                  securing loans, or planning for the future
-                </li>
-              </ul>
+
               <button className="before:ease relative h-12 w-40 overflow-hidden border-2 rounded-sm border-blue-500 text-blue-500 shadow-2xl transition-all before:absolute before:top-1/2 before:h-0 before:w-64 before:origin-center before:-translate-x-20 before:rotate-45 before:bg-blue-500 before:duration-300 hover:text-white hover:shadow-blue-500 hover:before:h-64 hover:before:-translate-y-32">
                 <span className="relative z-10">Discover More</span>
               </button>
@@ -110,7 +49,7 @@ const Financial = () => {
                   >
                     <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"></path>
                   </svg>{" "}
-                  Successfully Providing services from 25 years
+                  Successfully Providing services from 5 years
                 </p>
               </div>
             </div>

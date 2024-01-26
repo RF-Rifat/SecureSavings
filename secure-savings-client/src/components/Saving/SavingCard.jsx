@@ -24,7 +24,7 @@ const SavingCard = ({ card }) => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9 }}
         >
-          <section className="flex items-center bg-gray-100 lg:h-screen font-poppins dark:bg-gray-900 ">
+          <section className="flex items-center border-1 lg:h-screen font-poppins ">
             <div className="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-0">
               <div className="">
                 <div>
