@@ -20,7 +20,7 @@ const LatestBlogs = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-md:max-w-lg mx-auto">
               <div className="bg-white cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group">
                 <img
-                  src="https://readymadeui.com/Imagination.webp"
+                  src="https://i.postimg.cc/HsSPvTq8/pexels-fauxels-3184357.jpg"
                   alt="Blog Post 1"
                   className="w-full h-96 object-cover"
                 />
@@ -42,7 +42,7 @@ const LatestBlogs = () => {
               </div>
               <div className="bg-white cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group">
                 <img
-                  src="https://readymadeui.com/hacks-watch.webp"
+                  src="https://i.ibb.co/1nn2DtG/jonathan-cooper-0-O2-Pp6-m-Ok-Y-unsplash.jpg"
                   alt="Blog Post 2"
                   className="w-full h-96 object-cover"
                 />
@@ -64,7 +64,7 @@ const LatestBlogs = () => {
               </div>
               <div className="bg-white cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group">
                 <img
-                  src="https://readymadeui.com/prediction.webp"
+                  src="https://i.ibb.co/GHtqp2q/towfiqu-barbhuiya-joq-WSI9u-XM-unsplash.jpg"
                   alt="Blog Post 3"
                   className="w-full h-96 object-cover"
                 />

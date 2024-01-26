@@ -36,6 +36,7 @@ p {
 
 .container .card:hover {
     height: 400px;
+    transition: height 3s;
 }
 
 .container .card .img-box {
