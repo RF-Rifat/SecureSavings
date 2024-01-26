@@ -49,7 +49,6 @@ const TABLE_ROWS = [
 
 export default function UserList() {
   const [userData] = useGetData("/api/user");
-  console.log(userData);
   return (
     <Card className="h-full w-full dark:bg-dark dark:text-darkText">
       <CardHeader floated={false} shadow={false} className="rounded-none">

@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../Authentication/firebase.config.js";
+import BASE_URL from "../Hooks/Api.jsx";
 
 export const AuthProvider = createContext(null);
 
@@ -24,8 +25,31 @@ const Provider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
-  const login = (email, password) => {
+  const login = async (email, password) => {
     setLoading(true);
+    try {
+      const response = await fetch(
+        `${BASE_URL}/api/user/update-status/${email}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status: true }),
+        }
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("User status updated:", result);
+      } else if (response.status === 404) {
+        console.log("User not found");
+      } else {
+        console.error("Error updating user status:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error updating user status:", error.message);
+    }
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -46,6 +70,29 @@ const Provider = ({ children }) => {
   const logOut = async (email) => {
     setLoading(true);
     console.log(email);
+    try {
+      const response = await fetch(
+        `${BASE_URL}/api/user/update-status/${email}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status: false }),
+        }
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("User status updated:", result);
+      } else if (response.status === 404) {
+        console.log("User not found");
+      } else {
+        console.error("Error updating user status:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error updating user status:", error.message);
+    }
     return signOut(auth);
   };
 

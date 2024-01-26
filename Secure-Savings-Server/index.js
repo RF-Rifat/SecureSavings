@@ -147,6 +147,27 @@ async function run() {
       }
     });
 
+    // user status update put req
+    app.put("/api/user/update-status/:email", async (req, res) => {
+      const userEmail = req.params.email;
+      const newStatus = req.body.status;
+      const filter = { email: userEmail };
+      const update = { $set: { status: newStatus } };
+
+      try {
+        const result = await userCollection.updateOne(filter, update);
+
+        if (result.matchedCount === 0) {
+          return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json(result);
+      } catch (error) {
+        console.error("Error updating user status:", error.message);
+        res.status(500).json({ message: "Internal server error" });
+      }
+    });
+
     // Send a ping to confirm a successful connection
     await client.db("users").command({ ping: 1 });
     console.log(
