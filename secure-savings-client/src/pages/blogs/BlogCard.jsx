@@ -2,16 +2,8 @@ import logo from "../../assets/images/marqueeItems/masterCard.png";
 import { Link } from "react-router-dom";
 const BlogCard = ({ blog }) => {
   //   console.log(blog);
-  const {
-    id,
-    title,
-    date,
-    blogType,
-    blogImage,
-    blogPost,
-    authorImage,
-    authorName,
-  } = blog;
+  const { id, title, date, type, authorImage, blogImage, post, name } = blog;
+  console.log(blog);
   return (
     <div>
       <section className="flex items-center bg-gray-300  h-[700px]  dark:bg-gray-800">
@@ -20,7 +12,7 @@ const BlogCard = ({ blog }) => {
             <div className="mb-0 overflow-hidden bg-white rounded shadow dark:bg-gray-700">
               <div className="relative overflow-hidden h-72">
                 <span className="absolute px-3 py-1 text-xs text-white bg-blue-500 rounded bottom-3 right-3">
-                  {blogType}
+                  {type}
                 </span>
                 <img
                   className="object-cover  h-full transition-all hover:scale-110"
@@ -32,12 +24,12 @@ const BlogCard = ({ blog }) => {
                 <div className="flex items-center">
                   <img
                     className="object-cover w-20 h-20 mb-4 border-4 border-white rounded-full dark:border-gray-700"
-                    src="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg?cs=srgb&amp;dl=pexels-thorn-yang-139829.jpg&amp;fm=jpg"
+                    src={authorImage}
                     alt=""
                   />
                   <div className="flex flex-col items-center ml-2">
                     <span className="block mt-3 mb-2 text-xs font-semibold text-blue-700 uppercase dark:text-blue-300">
-                      {authorName} • {date}
+                      {name} <br /> • {date}
                     </span>
                   </div>
                 </div>
@@ -45,7 +37,7 @@ const BlogCard = ({ blog }) => {
                   {title}
                 </h2>
                 <p className="mb-4 text-base leading-7 dark:text-gray-400">
-                  {blogPost?.slice(0, 120)}
+                  {post?.slice(0, 120)}
                   {"  "} . . .
                 </p>
                 <Link className="flex items-center text-sm font-semibold">

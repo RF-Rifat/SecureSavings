@@ -17,15 +17,17 @@ const AddBlog = () => {
       title: form.title.value,
       type: form.type.value,
       date: formattedDate,
-      image: user?.photoURL,
+      authorImage: user?.photoURL,
+      blogImage: form.image.value,
       post: form.post.value,
     };
 
     try {
       const res = await modifyData("/api/blog", "POST", newBlog);
-      console.log(res.acknowledged);
+      // console.log(res.acknowledged);
       if (res.acknowledged) {
         toast.success("blog Post Successful");
+        form.reset();
       }
     } catch (error) {
       console.log(error);
@@ -37,9 +39,8 @@ const AddBlog = () => {
         <h2 className="text-2xl font-medium mb-4 text-center">Add blog</h2>
         <form onSubmit={handleNewBlog} className="md:px-32 lg:px-80">
           {/* 1st row */}
-         
-        
-          <div className="flex gap-5">
+
+          <div className="flex justify-center gap-5">
             <div className="mb-4">
               <label className="block text-gray-700 font-medium mb-2">
                 Blog Title
@@ -49,7 +50,7 @@ const AddBlog = () => {
                 placeholder="Blog title"
                 id="title"
                 name="title"
-                className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+                className="border text-black border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
                 required
               />
             </div>
@@ -62,13 +63,14 @@ const AddBlog = () => {
                 placeholder="Photo link"
                 id="image"
                 name="image"
-                className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+                className="border text-black border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
                 required
               />
             </div>
           </div>
           {/* 3rd row */}
-          <div className="flex gap-5">
+          <div className="">
+            {" "}
             <div className="mb-4">
               <label className="block text-gray-700 font-medium mb-2">
                 Blog Type
@@ -76,17 +78,16 @@ const AddBlog = () => {
               <select
                 id="type"
                 name="type"
-                className="border border-gray-400 p-2  md:w-[205px] rounded-lg focus:outline-none focus:border-blue-400"
+                className="border w-full border-gray-400 text-black p-2  rounded-lg focus:outline-none focus:border-blue-400"
                 required
               >
                 <option value="default">Select blog type</option>
                 <option value="Finance">Finance</option>
                 <option value="Banking">Banking</option>
-                <option value="Remitence">Remitence</option>
+                <option value="Remittance">Remittance</option>
               </select>
             </div>
           </div>
-
           <div className="mb-4">
             <label className="block text-gray-700 font-medium mb-2">
               Write your blog
@@ -94,16 +95,17 @@ const AddBlog = () => {
             <textarea
               id="post"
               name="post"
-              className="border border-gray-400 p-2  w-full rounded-lg focus:outline-none focus:border-blue-400"
+              className="border text-black border-gray-400 p-2  w-full rounded-lg focus:outline-none focus:border-blue-400"
               rows="4"
               cols="4"
             ></textarea>
           </div>
+
           <div>
             <div className="flex">
               <button
                 type="submit"
-                className=" justify-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                className=" justify-center w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
               >
                 Submit
               </button>
