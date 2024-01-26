@@ -5,7 +5,7 @@ import Home from "../pages/Home";
 import Root from "./Root";
 import ErrorPage from "../pages/ErrorPage";
 import AboutUs from "../pages/AboutUs";
-import Dashboard from "../DashBoard/Dashboard";
+
 import Profile from "../DashBoard/DashBoard-Pages/Profile";
 import DashboardRoot from "./DashboardRoot";
 import Saving from "../pages/Saving";
@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import MyWallet from "../DashBoard/DashBoard-Pages/MyWallet";
 import Blogs from "../pages/blogs/Blogs";
 import UserList from "../DashBoard/DashBoard-Pages/UserList";
+import Dashboard from "../DashBoard/DashBoard-Home/Dashboard";
 
 export const router = createBrowserRouter([
   {
