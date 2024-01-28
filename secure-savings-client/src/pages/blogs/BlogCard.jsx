@@ -6,7 +6,7 @@ const BlogCard = ({ blog }) => {
   console.log(blog);
   return (
     <div>
-      <section className="flex items-center bg-gray-300  h-[700px]  dark:bg-gray-800">
+      <section className="flex items-center   h-[700px]  dark:bg-gray-800">
         <div className="p-4">
           <div className="">
             <div className="mb-0 overflow-hidden bg-white rounded shadow dark:bg-gray-700">
