@@ -40,7 +40,7 @@ const AddBlog = () => {
         <form onSubmit={handleNewBlog} className="md:px-32 lg:px-80">
           {/* 1st row */}
 
-          <div className="flex justify-center gap-5">
+          <div className=" gap-5">
             <div className="mb-4">
               <label className="block text-gray-700 font-medium mb-2">
                 Blog Title
@@ -50,7 +50,7 @@ const AddBlog = () => {
                 placeholder="Blog title"
                 id="title"
                 name="title"
-                className="border text-black border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+                className="border  text-black border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
                 required
               />
             </div>
