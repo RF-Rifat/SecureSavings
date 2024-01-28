@@ -2,6 +2,14 @@
 
 # Project Name : SecureSavings
 
+|                |                                                        |
+| -------------- | ------------------------------------------------------ |
+| Tech           | React - Router Dom, MongoDB                            |
+| UI             | Tailwind, Material-Tailwind                            |
+| Database       | MongoDB                                                |                                     
+| Deployment     | Github, Vercel, MongoDB Atlas, FireBase                |
+| Authentication | Firebase, Pass and google                              |
+| Others         | React-Hook-From, Lottie-animation, Axios               |
 ## Introduction
 In an era marked by digital advancements and increasing reliance on technology, the financial sector is undergoing a transformative shift towards providing more secure, efficient, and user-friendly services. SecureSavings emerges as a pioneering project, aiming to redefine banking by prioritizing security, innovation, and customer experience.
 
