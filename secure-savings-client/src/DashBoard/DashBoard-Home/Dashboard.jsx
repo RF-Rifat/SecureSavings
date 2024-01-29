@@ -1,7 +1,13 @@
+import { useContext } from "react";
 import BarChart from "./BarChart";
 import { DashboardTimeLine } from "./DashBoardTimeline";
+import { AdminDataContext } from "../../Context/AdminProvider";
 
 const Dashboard = () => {
+  const authInfo = useContext(AdminDataContext);
+
+  const { adminData, isAdmin } = authInfo;
+
   return (
     <>
       {/* component */}

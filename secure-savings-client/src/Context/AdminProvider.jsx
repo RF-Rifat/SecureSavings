@@ -7,12 +7,14 @@ const AdminProvider = ({ children }) => {
   const [userData] = useGetData("/api/user");
   const { authInfo } = useAuth();
   const { email } = authInfo?.user || {};
-  console.log(email);
-  console.log(userData);
-  const isAdmin = userData?.some((admin) => admin?.email == email);
-  console.log(isAdmin)
+  const adminData = userData?.filter((admin) => admin?.email == email);
+  const isAdmin = adminData?.some((item) => item.position === "Admin");
+  const AdminAuth = {
+    adminData,
+    isAdmin,
+  };
   return (
-    <AdminDataContext.Provider value={userData}>
+    <AdminDataContext.Provider value={AdminAuth}>
       {children}
     </AdminDataContext.Provider>
   );
