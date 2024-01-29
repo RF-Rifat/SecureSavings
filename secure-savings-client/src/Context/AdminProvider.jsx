@@ -7,10 +7,10 @@ const AdminProvider = ({ children }) => {
   const [userData] = useGetData("/api/user");
   const { authInfo } = useAuth();
   const { email } = authInfo?.user || {};
-  const adminData = userData?.filter((admin) => admin?.email == email);
-  const isAdmin = adminData?.some((item) => item.position === "Admin");
+  const LoggedUser = userData?.filter((admin) => admin?.email == email);
+  const isAdmin = LoggedUser?.some((item) => item.position === "Admin");
   const AdminAuth = {
-    adminData,
+    LoggedUser,
     isAdmin,
   };
   return (

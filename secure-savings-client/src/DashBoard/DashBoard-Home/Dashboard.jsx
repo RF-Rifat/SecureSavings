@@ -5,8 +5,7 @@ import { AdminDataContext } from "../../Context/AdminProvider";
 
 const Dashboard = () => {
   const authInfo = useContext(AdminDataContext);
-
-  const { adminData, isAdmin } = authInfo;
+  const { LoggedUser, isAdmin } = authInfo;
 
   return (
     <>
