@@ -14,12 +14,11 @@ const app = express();
 //   cors: {
 //     origin: "http://localhost:5173",
 //   },
-// });   
-    
+// });
+
 //  io.on("connection", (socket) => {
 //    console.log(socket);
 //  });
-
 
 app.use(cors());
 app.use(express.json());
@@ -109,7 +108,7 @@ async function run() {
         if (type.toLowerCase().trim() === "user") {
           result = await userCollection
             .find()
-            .sort({ _id: -1 })
+            .sort()
             .skip(page * size)
             .limit(size)
             .toArray();
