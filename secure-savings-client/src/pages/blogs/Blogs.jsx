@@ -30,7 +30,7 @@ const Blogs = () => {
       </div>
       {/* add blog */}
 
-      {user && <AddBlog></AddBlog>}
+      {/* {user && <AddBlog></AddBlog>} */}
     </div>
   );
 };

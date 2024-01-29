@@ -11,6 +11,7 @@ import {
   HomeIcon,
   WalletIcon,
 } from "@heroicons/react/24/solid";
+import { FcAddRow } from "react-icons/fc";
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
@@ -39,6 +40,11 @@ export function SideNav() {
           icon: <TableCellsIcon {...icon} />,
           name: "Users",
           path: "/users",
+        },
+        {
+          icon: <FcAddRow {...icon} />,
+          name: "Add Blog",
+          path: "/addBlog",
         },
       ],
     },
