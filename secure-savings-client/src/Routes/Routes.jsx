@@ -6,7 +6,6 @@ import Root from "./Root";
 import ErrorPage from "../pages/ErrorPage";
 import AboutUs from "../pages/AboutUs";
 
-
 import DashboardRoot from "./DashboardRoot";
 import Saving from "../pages/Saving";
 import Contact from "../pages/Contact";
@@ -16,6 +15,7 @@ import Blogs from "../pages/blogs/Blogs";
 import UserList from "../DashBoard/DashBoard-Pages/UserList";
 import Dashboard from "../DashBoard/DashBoard-Home/Dashboard";
 import CustomProfile from "../DashBoard/DashBoard-Pages/CustomProfile";
+import AddBlog from "../pages/blogs/AddBlog";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +70,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/users",
         element: <UserList />,
+      },
+      {
+        path: "/dashboard/addBlog",
+        element: <AddBlog></AddBlog>,
       },
     ],
   },
