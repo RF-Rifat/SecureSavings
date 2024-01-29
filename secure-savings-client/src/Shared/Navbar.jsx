@@ -232,7 +232,6 @@ function DrawerNavList() {
 
 export function ComplexNavbar() {
   const { authInfo } = useAuth();
-  console.log(authInfo);
   const [open, setOpen] = useState(false);
 
   const openDrawer = () => setOpen(true);
