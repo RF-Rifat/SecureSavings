@@ -98,12 +98,12 @@ const chartConfig = {
 export default function BarChart() {
     
   return (
-    <Card>
+    <Card className="dark:bg-blue-gray-100 mb-5">
       <CardHeader
         floated={false}
         shadow={false}
         color="transparent"
-        className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
+        className="flex flex-col gap-4 rounded-none md:flex-row md:items-center "
       >
         <div className="w-max rounded-lg bg-[#359BF0] p-5 text-white">
           <Square3Stack3DIcon className="h-6 w-6" />
