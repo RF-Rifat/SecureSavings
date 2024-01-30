@@ -15,7 +15,7 @@ const Root = () => {
     <div className="min-h-screen bg-blue-gray-50/50 grid dark:bg-dark dark:text-darkText">
       <SideNav />
 
-      <div className="p-4 xl:ml-[300px]">
+      <div className="p-4 xl:ml-[300px] max-w-7xl">
         <div className="h-44 md:h-28">
           <DashboardNavbar />
         </div>
