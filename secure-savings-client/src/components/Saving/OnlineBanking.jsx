@@ -27,7 +27,7 @@ const OnlineBanking = () => {
                   <div className="mb-3">
                     <a href="">
                       <h2 className="text-2xl font-semibold dark:text-gray-300">
-                        Lorem ipsum dor amet ispiciousas
+                        Digital Banking
                       </h2>
                     </a>
                   </div>
@@ -59,7 +59,7 @@ const OnlineBanking = () => {
                   <div className="mb-3">
                     <a href="">
                       <h2 className="text-2xl font-semibold dark:text-gray-300">
-                        Lorem ipsum dor amet ispiciousas
+                        Mobile & Web Banking
                       </h2>
                     </a>
                   </div>
@@ -91,7 +91,7 @@ const OnlineBanking = () => {
                   <div className="mb-3">
                     <a href="">
                       <h2 className="text-2xl font-semibold dark:text-gray-300">
-                        Lorem ipsum dor amet ispiciousas
+                        Insurance Policies
                       </h2>
                     </a>
                   </div>
