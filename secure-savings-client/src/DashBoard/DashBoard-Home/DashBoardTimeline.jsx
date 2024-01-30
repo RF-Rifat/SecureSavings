@@ -18,7 +18,7 @@ export function DashboardTimeLine() {
       <Timeline>
         <TimelineItem className="h-28">
           <TimelineConnector className="!w-[78px]" />
-          <TimelineHeader className="relative rounded-xl border border-blue-gray-50 bg-white py-3 pl-4 pr-8 shadow-lg shadow-blue-gray-900/5">
+          <TimelineHeader className="relative rounded-xl border border-blue-gray-50 bg-white py-3 pl-4 pr-8 shadow-lg shadow-blue-gray-900/5 dark:bg-blue-gray-100">
             <TimelineIcon className="p-3" variant="ghost">
               <BellIcon className="h-5 w-5" />
             </TimelineIcon>
@@ -34,7 +34,7 @@ export function DashboardTimeLine() {
         </TimelineItem>
         <TimelineItem className="h-28">
           <TimelineConnector className="!w-[78px]" />
-          <TimelineHeader className="relative rounded-xl border border-blue-gray-50 bg-white py-3 pl-4 pr-8 shadow-lg shadow-blue-gray-900/5">
+          <TimelineHeader className="relative rounded-xl border border-blue-gray-50 bg-white py-3 pl-4 pr-8 shadow-lg shadow-blue-gray-900/5 dark:bg-blue-gray-100">
             <TimelineIcon className="p-3" variant="ghost" color="red">
               <ArchiveBoxIcon className="h-5 w-5" />
             </TimelineIcon>
@@ -49,7 +49,7 @@ export function DashboardTimeLine() {
           </TimelineHeader>
         </TimelineItem>
         <TimelineItem className="h-28">
-          <TimelineHeader className="relative rounded-xl border border-blue-gray-50 bg-white py-3 pl-4 pr-8 shadow-lg shadow-blue-gray-900/5">
+          <TimelineHeader className="relative rounded-xl border border-blue-gray-50 bg-white py-3 pl-4 pr-8 shadow-lg shadow-blue-gray-900/5 dark:bg-blue-gray-100">
             <TimelineIcon className="p-3" variant="ghost" color="green">
               <CurrencyDollarIcon className="h-5 w-5" />
             </TimelineIcon>
