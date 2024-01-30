@@ -11,7 +11,7 @@ const OnlineBanking = () => {
           <div className="flex-1 h-2 bg-teal-300"></div>
         </div>
       </div>
-      <section className="flex items-center bg-gray-200 lg:h-screen font-poppins dark:bg-gray-900 ">
+      <section className="flex items-center bg-gray-50 lg:h-screen font-poppins dark:bg-gray-900 ">
         <div className="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-0">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 md:grid-cols-2">
             <div className="relative bg-white rounded-2xl dark:bg-gray-700">
