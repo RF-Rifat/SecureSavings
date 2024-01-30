@@ -5,10 +5,10 @@ import { MdOutlineAddReaction } from "react-icons/md";
 import { HiOutlinePaperClip } from "react-icons/hi2";
 import useAuth from "../Hooks/useAuth";
 import { BsSend } from "react-icons/bs";
-
+import { io } from "socket.io-client";
 
 const ChatBox = () => {
-
+  const socket = io("http://localhost:3000");
   const chat = [
     {
       id: 1,
@@ -60,7 +60,6 @@ const ChatBox = () => {
     setInputValue("");
   };
 
-  
   useEffect(() => {
     const chatInit = (selector) => {
       if (window.LIVE_CHAT_UI) {
