@@ -1,5 +1,6 @@
 // import SavingBanner from "../components/Saving/SavingBanner";
 import Financial from "../components/Saving/Financial";
+import OnlineBanking from "../components/Saving/OnlineBanking";
 import SavingCards from "../components/Saving/SavingCards";
 import SecureBanner from "../components/Saving/SecureBanner";
 
@@ -10,6 +11,7 @@ const Saving = () => {
       <SecureBanner></SecureBanner>
       <SavingCards />
       <Financial></Financial>
+      <OnlineBanking></OnlineBanking>
     </div>
   );
 };
