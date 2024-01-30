@@ -9,44 +9,45 @@ import { io } from "socket.io-client";
 
 const ChatBox = () => {
   const socket = io("http://localhost:3000");
-  const chat = [
-    {
-      id: 1,
-      send: "hi.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 6,
-      reply: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 11,
-      reply: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 5,
-      send: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 3,
-      reply: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 4,
-      send: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 10,
-      reply: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 12,
-      reply: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 13,
-      send: "hello.Believing, Banking and Achieving Different",
-    },
-  ];
+  const [chat, setChat] = useState([]);
+  // const chat = [
+  //   {
+  //     id: 1,
+  //     send: "hi.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 6,
+  //     reply: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 11,
+  //     reply: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 5,
+  //     send: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 3,
+  //     reply: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 4,
+  //     send: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 10,
+  //     reply: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 12,
+  //     reply: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 13,
+  //     send: "hello.Believing, Banking and Achieving Different",
+  //   },
+  // ];
   const [inputValue, setInputValue] = useState("");
   const [open, setOpen] = useState(true);
   const { authInfo } = useAuth();
@@ -57,6 +58,20 @@ const ChatBox = () => {
   };
   const handleSendClick = () => {
     console.log("Sending message:", inputValue);
+
+    socket.emit("sendMessage", {
+      message: inputValue,
+      sender: info?.reloadUserInfo,
+    });
+
+    setChat((prevChat) => [
+      ...prevChat,
+      {
+        id: Date.now(),
+        send: inputValue,
+      },
+    ]);
+
     setInputValue("");
   };
 
