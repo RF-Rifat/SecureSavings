@@ -25,33 +25,31 @@ const Features = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-screen-2xl mx-auto gap-5 mt-16">
-        {features.map((feature) => {
-          <>
-            <main className="main" key={feature.id}>
-              <div className="container">
-                <div
-                  className="card dark:!bg-dark"
-                  style={{
-                    "--clr": "#009688",
-                  }}
-                >
-                  <div className="img-box">
-                    <img
-                      src={feature.img}
-                      className="w-full h-full object-cover"
-                      alt="Image"
-                    />
-                  </div>
-                  <div className="content">
-                    <h2 className="dark:!text-darkText">{feature.title}</h2>
-                    <p className="dark:!text-darkText">{feature.description}</p>
-                    <a href="">Read More</a>
-                  </div>
+        {features.map((feature) => 
+          <main className="main" key={feature.id}>
+            <div className="container">
+              <div
+                className="card dark:!bg-dark"
+                style={{
+                  "--clr": "#009688",
+                }}
+              >
+                <div className="img-box">
+                  <img
+                    src={feature.img}
+                    className="w-full h-full object-cover"
+                    alt="Image"
+                  />
+                </div>
+                <div className="content">
+                  <h2 className="dark:!text-darkText">{feature.title}</h2>
+                  <p className="dark:!text-darkText">{feature.description}</p>
+                  <a href="">Read More</a>
                 </div>
               </div>
-            </main>
-          </>;
-        })}
+            </div>
+          </main>
+        )}
       </div>
     </div>
   );
