@@ -1,21 +1,20 @@
 const Financial = () => {
   return (
     <div>
+      <div>
+        <div className="px-4 mb-2 md:text-center md:mb-20">
+          <h2 className="pb-2 text-2xl font-bold text-gray-800 md:text-4xl dark:text-gray-300">
+            Our activities
+          </h2>
+          <div className="flex w-32 mt-1 mb-6 overflow-hidden rounded md:mx-auto md:mb-14">
+            <div className="flex-1 h-2 bg-teal-200"></div>
+            <div className="flex-1 h-2 bg-teal-400"></div>
+            <div className="flex-1 h-2 bg-teal-300"></div>
+          </div>
+        </div>
+      </div>
       <section className="flex items-center bg-stone-100 lg:h-screen font-poppins dark:bg-gray-800 mb-24">
         <div className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
-          <div className="px-4 mb-10 md:text-center md:mb-20">
-            {/* <p className="mb-2 text-lg font-semibold text-blue-500 dark:text-gray-400">
-              About Us
-            </p> */}
-            <h2 className="pb-2 text-2xl font-bold text-gray-800 md:text-4xl dark:text-gray-300">
-              Our activities
-            </h2>
-            <div className="flex w-32 mt-1 mb-6 overflow-hidden rounded md:mx-auto md:mb-14">
-              <div className="flex-1 h-2 bg-teal-200"></div>
-              <div className="flex-1 h-2 bg-teal-400"></div>
-              <div className="flex-1 h-2 bg-teal-300"></div>
-            </div>
-          </div>
           <div className="flex flex-wrap items-center">
             <div className="w-full px-4 mb-10 md:w-1/2 lg:mb-0 ">
               <h2 className="mb-4 text-2xl font-bold text-gray-700 dark:text-gray-300">
