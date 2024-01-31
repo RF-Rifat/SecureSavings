@@ -12,6 +12,7 @@ const io = new Server(server, {
     credentials: true,
   },
 });
+
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -26,6 +27,13 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   console.log("User Id", socket.id);
+
+  socket.on("sendMessage", (data) => {
+    io.emit("message", {
+      senderId: socket.id,
+      message: data.message,
+    });
+  });
 });
 
 server.listen(port, () => {
