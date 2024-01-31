@@ -1,6 +1,13 @@
+import { useContext } from "react";
+import { AdminDataContext } from "../../Context/AdminProvider";
+
 const MyWallet = () => {
+  const authInfo = useContext(AdminDataContext);
+  const { LoggedUser } = authInfo;
+  // , isAdmin
 
   return (
+
     <>
       {/* user credit details */}
       <div className="py-7 px-7 flex w-full gap-7 transition-all duration-1000 ease-in-out ">
@@ -17,13 +24,13 @@ const MyWallet = () => {
                     ID:
                   </span>
                   <span className="mb-1 text-base font-bold text-dark dark:text-white">
-                    3434366647787189784
+                    {LoggedUser[0]?._id}
                   </span>
                 </div>
                 <ul className="grid grid-cols-1 md:grid-cols-2 mx-auto gap-5 mt-10">
                   <li className="mx-2">
                     <img
-                      className="w-auto object-cover h-36"
+                      className="w-auto rounded-lg object-cover h-36"
                       src="https://www.computop-paygate.com/Templates/imagesaboutYou_desktop/images/computop.png"
                       alt=""
                     />
@@ -80,7 +87,7 @@ const MyWallet = () => {
                     <button
                       className="submit-button px-4 py-3 rounded-full bg-blue-300 text-blue-900 focus:ring focus:outline-none w-full text-xl font-semibold transition-colors"
                     >
-                      Pay now
+                      Send Money
                     </button>
                   </footer>
                 </div>
