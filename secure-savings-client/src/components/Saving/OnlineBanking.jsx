@@ -3,7 +3,7 @@ const OnlineBanking = () => {
     <div>
       <div className="text-center mt-20">
         <h2 className="pb-2 text-2xl font-bold text-gray-800 md:text-4xl dark:text-gray-300">
-          Online Banking at Your <br /> Fingertips
+          Online Banking
         </h2>
         <div className="flex w-44 mt-1 overflow-hidden rounded mb-2 mx-auto md:mb-5">
           <div className="flex-1 h-2 bg-teal-200"></div>

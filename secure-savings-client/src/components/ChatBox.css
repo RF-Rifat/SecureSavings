@@ -211,8 +211,8 @@
           animation: message-pop cubic-bezier(0.71, 0.15, 0.46, 1.4) 0.5s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
-  -webkit-animation-delay: 1.2s;
-          animation-delay: 1.2s;
+  -webkit-animation-delay: .4s;
+          animation-delay: .4s;
 }
 .chat-app_content .message:after {
   content: "";

@@ -96,9 +96,8 @@ const chartConfig = {
 };
 
 export default function BarChart() {
-    
   return (
-    <Card className="dark:bg-blue-gray-100 mb-5">
+    <Card>
       <CardHeader
         floated={false}
         shadow={false}

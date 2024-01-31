@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import "./ChatBox.css";
 import { TbMessageCircle2 } from "react-icons/tb";
 import { MdOutlineAddReaction } from "react-icons/md";
@@ -6,47 +6,52 @@ import { HiOutlinePaperClip } from "react-icons/hi2";
 import useAuth from "../Hooks/useAuth";
 import { BsSend } from "react-icons/bs";
 import { io } from "socket.io-client";
+import { AdminDataContext } from "../Context/AdminProvider";
 
 const ChatBox = () => {
   const socket = io("http://localhost:3000");
-  const chat = [
-    {
-      id: 1,
-      send: "hi.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 6,
-      reply: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 11,
-      reply: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 5,
-      send: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 3,
-      reply: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 4,
-      send: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 10,
-      reply: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 12,
-      reply: "hello.Believing, Banking and Achieving Different",
-    },
-    {
-      id: 13,
-      send: "hello.Believing, Banking and Achieving Different",
-    },
-  ];
+  const [chat, setChat] = useState([]);
+  const AdminAuth = useContext(AdminDataContext);
+  const { LoggedUser, isAdmin } = AdminAuth;
+  console.log(LoggedUser, isAdmin);
+  // const chat = [
+  //   {
+  //     id: 1,
+  //     send: "hi.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 6,
+  //     reply: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 11,
+  //     reply: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 5,
+  //     send: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 3,
+  //     reply: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 4,
+  //     send: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 10,
+  //     reply: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 12,
+  //     reply: "hello.Believing, Banking and Achieving Different",
+  //   },
+  //   {
+  //     id: 13,
+  //     send: "hello.Believing, Banking and Achieving Different",
+  //   },
+  // ];
   const [inputValue, setInputValue] = useState("");
   const [open, setOpen] = useState(true);
   const { authInfo } = useAuth();
@@ -56,9 +61,40 @@ const ChatBox = () => {
     setInputValue(event.target.value);
   };
   const handleSendClick = () => {
-    console.log("Sending message:", inputValue);
+    socket.emit("sendMessage", {
+      message: inputValue,
+      sender: info?.reloadUserInfo,
+    });
+    // socket.on("message", (data) => {
+    //   console.log(data)
+    // })
+    setChat((prevChat) => [
+      ...prevChat,
+      {
+        id: Date.now(),
+        send: inputValue,
+      },
+    ]);
+
     setInputValue("");
   };
+
+  useEffect(() => {
+    socket.on("message", (data) => {
+      console.log(data);
+      setChat((prevChat) => [
+        ...prevChat,
+        {
+          id: Date.now(),
+          reply: data.message,
+        },
+      ]);
+    });
+
+    return () => {
+      socket.off("message");
+    };
+  }, [socket]);
 
   useEffect(() => {
     const chatInit = (selector) => {
@@ -134,6 +170,11 @@ const ChatBox = () => {
           </div>
           <div className="chat-app_content">
             <div className="messages">
+              {!isAdmin && (
+                <div className="message reply">
+                  <p className="text"> How can i help you today ?</p>
+                </div>
+              )}
               {chat.map((message) => (
                 <Fragment key={message.id}>
                   <div className={message?.send && "message"}>
