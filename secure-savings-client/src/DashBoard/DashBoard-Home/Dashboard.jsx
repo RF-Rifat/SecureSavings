@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <>
       {/* component */}
-      {isAdmin && 
+      {isAdmin &&
         <>
           <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
             <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-blue-gray-100 hover:drop-shadow-2xl">
