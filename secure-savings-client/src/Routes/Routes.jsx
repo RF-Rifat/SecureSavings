@@ -16,6 +16,7 @@ import UserList from "../DashBoard/DashBoard-Pages/UserList";
 import Dashboard from "../DashBoard/DashBoard-Home/Dashboard";
 import CustomProfile from "../DashBoard/DashBoard-Pages/CustomProfile";
 import AddBlog from "../pages/blogs/AddBlog";
+import Transactions from "../pages/Transactions/Transactions";
 
 export const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ export const router = createBrowserRouter([
         path: "/dashboard/addBlog",
         element: <AddBlog></AddBlog>,
       },
+      {
+        path: "/dashboard/transactions",
+        element: <Transactions />
+      }
     ],
   },
   {

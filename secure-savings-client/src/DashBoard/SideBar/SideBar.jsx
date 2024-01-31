@@ -11,7 +11,7 @@ import {
   HomeIcon,
   WalletIcon,
 } from "@heroicons/react/24/solid";
-import { FcAddRow } from "react-icons/fc";
+import { FcAddRow, FcCableRelease } from "react-icons/fc";
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
@@ -46,6 +46,11 @@ export function SideNav() {
           name: "Add Blog",
           path: "/addBlog",
         },
+        {
+          icon: <FcCableRelease {...icon} />,
+          name: "Transaction",
+          path: "/transactions"
+        }
       ],
     },
   ];
@@ -60,9 +65,8 @@ export function SideNav() {
 
   return (
     <aside
-      className={`${sidenavTypes[sidenavType]} ${
-        openSidenav ? "translate-x-0" : "-translate-x-80"
-      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100 dark:bg-blue-gray-100 shadow-md shadow-blue-gray-500/5 `}
+      className={`${sidenavTypes[sidenavType]} ${openSidenav ? "translate-x-0" : "-translate-x-80"
+        } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100 dark:bg-blue-gray-100 shadow-md shadow-blue-gray-500/5 `}
     >
       <div className={`relative`}>
         <Link
@@ -112,8 +116,8 @@ export function SideNav() {
                         isActive
                           ? sidenavColor
                           : sidenavType === "dark"
-                          ? "white"
-                          : "blue-gray"
+                            ? "white"
+                            : "blue-gray"
                       }
                       className="flex items-center gap-4 px-4 capitalize"
                       fullWidth
