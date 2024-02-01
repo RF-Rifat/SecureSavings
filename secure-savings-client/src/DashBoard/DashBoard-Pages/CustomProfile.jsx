@@ -1,4 +1,9 @@
+import useAuth from "../../Hooks/useAuth";
+
 export function CustomProfile() {
+  const { authInfo } = useAuth();
+  const { displayName, photoURL, email } = authInfo?.user || {};
+
   return (
     <>
       <div className="relative flex flex-col bg-clip-border rounded-xl  bg-white text-gray-700 shadow-md mx-3 mb-6 lg:mx-4 border border-blue-gray-100">
@@ -7,7 +12,7 @@ export function CustomProfile() {
             <div className="flex items-center gap-6">
               <div className="relative inline-flex">
                 <img
-                  src="https://lh3.googleusercontent.com/a/ACg8ocI9KP1WyhE4zyejd4hv7WgtMm4zKgDavXFqiTxByfZkorw=s96-c"
+                  src={`${photoURL}`}
                   alt="bruce-mars"
                   className="inline-block relative object-cover object-center w-[74px] h-[74px] rounded-lg shadow-lg shadow-blue-gray-500/40"
                 />
@@ -15,7 +20,7 @@ export function CustomProfile() {
               </div>
               <div>
                 <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900 mb-1">
-                  Rifat
+                  {`${displayName}`}
                 </h5>
                 <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
                  Admin / Secure-Service
