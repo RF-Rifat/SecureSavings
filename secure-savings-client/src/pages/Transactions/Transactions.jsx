@@ -3,7 +3,7 @@ const Transactions = () => {
 
     return (
         <div className="mb-5">
-            <div className="bg-indigo-400 rounded-lg dark:bg-dark p-4">
+            <div className="bg-[#2195f3] rounded-lg dark:bg-dark p-4">
                 <div className="flex flex-col grid-cols-9 p-2 mx-auto md:grid">
                     <div className="flex md:contents flex-row-reverse">
                         <div className="relative p-4 my-6 text-gray-800 bg-white rounded-xl col-start-1 col-end-5 mr-auto md:mr-0 md:ml-auto">
