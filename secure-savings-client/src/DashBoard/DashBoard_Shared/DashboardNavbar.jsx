@@ -23,12 +23,13 @@ import { setOpenSidenav, useMaterialTailwindController } from "../../Context";
 
 import ToggleTheme from "../../components/ToggleTheme";
 import { AuthProvider } from "../../Authentication/AuthProvider";
+import { useSelector } from "react-redux";
 
 export function DashboardNavbar() {
   const { user, logOut } = useContext(AuthProvider);
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
-
+  const count = useSelector(state => state.counter.value)
   const email = user?.email
   const donorsReq = [];
 
@@ -143,7 +144,8 @@ export function DashboardNavbar() {
               <IconButton variant="text" color="blue-gray" className="relative">
                 <BellIcon className="h-5 w-5 text-blue-gray-500" />
                 <span className="absolute rounded-full py-1 px-1 text-xs font-medium content-[''] leading-none grid place-items-center top-[4%] right-[2%] translate-x-2/4 -translate-y-2/4 bg-red-500 text-white min-w-[12px] min-h-[12px]">
-                  {donorsReq.length}
+                  {/* {donorsReq.length} */}
+                  <span>{count}</span>
                 </span>
               </IconButton>
             </MenuHandler>
