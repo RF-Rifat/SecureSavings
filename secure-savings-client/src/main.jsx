@@ -10,8 +10,12 @@ import { MaterialTailwindControllerProvider } from "./Context/index.jsx";
 import UserProvider from "./Authentication/AuthProvider.jsx";
 import AdminProvider from "./Context/AdminProvider.jsx";
 
+import { Provider } from 'react-redux'
+import store from "./redux/store.js";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <Provider store={store}>
     <MaterialTailwindControllerProvider>
       <Toaster />
       <UserProvider>
@@ -20,5 +24,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </AdminProvider>
       </UserProvider>
     </MaterialTailwindControllerProvider>
+    </Provider>
   </React.StrictMode>
 );
