@@ -4,7 +4,7 @@
 
 |                |                                                        |
 | -------------- | ------------------------------------------------------ |
-| Tech           | React - Router Dom, MongoDB                            |
+| Tech           | React - Router Dom, MongoDB, Redux, Mongoose           |
 | UI             | Tailwind, Material-Tailwind                            |
 | Database       | MongoDB                                                |                                     
 | Deployment     | Github, Vercel, MongoDB Atlas, FireBase                |
