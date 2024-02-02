@@ -2,11 +2,11 @@ import logo from "../../assets/images/marqueeItems/masterCard.png";
 import { Link } from "react-router-dom";
 const BlogCard = ({ blog }) => {
   //   console.log(blog);
-  const { id, title, date, type, authorImage, blogImage, post, name } = blog;
-  console.log(blog);
+  const { _id, title, date, type, authorImage, blogImage, post, name } = blog;
+  // console.log(blog);
   return (
     <div>
-      <section className="flex items-center   h-[700px]  dark:bg-gray-800">
+      <section className="flex items-center   h-[600px]  dark:bg-gray-800">
         <div className="p-4">
           <div className="">
             <div className="mb-0 overflow-hidden bg-white rounded shadow dark:bg-gray-700">
@@ -37,10 +37,13 @@ const BlogCard = ({ blog }) => {
                   {title}
                 </h2>
                 <p className="mb-4 text-base leading-7 dark:text-gray-400">
-                  {post?.slice(0, 120)}
+                  {post?.slice(0, 40)}
                   {"  "} . . .
                 </p>
-                <Link className="flex items-center text-sm font-semibold">
+                <Link
+                  to={`/blog-details/${_id}`}
+                  className="flex items-center text-sm font-semibold"
+                >
                   <div className="flex items-center px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
                     Read More
                     <svg

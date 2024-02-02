@@ -1,30 +1,32 @@
 import toast from "react-hot-toast";
 import { modifyData } from "../../Hooks/Api";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Input, Option, Select, Textarea } from "@material-tailwind/react";
 
 import { AuthProvider } from "../../Authentication/AuthProvider";
 const AddBlog = () => {
   const { user } = useContext(AuthProvider);
-
+  const [blogType, setBlogType] = useState("");
   const handleNewBlog = async (e) => {
     e.preventDefault();
 
     const form = e.target;
-    // const type = form.type.value;
+
+    // const blogType = document.getElementById("type").type.value;
     const currentDate = new Date();
     const formattedDate = currentDate.toDateString();
 
     const newBlog = {
       name: user?.displayName,
       title: form.title.value,
-      type: form.type.value,
+      type: blogType,
       date: formattedDate,
       authorImage: user?.photoURL,
       blogImage: form.image.value,
       post: form.post.value,
     };
-    // console.log(type);
+    // console.log(newBlog.title);
+    console.log(newBlog);
 
     try {
       const res = await modifyData("/api/blog", "POST", newBlog);
@@ -43,7 +45,6 @@ const AddBlog = () => {
         <h2 className="text-2xl font-medium mb-4 text-center">Add blog</h2>
         <form onSubmit={handleNewBlog} className="md:px-32 lg:px-80">
           {/* 1st row */}
-
           <div className=" gap-5">
             <div className="mb-4">
               <Input
@@ -67,35 +68,24 @@ const AddBlog = () => {
               />
             </div>
           </div>
-          {/* 3rd row */}
-          <div className="">
-            {" "}
-            <div className="mb-4">
-              <Select
-                id="type"
-                name="type"
-                variant="standard"
-                label="Select blog type"
-                success
-              >
-                <Option value="Finance">Finance</Option>
-                <Option value="Banking">Banking</Option>
-                <Option value="Remittance">Remittance</Option>
-                <Option value="Load">Loan</Option>
-                <Option value="Bank Account">Bank Account</Option>
-              </Select>
-
-              {/* <select
-                id="type"
-                name="type"
-                className="border w-full border-gray-400 text-black p-2  rounded-lg focus:outline-none focus:border-blue-400"
-              >
-                <option value="default">Select blog type</option>
-                <option value="Finance">Finance</option>
-                <option value="Banking">Banking</option>
-                <option value="Remittance">Remittance</option>
-              </select> */}
-            </div>
+          {/* 3rd row */}{" "}
+          <div className="mb-4">
+            <Select
+              name="type"
+              variant="standard"
+              label="Select blog type"
+              success
+              value={blogType}
+              onChange={(selectedValue) => {
+                setBlogType(selectedValue);
+              }}
+            >
+              <Option value="Finance">Finance</Option>
+              <Option value="Banking">Banking</Option>
+              <Option value="Remittance">Remittance</Option>
+              <Option value="Loan">Loan</Option>
+              <Option value="Bank Account">Bank Account</Option>
+            </Select>
           </div>
           <div className="mb-4">
             <Textarea
@@ -103,19 +93,9 @@ const AddBlog = () => {
               name="post"
               variant="standard"
               label="Write your post "
-              placeholder="write here..."
               required
             />
-
-            {/* <textarea
-              id="post"
-              name="post"
-              className="border text-black border-gray-400 p-2  w-full rounded-lg focus:outline-none focus:border-blue-400"
-              rows="4"
-              cols="4"
-            ></textarea> */}
           </div>
-
           <div>
             <div className="flex">
               <button
