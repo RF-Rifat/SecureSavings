@@ -23,14 +23,16 @@ const Blogs = () => {
         <div className="flex-1 h-2 bg-teal-400"></div>
         <div className="flex-1 h-2 bg-teal-300"></div>
       </div>
-      <div className="grid grid-cols-1 mb-10 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
-        {blogs?.map((blog) => (
-          <BlogCard key={blog.id} blog={blog}></BlogCard>
-        ))}
+      <div>
+        {/* blog */}
+        <div className="grid grid-cols-1 mb-10 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+          {blogs?.map((blog) => (
+            <BlogCard key={blog._id} blog={blog}></BlogCard>
+          ))}
+        </div>
+        {/* sidebar */}
+        {/* <div>sidebar</div> */}
       </div>
-      {/* add blog */}
-
-      {/* {user && <AddBlog></AddBlog>} */}
     </div>
   );
 };
