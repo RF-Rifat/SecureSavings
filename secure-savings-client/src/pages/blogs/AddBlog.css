@@ -1,0 +1,9 @@
+.add-blog {
+  background-image: url("../../assets//images/marqueeItems/blogBG.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+  opacity: 0.9;
+
+  /* background-blend-mode: darken; */
+}
