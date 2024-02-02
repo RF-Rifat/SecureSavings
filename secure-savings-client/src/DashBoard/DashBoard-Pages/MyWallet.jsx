@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AdminDataContext } from "../../Context/AdminProvider";
 import { useDispatch } from "react-redux";
 import { increment } from "../../redux/counterSlice";
+import toast from "react-hot-toast";
 
 const MyWallet = () => {
   const authInfo = useContext(AdminDataContext);
@@ -16,12 +17,15 @@ const MyWallet = () => {
     const form = e.target;
     const idNumber = form.idNumber.value;
     const money = form.money.value;
+
+    toast.success('Balance added Successfully!')
+
     console.log(idNumber, money);
     dispatch(increment())
     form.reset();
   }
 
-  
+
   return (
     <>
       <div className="py-7 flex w-full gap-7 transition-all duration-1000 ease-in-out ">
@@ -102,7 +106,7 @@ const MyWallet = () => {
                         />
                       </div>
                       <footer className="px-4 pb-4">
-                        <button 
+                        <button
                           className="submit-button px-4 py-3 rounded-full bg-[#2195f3] text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors"
                         >
                           Send Money
