@@ -2,10 +2,14 @@ import { useContext } from "react";
 import BarChart from "./BarChart";
 import { DashboardTimeLine } from "./DashBoardTimeline";
 import { AdminDataContext } from "../../Context/AdminProvider";
+import useGetData from "../../Hooks/useGetData";
+
 
 const Dashboard = () => {
   const authInfo = useContext(AdminDataContext);
-  const { LoggedUser, isAdmin } = authInfo;
+  const { LoggedUser, isAdmin} = authInfo;
+  const [userData] = useGetData("/api/user");
+  const totalBalance = userData.reduce((sum, user) => sum + user.balance, 0);
 
   return (
     <>
@@ -30,7 +34,8 @@ const Dashboard = () => {
                     Total Accounts
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    6389
+                    {/* {user.email} */}
+                    {userData.length}
                   </p>
                 </div>
               </div>
@@ -55,7 +60,7 @@ const Dashboard = () => {
                     Total Balance
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    $ 46,760,890.50
+                    {totalBalance}
                   </p>
                 </div>
               </div>
@@ -80,7 +85,7 @@ const Dashboard = () => {
                     Total Transactions
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    376
+                    10
                   </p>
                 </div>
               </div>
@@ -105,7 +110,7 @@ const Dashboard = () => {
                     Total Loans
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    35
+                    3
                   </p>
                 </div>
               </div>
