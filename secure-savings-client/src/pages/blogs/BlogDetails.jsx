@@ -29,7 +29,7 @@ const BlogDetails = () => {
   //   console.log(id);
   return (
     <div className="max-w-6xl mx-auto px-2 flex flex-col lg:flex-row gap-5">
-      <Card className="max-w-2xl overflow-hidden bg-gray-50  font-poppins dark:bg-gray-900">
+      <Card className="max-w-2xl overflow-hidden bg-gray-50  font-poppins dark:bg-gray-800">
         <CardHeader
           floated={false}
           shadow={false}

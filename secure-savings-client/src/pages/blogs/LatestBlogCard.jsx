@@ -12,7 +12,7 @@ const LatestBlogCard = ({ blog }) => {
   return (
     <div>
       {" "}
-      <Card className="w-full h-[190px] max-w-[500px] flex-row  bg-gray-50 font-poppins dark:bg-gray-900 hover:p-1 ">
+      <Card className="w-full h-[190px] max-w-[500px] flex-row  bg-gray-50 font-poppins dark:bg-gray-800 hover:p-1 ">
         <CardHeader
           shadow={false}
           floated={false}
@@ -21,7 +21,7 @@ const LatestBlogCard = ({ blog }) => {
           <img
             src={blogImage}
             alt="blog-image"
-            className="h-[150px] w-full object-cover"
+            className="h-[190px] w-full object-cover"
           />
         </CardHeader>
         <CardBody>
