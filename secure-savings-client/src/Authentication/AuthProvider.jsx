@@ -15,7 +15,7 @@ import BASE_URL from "../Hooks/Api.jsx";
 export const AuthProvider = createContext(null);
 
 // eslint-disable-next-line react/prop-types
-const Provider = ({ children }) => {
+const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
@@ -142,4 +142,4 @@ const Provider = ({ children }) => {
   );
 };
 
-export default Provider;
+export default UserProvider;
