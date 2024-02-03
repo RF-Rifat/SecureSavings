@@ -21,7 +21,7 @@ const TABLE_HEAD = ["Sender Name", "Receiver Id", "Amount", "Date", "Status"];
 const TABLE_ROWS = [
     {
         img: "https://docs.material-tailwind.com/img/logos/logo-spotify.svg",
-        name: "Spotify",
+        name: "Mosaddek",
         amount: "$2,500",
         date: "Wed 3:00pm",
         status: "approved",
@@ -31,7 +31,7 @@ const TABLE_ROWS = [
     },
     {
         img: "https://docs.material-tailwind.com/img/logos/logo-amazon.svg",
-        name: "Amazon",
+        name: "Mosaddek",
         amount: "$5,000",
         date: "Wed 1:00pm",
         status: "approved",
@@ -41,7 +41,7 @@ const TABLE_ROWS = [
     },
     {
         img: "https://docs.material-tailwind.com/img/logos/logo-pinterest.svg",
-        name: "Pinterest",
+        name: "Mosaddek",
         amount: "$3,400",
         date: "Mon 7:40pm",
         status: "pending",
@@ -51,7 +51,7 @@ const TABLE_ROWS = [
     },
     {
         img: "https://docs.material-tailwind.com/img/logos/logo-google.svg",
-        name: "Google",
+        name: "Mosaddek",
         amount: "$1,000",
         date: "Wed 5:00pm",
         status: "approved",
@@ -61,7 +61,7 @@ const TABLE_ROWS = [
     },
     {
         img: "https://docs.material-tailwind.com/img/logos/logo-netflix.svg",
-        name: "netflix",
+        name: "Mosaddek",
         amount: "$14,000",
         date: "Wed 3:30am",
         status: "cancelled",
@@ -140,100 +140,101 @@ const MyWallet = () => {
                                         : "p-4 border-b border-blue-gray-50";
 
                                     return (
-                                        <tr key={name}>
-                                            <td className={classes}>
-                                                <div className="flex items-center gap-3">
-                                                    <Avatar
-                                                        src={'img'}
-                                                        alt={name}
-                                                        size="md"
-                                                        className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
-                                                    />
-                                                    <Typography
-                                                        variant="small"
-                                                        color="blue-gray"
-                                                        className="font-bold"
-                                                    >
-                                                        {name}
-                                                    </Typography>
-                                                </div>
-                                            </td>
-                                            <td className={classes}>
-                                                <div className="flex items-center gap-3">
-                                                    <div className="h-9 w-12 rounded-md border border-blue-gray-50 p-1">
-                                                        <Avatar
-                                                            src={
-                                                                account === "visa"
-                                                                    ? "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/visa.png"
-                                                                    : "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/mastercard.png"
-                                                            }
-                                                            size="sm"
-                                                            alt={account}
-                                                            variant="square"
-                                                            className="h-full w-full object-contain p-1"
-                                                        />
-                                                    </div>
-                                                    <div className="flex flex-col">
-                                                        <Typography
-                                                            variant="small"
-                                                            color="blue-gray"
-                                                            className="font-normal capitalize"
-                                                        >
-                                                            {account.split("-").join(" ")} {accountNumber}
-                                                        </Typography>
-                                                        <Typography
-                                                            variant="small"
-                                                            color="blue-gray"
-                                                            className="font-normal opacity-70"
-                                                        >
-                                                            {expiry}
-                                                        </Typography>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td className={classes}>
-                                                <Typography
-                                                    variant="small"
-                                                    color="blue-gray"
-                                                    className="font-normal"
-                                                >
-                                                    {amount}
-                                                </Typography>
-                                            </td>
-                                            <td className={classes}>
-                                                <Typography
-                                                    variant="small"
-                                                    color="blue-gray"
-                                                    className="font-normal"
-                                                >
-                                                    {date}
-                                                </Typography>
-                                            </td>
-                                            <td className={classes}>
-                                                <div className="w-max">
-                                                    <Chip
-                                                        size="sm"
-                                                        variant="ghost"
-                                                        value={status}
-                                                        color={
-                                                            status === "approved"
-                                                                ? "green"
-                                                                : status === "pending"
-                                                                    ? "amber"
-                                                                    : "red"
-                                                        }
-                                                    />
-                                                </div>
-                                            </td>
+                                      <tr key={name}>
+                                        <td className={classes}>
+                                          <div className="flex items-center gap-3">
+                                            <Avatar
+                                              src="https://avatars.githubusercontent.com/u/138000438?v=4"
+                                              alt={name}
+                                              size="md"
+                                              className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
+                                            />
+                                            <Typography
+                                              variant="small"
+                                              color="blue-gray"
+                                              className="font-bold"
+                                            >
+                                              {name}
+                                            </Typography>
+                                          </div>
+                                        </td>
+                                        <td className={classes}>
+                                          <div className="flex items-center gap-3">
+                                            <div className="h-9 w-12 rounded-md border border-blue-gray-50 p-1">
+                                              <Avatar
+                                                src={
+                                                  account === "visa"
+                                                    ? "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/visa.png"
+                                                    : "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/mastercard.png"
+                                                }
+                                                size="sm"
+                                                alt={account}
+                                                variant="square"
+                                                className="h-full w-full object-contain p-1"
+                                              />
+                                            </div>
+                                            <div className="flex flex-col">
+                                              <Typography
+                                                variant="small"
+                                                color="blue-gray"
+                                                className="font-normal capitalize"
+                                              >
+                                                {account.split("-").join(" ")}{" "}
+                                                {accountNumber}
+                                              </Typography>
+                                              <Typography
+                                                variant="small"
+                                                color="blue-gray"
+                                                className="font-normal opacity-70"
+                                              >
+                                                {expiry}
+                                              </Typography>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td className={classes}>
+                                          <Typography
+                                            variant="small"
+                                            color="blue-gray"
+                                            className="font-normal"
+                                          >
+                                            {amount}
+                                          </Typography>
+                                        </td>
+                                        <td className={classes}>
+                                          <Typography
+                                            variant="small"
+                                            color="blue-gray"
+                                            className="font-normal"
+                                          >
+                                            {date}
+                                          </Typography>
+                                        </td>
+                                        <td className={classes}>
+                                          <div className="w-max">
+                                            <Chip
+                                              size="sm"
+                                              variant="ghost"
+                                              value={status}
+                                              color={
+                                                status === "approved"
+                                                  ? "green"
+                                                  : status === "pending"
+                                                  ? "amber"
+                                                  : "red"
+                                              }
+                                            />
+                                          </div>
+                                        </td>
 
-                                            {/* <td className={classes}>
+                                        {/* <td className={classes}>
                                                 <Tooltip content="Edit User">
                                                     <IconButton variant="text">
                                                         <PencilIcon className="h-4 w-4" />
                                                     </IconButton>
                                                 </Tooltip>
                                             </td> */}
-                                        </tr>
+                                      </tr>
                                     );
                                 },
                             )}

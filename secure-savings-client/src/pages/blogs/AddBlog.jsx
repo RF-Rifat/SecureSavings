@@ -2,18 +2,19 @@ import toast from "react-hot-toast";
 import { modifyData } from "../../Hooks/Api";
 import { useContext, useState } from "react";
 import { Input, Option, Select, Textarea } from "@material-tailwind/react";
-import "./AddBlog.css";
 import { AuthProvider } from "../../Authentication/AuthProvider";
-import blogBG from "../../assets/images/marqueeItems/blogBG.png";
+import "./AddBlog.css";
+import Lottie from "lottie-react";
+import blogImg from "../../../public/image/blog.json";
+
 const AddBlog = () => {
   const { user } = useContext(AuthProvider);
   const [blogType, setBlogType] = useState("");
+
   const handleNewBlog = async (e) => {
     e.preventDefault();
 
     const form = e.target;
-
-    // const blogType = document.getElementById("type").type.value;
     const currentDate = new Date();
     const formattedDate = currentDate.toDateString();
 
@@ -26,94 +27,94 @@ const AddBlog = () => {
       blogImage: form.image.value,
       post: form.post.value,
     };
-    // console.log(newBlog.title);
-    console.log(newBlog);
 
     try {
       const res = await modifyData("/api/blog", "POST", newBlog);
-      // console.log(res.acknowledged);
       if (res.acknowledged) {
-        toast.success("blog Post Successful");
+        toast.success("Blog Post Successful");
         form.reset();
       }
     } catch (error) {
       console.log(error);
     }
   };
-  return (
-    <div>
-      <div className="flex justify-center items-center">
-        <div>{/* <img className="w-full h-full" src={blogBG} alt="" /> */}</div>
 
-        <div className="add-blog   dark:bg-dark  rounded-lg px-8 py-6 mx-auto my-8">
-          <h2 className="text-3xl  dark:text-gray-200  font-semibold mb-4 text-center">
-            Add blog
-          </h2>
-          <form onSubmit={handleNewBlog} className=" md:px-32 lg:px-80">
-            {/* 1st row */}
-            <div className=" gap-5">
-              <div className="mb-4">
-                <Input
+  return (
+    <div className="bg-gradient-to-br flex justify-center items-center">
+      <div className="w-full max-w-3xl p-8">
+        <div className="bg-white p-8 rounded-lg shadow-lg md:flex md:items-center">
+          <div className="md:flex-shrink-0 mb-8 md:mb-0">
+            <Lottie
+              animationData={blogImg}
+              className="w-40 h-40 md:w-32 md:h-32"
+            />
+          </div>
+          <div className="md:ml-8 md:flex-1">
+            <h2 className="text-3xl font-semibold text-gray-800 mb-4 md:text-4xl">
+              Add Blog
+            </h2>
+            <form onSubmit={handleNewBlog} className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Input
+                    color="blue"
+                    className="text-black"
+                    name="title"
+                    variant="filled"
+                    label="Blog Title"
+                    placeholder="Type here.."
+                    required
+                  />
+                </div>
+                <div>
+                  <Input
+                    color="blue"
+                    name="image"
+                    variant="filled"
+                    label="Image Link"
+                    placeholder="Type here.."
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <Select
                   color="blue"
-                  className="text-black"
-                  name="title"
-                  variant="standard"
-                  label="Blog Title "
-                  placeholder="Type here.."
+                  required
+                  name="type"
+                  variant="filled"
+                  label="Select Blog Type"
+                  value={blogType}
+                  onChange={(selectedValue) => {
+                    setBlogType(selectedValue);
+                  }}
+                >
+                  <Option value="Finance">Finance</Option>
+                  <Option value="Banking">Banking</Option>
+                  <Option value="Remittance">Remittance</Option>
+                  <Option value="Loan">Loan</Option>
+                  <Option value="Bank Account">Bank Account</Option>
+                </Select>
+              </div>
+              <div>
+                <Textarea
+                  color="blue"
+                  name="post"
+                  variant="filled"
+                  label="Write your post"
                   required
                 />
               </div>
-              <div className="mb-4">
-                <Input
-                  color="blue"
-                  name="image"
-                  variant="standard"
-                  label="Image Link"
-                  placeholder="Type here.."
-                  required
-                />
-              </div>
-            </div>
-            {/* 3rd row */}{" "}
-            <div className="mb-4">
-              <Select
-                color="blue"
-                required
-                name="type"
-                variant="standard"
-                label="Select blog type"
-                value={blogType}
-                onChange={(selectedValue) => {
-                  setBlogType(selectedValue);
-                }}
-              >
-                <Option value="Finance">Finance</Option>
-                <Option value="Banking">Banking</Option>
-                <Option value="Remittance">Remittance</Option>
-                <Option value="Loan">Loan</Option>
-                <Option value="Bank Account">Bank Account</Option>
-              </Select>
-            </div>
-            <div className="mb-4">
-              <Textarea
-                color="blue"
-                name="post"
-                variant="standard"
-                label="Write your post "
-                required
-              />
-            </div>
-            <div>
-              <div className="flex">
+              <div className="flex justify-center">
                 <button
                   type="submit"
-                  className=" font-medium justify-center w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                  className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300"
                 >
                   Submit
                 </button>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>

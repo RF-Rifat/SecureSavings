@@ -78,7 +78,7 @@ const MyWallet = () => {
                       </div>
                     </header>
                     <form className="p-4" onSubmit={handleSubmit}>
-                      <div className="my-3">
+                      {/* <div className="my-3">
                         <input
                           type="text"
                           name="idNumber"
@@ -86,7 +86,7 @@ const MyWallet = () => {
                           placeholder="Card Image"
                           maxLength={19}
                         />
-                      </div>
+                      </div> */}
                       <div className="my-3">
                         <input
                           type="text"
