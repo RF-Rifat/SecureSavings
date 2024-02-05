@@ -4,6 +4,8 @@ import AddBlog from "./AddBlog";
 import { AuthProvider } from "../../Authentication/AuthProvider";
 import useGetData from "../../Hooks/useGetData";
 import Spinner from "../../Shared/Spinner";
+import SearchBar from "./SearchBar";
+import Filter from "./Filter";
 
 const Blogs = () => {
   const { user } = useContext(AuthProvider);
@@ -22,6 +24,10 @@ const Blogs = () => {
         <div className="flex-1 h-2 bg-teal-200"></div>
         <div className="flex-1 h-2 bg-teal-400"></div>
         <div className="flex-1 h-2 bg-teal-300"></div>
+      </div>
+      <div className="flex flex-col md:flex-row justify-center items-center gap-10  mb-5">
+        <Filter></Filter>
+        <SearchBar></SearchBar>
       </div>
       <div>
         {/* blog */}
