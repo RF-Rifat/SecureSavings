@@ -49,8 +49,13 @@ export function SideNav() {
         {
           icon: <FcCableRelease {...icon} />,
           name: "Transaction",
-          path: "/transactions"
-        }
+          path: "/transactions",
+        },
+        {
+          icon: <FcCableRelease {...icon} />,
+          name: "Chat",
+          path: "/chat",
+        },
       ],
     },
   ];
