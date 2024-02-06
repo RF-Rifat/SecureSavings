@@ -10,6 +10,7 @@ import {
   IconButton,
   Drawer,
   Badge,
+  Collapse,
 } from "@material-tailwind/react";
 import {
   UserCircleIcon,
@@ -20,6 +21,11 @@ import {
   CurrencyBangladeshiIcon,
   UserPlusIcon,
   WalletIcon,
+  SquaresPlusIcon,
+  UserGroupIcon,
+  Bars4Icon,
+  SunIcon,
+  HomeIcon,
 } from "@heroicons/react/24/solid";
 import { Link, NavLink } from "react-router-dom";
 import ToggleTheme from "../components/ToggleTheme";
@@ -160,40 +166,238 @@ const navListItems = [
   },
 ];
 
+// mega menu list
+const navListMenuItems = [
+  {
+    title: "Products",
+    description: "Find the perfect solution for your needs.",
+    icon: SquaresPlusIcon,
+  },
+  {
+    title: "About Us",
+    description: "Meet and learn about our dedication",
+    icon: UserGroupIcon,
+  },
+  {
+    title: "Blog",
+    description: "Find the perfect solution for your needs.",
+    icon: Bars4Icon,
+  },
+  {
+    title: "Services",
+    description: "Learn how we can help you achieve your goals.",
+    icon: SunIcon,
+  },
+];
+
+function NavListMenu() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const renderItems = navListMenuItems.map(
+    ({ icon, title, description }, key) => (
+      <a href="#" key={key}>
+        <MenuItem className="flex items-center gap-3 rounded-lg">
+          <div className="grid rounded-lg !bg-blue-gray-50 p-2 ">
+            {" "}
+            {React.createElement(icon, {
+              strokeWidth: 2,
+              className: "h-6 text-gray-900 w-6",
+            })}
+          </div>
+          <div>
+            <Typography
+              variant="h6"
+              color="blue-gray"
+              className="flex items-center text-sm font-bold"
+            >
+              {title}
+            </Typography>
+            <Typography
+              variant="paragraph"
+              className="text-xs !font-medium text-blue-gray-500"
+            >
+              {description}
+            </Typography>
+          </div>
+        </MenuItem>
+      </a>
+    )
+  );
+
+  return (
+    <React.Fragment>
+      <Menu
+        open={isMenuOpen}
+        handler={setIsMenuOpen}
+        offset={{ mainAxis: 20 }}
+        placement="bottom"
+        allowHover={true}
+      >
+        <MenuHandler>
+          <div>
+            <div
+              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900 rounded-md text-start leading-tight cursor-pointer select-none transition-all hover:bg-none mt-2 mb-4 flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3"
+              selected={isMenuOpen || isMobileMenuOpen}
+              onClick={() => setIsMobileMenuOpen((cur) => !cur)}
+            >
+              Services
+              <ChevronDownIcon
+                strokeWidth={2.5}
+                className={`hidden h-3 w-3 transition-transform lg:block ${
+                  isMenuOpen ? "rotate-180" : ""
+                }`}
+              />
+              <ChevronDownIcon
+                strokeWidth={2.5}
+                className={`block h-3 w-3 transition-transform lg:hidden ${
+                  isMobileMenuOpen ? "rotate-180" : ""
+                }`}
+              />
+            </div>
+          </div>
+        </MenuHandler>
+        <MenuList className="hidden max-w-screen-xl rounded-xl lg:block">
+          <ul className="grid grid-cols-3 gap-y-2 outline-none outline-0">
+            {renderItems}
+          </ul>
+        </MenuList>
+      </Menu>
+      <div className="block lg:hidden">
+        <Collapse open={isMobileMenuOpen}>{renderItems}</Collapse>
+      </div>
+    </React.Fragment>
+  );
+}
+
 function NavList() {
   return (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-      {navListItems.map(({ label, icon, link }) => (
-        <NavLink
-          to={`/${link}`}
-          key={label}
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "active bg-dark dark:bg-white text-white dark:text-dark rounded-md"
-              : ""
-          }
-        >
-          <div className="font-medium text-lg text-center">
-            <div className="flex items-center  lg:rounded-full hover:bg-none mt-2 mb-4  flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3 gap-2">
-              {React.createElement(icon, {
-                className:
-                  "h-[18px] w-[18px] dark:text-darkText antialiased font-sans text-gray-700 font-medium text-lg text-center",
-              })}{" "}
-              <span
-                className={`py-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
-              >
-                {" "}
-                {label}
-              </span>
-            </div>
+      <NavLink
+        to={`/`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "active bg-dark dark:bg-white text-white dark:text-dark rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center">
+          <div className="flex items-center lg:rounded-full hover:bg-none mt-2 mb-4  flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3 gap-2">
+            <HomeIcon className="h-[18px] w-[18px] dark:text-darkText antialiased font-sans text-gray-700 font-medium text-lg text-center" />
+            <span
+              className={`py-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              Home
+            </span>
           </div>
-        </NavLink>
-      ))}
+        </div>
+      </NavLink>
+      <NavListMenu />
+      <NavLink
+        to={`/aboutUs`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "active bg-dark dark:bg-white text-white dark:text-dark rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center">
+          <div className="flex items-center  lg:rounded-full hover:bg-none mt-2 mb-4  flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3 gap-2">
+            <UserPlusIcon className="h-[18px] w-[18px] dark:text-darkText antialiased font-sans text-gray-700 font-medium text-lg text-center" />
+            <span
+              className={`py-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              About Us
+            </span>
+          </div>
+        </div>
+      </NavLink>
+      <NavLink
+        to={`/blog`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "active bg-dark dark:bg-white text-white dark:text-dark rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center">
+          <div className="flex items-center  lg:rounded-full hover:bg-none mt-2 mb-4  flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3 gap-2">
+            <WalletIcon className="h-[18px] w-[18px] dark:text-darkText antialiased font-sans text-gray-700 font-medium text-lg text-center" />
+            <span
+              className={`py-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              Blog
+            </span>
+          </div>
+        </div>
+      </NavLink>
+      <NavLink
+        to={`/contact`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "active bg-dark dark:bg-white text-white dark:text-dark rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center">
+          <div className="flex items-center  lg:rounded-full hover:bg-none mt-2 mb-4  flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3 gap-2">
+            <ChatBubbleLeftEllipsisIcon className="h-[18px] w-[18px] dark:text-darkText antialiased font-sans text-gray-700 font-medium text-lg text-center" />
+            <span
+              className={`py-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              Contact
+            </span>
+          </div>
+        </div>
+      </NavLink>
     </ul>
   );
 }
+// function NavList() {
+//   return (
+//     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+//       {navListItems.map(({ label, icon, link }) => (
+//         <NavLink
+//           to={`/${link}`}
+//           key={label}
+//           className={({ isActive, isPending }) =>
+//             isPending
+//               ? "pending"
+//               : isActive
+//               ? "active bg-dark dark:bg-white text-white dark:text-dark rounded-md"
+//               : ""
+//           }
+//         >
+//           <div className="font-medium text-lg text-center">
+//             <div className="flex items-center  lg:rounded-full hover:bg-none mt-2 mb-4  flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3 gap-2">
+//               {React.createElement(icon, {
+//                 className:
+//                   "h-[18px] w-[18px] dark:text-darkText antialiased font-sans text-gray-700 font-medium text-lg text-center",
+//               })}{" "}
+//               <span
+//                 className={`py-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+//               >
+//                 {" "}
+//                 {label}
+//               </span>
+//             </div>
+//           </div>
+//         </NavLink>
+//       ))}
+//     </ul>
+//   );
+// }
 
 function DrawerNavList() {
   return (

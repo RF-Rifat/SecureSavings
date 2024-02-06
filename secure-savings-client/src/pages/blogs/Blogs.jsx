@@ -1,15 +1,10 @@
-import { useContext, useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
-import AddBlog from "./AddBlog";
-import { AuthProvider } from "../../Authentication/AuthProvider";
 import useGetData from "../../Hooks/useGetData";
 import Spinner from "../../Shared/Spinner";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
 
 const Blogs = () => {
-  const { user } = useContext(AuthProvider);
-
   const [blogs, isLoading] = useGetData("/api/blog");
   // console.log(blogs);
   if (isLoading) {
@@ -25,10 +20,12 @@ const Blogs = () => {
         <div className="flex-1 h-2 bg-teal-400"></div>
         <div className="flex-1 h-2 bg-teal-300"></div>
       </div>
+
       <div className="flex flex-col md:flex-row justify-center items-center gap-10  mb-5">
         <Filter></Filter>
         <SearchBar></SearchBar>
       </div>
+
       <div>
         {/* blog */}
         <div className="grid grid-cols-1 mb-10 md:grid-cols-2 lg:grid-cols-3 gap-4 ">

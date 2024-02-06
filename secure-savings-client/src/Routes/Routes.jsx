@@ -18,6 +18,7 @@ import CustomProfile from "../DashBoard/DashBoard-Pages/CustomProfile";
 import AddBlog from "../pages/blogs/AddBlog";
 import Transactions from "../pages/Transactions/Transactions";
 import BlogDetails from "../pages/blogs/BlogDetails";
+import AdminChat from "../DashBoard/DashBoard-Pages/AdminChat";
 
 export const router = createBrowserRouter([
   {
@@ -48,7 +49,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/blog-details/:id",
-        element: <BlogDetails />,
+        element: (
+          <PrivateRoute>
+            <BlogDetails />,
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -84,6 +89,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/transactions",
         element: <Transactions />,
+      },
+      {
+        path: "/dashboard/chat",
+        element: <AdminChat />,
       },
     ],
   },
