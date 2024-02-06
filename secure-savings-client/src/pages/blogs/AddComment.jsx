@@ -1,23 +1,35 @@
 import { Button, Textarea } from "@material-tailwind/react";
 import { useContext } from "react";
 import { AuthProvider } from "../../Authentication/AuthProvider";
+import { modifyData } from "../../Hooks/Api";
+import toast from "react-hot-toast";
 
 const AddComment = ({ id }) => {
   const { user } = useContext(AuthProvider);
-
   // add comment
-  const handleAddComment = (e) => {
+  const handleAddComment = async (e) => {
     e.preventDefault();
     const form = e.target;
     const currentDate = new Date();
-
+    const formattedDate = currentDate.toDateString();
     const newComment = {
       name: user?.displayName,
-      date: currentDate,
+      photo: user?.photoURL,
+      date: formattedDate,
       comment: form?.comment?.value,
       blogId: id,
     };
-    console.log("added", newComment);
+    // console.log("added", newComment);
+    try {
+      const res = await modifyData("/api/comment", "POST", newComment);
+      if (res.acknowledged) {
+        console.log(res);
+        toast.success("Thanks for your valuable comment.");
+        form.reset();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
