@@ -31,7 +31,7 @@ const AddBlog = () => {
     try {
       const res = await modifyData("/api/blog", "POST", newBlog);
       if (res.acknowledged) {
-        toast.success("Blog Post Successful");
+        toast.success("Blog Posted Successfully");
         form.reset();
       }
     } catch (error) {
