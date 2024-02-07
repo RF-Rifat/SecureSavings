@@ -7,6 +7,7 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Input,
   Typography,
 } from "@material-tailwind/react";
 import LatestBlog from "./LatestBlog";
@@ -24,6 +25,7 @@ const BlogDetails = () => {
   }, [id, blogs]);
   //   console.log(blogDetails);
   //   const { title, post, blogImage } = blogDetails;
+  console.log(blogs);
   if (isLoading) {
     return <Spinner></Spinner>;
   }
@@ -91,23 +93,21 @@ const BlogDetails = () => {
                   className="rounded-lg shadow-xl mb-8"
                 />
                 <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-inherit">
-                  The New Material Tailwind Update is Live
+                  {blogDetails?.title}
                 </h4>
               </a>
               <p className="block antialiased font-sans text-base font-light leading-relaxed text-inherit mb-4">
-                In this article, we&apos;ll explore the new updates from
-                Material Tailwind HTML and Material Tailwind React that focus on
-                enhancing user experience and broadening functionality.
+                {blogDetails?.post}
               </p>
               <div className="flex items-center border-b pb-6">
                 <img
-                  src={blogDetails?.blogImage}
+                  src={blogDetails?.authorImage}
                   alt="Added by"
                   className="inline-block relative object-cover object-center !rounded-full w-9 h-9 shadow"
                 />
                 <div>
                   <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-inherit ml-2">
-                    Alexandra Murtaza
+                    {blogDetails?.name}
                   </h6>
                 </div>
               </div>
@@ -116,23 +116,15 @@ const BlogDetails = () => {
           <div className="w-full lg:w-80 ml-auto">
             <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md mt-6">
               <div className="p-6">
-                <form
-                  action="https://gmail.us13.list-manage.com/subscribe/post?u=2343d646c60fd2780c7858d3b&id=aae21e5fd9&f_id=00c88fe4f0"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  className="mt-4 lg:mt-0"
-                  target="_self"
-                  noValidate=""
-                >
+                <form className="mt-4 lg:mt-0" target="_self" noValidate="">
                   <div className="mt-6 w-full lg:mt-0">
                     <div className="relative w-full min-w-[200px] h-10">
-                      <input
+                      <Input
+                        label="Search with blog title"
                         required=""
-                        type="email"
-                        name="EMAIL"
-                        id="mce-EMAIL"
-                        placeholder="Enter your email"
+                        type="search"
+                        name="search"
+                        id="search"
                         className="peer w-full h-full bg-transparent font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 border-t-transparent focus:border-t-transparent text-sm py-2.5 rounded-[7px] border-blue-gray-200 focus:border-gray-900 !border-[1.5px]  !bg-white !px-4 text-primary !ring-transparent placeholder:text-gray-600  focus:!border-t-primary focus:ring-primary/20"
                       />
                       <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-gray-500 peer-focus:text-gray-900 before:border-blue-gray-200 peer-focus:before:!border-gray-900 after:border-blue-gray-200 peer-focus:after:!border-gray-900 hidden">
@@ -149,7 +141,7 @@ const BlogDetails = () => {
                     id="mc-embedded-subscribe"
                     className="align-middle select-none font-sans text-center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none py-2 px-4 rounded-lg text-white shadow-md shadow-blue-gray-500/20 hover:shadow-lg hover:shadow-blue-gray-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none shrink-0 bg-primary text-base font-medium capitalize md:w-full mt-4"
                   >
-                    Subscribe
+                    Search
                   </button>
                 </form>
               </div>
@@ -162,7 +154,7 @@ const BlogDetails = () => {
                 <div className="flex items-center justify-between mb-2">
                   <a href="/blog/tag/frameworks">
                     <p className="block antialiased font-sans text-base font-light leading-relaxed text-blue-gray-900 hover:font-normal">
-                      Frameworks
+                      Latest Blog
                     </p>
                   </a>
                   <p className="block antialiased font-sans text-sm font-light leading-normal text-blue-gray-900">
