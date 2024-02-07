@@ -3,15 +3,17 @@ import { AdminDataContext } from "../../Context/AdminProvider";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { increment } from "../../redux/counterSlice";
-// // ---
+// One
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-// import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+// Two
+import { useState } from 'react';
+import Cards from 'react-credit-cards-2';
+import 'react-credit-cards-2/dist/es/styles-compiled.css';
 
 const MyWalletForm = () => {
     const authInfo = useContext(AdminDataContext);
     const { LoggedUser } = authInfo;
-    // , isAdmin
 
     // redux
     const dispatch = useDispatch();
@@ -29,10 +31,9 @@ const MyWalletForm = () => {
         form.reset();
     };
 
-    // ---
+    // One
     const stripe = useStripe();
     const elements = useElements();
-    // const navigate = useNavigate();
 
     const handleSub = async (event) => {
         event.preventDefault();
@@ -60,6 +61,24 @@ const MyWalletForm = () => {
             // navigate('/dashboard/myEnrollClass')
             console.log('Payment method', paymentMethod);
         }
+    }
+    // Two
+    const [state, setState] = useState({
+        number: '',
+        expiry: '',
+        cvc: '',
+        name: '',
+        focus: '',
+    });
+
+    const handleInputChange = (evt) => {
+        const { name, value } = evt.target;
+
+        setState((prev) => ({ ...prev, [name]: value }));
+    }
+
+    const handleInputFocus = (evt) => {
+        setState((prev) => ({ ...prev, focus: evt.target.name }));
     }
 
     return (
@@ -150,7 +169,7 @@ const MyWalletForm = () => {
                     </div>
                 </div>
             </div>
-            {/*  */}
+            {/* One */}
             <div className="w-2/3 mx-auto my-24">
                 <form onSubmit={handleSub}>
                     <CardElement
@@ -172,6 +191,27 @@ const MyWalletForm = () => {
                     <button className="btn btn-sm bg-light-blue-700 font-bold text-white py-3 px-10 rounded-lg mt-5" type="submit" disabled={!stripe}>
                         Pay
                     </button>
+                </form>
+            </div>
+            {/* Two */}
+            <div>
+                <Cards
+                    number={state.number}
+                    expiry={state.expiry}
+                    cvc={state.cvc}
+                    name={state.name}
+                    focused={state.focus}
+                />
+                <form>
+                    <input
+                        type="number"
+                        name="number"
+                        placeholder="Card Number"
+                        value={state.number}
+                        onChange={handleInputChange}
+                        onFocus={handleInputFocus}
+                    />
+                    ...
                 </form>
             </div>
         </>
