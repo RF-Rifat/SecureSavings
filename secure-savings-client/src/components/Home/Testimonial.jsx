@@ -85,9 +85,9 @@ const Testimonial = () => {
   return (
     <>
       <div className="max-w-full min-w-[350px] mx-auto h-[400px]">
-        <div className="px-4 text-center md:mt-6">
+        <div className="px-4 text-center md:m-6">
           <h2 className="pb-2 text-2xl font-semibold text-gray-800 md:text-4xl dark:text-gray-300">
-            LATEST BLOGS
+            Testimonials
           </h2>
           <div className="flex w-32 mt-1 overflow-hidden rounded mx-auto">
             <div className="flex-1 h-2 bg-teal-200"></div>
