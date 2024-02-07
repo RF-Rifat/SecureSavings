@@ -3,8 +3,10 @@ import { useContext } from "react";
 import { AuthProvider } from "../../Authentication/AuthProvider";
 import { modifyData } from "../../Hooks/Api";
 import toast from "react-hot-toast";
+import useComment from "../../Hooks/useComment";
 
 const AddComment = ({ id }) => {
+  const [, refetch] = useComment();
   const { user } = useContext(AuthProvider);
   // add comment
   const handleAddComment = async (e) => {
@@ -19,13 +21,13 @@ const AddComment = ({ id }) => {
       comment: form?.comment?.value,
       blogId: id,
     };
-    // console.log("added", newComment);
     try {
       const res = await modifyData("/api/comment", "POST", newComment);
       if (res.acknowledged) {
         console.log(res);
         toast.success("Thanks for your valuable comment.");
         form.reset();
+        refetch();
       }
     } catch (error) {
       console.log(error);

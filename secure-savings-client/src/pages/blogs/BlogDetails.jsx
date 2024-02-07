@@ -11,6 +11,7 @@ import {
 } from "@material-tailwind/react";
 import LatestBlog from "./LatestBlog";
 import AddComment from "./AddComment";
+import Comments from "./comments/Comments";
 
 const BlogDetails = () => {
   const [blogDetails, setDetails] = useState("");
@@ -62,19 +63,31 @@ const BlogDetails = () => {
           </CardFooter>
         </Card>
 
-        <div>
-          <h1 className="text-3xl  font-semibold mt-5 lg:mt-0 mb-2 text-center lg:text-left">
+        <div className="hidden  lg:block">
+          <h1 className="text-3xl   font-semibold mt-5 lg:mt-0 mb-2 text-center lg:text-left">
             Others Blog
           </h1>
-          <div className="overflow-y-auto h-[400px]">
+          <div className="lg:overflow-y-auto lg:h-[400px]">
             <LatestBlog></LatestBlog>
           </div>
         </div>
       </div>
 
+      <div>
+        <Comments id={id}></Comments>
+      </div>
       {/* add comment */}
+
       <div className="mt-10">
         <AddComment id={id}></AddComment>
+      </div>
+      <div className=" block  lg:hidden ">
+        <h1 className="text-3xl font-semibold mt-5 lg:mt-0 mb-2 text-center lg:text-left">
+          Others Blog
+        </h1>
+        <div className="lg:overflow-y-auto lg:h-[400px]">
+          <LatestBlog></LatestBlog>
+        </div>
       </div>
     </div>
   );
