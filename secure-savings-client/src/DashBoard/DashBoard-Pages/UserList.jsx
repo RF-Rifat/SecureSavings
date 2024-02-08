@@ -17,6 +17,8 @@ import {
   Tooltip,
 } from "@material-tailwind/react";
 import useGetData from "../../Hooks/useGetData";
+// import { MdOutlineMailOutline } from "react-icons/md";
+import EmailModal from "./EmailModal";
 
 const TABS = [
   {
@@ -42,7 +44,6 @@ const TABLE_HEAD = [
 ];
 
 export default function UserList() {
-  
   const [userData] = useGetData("/api/user");
 
   return (
@@ -176,9 +177,11 @@ export default function UserList() {
                       </Typography>
                     </td>
                     <td className={classes}>
-                      <Tooltip content="Edit User">
+                      <Tooltip content="Send Email">
                         <IconButton variant="text">
-                          <PencilIcon className="h-4 w-4" />
+                          {/* <PencilIcon className="h-4 w-4" /> */}
+
+                          <EmailModal></EmailModal>
                         </IconButton>
                       </Tooltip>
                     </td>
