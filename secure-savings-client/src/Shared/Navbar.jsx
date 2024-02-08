@@ -195,7 +195,7 @@ function NavListMenu() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const renderItems = navListMenuItems.map(
     ({ icon, title, description }, key) => (
-      <a href="#" key={key}>
+      <Link to="homeloan" key={key}>
         <MenuItem className="flex items-center gap-3 rounded-lg">
           <div className="grid rounded-lg !bg-blue-gray-50 p-2 ">
             {" "}
@@ -220,7 +220,8 @@ function NavListMenu() {
             </Typography>
           </div>
         </MenuItem>
-      </a>
+      
+      </Link>
     )
   );
 
