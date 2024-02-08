@@ -38,6 +38,16 @@ const EmiCalculator = () => {
   return (
     <>
       <div className="mb-5 max-w-screen-2xl mx-auto dark:bg-dark">
+        <div className="px-4 pt-14 text-center md:m-6">
+          <h2 className="pb-2 text-2xl font-semibold text-gray-800 md:text-4xl dark:text-gray-300">
+            Loan Calculation Services <br /> Division
+          </h2>
+          <div className="flex w-32 mt-1 overflow-hidden rounded mx-auto">
+            <div className="flex-1 h-2 bg-teal-200"></div>
+            <div className="flex-1 h-2 bg-teal-400"></div>
+            <div className="flex-1 h-2 bg-teal-300"></div>
+          </div>
+        </div>
         <div className="flex lg:flex-row flex-col-reverse items-center gap-5 p-3">
           <div className="lg:w-1/2 w-full lg:pt-10 p-5">
             <h4 className="text-red-400 text-[18px] font-semibold">

@@ -161,18 +161,21 @@ const ContactPage = () => {
                   <input
                     type="text"
                     name="name"
+                    required
                     placeholder="Your Name"
                     className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3"
                   />
                   <input
-                    type="text"
+                    type="email"
                     name="email"
+                    required
                     placeholder="Your Email"
                     className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3 mt-3"
                   />
                   <input
-                    type="text"
+                    type="number"
                     name="phone"
+                    required
                     placeholder="Your Phone"
                     className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3 mt-3"
                   />
@@ -180,6 +183,7 @@ const ContactPage = () => {
                     rows="6"
                     placeholder="Your Message"
                     name="message"
+                    required
                     className="w-full dark:bg-dark dark:text-darkText rounded border border-primary p-3 mt-3"
                   />
                   <div>
@@ -192,7 +196,7 @@ const ContactPage = () => {
                   </div>
                 </form>
                 <div>
-                  <span className="absolute -right-9 -top-10 z-[-1]">
+                  <span className="absolute -right-9 -top-10 z-[-1] pr-12 mt-5">
                     <svg
                       width={100}
                       height={100}
