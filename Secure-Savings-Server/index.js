@@ -47,6 +47,7 @@ async function run() {
     const messageCollection = client.db("Secure-Savings").collection("Message");
     const blogCollection = client.db("Secure-Savings").collection("blog");
     const commentCollection = client.db("Secure-Savings").collection("comment");
+    const userLoan = client.db("Secure-Savings").collection("loan");
 
     // Messaging App with socket.io
 
@@ -134,6 +135,13 @@ async function run() {
             .skip(page * size)
             .limit(size)
             .toArray();
+        }else if (type.toLowerCase().trim() === "loan") {
+          result = await userLoan
+            .find()
+            .sort({ _id: -1 })
+            .skip(page * size)
+            .limit(size)
+            .toArray();
         }
 
         res.send(result);
@@ -158,6 +166,8 @@ async function run() {
           result = await blogCollection.insertOne(data);
         } else if (type.toLowerCase().trim() === "comment") {
           result = await commentCollection.insertOne(data);
+        }else if (type.toLowerCase().trim() === "loan") {
+          result = await userLoan.insertOne(data);
           // console.log(result);
         }
         res.send(result);
