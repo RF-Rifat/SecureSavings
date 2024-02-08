@@ -127,6 +127,13 @@ async function run() {
             .skip(page * size)
             .limit(size)
             .toArray();
+        } else if (type.toLowerCase().trim() === "comment") {
+          result = await commentCollection
+            .find()
+            .sort({ _id: -1 })
+            .skip(page * size)
+            .limit(size)
+            .toArray();
         }
 
         res.send(result);
@@ -151,7 +158,7 @@ async function run() {
           result = await blogCollection.insertOne(data);
         } else if (type.toLowerCase().trim() === "comment") {
           result = await commentCollection.insertOne(data);
-          console.log(result);
+          // console.log(result);
         }
         res.send(result);
       } catch (error) {
