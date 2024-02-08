@@ -24,7 +24,7 @@ const AddComment = ({ id }) => {
     try {
       const res = await modifyData("/api/comment", "POST", newComment);
       if (res.acknowledged) {
-        console.log(res);
+        // console.log(res);
         toast.success("Thanks for your valuable comment.");
         form.reset();
         refetch();
