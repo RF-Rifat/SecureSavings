@@ -12,6 +12,8 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { FaGreaterThan } from "react-icons/fa6";
+import { modifyData } from "../../Hooks/Api";
+import toast from "react-hot-toast";
 
 function Icon({ id, open }) {
   return (
@@ -35,8 +37,38 @@ function Icon({ id, open }) {
 }
 const HomeLoan = () => {
   const [open, setOpen] = useState(0);
+  const [financing, setFinancing] = useState("");
+  const [banking, setBanking] = useState("");
+  const [loanAmount, setLoanAmount] = useState(0);
+  const [selectedRadio, setSelectedRadio] = useState("12 months");
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
+
+  const handleLoan = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const currentDate = new Date();
+    const formattedDate = currentDate.toDateString();
+    const useLoan = {
+      financing,
+      banking,
+      loanAmount,
+      formattedDate,
+      selectedRadio,
+    };
+    console.log(selectedRadio);
+
+    try {
+      const res = await modifyData("/api/loan", "POST", useLoan);
+      if (res.acknowledged) {
+        toast.success("Application submitted");
+        form.reset();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <div className="bg-[#F5FAFF] relative">
@@ -81,9 +113,10 @@ const HomeLoan = () => {
               </div>
               <div className="flex justify-center gap-5 mt-5">
                 <a href="#applyloan">
-                <Button className="md:rounded-full bg-black dark:bg-[#003E5B]">
-                  Apply for home loan
-                </Button></a>
+                  <Button className="md:rounded-full bg-black dark:bg-[#003E5B]">
+                    Apply for home loan
+                  </Button>
+                </a>
                 <Button
                   variant="outlined"
                   className="md:rounded-full outline-[#003E5B]"
@@ -247,78 +280,111 @@ const HomeLoan = () => {
                     <p className="dark:text-[#003E5B]">Home Loan</p>
                   </div>
                 </div>
-                <div className="flex md:flex-row flex-col gap-5 my-10">
-                  <Select label="Choose your financing type" success>
-                    <Option className="text-green-600">Debt Financing</Option>
-                    <Option className="text-green-600">Equity Finance</Option>
-                  </Select>
-                  <Select label="Choose your preferred bank service" success>
-                    <Option className="text-green-600">Digital Banking</Option>
-                    <Option className="text-green-600">
-                      Individual Banking
-                    </Option>
-                  </Select>
-                </div>
-                <div className="my-5">
-                  <Input color="teal" label="Your loan amount" success />
-                </div>
-                <div className="flex flex-col md:flex-row gap-10">
-                  <Radio
-                    name="type"
-                    ripple={false}
-                    className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
-                    label={
-                      <Typography
-                        color="blue-gray"
-                        className="font-normal text-green-600"
+
+                <form onSubmit={handleLoan}>
+                  <div className="flex md:flex-row flex-col gap-5 my-10">
+                    <Select
+                      name="financing"
+                      onChange={(selectedValue) => setFinancing(selectedValue)}
+                      label="Choose your financing type"
+                      success
+                    >
+                      <Option value="debtFinancing" className="text-green-600">
+                        Debt Financing
+                      </Option>
+                      <Option value="equityFinance" className="text-green-600">
+                        Equity Finance
+                      </Option>
+                    </Select>
+                    <Select
+                      name="banking"
+                      onChange={(selectedValue) => setBanking(selectedValue)}
+                      label="Choose your preferred bank service"
+                      success
+                    >
+                      <Option value="digitalBanking" className="text-green-600">
+                        Digital Banking
+                      </Option>
+                      <Option
+                        value="individualBanking"
+                        className="text-green-600"
                       >
-                        6 months
-                      </Typography>
-                    }
-                  />
-                  <Radio
-                    name="type"
-                    defaultChecked
-                    ripple={false}
-                    className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
-                    label={
-                      <Typography
-                        color="blue-gray"
-                        className="font-normal text-green-600"
-                      >
-                        12 months
-                      </Typography>
-                    }
-                  />
-                  <Radio
-                    name="type"
-                    defaultChecked
-                    ripple={false}
-                    className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
-                    label={
-                      <Typography
-                        color="blue-gray"
-                        className="font-normal text-green-600"
-                      >
-                        24 months
-                      </Typography>
-                    }
-                  />
-                  <Radio
-                    name="type"
-                    defaultChecked
-                    ripple={false}
-                    className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
-                    label={
-                      <Typography
-                        color="blue-gray"
-                        className="font-normal text-green-600"
-                      >
-                        36 months
-                      </Typography>
-                    }
-                  />
-                </div>
+                        Individual Banking
+                      </Option>
+                    </Select>
+                  </div>
+                  <div className="my-5">
+                    <Input
+                      name="loanAmount"
+                      onChange={(e) => setLoanAmount(e.target.value)}
+                      color="teal"
+                      label="Your loan amount"
+                      success
+                    />
+                  </div>
+                  <div className="flex flex-col md:flex-row gap-10">
+                    <Radio
+                    onChange={() => setSelectedRadio("6 months")}
+                      name="type"
+                      ripple={false}
+                      className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                      label={
+                        <Typography
+                          color="blue-gray"
+                          className="font-normal text-green-600"
+                        >
+                          6 months
+                        </Typography>
+                      }
+                    />
+                    <Radio
+                      name="type"
+                      onChange={() => setSelectedRadio("12 months")}
+                      defaultChecked
+                      ripple={false}
+                      className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                      label={
+                        <Typography
+                          color="blue-gray"
+                          className="font-normal text-green-600"
+                        >
+                          12 months
+                        </Typography>
+                      }
+                    />
+                    <Radio
+                      name="type"
+                      onChange={() => setSelectedRadio("24 months")}
+                      ripple={false}
+                      className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                      label={
+                        <Typography
+                          color="blue-gray"
+                          className="font-normal text-green-600"
+                        >
+                          24 months
+                        </Typography>
+                      }
+                    />
+                    <Radio
+                      name="type"
+                      onChange={() => setSelectedRadio("36 months")}
+                      ripple={false}
+                      className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                      label={
+                        <Typography
+                          color="blue-gray"
+                          className="font-normal text-green-600"
+                        >
+                          36 months
+                        </Typography>
+                      }
+                    />
+                  </div>
+                  <Button type="submit" className="btn">
+                    Apply Loan
+                  </Button>
+                </form>
               </div>
             </div>
           </div>
