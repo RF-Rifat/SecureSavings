@@ -174,8 +174,8 @@ const navListMenuItems = [
     icon: SquaresPlusIcon,
   },
   {
-    title: "About Us",
-    description: "Meet and learn about our dedication",
+    title: "Business Loans",
+    description: "A business Loan, Just as You Need It",
     icon: UserGroupIcon,
   },
   {
