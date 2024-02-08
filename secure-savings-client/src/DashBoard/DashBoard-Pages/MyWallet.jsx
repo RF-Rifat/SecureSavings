@@ -258,7 +258,6 @@ const MyWallet = () => {
           </div>
         </div>
       </div>
-
       {/* Form section */}
       <Elements stripe={stripePromise}>
         <MyWalletForm />
