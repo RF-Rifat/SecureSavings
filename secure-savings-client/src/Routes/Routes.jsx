@@ -50,7 +50,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/blog-details/:id",
-        element: <BlogDetails />,
+        element: (
+          <PrivateRoute>
+            <BlogDetails />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "homeloan",

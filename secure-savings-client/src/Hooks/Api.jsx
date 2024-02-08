@@ -1,16 +1,14 @@
 /* eslint-disable no-useless-catch */
 const BASE_URL = "http://localhost:5000";
 
-
 export const getData = async (endpoint) => {
   return fetch(BASE_URL + endpoint)
     .then((res) => res.json())
     .then((data) => data);
 };
 
-
 export const modifyData = async (endpoint, method, data) => {
-  console.log(endpoint,method,data)
+  console.log(endpoint, method, data);
   try {
     const response = await fetch(BASE_URL + endpoint, {
       method,
@@ -36,6 +34,5 @@ export const modifyData = async (endpoint, method, data) => {
     throw error;
   }
 };
-
 
 export default BASE_URL;
