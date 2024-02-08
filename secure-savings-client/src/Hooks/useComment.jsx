@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 const useComment = () => {
   const {
     isPending,
-    error,
+
     data: comments,
     refetch,
   } = useQuery({
@@ -13,7 +13,7 @@ const useComment = () => {
       fetch("http://localhost:5000/api/comment").then((res) => res.json()),
   });
 
-  return [comments, refetch, isPending, error];
+  return [comments, refetch, isPending];
 };
 
 export default useComment;

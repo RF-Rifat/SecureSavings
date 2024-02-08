@@ -19,8 +19,8 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
         <MaterialTailwindControllerProvider>
           <Toaster />
           <UserProvider>
@@ -29,7 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             </AdminProvider>
           </UserProvider>
         </MaterialTailwindControllerProvider>
-      </Provider>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );

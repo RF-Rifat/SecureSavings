@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
 import useComment from "../../../Hooks/useComment";
 import Spinner from "../../../Shared/Spinner";
+import useGetData from "../../../Hooks/useGetData";
 
 const Comments = ({ id }) => {
-  const [comments] = useComment();
+  const [, isLoading] = useGetData();
+  const [comments, , isPending] = useComment();
   const [filterComment, setComment] = useState("");
   // console.log("comments", comments);
 
   // filter specific comment for specific blog
   useEffect(() => {
     const filtered = comments?.filter((c) => {
-      return c?.blogId == id;
+      return c?.blogId === id;
     });
     setComment(filtered);
   }, [comments, id]);
-  // if (isPending) {
-  //   return <Spinner></Spinner>;
-  // }
+  if (isLoading) {
+    return <Spinner></Spinner>;
+  }
   // console.log(comment);
   return (
     <div>
