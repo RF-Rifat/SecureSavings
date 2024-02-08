@@ -14,7 +14,7 @@ import {
   Select,
   Option,
 } from "@material-tailwind/react";
-import { CreditCardIcon, LockClosedIcon } from "@heroicons/react/24/solid";
+import { CreditCardIcon } from "@heroicons/react/24/solid";
 
 function formatCardNumber(value) {
   const val = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
@@ -55,17 +55,6 @@ export default function Modal() {
         shadow={false}
         className="m-0 grid place-items-center px-4 py-8 text-center"
       >
-        <div className="mb-4 h-20 p-6 text-white">
-          {type === "card" ? (
-            <CreditCardIcon className="h-10 w-10 text-white" />
-          ) : (
-            <img
-              alt="paypal "
-              className="w-14 "
-              src="https://docs.material-tailwind.com/icons/paypall.png"
-            />
-          )}
-        </div>
         <Typography variant="h5" color="white">
           Material Tailwind PRO
         </Typography>
@@ -192,14 +181,7 @@ export default function Modal() {
                   />
                 </div>
                 <Button size="lg">Pay Now</Button>
-                <Typography
-                  variant="small"
-                  color="gray"
-                  className="mt-2 flex items-center justify-center gap-2 font-medium opacity-60"
-                >
-                  <LockClosedIcon className="-mt-0.5 h-4 w-4" /> Payments are
-                  secure and encrypted
-                </Typography>
+               
               </form>
             </TabPanel>
             <TabPanel value="paypal" className="p-0">
@@ -273,14 +255,7 @@ export default function Modal() {
                   />
                 </div>
                 <Button size="lg">pay with paypal</Button>
-                <Typography
-                  variant="small"
-                  color="gray"
-                  className="flex items-center justify-center gap-2 font-medium opacity-60"
-                >
-                  <LockClosedIcon className="-mt-0.5 h-4 w-4" /> Payments are
-                  secure and encrypted
-                </Typography>
+                
               </form>
             </TabPanel>
           </TabsBody>

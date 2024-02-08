@@ -19,6 +19,8 @@ import AddBlog from "../pages/blogs/AddBlog";
 import Transactions from "../pages/Transactions/Transactions";
 import BlogDetails from "../pages/blogs/BlogDetails";
 import AdminChat from "../DashBoard/DashBoard-Pages/AdminChat";
+import HomeLoan from "../components/HomeLoan/HomeLoan";
+import BusinessLoan from "../BusinessLoan/BusinessLoan";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +56,14 @@ export const router = createBrowserRouter([
             <BlogDetails />,
           </PrivateRoute>
         ),
+      },
+      {
+        path: "homeloan",
+        element: <HomeLoan/>,
+      },
+      {
+        path: "businessloan",
+        element: <BusinessLoan/>,
       },
     ],
   },

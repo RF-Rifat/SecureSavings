@@ -2,12 +2,6 @@ import React from "react";
 import {
   Button,
   Dialog,
-  Card,
-  CardBody,
-  CardFooter,
-  Typography,
-  Input,
-  Checkbox,
 } from "@material-tailwind/react";
 import Modal from "./Modal";
 

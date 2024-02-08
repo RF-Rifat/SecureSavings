@@ -169,13 +169,13 @@ const navListItems = [
 // mega menu list
 const navListMenuItems = [
   {
-    title: "Products",
-    description: "Find the perfect solution for your needs.",
+    title: "Home Loans",
+    description: "A simple way to buy a home or refinance.",
     icon: SquaresPlusIcon,
   },
   {
-    title: "About Us",
-    description: "Meet and learn about our dedication",
+    title: "Business Loans",
+    description: "A business Loan, Just as You Need It",
     icon: UserGroupIcon,
   },
   {
@@ -195,7 +195,7 @@ function NavListMenu() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const renderItems = navListMenuItems.map(
     ({ icon, title, description }, key) => (
-      <a href="#" key={key}>
+      <Link to="homeloan" key={key}>
         <MenuItem className="flex items-center gap-3 rounded-lg">
           <div className="grid rounded-lg !bg-blue-gray-50 p-2 ">
             {" "}
@@ -220,7 +220,8 @@ function NavListMenu() {
             </Typography>
           </div>
         </MenuItem>
-      </a>
+      
+      </Link>
     )
   );
 
