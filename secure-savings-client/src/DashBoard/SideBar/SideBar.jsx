@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ChatBubbleBottomCenterTextIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button, IconButton, Typography } from "@material-tailwind/react";
 import {
   useMaterialTailwindController,
@@ -52,7 +52,7 @@ export function SideNav() {
           path: "/transactions",
         },
         {
-          icon: <FcCableRelease {...icon} />,
+          icon: <ChatBubbleBottomCenterTextIcon {...icon} />,
           name: "Chat",
           path: "/chat",
         },
