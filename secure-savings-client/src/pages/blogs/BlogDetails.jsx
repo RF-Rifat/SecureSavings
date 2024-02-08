@@ -66,14 +66,6 @@ const BlogDetails = () => {
             </CardFooter>
           </Card>
 
-<<<<<<< HEAD
-        <div className="hidden  lg:block">
-          <h1 className="text-3xl   font-semibold mt-5 lg:mt-0 mb-2 text-center lg:text-left">
-            Others Blog
-          </h1>
-          <div className="lg:overflow-y-auto lg:h-[400px]">
-            <LatestBlog></LatestBlog>
-=======
           <div>
             <h1 className="text-3xl  font-semibold mt-5 lg:mt-0 mb-2 text-center lg:text-left">
               Others Blog
@@ -81,7 +73,6 @@ const BlogDetails = () => {
             <div className="overflow-y-auto h-[400px]">
               <LatestBlog></LatestBlog>
             </div>
->>>>>>> 2b51371f96f1627a73584920b755bf953c1e20d2
           </div>
         </div>
 
@@ -91,25 +82,6 @@ const BlogDetails = () => {
         </div>
       </div>
 
-<<<<<<< HEAD
-      <div>
-        <Comments id={id}></Comments>
-      </div>
-      {/* add comment */}
-
-      <div className="mt-10">
-        <AddComment id={id}></AddComment>
-      </div>
-      <div className=" block  lg:hidden ">
-        <h1 className="text-3xl font-semibold mt-5 lg:mt-0 mb-2 text-center lg:text-left">
-          Others Blog
-        </h1>
-        <div className="lg:overflow-y-auto lg:h-[400px]">
-          <LatestBlog></LatestBlog>
-        </div>
-      </div>
-    </div>
-=======
       {/* blog details */}
       <div className="px-8 lg:px-52">
         <div className="container mx-auto lg:flex">
@@ -212,7 +184,6 @@ const BlogDetails = () => {
         </div>
       </div>
     </>
->>>>>>> 2b51371f96f1627a73584920b755bf953c1e20d2
   );
 };
 
