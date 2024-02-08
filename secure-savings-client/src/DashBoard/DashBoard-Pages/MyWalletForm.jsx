@@ -3,13 +3,12 @@ import { AdminDataContext } from "../../Context/AdminProvider";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { increment } from "../../redux/counterSlice";
-// Two
 import { useState } from 'react';
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
-// 
-import { useEffect, useRef } from 'react';
-import lottie from 'lottie-web';
+import Lottie from "lottie-react";
+import CardOne from "../../../public/CardOne.json"
+import CardTwo from "../../../public/CardTwo.json"
 
 const MyWalletForm = () => {
     const authInfo = useContext(AdminDataContext);
@@ -44,18 +43,6 @@ const MyWalletForm = () => {
     const handleInputFocus = (evt) => {
         setState((prev) => ({ ...prev, focus: evt.target.name }));
     }
-    // 
-    const container = useRef(null);
-
-    useEffect(() => {
-        lottie.loadAnimation({
-            container: container.current,
-            renderer: 'svg', // or 'canvas', 'html'
-            loop: true,
-            autoplay: true,
-            path: 'https://lottie.host/embed/bbf95265-ed9b-4f7f-a6eb-8095b6e103f8/jFaPcM9W4h.json' // your Lottie animation URL
-        });
-    }, []);
 
     return (
         <>
@@ -76,25 +63,11 @@ const MyWalletForm = () => {
                                     </span>
                                 </div>
                                 <ul className="grid grid-cols-1 md:grid-cols-2 mx-auto gap-5 mt-10">
-                                    <li className="mx-2">
-                                        <img
-                                            className="w-auto rounded-lg object-cover h-36"
-                                            src="https://www.computop-paygate.com/Templates/imagesaboutYou_desktop/images/computop.png"
-                                            alt="CardImage"
-                                        />
-                                        <div ref={container} className="w-auto rounded-lg object-cover h-36"></div>
-                                    </li>
-                                    <li className="pb-5 md:mb-0">
-                                        <img
-                                            className="w-auto object-cover mx-auto h-36"
-                                            src="https://www.computop-paygate.com/Templates/imagesaboutYou_desktop/images/mastercard-id-check.png"
-                                            alt="CardImage"
-                                        />
-                                        <div ref={container} className="w-auto rounded-lg object-cover h-36"></div>
-                                    </li>
+                                    <Lottie animationData={CardTwo} />
+                                    <Lottie animationData={CardOne} />
                                 </ul>
                             </div>
-                            <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
+                            <div className="w-full px-4 lg:w-1/2 xl:w-4/12">
                                 <div className="mx-4">
                                     <div className="credit-card sm:w-auto mx-auto">
                                         <div className="shadow-lg rounded-xl py-8 md:py-3">
@@ -112,29 +85,51 @@ const MyWalletForm = () => {
                                             <form className="p-4" onSubmit={handleSubmit}>
                                                 <div className="my-3">
                                                     <input
-                                                        type="number"
+                                                        type="text"
                                                         name="number"
                                                         placeholder="Card Number"
                                                         value={state.number}
                                                         onChange={handleInputChange}
                                                         onFocus={handleInputFocus}
-                                                        className="block mx-auto px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 border-none focus:border-none"
-
+                                                        maxLength={16}
+                                                        required
+                                                        className="block mx-auto w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 border-none focus:border-none"
                                                     />
                                                 </div>
                                                 <div className="my-3">
                                                     <input
-                                                        type="number"
+                                                        type="text"
                                                         name="money"
-                                                        className="block mx-auto px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 border-none focus:border-none"
+                                                        className="block mx-auto w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 border-none focus:border-none"
                                                         placeholder="Money"
-                                                        maxLength={22}
+                                                        required
+                                                        maxLength='2'
                                                     />
                                                 </div>
                                                 <footer className="px-4 pb-4 flex justify-center">
-                                                    <button className="px-4 py-3 rounded-full bg-[#2195f3] text-white focus:ring focus:outline-none text-base font-semibold transition-colors">
-                                                        Send Money
-                                                    </button>
+                                                    <a
+                                                        href="#_"
+                                                        className="relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-indigo-600 rounded-full hover:text-white group hover:bg-gray-50"
+                                                    >
+                                                        <span className="absolute left-0 block w-full h-0 transition-all bg-[#2195f3] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease" />
+                                                        <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+                                                            <svg
+                                                                className="w-5 h-5"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                            >
+                                                                <path
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                    strokeWidth={2}
+                                                                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                                                                />
+                                                            </svg>
+                                                        </span>
+                                                        <span className="relative">Send Money</span>
+                                                    </a>
                                                 </footer>
                                             </form>
                                         </div>
