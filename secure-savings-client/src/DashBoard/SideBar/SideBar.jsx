@@ -10,8 +10,9 @@ import {
   UserCircleIcon,
   HomeIcon,
   WalletIcon,
+  PlusCircleIcon,
 } from "@heroicons/react/24/solid";
-import { FcAddRow, FcCableRelease } from "react-icons/fc";
+import { AiOutlineTransaction } from "react-icons/ai";
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
@@ -42,12 +43,12 @@ export function SideNav() {
           path: "/users",
         },
         {
-          icon: <FcAddRow {...icon} />,
+          icon: <PlusCircleIcon {...icon} />,
           name: "Add Blog",
           path: "/addBlog",
         },
         {
-          icon: <FcCableRelease {...icon} />,
+          icon: <AiOutlineTransaction className="h-6 w-6" />,
           name: "Transaction",
           path: "/transactions",
         },
