@@ -169,8 +169,8 @@ const navListItems = [
 // mega menu list
 const navListMenuItems = [
   {
-    title: "Products",
-    description: "Find the perfect solution for your needs.",
+    title: "Home Loans",
+    description: "A simple way to buy a home or refinance.",
     icon: SquaresPlusIcon,
   },
   {
