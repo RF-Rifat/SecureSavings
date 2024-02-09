@@ -1,3 +1,5 @@
+import { Input } from "@material-tailwind/react";
+
 const AdminChat = () => {
   return (
     <section className="lg:grid grid-cols-12 relative">
@@ -41,7 +43,7 @@ const AdminChat = () => {
                 />
               </svg>
             </span>
-            <input
+            <Input
               type="text"
               className=" w-full dark:placeholder:text-white dark:text-white bg-bgray-100 dark:bg-darkblack-500 border-0 focus:border focus:border-success-300 focus:ring-0 rounded-lg py-3.5 pl-12"
               placeholder="Search Message"
@@ -377,11 +379,8 @@ const AdminChat = () => {
                     target="_blank"
                     href="about:blank"
                   />
-                  <input
+                  <Input
                     type="text"
-                    data-formula="e=mc^2"
-                    data-link="https://quilljs.com"
-                    data-video="Embed URL"
                   />
                   <a className="ql-action" />
                   <a className="ql-remove" />
