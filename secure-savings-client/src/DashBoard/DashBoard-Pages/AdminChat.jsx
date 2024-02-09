@@ -20,8 +20,6 @@ const AdminChat = () => {
     setSelectedUser(user);
   };
 
-  console.log(selectedUser);
-
   return (
     <section className="lg:grid grid-cols-12 relative">
       <aside className="h-full 2xl:col-span-3 xl:col-span-4 lg:col-span-5 bg-white dark:bg-black border border-bgray-200 dark:border-darkblack-400 pr-7 pl-12 pt-6 pb-10 hidden lg:block">
@@ -44,7 +42,7 @@ const AdminChat = () => {
                 key={data._id}
                 className={`p-3.5 flex justify-between hover:bg-bgray-100 hover:dark:bg-darkblack-500 hover:rounded-lg transition-all cursor-pointer ${
                   selectedUser && selectedUser._id === data._id
-                    ? "bg-blue-200 dark:bg-blue-600"
+                    ? "bg-blue-200 dark:bg-blue-600 rounded"
                     : ""
                 }`}
                 onClick={() => handleUserClick(data)}
@@ -64,7 +62,7 @@ const AdminChat = () => {
         <header className="bg-white dark:bg-darkblack-600 p-5 lg:pr-24 flex justify-between items-center border-t border-bgray-300 dark:border-darkblack-400">
           <div className="flex space-x-3 items-center">
             <Badge color="green">
-              <Avatar src="https://lh3.googleusercontent.com/a/ACg8ocI9KP1WyhE4zyejd4hv7WgtMm4zKgDavXFqiTxByfZkorw=s96-c" />
+              <Avatar src={selectedUser?.image} />
             </Badge>
             <div>
               <h4 className="text-base font-bold text-bgray-900 dark:text-white">
@@ -84,11 +82,7 @@ const AdminChat = () => {
         <div className="lg:pt-20 dark:bg-darkblack-500 lg:px-11 p-5 mb-5 lg:mb-0 space-y-10">
           <div className="flex justify-start items-end space-x-3">
             <div className="flex space-x-3 items-center">
-              <Avatar
-                src="https://lh3.googleusercontent.com/a/ACg8ocI9KP1WyhE4zyejd4hv7WgtMm4zKgDavXFqiTxByfZkorw=s96-c"
-                className="shrink-0"
-                alt=""
-              />
+              <Avatar src={selectedUser?.image} className="shrink-0" alt="" />
               <div className="p-3 bg-blue-200 dark:bg-blue-600 dark:text-white rounded-r-lg rounded-b-lg text-gray-900 text-sm font-medium max-w-md">
                 Hi! I had a question about my last transaction.
               </div>
