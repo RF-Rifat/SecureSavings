@@ -1,12 +1,16 @@
 import { Avatar, Badge, Button, Input } from "@material-tailwind/react";
 import { BsFillSendFill, BsThreeDotsVertical } from "react-icons/bs";
-import useGetData from "../../Hooks/useGetData";
 import { useEffect, useState } from "react";
+import useGetData from "../../Hooks/useGetData";
+import { io } from "socket.io-client";
 
 const AdminChat = () => {
   const [userData] = useGetData("/api/user");
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [socket, setSocket] = useState(null);
+  const [chat, setChat] = useState([]);
+  const [messageInput, setMessageInput] = useState("");
 
   useEffect(() => {
     if (userData && userData.length > 0) {
@@ -16,8 +20,60 @@ const AdminChat = () => {
       setFilteredUsers(filteredData);
     }
   }, [userData]);
+
+  useEffect(() => {
+    const newSocket = io("http://localhost:3000");
+    setSocket(newSocket);
+    return () => newSocket.close();
+  }, []);
+
   const handleUserClick = (user) => {
     setSelectedUser(user);
+  };
+
+  useEffect(() => {
+    if (!socket) return;
+
+    const handleMessage = (data) => {
+      console.log(data);
+      setChat((prevChat) => [
+        ...prevChat,
+        {
+          id: Date.now(),
+          sender: data.sender,
+          message: data.message,
+          // Add a time property to the message object
+          time: new Date().toLocaleTimeString(),
+        },
+      ]);
+    };
+
+    socket.on("message", handleMessage);
+
+    return () => {
+      socket.off("message", handleMessage);
+    };
+  }, [socket]);
+
+  const sendMessage = () => {
+    if (socket && messageInput.trim() !== "") {
+      socket.emit("sendMessage", {
+        message: messageInput,
+        sender: "admin",
+      });
+      setMessageInput("");
+      // Add the sent message to the chat
+      setChat((prevChat) => [
+        ...prevChat,
+        {
+          id: Date.now(),
+          sender: "admin",
+          message: messageInput,
+          // Add a time property to the message object
+          time: new Date().toLocaleTimeString(),
+        },
+      ]);
+    }
   };
 
   return (
@@ -79,42 +135,57 @@ const AdminChat = () => {
             <BsThreeDotsVertical />
           </button>
         </header>
-        <div className="lg:pt-20 dark:bg-darkblack-500 lg:px-11 p-5 mb-5 lg:mb-0 space-y-10">
-          <div className="flex justify-start items-end space-x-3">
-            <div className="flex space-x-3 items-center">
-              <Avatar src={selectedUser?.image} className="shrink-0" alt="" />
-              <div className="p-3 bg-blue-200 dark:bg-blue-600 dark:text-white rounded-r-lg rounded-b-lg text-gray-900 text-sm font-medium max-w-md">
-                Hi! I had a question about my last transaction.
+        <div className="lg:pt-20 dark:bg-darkblack-500 lg:px-11 p-5 mb-5 lg:mb-0 space-y-10 h-[50svh]">
+          {/* Loop through chat messages and display them */}
+          {chat.map((message) => (
+            <div
+              key={message.id}
+              className={`flex justify-${
+                message.sender === "admin" ? "end" : "start" // Corrected condition for message alignment
+              } items-end space-x-3`}
+            >
+              <div className="flex space-x-3 items-center">
+                <Avatar
+                  src={
+                    message.sender === "admin"
+                      ? "/admin-avatar.png"
+                      : selectedUser?.image 
+                  }
+                  className="shrink-0"
+                  alt=""
+                />
+                <div
+                  className={`p-3 ${
+                    message.sender === "admin"
+                      ? "bg-green-300 rounded-r-lg rounded-b-lg dark:text-white"
+                      : "bg-blue-200 dark:bg-blue-600 dark:text-white rounded-r-lg rounded-b-lg"
+                  } text-gray-900 text-sm font-medium max-w-md`}
+                >
+                  {message.message}
+                </div>
+              </div>
+              <div>
+                <span className="text-xs text-bgray-500 font-medium">
+                  {message.time}
+                </span>
               </div>
             </div>
-            <div>
-              <span className="text-xs text-bgray-500 font-medium">
-                09:30 AM
-              </span>
-            </div>
-          </div>
-          <div className="flex justify-end items-end space-x-3">
-            <div>
-              <span className="text-xs text-bgray-500 font-medium">
-                10:00 PM
-              </span>
-            </div>
-            <div className="flex space-x-3 items-center">
-              <div className="p-3 bg-green-300 rounded-r-lg rounded-b-lg dark:text-white text-sm font-medium max-w-md">
-                Hi, how can I help you?
-              </div>
-              <Avatar src="https://lh3.googleusercontent.com/a/ACg8ocI9KP1WyhE4zyejd4hv7WgtMm4zKgDavXFqiTxByfZkorw=s96-c" />
-            </div>
-          </div>
+          ))}
         </div>
         <div className="lg:px-11 px-5 lg:mb-0 mb-5 w-full">
           <div className="flex justify-end mt-4 gap-4 items-center">
-            <Input label="Type Message" type="text" />
+            <Input
+              label="Type Message"
+              type="text"
+              value={messageInput}
+              onChange={(e) => setMessageInput(e.target.value)}
+            />
             <Button
               aria-label="Send Message"
               name="button"
               color="green"
               className="rounded-lg flex items-center justify-center px-4 py-2.5 font-semibold text-sm gap-1.5"
+              onClick={sendMessage}
             >
               <BsFillSendFill className="h-6 w-6" />
               <span>Send</span>

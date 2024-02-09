@@ -13,8 +13,8 @@ const ChatBox = () => {
   // const socket = io("https://socket-server-eta-bice.vercel.app");
   const [chat, setChat] = useState([]);
   const AdminAuth = useContext(AdminDataContext);
-  const { LoggedUser, isAdmin } = AdminAuth;
-  console.log(LoggedUser, isAdmin);
+  const { isAdmin } = AdminAuth;
+
   const [inputValue, setInputValue] = useState("");
   const [open, setOpen] = useState(true);
   const { authInfo } = useAuth();
