@@ -170,21 +170,19 @@ const navListItems = [
 const navListMenuItems = [
   {
     title: "Home Loans",
+    link: "homeLoan",
     description: "A simple way to buy a home or refinance.",
     icon: SquaresPlusIcon,
   },
   {
     title: "Business Loans",
+    link: "businessLoan",
     description: "A business Loan, Just as You Need It",
     icon: UserGroupIcon,
   },
   {
-    title: "Blog",
-    description: "Find the perfect solution for your needs.",
-    icon: Bars4Icon,
-  },
-  {
-    title: "Services",
+    title: "Saving",
+    link: "saving",
     description: "Learn how we can help you achieve your goals.",
     icon: SunIcon,
   },
@@ -194,8 +192,8 @@ function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const renderItems = navListMenuItems.map(
-    ({ icon, title, description }, key) => (
-      <Link to="homeloan" key={key}>
+    ({ icon, title, description, link }, key) => (
+      <Link to={link} key={key}>
         <MenuItem className="flex items-center gap-3 rounded-lg">
           <div className="grid rounded-lg !bg-blue-gray-50 p-2 ">
             {" "}
@@ -208,7 +206,7 @@ function NavListMenu() {
             <Typography
               variant="h6"
               color="blue-gray"
-              className="flex items-center text-sm font-bold"
+              className="flex items-center font-bold text-lg text-center"
             >
               {title}
             </Typography>
@@ -220,7 +218,6 @@ function NavListMenu() {
             </Typography>
           </div>
         </MenuItem>
-      
       </Link>
     )
   );

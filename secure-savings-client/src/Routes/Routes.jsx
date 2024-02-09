@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: "/services",
+        path: "/saving",
         element: <Saving />,
       },
       {
@@ -58,11 +58,11 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "homeloan",
+        path: "homeLoan",
         element: <HomeLoan/>,
       },
       {
-        path: "businessloan",
+        path: "businessLoan",
         element: <BusinessLoan/>,
       },
     ],
