@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 const AdminChat = () => {
   const [userData] = useGetData("/api/user");
   const [filteredUsers, setFilteredUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
     if (userData && userData.length > 0) {
@@ -15,7 +16,11 @@ const AdminChat = () => {
       setFilteredUsers(filteredData);
     }
   }, [userData]);
-  console.log(filteredUsers);
+  const handleUserClick = (user) => {
+    setSelectedUser(user);
+  };
+
+  console.log(selectedUser);
 
   return (
     <section className="lg:grid grid-cols-12 relative">
@@ -37,7 +42,12 @@ const AdminChat = () => {
             {filteredUsers.map((data) => (
               <li
                 key={data._id}
-                className="p-3.5 flex justify-between hover:bg-bgray-100 hover:dark:bg-darkblack-500 hover:rounded-lg transition-all cursor-pointer"
+                className={`p-3.5 flex justify-between hover:bg-bgray-100 hover:dark:bg-darkblack-500 hover:rounded-lg transition-all cursor-pointer ${
+                  selectedUser && selectedUser._id === data._id
+                    ? "bg-blue-200 dark:bg-blue-600"
+                    : ""
+                }`}
+                onClick={() => handleUserClick(data)}
               >
                 <div className="flex space-x-3 items-center">
                   <Avatar src={data.image} alt="avatar" variant="rounded" />
@@ -58,7 +68,7 @@ const AdminChat = () => {
             </Badge>
             <div>
               <h4 className="text-base font-bold text-bgray-900 dark:text-white">
-                user name
+                {selectedUser?.name}
               </h4>
               <span className="text-sm text-bgray-600">Online</span>
             </div>
