@@ -181,7 +181,7 @@ export default function UserList() {
                         <IconButton variant="text">
                           {/* <PencilIcon className="h-4 w-4" /> */}
 
-                          <EmailModal></EmailModal>
+                          <EmailModal email={email} name={name}></EmailModal>
                         </IconButton>
                       </Tooltip>
                     </td>
