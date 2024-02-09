@@ -1,7 +1,4 @@
-
-
 const AdminChat = () => {
-
   return (
     <section className="lg:grid grid-cols-12 relative">
       <aside className="h-full 2xl:col-span-3 xl:col-span-4 lg:col-span-5 bg-white dark:bg-darkblack-600 border border-bgray-200 dark:border-darkblack-400 pr-7 pl-12 pt-6 pb-10 hidden lg:block">
@@ -53,52 +50,6 @@ const AdminChat = () => {
         </header>
         <div className="pt-6">
           <div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-x-2.5">
-                <svg
-                  className="fill-darkblack-400 dark:fill-bgray-50"
-                  width={16}
-                  height={17}
-                  viewBox="0 0 16 17"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M9.7682 2.90596C8.94657 2.08568 7.54172 2.66664 7.54172 3.8267C7.54172 4.17204 7.40431 4.50324 7.15972 4.74744L6.07925 5.82615C5.83466 6.07034 5.50292 6.20753 5.15701 6.20753C3.99506 6.20753 3.41315 7.61009 4.23477 8.43038L5.81896 10.012L2.14059 13.6844C1.95314 13.8715 1.95314 14.175 2.14059 14.3621C2.32804 14.5492 2.63196 14.5492 2.81941 14.3621L6.49779 10.6897L8.08195 12.2713C8.90358 13.0916 10.3084 12.5106 10.3084 11.3506C10.3084 11.0052 10.4458 10.674 10.6904 10.4298L11.7709 9.35112C12.0155 9.10692 12.3472 8.96974 12.6931 8.96974C13.8551 8.96974 14.437 7.56717 13.6154 6.74688L9.7682 2.90596Z"
-                  />
-                </svg>
-                <span className="text-base text-bgray-700 dark:text-white font-medium">
-                  Pinned Messages (3)
-                </span>
-              </div>
-              <div>
-                <button aria-label="none">
-                  <svg
-                    className="stroke-darkblack-400 dark:stroke-gray-50"
-                    width={20}
-                    height={21}
-                    viewBox="0 0 20 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.99984 12.1761C9.07936 12.1761 8.33317 11.4311 8.33317 10.5121C8.33317 9.59312 9.07936 8.84814 9.99984 8.84814C10.9203 8.84814 11.6665 9.59312 11.6665 10.5121C11.6665 11.4311 10.9203 12.1761 9.99984 12.1761Z"
-                      strokeWidth="1.5"
-                    />
-                    <path
-                      d="M16.6665 12.1761C15.746 12.1761 14.9998 11.4311 14.9998 10.5121C14.9998 9.59312 15.746 8.84814 16.6665 8.84814C17.587 8.84814 18.3332 9.59312 18.3332 10.5121C18.3332 11.4311 17.587 12.1761 16.6665 12.1761Z"
-                      strokeWidth="1.5"
-                    />
-                    <path
-                      d="M3.33317 12.1761C2.4127 12.1761 1.6665 11.4311 1.6665 10.5121C1.6665 9.59312 2.4127 8.84814 3.33317 8.84814C4.25365 8.84814 4.99984 9.59312 4.99984 10.5121C4.99984 11.4311 4.25365 12.1761 3.33317 12.1761Z"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
             <ul className="pt-2 divide-y divide-bgray-300 dark:divide-darkblack-400">
               <li className="p-3.5 flex justify-between hover:bg-bgray-100 hover:dark:bg-darkblack-500 hover:rounded-lg transition-all cursor-pointer">
                 <div className="flex space-x-3 grow">
@@ -110,33 +61,9 @@ const AdminChat = () => {
                     <h4 className="text-xl font-bold text-bgray-900 dark:text-white">
                       Emilia Sam
                     </h4>
-                    <span className="text-sm font-medium  text-bgray-600 dark:text-bgray-50">
-                      Sent image
-                    </span>
                   </div>
                 </div>
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-lg font-semibold text-bgray-700 dark:text-bgray-50">
-                    16:14
-                  </span>
-                  <span>
-                    <svg
-                      width={20}
-                      height={21}
-                      viewBox="0 0 20 21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M11.6665 6.49599L7.22208 10.9332C6.60843 11.5459 6.60843 12.5392 7.22208 13.1518C7.83573 13.7645 8.83065 13.7645 9.4443 13.1518L13.8887 8.7146C15.116 7.48929 15.116 5.50268 13.8887 4.27738C12.6614 3.05207 10.6716 3.05207 9.4443 4.27738L4.99985 8.7146C3.1589 10.5526 3.1589 13.5325 4.99985 15.3704C6.8408 17.2084 9.82557 17.2084 11.6665 15.3704L16.111 10.9332"
-                        stroke="#2A313C"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </div>
+                <div className="flex flex-col items-center gap-2"></div>
               </li>
               <li className="p-3.5 flex justify-between hover:bg-bgray-100 hover:dark:bg-darkblack-500 hover:rounded-lg transition-all cursor-pointer">
                 <div className="flex space-x-3 grow">
@@ -148,163 +75,13 @@ const AdminChat = () => {
                     <h4 className="text-xl font-bold text-bgray-900 dark:text-white">
                       Eleanor Pena
                     </h4>
-                    <span className="text-sm font-medium text-success-300">
-                      Eleanor is Typing...
-                    </span>
                   </div>
                 </div>
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-lg font-semibold text-bgray-700 dark:text-bgray-50">
-                    16:14
-                  </span>
-                  <span>
-                    <svg
-                      width={20}
-                      height={21}
-                      viewBox="0 0 20 21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M11.6665 6.49599L7.22208 10.9332C6.60843 11.5459 6.60843 12.5392 7.22208 13.1518C7.83573 13.7645 8.83065 13.7645 9.4443 13.1518L13.8887 8.7146C15.116 7.48929 15.116 5.50268 13.8887 4.27738C12.6614 3.05207 10.6716 3.05207 9.4443 4.27738L4.99985 8.7146C3.1589 10.5526 3.1589 13.5325 4.99985 15.3704C6.8408 17.2084 9.82557 17.2084 11.6665 15.3704L16.111 10.9332"
-                        stroke="#2A313C"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </div>
+                <div className="flex flex-col items-center gap-2"></div>
               </li>
-              
             </ul>
           </div>
-          <div className="pt-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-x-2.5">
-                <svg
-                  className="fill-darkblack-400 dark:fill-bgray-50"
-                  width={16}
-                  height={16}
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M4.00016 2C2.5274 2 1.3335 3.19391 1.3335 4.66667V11.3333C1.3335 12.8061 2.5274 14 4.00016 14H12.0002C13.4729 14 14.6668 12.8061 14.6668 11.3333V4.66667C14.6668 3.19391 13.4729 2 12.0002 2H4.00016ZM4.27751 4.91728C4.04775 4.7641 3.73732 4.82619 3.58414 5.05595C3.43096 5.28572 3.49305 5.59615 3.72281 5.74933L6.24361 7.42986C7.3073 8.13898 8.69303 8.13898 9.75671 7.42986L12.2775 5.74933C12.5073 5.59615 12.5694 5.28572 12.4162 5.05595C12.263 4.82619 11.9526 4.7641 11.7228 4.91728L9.20201 6.59781C8.47423 7.083 7.5261 7.083 6.79832 6.59781L4.27751 4.91728Z"
-                  />
-                </svg>
-                <span className="text-base text-bgray-700 dark:text-bgray-50 font-medium">
-                  All Messages (22)
-                </span>
-              </div>
-              <div>
-                <button aria-label="none">
-                  <svg
-                    className="stroke-darkblack-400 dark:stroke-bgray-50"
-                    width={20}
-                    height={21}
-                    viewBox="0 0 20 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.99984 12.1761C9.07936 12.1761 8.33317 11.4311 8.33317 10.5121C8.33317 9.59312 9.07936 8.84814 9.99984 8.84814C10.9203 8.84814 11.6665 9.59312 11.6665 10.5121C11.6665 11.4311 10.9203 12.1761 9.99984 12.1761Z"
-                      strokeWidth="1.5"
-                    />
-                    <path
-                      d="M16.6665 12.1761C15.746 12.1761 14.9998 11.4311 14.9998 10.5121C14.9998 9.59312 15.746 8.84814 16.6665 8.84814C17.587 8.84814 18.3332 9.59312 18.3332 10.5121C18.3332 11.4311 17.587 12.1761 16.6665 12.1761Z"
-                      strokeWidth="1.5"
-                    />
-                    <path
-                      d="M3.33317 12.1761C2.4127 12.1761 1.6665 11.4311 1.6665 10.5121C1.6665 9.59312 2.4127 8.84814 3.33317 8.84814C4.25365 8.84814 4.99984 9.59312 4.99984 10.5121C4.99984 11.4311 4.25365 12.1761 3.33317 12.1761Z"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <ul className="pt-2 divide-y divide-bgray-300 dark:divide-darkblack-400">
-              <li className="p-3.5 flex justify-between hover:bg-bgray-100 hover:dark:bg-darkblack-500 hover:rounded-lg transition-all cursor-pointer">
-                <div className="flex space-x-3 grow">
-                  <div className="w-14 h-14 relative">
-                    <img src="/assets/u-4-3b0f0cb1.png" alt="" />
-                    <span className="bg-success-300 dark:border-bgray-900 border-2 border-white block w-[14px] h-[14px] rounded-full absolute bottom-1 right-0" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-bgray-900 dark:text-white">
-                      Marjorie
-                    </h4>
-                    <span className="text-sm font-medium  text-bgray-600 dark:text-bgray-50">
-                      Good Luck
-                    </span>
-                  </div>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-lg font-semibold text-bgray-700 dark:text-bgray-50">
-                    15:11
-                  </span>
-                  <span>
-                    <svg
-                      width={10}
-                      height={11}
-                      viewBox="0 0 10 11"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M9.82772 0.791259C10.0574 1.0162 10.0574 1.38089 9.82772 1.60583L3.94536 7.36569C3.71565 7.59061 3.34319 7.59061 3.11347 7.36569L0.172288 4.48576C-0.0574295 4.26083 -0.0574295 3.89612 0.172288 3.6712C0.402012 3.44627 0.77446 3.44627 1.00418 3.6712L3.52942 6.14385L8.99584 0.791259C9.22554 0.566325 9.59801 0.566325 9.82772 0.791259Z"
-                        fill="#A0AEC0"
-                      />
-                    </svg>
-                  </span>
-                </div>
-              </li>
-              <li className="p-3.5 flex justify-between hover:bg-bgray-100 hover:dark:bg-darkblack-500 hover:rounded-lg transition-all cursor-pointer">
-                <div className="flex space-x-3 grow">
-                  <div className="w-14 h-14 relative">
-                    <img src="/assets/u-5-ce4a5f50.png" alt="" />
-                    <span className="bg-success-300 dark:border-bgray-900 border-2 border-white block w-[14px] h-[14px] rounded-full absolute bottom-1 right-0" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-bgray-900 dark:text-white">
-                      Esther
-                    </h4>
-                    <span className="text-sm font-medium text-error-300">
-                      Missed Call
-                    </span>
-                  </div>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-lg font-semibold text-bgray-700 dark:text-bgray-50">
-                    12:24
-                  </span>
-                  <span>
-                    <svg
-                      width={20}
-                      height={21}
-                      viewBox="0 0 20 21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M11.6665 6.49599L7.22208 10.9332C6.60843 11.5459 6.60843 12.5392 7.22208 13.1518C7.83573 13.7645 8.83065 13.7645 9.4443 13.1518L13.8887 8.7146C15.116 7.48929 15.116 5.50268 13.8887 4.27738C12.6614 3.05207 10.6716 3.05207 9.4443 4.27738L4.99985 8.7146C3.1589 10.5526 3.1589 13.5325 4.99985 15.3704C6.8408 17.2084 9.82557 17.2084 11.6665 15.3704L16.111 10.9332"
-                        stroke="#2A313C"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </div>
-              </li>
-              
-            </ul>
-          </div>
+         
         </div>
       </aside>
       <div className="w-full bg-white dark:bg-darkblack-600 p-2 overflow-x-scroll flex lg:hidden">
