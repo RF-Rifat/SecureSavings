@@ -30,6 +30,7 @@ import { Link, NavLink } from "react-router-dom";
 import ToggleTheme from "../components/ToggleTheme";
 import useAuth from "../Hooks/useAuth";
 import { LuLayoutDashboard } from "react-icons/lu";
+import { MdDesignServices } from "react-icons/md";
 
 function ProfileMenu() {
   // const  authInfo  = useContext(AuthProvider);
@@ -237,6 +238,7 @@ function NavListMenu() {
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
+              <MdDesignServices />
               Services
               <ChevronDownIcon
                 strokeWidth={2.5}
