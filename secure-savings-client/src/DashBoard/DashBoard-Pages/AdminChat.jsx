@@ -12,6 +12,7 @@ const AdminChat = () => {
   const [chat, setChat] = useState([]);
   const [messageInput, setMessageInput] = useState("");
 
+  console.log(filteredUsers);
   useEffect(() => {
     if (userData && userData.length > 0) {
       const filteredData = userData.filter(
@@ -42,7 +43,6 @@ const AdminChat = () => {
           id: Date.now(),
           sender: data.sender,
           message: data.message,
-          // Add a time property to the message object
           time: new Date().toLocaleTimeString(),
         },
       ]);
@@ -57,19 +57,13 @@ const AdminChat = () => {
 
   const sendMessage = () => {
     if (socket && messageInput.trim() !== "") {
-      socket.emit("sendMessage", {
-        message: messageInput,
-        sender: "admin",
-      });
       setMessageInput("");
-      // Add the sent message to the chat
       setChat((prevChat) => [
         ...prevChat,
         {
           id: Date.now(),
           sender: "admin",
           message: messageInput,
-          // Add a time property to the message object
           time: new Date().toLocaleTimeString(),
         },
       ]);
@@ -104,7 +98,9 @@ const AdminChat = () => {
                 onClick={() => handleUserClick(data)}
               >
                 <div className="flex space-x-3 items-center">
-                  <Avatar src={data.image} alt="avatar" variant="rounded" />
+                  <Badge color={data?.status ? "green" : "red"}>
+                    <Avatar src={data.image} alt="avatar" variant="rounded" />
+                  </Badge>
                   <h4 className="text-xl font-bold text-bgray-900 dark:text-white">
                     {data.name}
                   </h4>
@@ -117,14 +113,16 @@ const AdminChat = () => {
       <div className="2xl:col-span-9 xl:col-span-8 dark:bg-darkblack-500 lg:col-span-7 col-span-12 relative h-[70vh]">
         <header className="bg-white dark:bg-darkblack-600 p-5 lg:pr-24 flex justify-between items-center border-t border-bgray-300 dark:border-darkblack-400">
           <div className="flex space-x-3 items-center">
-            <Badge color="green">
+            <Badge color={selectedUser?.status ? "green" : "red"}>
               <Avatar src={selectedUser?.image} />
             </Badge>
             <div>
               <h4 className="text-base font-bold text-bgray-900 dark:text-white">
                 {selectedUser?.name}
               </h4>
-              <span className="text-sm text-bgray-600">Online</span>
+              <span className="text-sm text-bgray-600">
+                {selectedUser?.status ? "online" : "offline"}
+              </span>
             </div>
           </div>
           <button
@@ -148,8 +146,8 @@ const AdminChat = () => {
                 <Avatar
                   src={
                     message.sender === "admin"
-                      ? "/admin-avatar.png"
-                      : selectedUser?.image 
+                      ? "https://lh3.googleusercontent.com/a/ACg8ocI9KP1WyhE4zyejd4hv7WgtMm4zKgDavXFqiTxByfZkorw=s96-c"
+                      : selectedUser?.image
                   }
                   className="shrink-0"
                   alt=""
