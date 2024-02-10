@@ -14,12 +14,10 @@ const BlogDetails = () => {
   // console.log(blogs);
   useEffect(() => {
     const details = blogs.find((blog) => blog._id == id);
-    // console.log(details);
+
     setDetails(details);
   }, [id, blogs]);
-  //   console.log(blogDetails);
-  //   const { title, post, blogImage } = blogDetails;
-  // console.log(blogs);
+ 
   if (isLoading) {
     return <Spinner></Spinner>;
   }

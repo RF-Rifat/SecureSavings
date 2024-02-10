@@ -4,7 +4,7 @@ import Spinner from "../../../Shared/Spinner";
 import useGetData from "../../../Hooks/useGetData";
 
 const Comments = ({ id }) => {
-  const [, isLoading] = useGetData();
+  const [isLoading] = useGetData();
   const [comments] = useComment();
   const [filterComment, setComment] = useState("");
   // console.log("comments", comments);
