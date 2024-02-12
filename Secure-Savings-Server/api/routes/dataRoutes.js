@@ -4,6 +4,7 @@ const Data = require("../models/data");
 const User = require("../models/User");
 const Blog = require("../models/blog");
 const Comment = require("../models/comment");
+const Loan = require("../models/loan");
 
 router.post("/", async (req, res) => {
   try {
