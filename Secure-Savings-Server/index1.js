@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
 require("dotenv").config();
-const connectDB = require("./db/connectDB.js");
+const connectDB = require("./api/db/connectDB.js");
+const dataRoutes = require("./api/routes/dataRoutes.js");
 
 const app = express();
 
@@ -10,8 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Import routes
-const dataRoutes = require("./routes/dataRoutes");
+
 
 // Use routes
 app.use("/api", dataRoutes);
