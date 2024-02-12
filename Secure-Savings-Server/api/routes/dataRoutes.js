@@ -3,6 +3,7 @@ const router = express.Router();
 const Data = require("../models/data");
 const User = require("../models/User");
 const Blog = require("../models/blog");
+const Comment = require("../models/comment");
 
 router.post("/", async (req, res) => {
   try {
