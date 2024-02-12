@@ -75,7 +75,7 @@ const MyWallet = () => {
 
     return (
         <>
-            <Card className="h-full w-full">
+            <Card className="h-full w-full   dark:bg-gray-300">
                 {/* <CardHeader floated={false} shadow={false} className="rounded-none">
                     <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
                         <div>
@@ -99,7 +99,7 @@ const MyWallet = () => {
                         </div>
                     </div>
                 </CardHeader> */}
-                <CardBody className="overflow-scroll px-0">
+                <CardBody className="overflow-scroll px-0    rounded-md">
                     <table className="w-full min-w-max table-auto text-left">
                         <thead>
                             <tr>

@@ -3,8 +3,10 @@ import useGetData from "../../Hooks/useGetData";
 import Spinner from "../../Shared/Spinner";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
+import { useState } from "react";
 
 const Blogs = () => {
+  const [search, setSearch] = useState("");
   const [blogs, isLoading] = useGetData("/api/blog");
   // console.log(blogs);
   if (isLoading) {
@@ -21,9 +23,10 @@ const Blogs = () => {
         <div className="flex-1 h-2 bg-teal-300"></div>
       </div>
 
+      {/* search and filter */}
       <div className="flex flex-col md:flex-row justify-center items-center gap-10  mb-5">
         <Filter></Filter>
-        <SearchBar></SearchBar>
+        <SearchBar setSearch={setSearch}></SearchBar>
       </div>
 
       <div>
