@@ -6,9 +6,12 @@ import SideNav from "../DashBoard/SideBar/SideBar";
 import { DashboardFooter } from "../DashBoard/DashBoard_Shared/DashboardFooter";
 import { Outlet } from "react-router-dom";
 import { AuthProvider } from "../Authentication/AuthProvider";
+import { AdminDataContext } from "../Context/AdminProvider";
 
 const Root = () => {
   const authInfo = useContext(AuthProvider);
+  const AdminAuth = useContext(AdminDataContext);
+  const { isAdmin } = AdminAuth;
 
   return (
     // toggle theme bg color
@@ -22,7 +25,7 @@ const Root = () => {
         <Outlet />
         <div className="text-blue-gray-600">
           <DashboardFooter />
-          {authInfo.user && <ChatBox />}
+          {authInfo.user && !isAdmin && <ChatBox />}
         </div>
       </div>
     </div>

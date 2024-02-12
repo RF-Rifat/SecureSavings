@@ -23,7 +23,6 @@ import {
   WalletIcon,
   SquaresPlusIcon,
   UserGroupIcon,
-  Bars4Icon,
   SunIcon,
   HomeIcon,
 } from "@heroicons/react/24/solid";
@@ -31,6 +30,7 @@ import { Link, NavLink } from "react-router-dom";
 import ToggleTheme from "../components/ToggleTheme";
 import useAuth from "../Hooks/useAuth";
 import { LuLayoutDashboard } from "react-icons/lu";
+import { MdDesignServices } from "react-icons/md";
 
 function ProfileMenu() {
   // const  authInfo  = useContext(AuthProvider);
@@ -170,21 +170,19 @@ const navListItems = [
 const navListMenuItems = [
   {
     title: "Home Loans",
+    link: "homeLoan",
     description: "A simple way to buy a home or refinance.",
     icon: SquaresPlusIcon,
   },
   {
-    title: "About Us",
-    description: "Meet and learn about our dedication",
+    title: "Business Loans",
+    link: "businessLoan",
+    description: "A business Loan, Just as You Need It",
     icon: UserGroupIcon,
   },
   {
-    title: "Blog",
-    description: "Find the perfect solution for your needs.",
-    icon: Bars4Icon,
-  },
-  {
-    title: "Services",
+    title: "Saving",
+    link: "saving",
     description: "Learn how we can help you achieve your goals.",
     icon: SunIcon,
   },
@@ -194,8 +192,8 @@ function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const renderItems = navListMenuItems.map(
-    ({ icon, title, description }, key) => (
-      <a href="#" key={key}>
+    ({ icon, title, description, link }, key) => (
+      <Link to={link} key={key}>
         <MenuItem className="flex items-center gap-3 rounded-lg">
           <div className="grid rounded-lg !bg-blue-gray-50 p-2 ">
             {" "}
@@ -208,7 +206,7 @@ function NavListMenu() {
             <Typography
               variant="h6"
               color="blue-gray"
-              className="flex items-center text-sm font-bold"
+              className="flex items-center font-bold text-lg text-center"
             >
               {title}
             </Typography>
@@ -220,7 +218,7 @@ function NavListMenu() {
             </Typography>
           </div>
         </MenuItem>
-      </a>
+      </Link>
     )
   );
 
@@ -236,10 +234,11 @@ function NavListMenu() {
         <MenuHandler>
           <div>
             <div
-              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900 rounded-md text-start leading-tight cursor-pointer select-none transition-all hover:bg-none mt-2 mb-4 flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3"
+              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900 rounded-md text-start leading-tight cursor-pointer select-none transition-all hover:bg-none mt-2 mb-4 flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3 text-lg"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
+              <MdDesignServices />
               Services
               <ChevronDownIcon
                 strokeWidth={2.5}

@@ -4,22 +4,23 @@ import Spinner from "../../../Shared/Spinner";
 import useGetData from "../../../Hooks/useGetData";
 
 const Comments = ({ id }) => {
-  const [, isLoading] = useGetData();
-  const [comments, , isPending] = useComment();
+  const [isLoading] = useGetData();
+  const [comments] = useComment();
   const [filterComment, setComment] = useState("");
   // console.log("comments", comments);
 
+  // console.log(id);
   // filter specific comment for specific blog
   useEffect(() => {
     const filtered = comments?.filter((c) => {
-      return c?.blogId === id;
+      return c?.blogId == id;
     });
     setComment(filtered);
   }, [comments, id]);
   if (isLoading) {
     return <Spinner></Spinner>;
   }
-  // console.log(comment);
+  // console.log(filterComment);
   return (
     <div>
       <div>
@@ -34,7 +35,7 @@ const Comments = ({ id }) => {
       <div>
         {filterComment?.map((c) => (
           <div key={c._id} className="flex  items-center gap-4 py-5">
-            <img className="w-20 rounded-md" src={c?.photo} alt="" />
+            <img className="w-16 h-16 rounded-md" src={c?.photo} alt="" />
             <div className="">
               <h5 className="text-xl font-semibold">{c?.name}</h5>
               <p className="text-blue-600 text-lg">{c?.date}</p>

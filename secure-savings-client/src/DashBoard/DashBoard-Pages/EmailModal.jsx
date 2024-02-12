@@ -10,23 +10,30 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { MdOutlineMailOutline } from "react-icons/md";
+import { useForm } from "react-hook-form";
 
-export default function EmailModal() {
+export default function EmailModal({ email, name }) {
   const [open, setOpen] = React.useState(false);
+  const { register, handleSubmit, reset } = useForm(); // Initialize React Hook Form
 
   const handleOpen = () => setOpen(!open);
 
+  const onSubmit = (data) => {
+    console.log(data);
+    handleOpen();
+    reset();
+  };
+
   return (
     <>
-      <Button onClick={handleOpen} color="#f1f5f9">
+      <Button onClick={handleOpen} color="blue">
         <MdOutlineMailOutline className="text-2xl" />
       </Button>
       <Dialog open={open} size="xs" handler={handleOpen}>
         <div className="flex items-center justify-between">
           <DialogHeader className="flex flex-col items-start">
-            {" "}
             <Typography className="mb-1" variant="h4">
-              New message to @{" "}
+              New message to Admin
             </Typography>
           </DialogHeader>
           <svg
@@ -45,26 +52,30 @@ export default function EmailModal() {
         </div>
         <DialogBody>
           <Typography className="mb-10 -mt-7 " color="gray" variant="lead">
-            Write the message and then click button.
+            Write the message and then click button below
           </Typography>
           <div className="grid gap-6">
             <Typography className="-mb-1" color="blue-gray" variant="h6">
               Username
             </Typography>
-            <Input label="Username" />
+            <Input label={name} {...register("name")} />
             <Typography className="-mb-1" color="blue-gray" variant="h6">
-              User Email
+              Subject
             </Typography>
-            <Input label="Useremail" />
-            <Textarea label="Message" />
+            <Input label="Subject" {...register("subject")} />
+            <Textarea label="Message" {...register("message")} />
           </div>
         </DialogBody>
         <DialogFooter className="space-x-2">
           <Button variant="text" color="gray" onClick={handleOpen}>
-            cancel
+            Cancel
           </Button>
-          <Button variant="gradient" color="gray" onClick={handleOpen}>
-            send message
+          <Button
+            variant="gradient"
+            color="blue"
+            onClick={handleSubmit(onSubmit)}
+          >
+            Send Message
           </Button>
         </DialogFooter>
       </Dialog>

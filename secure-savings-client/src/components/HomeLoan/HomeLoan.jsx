@@ -12,6 +12,8 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { FaGreaterThan } from "react-icons/fa6";
+import { modifyData } from "../../Hooks/Api";
+import toast from "react-hot-toast";
 
 function Icon({ id, open }) {
   return (
@@ -35,19 +37,49 @@ function Icon({ id, open }) {
 }
 const HomeLoan = () => {
   const [open, setOpen] = useState(0);
+  const [financing, setFinancing] = useState("");
+  const [banking, setBanking] = useState("");
+  const [loanAmount, setLoanAmount] = useState(0);
+  const [selectedRadio, setSelectedRadio] = useState("12 months");
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
+
+  const handleLoan = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const currentDate = new Date();
+    const formattedDate = currentDate.toDateString();
+    const useLoan = {
+      financing,
+      banking,
+      loanAmount,
+      formattedDate,
+      selectedRadio,
+    };
+    console.log(selectedRadio);
+
+    try {
+      const res = await modifyData("/api/loan", "POST", useLoan);
+      if (res.acknowledged) {
+        toast.success("Application submitted");
+        form.reset();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <div className="bg-[#F5FAFF] relative">
-        <div className="py-10">
+        <div className="py-24">
           <img
             className="hidden md:block"
             src="https://i.ibb.co/Ydxr8H5/Home-loan.jpg"
             alt=""
           />
         </div>
-        <div className="absolute top-48 transform -translate-y-1/2 lg:left-24 left-5 mt-5">
+        <div className="absolute lg:top-48 md:top-32 top-20 transform -translate-y-1/2 lg:left-24 left-5 mt-5">
           <h2 className="dark:text-[#003E5B] lg:text-6xl text-4xl font-semibold">
             Home Loans
           </h2>
@@ -63,13 +95,13 @@ const HomeLoan = () => {
         <div className="relative">
           <div>
             <img
-              className="h-[550px] w-[100%] bg-left"
+              className="lg:h-[550px] h-[300px] w-[100%]"
               src="https://i.ibb.co/Xt4CHXY/Mortgage-lending.png"
               alt=""
             />
           </div>
           <div className="text-center">
-            <div className="bg-white p-10 w-4/5 rounded-xl absolute top-36 left-32 shadow-2xl">
+            <div className="bg-white p-10 w-4/5 rounded-xl absolute lg:top-36 md:left-20 top-12 left-[42px] lg:left-32 shadow-2xl">
               <div>
                 <h2 className="lg:text-6xl text-4xl dark:text-[#003E5B] font-semibold my-5">
                   Mortgage lending
@@ -80,12 +112,14 @@ const HomeLoan = () => {
                 </span>
               </div>
               <div className="flex justify-center gap-5 mt-5">
-                <Button className="rounded-full bg-black dark:bg-[#003E5B]">
-                  Apply for home loan
-                </Button>
+                <a href="#applyloan">
+                  <Button className="md:rounded-full bg-black dark:bg-[#003E5B]">
+                    Apply for home loan
+                  </Button>
+                </a>
                 <Button
                   variant="outlined"
-                  className="rounded-full outline-[#003E5B] inline-block"
+                  className="md:rounded-full outline-[#003E5B]"
                 >
                   Get in Touch
                 </Button>
@@ -97,20 +131,20 @@ const HomeLoan = () => {
         {/* Great benefits from secureService */}
 
         <div>
-          <div className="text-center">
-            <h2 className="text-green-600 font-semibold lg:text-2xl text-xl my-10">
+          <div className="text-center mt-40 md:my-20">
+            <h2 className="text-green-600 font-semibold lg:text-2xl text-xl my-5">
               Why SecureService is a great financing option for you
             </h2>
             <span className="text-black lg:text-6xl text-4xl font-semibold dark:text-[#003E5B]">
               Great benefits from SecureService
             </span>
-            <p className="dark:text-[#003E5B] my-10">
+            <p className="dark:text-[#003E5B] my-5">
               Building or buying, for yourself or to invest, we have the home
               loan for you.
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-5 px-4">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 px-4">
             <div className="border border-green-600 rounded-lg bg-white p-10">
               <div className="flex justify-center items-center">
                 <img
@@ -211,20 +245,20 @@ const HomeLoan = () => {
         </div>
 
         {/* Loan Application */}
-        <div className="mt-32">
+        <div id="applyloan" className="lg:mt-32 mt-12">
           <div className="text-center">
-            <h2 className="text-green-600 font-semibold lg:text-2xl text-xl my-10">
+            <h2 className="text-green-600 font-semibold lg:text-2xl text-xl my-5">
               Quick & easy home loan
             </h2>
             <span className="text-black lg:text-6xl text-4xl font-semibold dark:text-[#003E5B]">
               Take One Step Closer to Your Dream.
             </span>
-            <p className="dark:text-[#003E5B] my-10">
+            <p className="dark:text-[#003E5B] my-5">
               Get Home loans approved within days with transparent lending
               criteria and transparent processes.
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-10 my-20 px-4 pb-10">
+          <div className="grid lg:grid-cols-3 grid-cols-1 gap-10 lg:my-20 my-12 px-4 pb-10">
             <div className="col-span-1 flex justify-center items-center">
               <div className="text-center dark:text-[#003E5B]">
                 <h2 className="text-4xl font-medium my-5">Apply for a loan</h2>
@@ -246,78 +280,111 @@ const HomeLoan = () => {
                     <p className="dark:text-[#003E5B]">Home Loan</p>
                   </div>
                 </div>
-                <div className="flex gap-5 my-10">
-                  <Select label="Choose your financing type" success>
-                    <Option className="text-green-600">Debt Financing</Option>
-                    <Option className="text-green-600">Equity Finance</Option>
-                  </Select>
-                  <Select label="Choose your preferred bank service" success>
-                    <Option className="text-green-600">Digital Banking</Option>
-                    <Option className="text-green-600">
-                      Individual Banking
-                    </Option>
-                  </Select>
-                </div>
-                <div className="my-5">
-                  <Input color="teal" label="Your loan amount" success />
-                </div>
-                <div className="flex gap-10">
-                  <Radio
-                    name="type"
-                    ripple={false}
-                    className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
-                    label={
-                      <Typography
-                        color="blue-gray"
-                        className="font-normal text-green-600"
+
+                <form onSubmit={handleLoan}>
+                  <div className="flex md:flex-row flex-col gap-5 my-10">
+                    <Select
+                      name="financing"
+                      onChange={(selectedValue) => setFinancing(selectedValue)}
+                      label="Choose your financing type"
+                      success
+                    >
+                      <Option value="debtFinancing" className="text-green-600">
+                        Debt Financing
+                      </Option>
+                      <Option value="equityFinance" className="text-green-600">
+                        Equity Finance
+                      </Option>
+                    </Select>
+                    <Select
+                      name="banking"
+                      onChange={(selectedValue) => setBanking(selectedValue)}
+                      label="Choose your preferred bank service"
+                      success
+                    >
+                      <Option value="digitalBanking" className="text-green-600">
+                        Digital Banking
+                      </Option>
+                      <Option
+                        value="individualBanking"
+                        className="text-green-600"
                       >
-                        6 months
-                      </Typography>
-                    }
-                  />
-                  <Radio
-                    name="type"
-                    defaultChecked
-                    ripple={false}
-                    className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
-                    label={
-                      <Typography
-                        color="blue-gray"
-                        className="font-normal text-green-600"
-                      >
-                        12 months
-                      </Typography>
-                    }
-                  />
-                  <Radio
-                    name="type"
-                    defaultChecked
-                    ripple={false}
-                    className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
-                    label={
-                      <Typography
-                        color="blue-gray"
-                        className="font-normal text-green-600"
-                      >
-                        24 months
-                      </Typography>
-                    }
-                  />
-                  <Radio
-                    name="type"
-                    defaultChecked
-                    ripple={false}
-                    className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
-                    label={
-                      <Typography
-                        color="blue-gray"
-                        className="font-normal text-green-600"
-                      >
-                        36 months
-                      </Typography>
-                    }
-                  />
-                </div>
+                        Individual Banking
+                      </Option>
+                    </Select>
+                  </div>
+                  <div className="my-5">
+                    <Input
+                      name="loanAmount"
+                      onChange={(e) => setLoanAmount(e.target.value)}
+                      color="teal"
+                      label="Your loan amount"
+                      success
+                    />
+                  </div>
+                  <div className="flex flex-col md:flex-row gap-10">
+                    <Radio
+                    onChange={() => setSelectedRadio("6 months")}
+                      name="type"
+                      ripple={false}
+                      className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                      label={
+                        <Typography
+                          color="blue-gray"
+                          className="font-normal text-green-600"
+                        >
+                          6 months
+                        </Typography>
+                      }
+                    />
+                    <Radio
+                      name="type"
+                      onChange={() => setSelectedRadio("12 months")}
+                      defaultChecked
+                      ripple={false}
+                      className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                      label={
+                        <Typography
+                          color="blue-gray"
+                          className="font-normal text-green-600"
+                        >
+                          12 months
+                        </Typography>
+                      }
+                    />
+                    <Radio
+                      name="type"
+                      onChange={() => setSelectedRadio("24 months")}
+                      ripple={false}
+                      className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                      label={
+                        <Typography
+                          color="blue-gray"
+                          className="font-normal text-green-600"
+                        >
+                          24 months
+                        </Typography>
+                      }
+                    />
+                    <Radio
+                      name="type"
+                      onChange={() => setSelectedRadio("36 months")}
+                      ripple={false}
+                      className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                      label={
+                        <Typography
+                          color="blue-gray"
+                          className="font-normal text-green-600"
+                        >
+                          36 months
+                        </Typography>
+                      }
+                    />
+                  </div>
+                  <Button type="submit" className="btn">
+                    Apply Loan
+                  </Button>
+                </form>
               </div>
             </div>
           </div>
@@ -326,7 +393,7 @@ const HomeLoan = () => {
         {/* Frequently asked questions */}
         <div className="pb-20">
           <div className="text-center">
-            <h2 className="text-green-600 font-semibold lg:text-2xl text-xl my-10">
+            <h2 className="text-green-600 font-semibold lg:text-2xl text-xl my-5">
               If you have question,we have answer
             </h2>
             <span className="text-black lg:text-6xl text-4xl font-semibold dark:text-[#003E5B]">
@@ -338,7 +405,7 @@ const HomeLoan = () => {
             </p>
           </div>
 
-          <div className="w-1/2 mx-auto">
+          <div className="lg:w-1/2 w-full mx-auto px-4">
             <Accordion open={open === 1} icon={<Icon id={1} open={open} />}>
               <AccordionHeader onClick={() => handleOpen(1)}>
                 What do I do if I lose my card or it gets stolen?

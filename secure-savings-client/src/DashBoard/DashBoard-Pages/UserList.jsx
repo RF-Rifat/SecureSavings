@@ -1,5 +1,5 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
+import { UserPlusIcon } from "@heroicons/react/24/solid";
 import {
   Card,
   CardHeader,
@@ -181,7 +181,7 @@ export default function UserList() {
                         <IconButton variant="text">
                           {/* <PencilIcon className="h-4 w-4" /> */}
 
-                          <EmailModal></EmailModal>
+                          <EmailModal email={email} name={name}></EmailModal>
                         </IconButton>
                       </Tooltip>
                     </td>

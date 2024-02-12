@@ -13,9 +13,15 @@ const port = process.env.PORT || 5001;
 
 // connect mongodb configuration using mongoose
 mongoose
-  .connect(`mongodb+srv://secure-savings:${process.env.DB_PASS}@cluster0.tryvron.mongodb.net/?retryWrites=true&w=majority`)
+  .connect(
+    `mongodb+srv://secure-savings:${process.env.DB_PASS}@cluster0.tryvron.mongodb.net/?retryWrites=true&w=majority`
+  )
   .then(console.log("Mongooses Connected Successfully"))
   .catch((error) => console.log("Error connecting to MongoDB", error));
+
+// import routes here
+const testimonialRoute = require("./api/routes/testimonialRoute");
+app.use("/api/testimonial", testimonialRoute);
 
 app.get("/", (req, res) => {
   res.send("Server Running...");
