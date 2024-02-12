@@ -88,20 +88,20 @@ const MyWalletForm = () => {
                                                         type="text"
                                                         name="number"
                                                         placeholder="Card Number"
+                                                        className="block mx-auto w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 border-none focus:border-none"
+                                                        required
+                                                        maxLength={16}
                                                         value={state.number}
                                                         onChange={handleInputChange}
                                                         onFocus={handleInputFocus}
-                                                        maxLength={16}
-                                                        required
-                                                        className="block mx-auto w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 border-none focus:border-none"
                                                     />
                                                 </div>
                                                 <div className="my-3">
                                                     <input
                                                         type="text"
                                                         name="money"
-                                                        className="block mx-auto w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 border-none focus:border-none"
                                                         placeholder="Money"
+                                                        className="block mx-auto w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 border-none focus:border-none"
                                                         required
                                                         maxLength={8}
                                                     />

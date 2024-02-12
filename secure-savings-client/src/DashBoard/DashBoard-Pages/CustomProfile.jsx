@@ -1,11 +1,33 @@
+import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
-import useGetData from "../../Hooks/useGetData";
+// import useGetData from "../../Hooks/useGetData";
 
 export function CustomProfile() {
-  const [userData] = useGetData("/api/user");
+  // const [userData] = useGetData("/api/user");
   const { authInfo } = useAuth();
   const { displayName, photoURL, email } = authInfo?.user || {};
 
+  // Modal
+  const [showModal, setShowModal] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+
+  const handleButtonClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleModalSubmit = () => {
+    console.log('Submitted value:', inputValue);
+
+    handleCloseModal();
+  };
 
   return (
     <>
@@ -26,7 +48,7 @@ export function CustomProfile() {
                   {`${displayName}`}
                 </h5>
                 <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                 Admin
+                  Admin
                 </p>
               </div>
             </div>
@@ -130,7 +152,7 @@ export function CustomProfile() {
                 <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-500">
                   Hi, I&apos;m {`${displayName}`}, Decisions: If you can&apos;t
                   decide, the answer is no. If two equally difficult paths,
-                  choose the one more painful in the short term .
+                  choose the one more painful in the short term.
                 </p>
                 <hr className="my-8 border-blue-gray-50" />
                 <ul className="flex flex-col gap-4 p-0">
@@ -169,6 +191,40 @@ export function CustomProfile() {
                     </div>
                   </li>
                 </ul>
+                <hr className="my-8 border-blue-gray-50" />
+                <div>
+                  <a href="#_" className="relative px-5 py-2 font-medium text-white group" onClick={handleButtonClick}>
+                    <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-[#369BF0] group-hover:bg-purple-600 group-hover:skew-x-12"></span>
+                    <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-[#369BF0] group-hover:bg-purple-600 group-hover:-skew-x-12"></span>
+                    <span className="absolute bottom-0 left-0 hidden w-10 h-20 transition-all duration-100 ease-out transform -translate-x-8 translate-y-10 bg-[#369BF0] -rotate-12"></span>
+                    <span className="absolute bottom-0 right-0 hidden w-10 h-20 transition-all duration-100 ease-out transform translate-x-10 translate-y-8 bg-[#369BF0] -rotate-12"></span>
+                    <span className="relative">Activate Card</span>
+                  </a>
+
+                  {showModal && (
+                    <div className="fixed top-0 z-20 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+                      <div className="bg-white p-8 rounded-lg">
+                        <h2 className="text-lg font-bold mb-4">Activate Deactivated Card</h2>
+                        <input
+                          type="text"
+                          placeholder="Enter card number"
+                          value={inputValue}
+                          onChange={handleInputChange}
+                          className="border border-gray-300 p-2 mb-4 rounded-md"
+                        />
+                        <div className="flex justify-end">
+                          <button onClick={handleCloseModal} className="mr-2 px-4 py-2 bg-gray-300 text-gray-800 rounded-md">
+                            Cancel
+                          </button>
+                          <button onClick={handleModalSubmit} className="px-4 py-2 bg-[#369BF0] text-white rounded-md">
+                            Confirm Activate
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                </div>
               </div>
             </div>
             <div className="w-full max-w-full px-3 shrink-0 md:flex-0">
