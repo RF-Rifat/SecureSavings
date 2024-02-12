@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const Data = require("../models/data");
 const User = require("../models/User");
 const Blog = require("../models/blog");
 const Comment = require("../models/comment");
@@ -139,4 +138,25 @@ router.post("/:type", async (req, res) => {
   }
 });
 
+// PUT route
+router.put("/user/update-status/:email", async (req, res) => {
+  try {
+    const userEmail = req.params.email;
+    const newStatus = req.body.status;
+
+    const result = await User.updateOne(
+      { email: userEmail },
+      { status: newStatus }
+    );
+
+    if (result.nModified === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json(result);
+  } catch (error) {
+    console.error("Error updating user status:", error.message);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
 module.exports = router;
