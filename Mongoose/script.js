@@ -14,8 +14,7 @@ app.use(express.json());
 // MongoDB connection using Mongoose
 mongoose
   .connect(
-    `mongodb+srv://secure-savings:${process.env.DB_PASS}@cluster0.tryvron.mongodb.net/?retryWrites=true&w=majority`,
-    { useNewUrlParser: true, useUnifiedTopology: true }
+    `mongodb+srv://secure-savings:${process.env.DB_PASS}@cluster0.tryvron.mongodb.net/?retryWrites=true&w=majority`
   )
   .then(() => console.log("MongoDB Connected Successfully"))
   .catch((error) => console.log("Error connecting to MongoDB", error));
