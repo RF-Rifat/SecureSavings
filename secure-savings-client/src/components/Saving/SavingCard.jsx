@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const SavingCard = ({ card }) => {
   const {
     bankName,
     description,
     imageUrl,
-    rating,
+    // rating,
     location,
     reserveButtonLabel,
     cardName,
@@ -30,7 +32,7 @@ const SavingCard = ({ card }) => {
                 <div>
                   <div className="relative w-full h-56">
                     <img
-                      src={imageUrl}
+                      src={imageUrl || <Skeleton />}
                       alt=""
                       className="object-cover w-full h-full "
                     />
@@ -43,8 +45,9 @@ const SavingCard = ({ card }) => {
                       <div>
                         <a href="">
                           <h2 className="text-xl font-semibold dark:text-gray-300">
-                            {cardName}
+                            {cardName || <Skeleton />}
                           </h2>
+
                         </a>
                       </div>
                       <div className="flex">
@@ -102,7 +105,7 @@ const SavingCard = ({ card }) => {
                       </span>
                     </div>
                     <h2 className="mb-4 text-lg font-medium text-gray-700 dark:text-gray-400">
-                      {description}...
+                      {description || <Skeleton />}...
                     </h2>
                     <div className="flex items-center justify-between ">
                       <div className="flex items-center">
@@ -130,7 +133,7 @@ const SavingCard = ({ card }) => {
                         href="#"
                         className="px-3 py-2 text-xs text-gray-100 bg-blue-700 rounded hover:bg-blue-600 hover:text-gray-100"
                       >
-                        {reserveButtonLabel}
+                        {reserveButtonLabel || <Skeleton />}
                       </a>
                     </div>
                   </div>
