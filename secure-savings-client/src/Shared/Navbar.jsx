@@ -18,7 +18,6 @@ import {
   InboxArrowDownIcon,
   Bars3Icon,
   ChatBubbleLeftEllipsisIcon,
-  CurrencyBangladeshiIcon,
   UserPlusIcon,
   WalletIcon,
   SquaresPlusIcon,
@@ -31,6 +30,7 @@ import ToggleTheme from "../components/ToggleTheme";
 import useAuth from "../Hooks/useAuth";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { MdDesignServices } from "react-icons/md";
+import { NavSidebar } from "./NavSidebar";
 
 function ProfileMenu() {
   // const  authInfo  = useContext(AuthProvider);
@@ -136,35 +136,6 @@ function ProfileMenu() {
     </Menu>
   );
 }
-
-// nav list component
-const navListItems = [
-  {
-    label: "Home",
-    link: "",
-    icon: UserCircleIcon,
-  },
-  {
-    label: "Services",
-    link: "services",
-    icon: CurrencyBangladeshiIcon,
-  },
-  {
-    label: "About Us",
-    link: "aboutUs",
-    icon: UserPlusIcon,
-  },
-  {
-    label: "Blog",
-    link: "blog",
-    icon: WalletIcon,
-  },
-  {
-    label: "Contact",
-    link: "contact",
-    icon: ChatBubbleLeftEllipsisIcon,
-  },
-];
 
 // mega menu list
 const navListMenuItems = [
@@ -363,72 +334,111 @@ function NavList() {
     </ul>
   );
 }
-// function NavList() {
-//   return (
-//     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-//       {navListItems.map(({ label, icon, link }) => (
-//         <NavLink
-//           to={`/${link}`}
-//           key={label}
-//           className={({ isActive, isPending }) =>
-//             isPending
-//               ? "pending"
-//               : isActive
-//               ? "active bg-dark dark:bg-white text-white dark:text-dark rounded-md"
-//               : ""
-//           }
-//         >
-//           <div className="font-medium text-lg text-center">
-//             <div className="flex items-center  lg:rounded-full hover:bg-none mt-2 mb-4  flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3 gap-2">
-//               {React.createElement(icon, {
-//                 className:
-//                   "h-[18px] w-[18px] dark:text-darkText antialiased font-sans text-gray-700 font-medium text-lg text-center",
-//               })}{" "}
-//               <span
-//                 className={`py-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
-//               >
-//                 {" "}
-//                 {label}
-//               </span>
-//             </div>
-//           </div>
-//         </NavLink>
-//       ))}
-//     </ul>
-//   );
-// }
 
 function DrawerNavList() {
   return (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-      {navListItems.map(({ label, icon, link }) => (
-        <NavLink
-          to={`/${link}`}
-          key={label}
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "bg-dark text-white rounded-md"
-              : ""
-          }
-        >
-          <div className="font-medium text-lg text-center ml-4">
-            <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none my-2 lg:mb-0 lg:mt-0 lg:items-center px-3">
-              {React.createElement(icon, {
-                className:
-                  "h-[18px] w-[18px] antialiased dark:text-darkText mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
-              })}{" "}
-              <span
-                className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
-              >
-                {" "}
-                {label}
-              </span>
-            </div>
+      <NavLink
+        to={`/`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "bg-dark text-white rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center ml-4">
+          <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none my-2 lg:mb-0 lg:mt-0 lg:items-center px-3">
+            {React.createElement(HomeIcon, {
+              className:
+                "h-[18px] w-[18px] antialiased dark:text-darkText mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
+            })}{" "}
+            <span
+              className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              Home
+            </span>
           </div>
-        </NavLink>
-      ))}
+        </div>
+      </NavLink>
+      <NavSidebar />
+      <NavLink
+        to={`/aboutUs`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "bg-dark text-white rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center ml-4">
+          <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none my-2 lg:mb-0 lg:mt-0 lg:items-center px-3">
+            {React.createElement(UserPlusIcon, {
+              className:
+                "h-[18px] w-[18px] antialiased dark:text-darkText mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
+            })}{" "}
+            <span
+              className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              About Us
+            </span>
+          </div>
+        </div>
+      </NavLink>
+      <NavLink
+        to={`/blog`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "bg-dark text-white rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center ml-4">
+          <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none my-2 lg:mb-0 lg:mt-0 lg:items-center px-3">
+            {React.createElement(WalletIcon, {
+              className:
+                "h-[18px] w-[18px] antialiased dark:text-darkText mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
+            })}{" "}
+            <span
+              className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              Blog
+            </span>
+          </div>
+        </div>
+      </NavLink>
+      <NavLink
+        to={`/contact`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "bg-dark text-white rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center ml-4">
+          <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none my-2 lg:mb-0 lg:mt-0 lg:items-center px-3">
+            {React.createElement(ChatBubbleLeftEllipsisIcon, {
+              className:
+                "h-[18px] w-[18px] antialiased dark:text-darkText mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
+            })}{" "}
+            <span
+              className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              Contact
+            </span>
+          </div>
+        </div>
+      </NavLink>
     </ul>
   );
 }

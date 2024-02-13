@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect, useState } from "react";
+import TestimonialModal from "./TestimonialModal";
 
 const Testimonial = () => {
   const array = [
@@ -199,10 +200,14 @@ const Testimonial = () => {
             </div>
           </div>
         </div>
-          </div>
-          
+      </div>
 
-          
+      <div className="flex flex-wrap justify-center">
+        {/* <button className="w-full px-6 py-3 text-sm font-semibold text-white bg-blue-600 rounded md:w-auto md:ml-2 hover:bg-blue-700">
+          Post a Review
+        </button> */}
+        <TestimonialModal></TestimonialModal>
+      </div>
     </>
   );
 };
