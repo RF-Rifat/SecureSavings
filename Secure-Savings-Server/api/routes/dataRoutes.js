@@ -4,6 +4,7 @@ const User = require("../models/User");
 const Blog = require("../models/blog");
 const Comment = require("../models/comment");
 const Loan = require("../models/loan");
+const Testimonial = require("../models/Testimonial");
 
 router.post("/", async (req, res) => {
   try {
@@ -94,6 +95,12 @@ router.get("/:type", async (req, res) => {
           .skip(page * size)
           .limit(size);
         break;
+      case "testimonial":
+        result = await Testimonial.find()
+          .sort({ _id: -1 })
+          .skip(page * size)
+          .limit(size);
+        break;
       default:
         result = [];
     }
@@ -126,6 +133,9 @@ router.post("/:type", async (req, res) => {
         break;
       case "loan":
         result = await Loan.create(data);
+        break;
+      case "testimonial":
+        result = await Testimonial.create(data);
         break;
       default:
         result = null;

@@ -10,8 +10,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
-
 // Use routes
 app.use("/api", dataRoutes);
 
