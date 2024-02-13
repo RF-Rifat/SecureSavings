@@ -169,4 +169,20 @@ router.put("/user/update-status/:email", async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
+
+// getting data by filtering id
+router.get("/blog/:id", async (req, res) => {
+  try {
+    const blogId = req.params.id;
+    const blog = await Blog.findById(blogId);
+    if (!blog) {
+      return res.status(404).json({ message: "Blog not found" });
+    }
+    res.send(blog);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+});
+
 module.exports = router;
