@@ -9,6 +9,7 @@ import Comments from "./comments/Comments";
 const BlogDetails = () => {
   const { id } = useParams();
   const [blogs, isLoading] = useGetData(`/api/blog/${id}`);
+  console.log(blogs);
   const { name, title, type, date, authorImage, blogImage, post } = blogs;
 
   if (isLoading) {
@@ -133,11 +134,11 @@ const BlogDetails = () => {
 
         {/* user's comment */}
         <div className="px-8">
-          <Comments id={id}></Comments>
+          {/* <Comments id={id}></Comments> */}
           {/* add comment  form*/}
-          <div className="mt-10">
+          {/* <div className="mt-10">
             <AddComment id={id}></AddComment>
-          </div>
+          </div> */}
         </div>
       </div>
 

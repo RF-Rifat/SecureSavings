@@ -44,6 +44,7 @@ export function NavSidebar() {
 
   return (
     <Accordion
+      className="!p-0 m-0"
       open={open === 1}
       icon={
         <ChevronDownIcon
@@ -59,13 +60,7 @@ export function NavSidebar() {
           onClick={() => handleOpen(1)}
           className="border-b-0 p-3"
         >
-          {/* <ListItemPrefix>
-            <MdDesignServices />
-          </ListItemPrefix> */}
-          {/* <Typography color="blue-gray" className="mr-auto font-normal">
-            Services
-          </Typography> */}
-          <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none my-2 lg:mb-0 lg:mt-0 lg:items-center px-3">
+          <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none lg:mb-0 lg:mt-0 lg:items-center px-3">
             {React.createElement(MdDesignServices, {
               className:
                 "h-[18px] w-[18px] antialiased dark:text-darkText mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
@@ -74,7 +69,7 @@ export function NavSidebar() {
               className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full text-lg`}
             >
               {" "}
-              Home
+              Services
             </span>
           </div>
         </AccordionHeader>
@@ -91,7 +86,7 @@ export function NavSidebar() {
                   : ""
               }
               to={item.link}
-              key={item.icon}
+              key={item.title}
             >
               <ListItem>
                 <div className="grid rounded-lg p-2 ">

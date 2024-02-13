@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import useComment from "../../../Hooks/useComment";
 import Spinner from "../../../Shared/Spinner";
@@ -7,10 +8,7 @@ const Comments = ({ id }) => {
   const [isLoading] = useGetData();
   const [comments] = useComment();
   const [filterComment, setComment] = useState("");
-  // console.log("comments", comments);
-
-  // console.log(id);
-  // filter specific comment for specific blog
+ 
   useEffect(() => {
     const filtered = comments?.filter((c) => {
       return c?.blogId == id;
