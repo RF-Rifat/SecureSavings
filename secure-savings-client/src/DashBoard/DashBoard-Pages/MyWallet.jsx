@@ -2,11 +2,8 @@ import { MdOutlineBarChart } from "react-icons/md";
 import { FcDataSheet } from "react-icons/fc";
 import { FcPieChart } from "react-icons/fc";
 import { FcLineChart } from "react-icons/fc";
-import { loadStripe } from "@stripe/stripe-js";
 import MyWalletForm from "./MyWalletForm";
-import { Elements } from "@stripe/react-stripe-js";
 
-const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const MyWallet = () => {
 
   return (
@@ -259,9 +256,7 @@ const MyWallet = () => {
         </div>
       </div>
       {/* Form section */}
-      <Elements stripe={stripePromise}>
-        <MyWalletForm />
-      </Elements>
+      <MyWalletForm />
     </>
   );
 };
