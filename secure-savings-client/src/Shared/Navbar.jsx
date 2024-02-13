@@ -31,6 +31,7 @@ import ToggleTheme from "../components/ToggleTheme";
 import useAuth from "../Hooks/useAuth";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { MdDesignServices } from "react-icons/md";
+import { NavSidebar } from "./NavSidebar";
 
 function ProfileMenu() {
   // const  authInfo  = useContext(AuthProvider);
@@ -137,18 +138,18 @@ function ProfileMenu() {
   );
 }
 
-// nav list component
+// nav list component for mobile device
 const navListItems = [
   {
     label: "Home",
     link: "",
     icon: UserCircleIcon,
   },
-  {
-    label: "Services",
-    link: "services",
-    icon: CurrencyBangladeshiIcon,
-  },
+  // {
+  //   label: "Services",
+  //   link: "services",
+  //   icon: CurrencyBangladeshiIcon,
+  // },
   {
     label: "About Us",
     link: "aboutUs",
@@ -401,7 +402,7 @@ function NavList() {
 function DrawerNavList() {
   return (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-      {navListItems.map(({ label, icon, link }) => (
+      {/* {navListItems.map(({ label, icon, link }) => (
         <NavLink
           to={`/${link}`}
           key={label}
@@ -429,6 +430,133 @@ function DrawerNavList() {
           </div>
         </NavLink>
       ))}
+      <NavListMenu /> */}
+      <NavLink
+        to={`/`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "bg-dark text-white rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center ml-4">
+          <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none my-2 lg:mb-0 lg:mt-0 lg:items-center px-3">
+            {React.createElement(HomeIcon, {
+              className:
+                "h-[18px] w-[18px] antialiased dark:text-darkText mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
+            })}{" "}
+            <span
+              className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              Home
+            </span>
+          </div>
+        </div>
+      </NavLink>
+      <NavSidebar />
+      <NavLink
+        to={`/`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "bg-dark text-white rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center ml-4">
+          <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none my-2 lg:mb-0 lg:mt-0 lg:items-center px-3">
+            {React.createElement(HomeIcon, {
+              className:
+                "h-[18px] w-[18px] antialiased dark:text-darkText mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
+            })}{" "}
+            <span
+              className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              Home
+            </span>
+          </div>
+        </div>
+      </NavLink>
+      <NavLink
+        to={`/`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "bg-dark text-white rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center ml-4">
+          <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none my-2 lg:mb-0 lg:mt-0 lg:items-center px-3">
+            {React.createElement(HomeIcon, {
+              className:
+                "h-[18px] w-[18px] antialiased dark:text-darkText mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
+            })}{" "}
+            <span
+              className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              Home
+            </span>
+          </div>
+        </div>
+      </NavLink>
+      <NavLink
+        to={`/`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "bg-dark text-white rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center ml-4">
+          <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none my-2 lg:mb-0 lg:mt-0 lg:items-center px-3">
+            {React.createElement(HomeIcon, {
+              className:
+                "h-[18px] w-[18px] antialiased dark:text-darkText mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
+            })}{" "}
+            <span
+              className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              Home
+            </span>
+          </div>
+        </div>
+      </NavLink>
+      <NavLink
+        to={`/`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "bg-dark text-white rounded-md"
+            : ""
+        }
+      >
+        <div className="font-medium text-lg text-center ml-4">
+          <div className="flex gap-3 items-center  lg:rounded-full hover:bg-none my-2 lg:mb-0 lg:mt-0 lg:items-center px-3">
+            {React.createElement(HomeIcon, {
+              className:
+                "h-[18px] w-[18px] antialiased dark:text-darkText mt-[3px] font-sans text-gray-700 font-medium text-lg text-center",
+            })}{" "}
+            <span
+              className={`pt-[9px] pb-2 rounded-md text-start leading-tight cursor-pointer select-none transition-all outline-none items-center lg:rounded-full`}
+            >
+              {" "}
+              Home
+            </span>
+          </div>
+        </div>
+      </NavLink>
     </ul>
   );
 }

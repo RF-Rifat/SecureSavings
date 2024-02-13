@@ -1,27 +1,20 @@
 import { useParams } from "react-router-dom";
 import Spinner from "../../Shared/Spinner";
 import useGetData from "../../Hooks/useGetData";
-import { useEffect, useState } from "react";
 import { Input } from "@material-tailwind/react";
 
 import AddComment from "./AddComment";
 import Comments from "./comments/Comments";
 
 const BlogDetails = () => {
-  const [blogDetails, setDetails] = useState("");
   const { id } = useParams();
-  const [blogs, isLoading] = useGetData("/api/blog");
-  // console.log(blogs);
-  useEffect(() => {
-    const details = blogs.find((blog) => blog._id == id);
+  const [blogs, isLoading] = useGetData(`/api/blog/${id}`);
+  const { name, title, type, date, authorImage, blogImage, post } = blogs;
 
-    setDetails(details);
-  }, [id, blogs]);
- 
   if (isLoading) {
     return <Spinner></Spinner>;
   }
-  //   console.log(id);
+
   return (
     <>
       <div className="max-w-7xl mx-auto px-2">
@@ -40,16 +33,16 @@ const BlogDetails = () => {
               <div className="mt-6 w-full  ">
                 <div className="mb-12">
                   <img
-                    src={blogDetails?.blogImage}
+                    src={blogImage}
                     alt="blog post"
                     className="rounded-lg shadow-xl mb-8"
                   />
                   <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-inherit">
-                    {blogDetails?.title}
+                    {title}
                   </h4>
 
                   <p className="block antialiased font-sans text-base font-light leading-relaxed text-inherit mb-4">
-                    {blogDetails?.post}
+                    {post}
                   </p>
                   {/* <div className="flex items-center border-b pb-6">
                     <img
