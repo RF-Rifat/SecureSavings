@@ -14,6 +14,7 @@ import { AdminDataContext } from "../../Context/AdminProvider";
 import { modifyData } from "../../Hooks/Api";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function TestimonialModal() {
   const { authInfo } = useAuth();
@@ -30,7 +31,7 @@ export default function TestimonialModal() {
     try {
       const res = await modifyData("/api/testimonial", "POST", testimonial);
       if (res.acknowledged) {
-        console.log("Testimonial Posted Successfully");
+        toast.success("Testimonial Posted Successfully");
       }
     } catch (error) {
       console.log(error);
