@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   Card,
   CardHeader,
@@ -6,49 +6,22 @@ import {
   Input,
   Button,
   Typography,
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-  Select,
-  Option,
 } from "@material-tailwind/react";
-import { CreditCardIcon } from "@heroicons/react/24/solid";
-
-function formatCardNumber(value) {
-  const val = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
-  const matches = val.match(/\d{4,16}/g);
-  const match = (matches && matches[0]) || "";
-  const parts = [];
-
-  for (let i = 0, len = match.length; i < len; i += 4) {
-    parts.push(match.substring(i, i + 4));
-  }
-
-  if (parts.length) {
-    return parts.join(" ");
-  } else {
-    return value;
-  }
-}
-
-function formatExpires(value) {
-  return value
-    .replace(/[^0-9]/g, "")
-    .replace(/^([2-9])$/g, "0$1")
-    .replace(/^(1{1})([3-9]{1})$/g, "0$1/$2")
-    .replace(/^0{1,}/g, "0")
-    .replace(/^([0-1]{1}[0-9]{1})([0-9]{1,2}).*/g, "$1/$2");
-}
 
 export default function Modal() {
-  const [type, setType] = React.useState("card");
-  const [cardNumber, setCardNumber] = React.useState("");
-  const [cardExpires, setCardExpires] = React.useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [address, setAddress] = useState("");
+
+  const handleCreateAccount = () => {
+    console.log("Creating account...");
+  };
 
   return (
-    <Card className="w-full max-w-[24rem]">
+    <Card className="w-full">
       <CardHeader
         color="gray"
         floated={false}
@@ -56,210 +29,103 @@ export default function Modal() {
         className="m-0 grid place-items-center px-4 py-8 text-center"
       >
         <Typography variant="h5" color="white">
-          Material Tailwind PRO
+          Create Account
         </Typography>
       </CardHeader>
       <CardBody>
-        <Tabs value={type} className="overflow-visible">
-          <TabsHeader className="relative z-0 ">
-            <Tab value="card" onClick={() => setType("card")}>
-              Pay with Card
-            </Tab>
-            <Tab value="paypal" onClick={() => setType("paypal")}>
-              Pay with PayPal
-            </Tab>
-          </TabsHeader>
-          <TabsBody
-            className="!overflow-x-hidden !overflow-y-visible"
-            animate={{
-              initial: {
-                x: type === "card" ? 400 : -400,
-              },
-              mount: {
-                x: 0,
-              },
-              unmount: {
-                x: type === "card" ? 400 : -400,
-              },
-            }}
-          >
-            <TabPanel value="card" className="p-0">
-              <form className="mt-12 flex flex-col gap-4">
-                <div>
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mb-2 font-medium"
-                  >
-                    Your Email
-                  </Typography>
-                  <Input
-                    type="email"
-                    placeholder="name@mail.com"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                  />
-                </div>
-
-                <div className="my-3">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mb-2 font-medium "
-                  >
-                    Card Details
-                  </Typography>
-
-                  <Input
-                    maxLength={19}
-                    value={formatCardNumber(cardNumber)}
-                    onChange={(event) => setCardNumber(event.target.value)}
-                    icon={
-                      <CreditCardIcon className="absolute left-0 h-4 w-4 text-blue-gray-300" />
-                    }
-                    placeholder="0000 0000 0000 0000"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                  />
-                  <div className="my-4 flex items-center gap-4">
-                    <div>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="mb-2 font-medium"
-                      >
-                        Expires
-                      </Typography>
-                      <Input
-                        maxLength={5}
-                        value={formatExpires(cardExpires)}
-                        onChange={(event) => setCardExpires(event.target.value)}
-                        containerProps={{ className: "min-w-[72px]" }}
-                        placeholder="00/00"
-                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                        labelProps={{
-                          className: "before:content-none after:content-none",
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="mb-2 font-medium"
-                      >
-                        CVC
-                      </Typography>
-                      <Input
-                        maxLength={4}
-                        containerProps={{ className: "min-w-[72px]" }}
-                        placeholder="000"
-                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                        labelProps={{
-                          className: "before:content-none after:content-none",
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mb-2 font-medium"
-                  >
-                    Holder Name
-                  </Typography>
-                  <Input
-                    placeholder="name@mail.com"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                  />
-                </div>
-                <Button size="lg">Pay Now</Button>
-               
-              </form>
-            </TabPanel>
-            <TabPanel value="paypal" className="p-0">
-              <form className="mt-12 flex flex-col gap-4">
-                <div>
-                  <Typography
-                    variant="paragraph"
-                    color="blue-gray"
-                    className="mb-4 font-medium"
-                  >
-                    Personal Details
-                  </Typography>
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mb-2 font-medium"
-                  >
-                    Your Email
-                  </Typography>
-                  <Input
-                    type="email"
-                    placeholder="name@mail.com"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                  />
-                </div>
-
-                <div className="my-6">
-                  <Typography
-                    variant="paragraph"
-                    color="blue-gray"
-                    className="mb-4 font-medium"
-                  >
-                    Billing Address
-                  </Typography>
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mb-2 font-medium"
-                  >
-                    Country
-                  </Typography>
-                  <Select
-                    placeholder="USA"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                    menuProps={{ className: "h-48" }}
-                  >
-                    <Option>
-                      <div className="flex items-center gap-x-2">New</div>
-                    </Option>
-                  </Select>
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mt-4 -mb-2 font-medium"
-                  >
-                    Postal Code
-                  </Typography>
-                  <Input
-                    placeholder="0000"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                    containerProps={{ className: "mt-4" }}
-                  />
-                </div>
-                <Button size="lg">pay with paypal</Button>
-                
-              </form>
-            </TabPanel>
-          </TabsBody>
-        </Tabs>
+        <form className="mt-4 grid gap-4 grid-cols-2">
+          <div>
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              Email
+            </Typography>
+            <Input
+              type="email"
+              placeholder="name@mail.com"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </div>
+          <div>
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              Password
+            </Typography>
+            <Input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
+          <div>
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              Confirm Password
+            </Typography>
+            <Input
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(event) => setConfirmPassword(event.target.value)}
+            />
+          </div>
+          <div>
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              Full Name
+            </Typography>
+            <Input
+              placeholder="Full Name"
+              value={fullName}
+              onChange={(event) => setFullName(event.target.value)}
+            />
+          </div>
+          <div>
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              Date of Birth
+            </Typography>
+            <Input
+              type="date"
+              placeholder="Date of Birth"
+              value={dateOfBirth}
+              onChange={(event) => setDateOfBirth(event.target.value)}
+            />
+          </div>
+          <div className="col-span-2">
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              Address
+            </Typography>
+            <Input
+              placeholder="Address"
+              value={address}
+              onChange={(event) => setAddress(event.target.value)}
+            />
+          </div>
+          <Button className="col-span-2" onClick={handleCreateAccount}>
+            Create Account
+          </Button>
+        </form>
       </CardBody>
     </Card>
   );
