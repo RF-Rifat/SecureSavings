@@ -9,10 +9,14 @@ import {
   Textarea,
   Typography,
 } from "@material-tailwind/react";
-import { MdOutlineMailOutline } from "react-icons/md";
+
 import { useForm } from "react-hook-form";
 
 export default function TestimonialModal({ email, name }) {
+  const authInfo = useContext(AdminDataContext);
+  const { LoggedUser, isAdmin } = authInfo;
+  const { name, email } = LoggedUser[0] || {};
+  console.log(name, email);
   const [open, setOpen] = React.useState(false);
   const { register, handleSubmit, reset } = useForm(); // Initialize React Hook Form
 
@@ -62,7 +66,7 @@ export default function TestimonialModal({ email, name }) {
             <Typography className="-mb-1" color="blue-gray" variant="h6">
               Email
             </Typography>
-            <Input label="Email" {...register("email")} />
+            {/* <Input label="Email" {...register("email")} /> */}
             <Textarea label="Review" {...register("review")} />
           </div>
         </DialogBody>
