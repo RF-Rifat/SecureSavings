@@ -33,6 +33,11 @@ export function SideNav() {
           path: "/profile",
         },
         {
+          icon: <UserCircleIcon {...icon} />,
+          name: "Account",
+          path: "/account",
+        },
+        {
           icon: <WalletIcon {...icon} />,
           name: "My-Wallet",
           path: "/wallet",

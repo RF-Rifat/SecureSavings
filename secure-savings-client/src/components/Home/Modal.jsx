@@ -3,7 +3,6 @@ import {
   Card,
   CardHeader,
   CardBody,
-  Input,
   Button,
   Typography,
   Select,
@@ -15,13 +14,14 @@ import { modifyData } from "../../Hooks/Api";
 export default function Modal() {
   const authInfo = useContext(AdminDataContext);
   const { LoggedUser,  } = authInfo;
-  const { _id, email } = LoggedUser[0] || {};
+  const { _id, email,name } = LoggedUser[0] || {};
  
 
   const generateAccountID = () => {
-    const firstThreeLetters = email.substring(0, 3);
+    const firstThreeLettersEmail = email.substring(0, 3);
+    const firstThreeLettersName = name.substring(0, 3);
     const randomNumbers = Math.floor(1000 + Math.random() * 9000);
-    return `${firstThreeLetters}${randomNumbers}`;
+    return `${firstThreeLettersEmail}${firstThreeLettersName}${randomNumbers}`;
   };
 
   const [accountType, setAccountType] = useState("");

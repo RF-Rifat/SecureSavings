@@ -1,15 +1,15 @@
-import { useState } from "react";
-import useAuth from "../../Hooks/useAuth";
-// import useGetData from "../../Hooks/useGetData";
+import { useContext, useState } from "react";
+import { AdminDataContext } from "../../Context/AdminProvider";
+
+import ProfileAddBlog from "../../components/DashBoard/ProfileAddBlog";
 
 export function CustomProfile() {
-  // const [userData] = useGetData("/api/user");
-  const { authInfo } = useAuth();
-  const { displayName, photoURL, email } = authInfo?.user || {};
+  const { LoggedUser, isAdmin, userAcc } = useContext(AdminDataContext);
+  const { _id, email, name, imageSrc } = LoggedUser[0] || {};
 
   // Modal
   const [showModal, setShowModal] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const handleButtonClick = () => {
     setShowModal(true);
@@ -24,7 +24,7 @@ export function CustomProfile() {
   };
 
   const handleModalSubmit = () => {
-    console.log('Submitted value:', inputValue);
+    console.log("Submitted value:", inputValue);
 
     handleCloseModal();
   };
@@ -37,7 +37,7 @@ export function CustomProfile() {
             <div className="flex items-center gap-6">
               <div className="relative inline-flex">
                 <img
-                  src={`${photoURL}`}
+                  src={imageSrc}
                   alt="bruce-mars"
                   className="inline-block relative object-cover object-center w-[74px] h-[74px] rounded-lg shadow-lg shadow-blue-gray-500/40"
                 />
@@ -45,7 +45,7 @@ export function CustomProfile() {
               </div>
               <div>
                 <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900 mb-1">
-                  {`${displayName}`}
+                  {`${name}`}
                 </h5>
                 <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
                   Admin
@@ -150,9 +150,9 @@ export function CustomProfile() {
               </div>
               <div className="p-0">
                 <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-500">
-                  Hi, I&apos;m {`${displayName}`}, Decisions: If you can&apos;t
-                  decide, the answer is no. If two equally difficult paths,
-                  choose the one more painful in the short term.
+                  Hi, I&apos;m {`${name}`}, Decisions: If you can&apos;t decide,
+                  the answer is no. If two equally difficult paths, choose the
+                  one more painful in the short term.
                 </p>
                 <hr className="my-8 border-blue-gray-50" />
                 <ul className="flex flex-col gap-4 p-0">
@@ -161,7 +161,7 @@ export function CustomProfile() {
                       first name:
                     </p>
                     <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-500">
-                      {`${displayName}`}
+                      {`${name}`}
                     </p>
                   </li>
                   <li className="flex items-center gap-4">
@@ -193,7 +193,11 @@ export function CustomProfile() {
                 </ul>
                 <hr className="my-8 border-blue-gray-50" />
                 <div>
-                  <a href="#_" className="relative px-5 py-2 font-medium text-white group" onClick={handleButtonClick}>
+                  <a
+                    href="#_"
+                    className="relative px-5 py-2 font-medium text-white group"
+                    onClick={handleButtonClick}
+                  >
                     <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-[#369BF0] group-hover:bg-purple-600 group-hover:skew-x-12"></span>
                     <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-[#369BF0] group-hover:bg-purple-600 group-hover:-skew-x-12"></span>
                     <span className="absolute bottom-0 left-0 hidden w-10 h-20 transition-all duration-100 ease-out transform -translate-x-8 translate-y-10 bg-[#369BF0] -rotate-12"></span>
@@ -204,7 +208,9 @@ export function CustomProfile() {
                   {showModal && (
                     <div className="fixed top-0 z-20 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
                       <div className="bg-white p-8 rounded-lg">
-                        <h2 className="text-lg font-bold mb-4">Activate Deactivated Card</h2>
+                        <h2 className="text-lg font-bold mb-4">
+                          Activate Deactivated Card
+                        </h2>
                         <input
                           type="text"
                           placeholder="Enter card number"
@@ -213,17 +219,22 @@ export function CustomProfile() {
                           className="border border-gray-300 p-2 mb-4 rounded-md"
                         />
                         <div className="flex justify-end">
-                          <button onClick={handleCloseModal} className="mr-2 px-4 py-2 bg-gray-300 text-gray-800 rounded-md">
+                          <button
+                            onClick={handleCloseModal}
+                            className="mr-2 px-4 py-2 bg-gray-300 text-gray-800 rounded-md"
+                          >
                             Cancel
                           </button>
-                          <button onClick={handleModalSubmit} className="px-4 py-2 bg-[#369BF0] text-white rounded-md">
+                          <button
+                            onClick={handleModalSubmit}
+                            className="px-4 py-2 bg-[#369BF0] text-white rounded-md"
+                          >
                             Confirm Activate
                           </button>
                         </div>
                       </div>
                     </div>
                   )}
-
                 </div>
               </div>
             </div>
@@ -274,7 +285,7 @@ export function CustomProfile() {
                           required=""
                           placeholder="Rifat"
                           className="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-3 rounded-md border-blue-gray-200 focus:border-gray-900  !border-t-blue-gray-200 focus:!border-t-gray-900"
-                          defaultValue={`${displayName}`}
+                          defaultValue={`${name}`}
                         />
                         <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.1] text-gray-500 peer-focus:text-gray-900 before:border-blue-gray-200 peer-focus:before:!border-gray-900 after:border-blue-gray-200 peer-focus:after:!border-gray-900 before:content-none after:content-none">
                           {" "}
@@ -293,7 +304,7 @@ export function CustomProfile() {
                           required=""
                           placeholder="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                           className="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-3 rounded-md border-blue-gray-200 focus:border-gray-900  !border-t-blue-gray-200 focus:!border-t-gray-900"
-                          defaultValue={`${photoURL}`}
+                          defaultValue={imageSrc}
                         />
                         <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.1] text-gray-500 peer-focus:text-gray-900 before:border-blue-gray-200 peer-focus:before:!border-gray-900 after:border-blue-gray-200 peer-focus:after:!border-gray-900 before:content-none after:content-none">
                           {" "}
@@ -413,6 +424,7 @@ export function CustomProfile() {
             </div>
           </div>
         </div>
+        <ProfileAddBlog />
       </div>
     </>
   );

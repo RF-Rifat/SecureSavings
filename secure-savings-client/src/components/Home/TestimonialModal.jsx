@@ -10,7 +10,6 @@ import {
 } from "@material-tailwind/react";
 
 import { useForm } from "react-hook-form";
-import { AdminDataContext } from "../../Context/AdminProvider";
 import { modifyData } from "../../Hooks/Api";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";

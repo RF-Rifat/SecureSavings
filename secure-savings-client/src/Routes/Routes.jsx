@@ -21,6 +21,7 @@ import BlogDetails from "../pages/blogs/BlogDetails";
 import AdminChat from "../DashBoard/DashBoard-Pages/AdminChat";
 import HomeLoan from "../components/HomeLoan/HomeLoan";
 import BusinessLoan from "../BusinessLoan/BusinessLoan";
+import AccountSetting from "../DashBoard/DashBoard-Pages/AccountSetting";
 
 export const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/profile",
         element: <CustomProfile />,
+      },
+      {
+        path: "/dashboard/account",
+        element: <AccountSetting />,
       },
       {
         path: "/dashboard/wallet",
