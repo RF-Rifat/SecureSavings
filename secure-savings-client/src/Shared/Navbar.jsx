@@ -227,7 +227,7 @@ function NavListMenu() {
           </div>
         </MenuHandler>
         <MenuList className="hidden max-w-screen-xl rounded-xl lg:block">
-          <ul className="grid grid-cols-3 gap-y-2 outline-none outline-0">
+          <ul className="grid grid-cols-2 gap-y-2 outline-none outline-0">
             {renderItems}
           </ul>
         </MenuList>

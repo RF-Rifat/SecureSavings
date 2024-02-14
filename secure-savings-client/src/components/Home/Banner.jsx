@@ -6,7 +6,8 @@ import "swiper/css/pagination";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 
 import "./Banner.css";
-import NewAccount from "./NewAccount";
+import CreateAccount from "./createAccount";
+
 
 const Banner = () => {
   // const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,7 +33,7 @@ const Banner = () => {
         </h2>
         <p className="text-2xl">Believing, Banking and Achieving Different</p>
         <div>
-          <NewAccount />
+          <CreateAccount />
         </div>
       </div>
       <div className="2xl:w-1/2 my-auto">

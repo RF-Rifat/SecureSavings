@@ -9,7 +9,7 @@ import { io } from "socket.io-client";
 import { AdminDataContext } from "../Context/AdminProvider";
 
 const ChatBox = () => {
-  const socket = io("http://localhost:3000");
+  const socket = io("http://localhost:5000");
   // const socket = io("https://socket-server-eta-bice.vercel.app");
   const [chat, setChat] = useState([]);
   const AdminAuth = useContext(AdminDataContext);
