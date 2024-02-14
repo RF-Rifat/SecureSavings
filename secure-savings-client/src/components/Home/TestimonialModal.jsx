@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import {
   Button,
   Dialog,
@@ -14,19 +13,20 @@ import { useForm } from "react-hook-form";
 import { AdminDataContext } from "../../Context/AdminProvider";
 import { modifyData } from "../../Hooks/Api";
 import useAuth from "../../Hooks/useAuth";
+import { useState } from "react";
 
 export default function TestimonialModal() {
   const { authInfo } = useAuth();
   const { displayName, photoURL } = authInfo?.user || {};
-  console.log(authInfo);
-  const [open, setOpen] = React.useState(false);
+
+  const [open, setOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm();
 
   const handleOpen = () => setOpen(!open);
 
   const onSubmit = async (data) => {
     const testimonial = { ...data, name: displayName, imageSrc: photoURL };
-    console.log(testimonial);
+
     try {
       const res = await modifyData("/api/testimonial", "POST", testimonial);
       if (res.acknowledged) {

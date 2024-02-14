@@ -25,12 +25,14 @@ const SignUp = () => {
 
       updateUser(data.name, data.image)
         .then(async () => {
+          console.log(data);
           try {
             const res = await modifyData("/api/user", "POST", {
               ...data,
               memberSince: formattedDate,
               status: true,
               position: "Member",
+              accounts: [],
             });
             console.log(res.acknowledged);
             if (res.acknowledged) {
@@ -119,9 +121,9 @@ const SignUp = () => {
                 <div>
                   <label className="text-sm mb-2 block">Image Url</label>
                   <input
-                    name="image"
+                    name="imageSrc"
                     type="text"
-                    {...register("image")}
+                    {...register("imageSrc")}
                     className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                     placeholder="Enter mobile number"
                   />

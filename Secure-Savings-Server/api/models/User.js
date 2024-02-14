@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
+// const accountSchema = new mongoose.Schema({
+//   account_id: { type: String, required: true },
+//   account_type: { type: String, enum: ["checking", "savings"], required: true },
+//   balance: { type: Number, required: true },
+// });
+
 const userSchema = new Schema(
   {
     name: {
@@ -18,13 +24,13 @@ const userSchema = new Schema(
     address: {
       type: String,
     },
-    balance: {
-      type: Number,
-      default: 0,
-    },
     status: {
       type: Boolean,
       default: true,
+    },
+    position: {
+      type: String,
+      default: "Member",
     },
     password: {
       type: String,

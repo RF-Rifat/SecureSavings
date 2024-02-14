@@ -5,7 +5,6 @@ import useGetData from "../../Hooks/useGetData";
 
 const Testimonial = () => {
   const [testimonial, isLoading] = useGetData("/api/testimonial");
-  console.log(testimonial);
   const array = [
     {
       name: "John Doe",

@@ -23,36 +23,11 @@ export default function Modal() {
     return `${firstThreeLetters}${name}${randomNumbers}`;
   };
 
-  const [userData, setUserData] = useState({
-    email: email,
-    fullName: name,
-    dateOfBirth: "",
-    address: "",
-    account_id: generateAccountID(),
-    account_type: "",
-    balance: 0,
-  });
+  const [accountType, setAccountType] = useState("");
 
   const handleCreateAccount = () => {
-    console.log("Creating account...", userData);
+    console.log("Creating account...", accountType);
     // Now you can send userData to your backend for saving
-  };
-
-  const handleInputChange = (e, index) => {
-    const { name, value } = e.target;
-    if (name.startsWith("accounts")) {
-      const updatedAccounts = [...userData.accounts];
-      updatedAccounts[index][name.split(".")[1]] = value;
-      setUserData((prevData) => ({
-        ...prevData,
-        accounts: updatedAccounts,
-      }));
-    } else {
-      setUserData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
-    }
   };
 
   return (
@@ -69,23 +44,7 @@ export default function Modal() {
       </CardHeader>
       <CardBody>
         <form className="mt-4 grid gap-4 grid-cols-2">
-          <div>
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 font-medium"
-            >
-              Email
-            </Typography>
-            <Input
-              type="email"
-              name="email"
-              placeholder="name@mail.com"
-              value={userData.email}
-              onChange={handleInputChange}
-            />
-          </div>
-          {/* Other input fields */}
+         
           <div>
             <Typography
               variant="small"
@@ -95,32 +54,15 @@ export default function Modal() {
               Account Type
             </Typography>
             <Select
-              name="account_type"
-              value={userData.account_type}
-              onChange={handleInputChange}
+              color="blue"
+              label="Select Version"
+              onChange={(e) => setAccountType(e)}
             >
-              <Option value="">Select Account Type</Option>
               <Option value="checking">Checking</Option>
               <Option value="savings">Savings</Option>
-              {/* Add more account types as needed */}
             </Select>
           </div>
-          <div>
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 font-medium"
-            >
-              Balance
-            </Typography>
-            <Input
-              type="number"
-              name="balance"
-              placeholder="Balance"
-              value={userData.balance}
-              onChange={handleInputChange}
-            />
-          </div>
+          
           <Button className="col-span-2" onClick={handleCreateAccount}>
             Create Account
           </Button>

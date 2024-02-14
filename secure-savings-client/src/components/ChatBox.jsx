@@ -27,9 +27,6 @@ const ChatBox = () => {
       message: inputValue,
       sender: info?.reloadUserInfo,
     });
-    // socket.on("message", (data) => {
-    //   console.log(data)
-    // })
     setChat((prevChat) => [
       ...prevChat,
       {
