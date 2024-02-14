@@ -13,6 +13,7 @@ const AdminProvider = ({ children }) => {
     LoggedUser,
     isAdmin,
   };
+  console.log(AdminAuth);
   return (
     <AdminDataContext.Provider value={AdminAuth}>
       {children}

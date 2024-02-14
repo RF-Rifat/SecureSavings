@@ -16,6 +16,7 @@ import {
   BellIcon,
   ClockIcon,
   Bars3Icon,
+  MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
 
 import { useContext } from "react";
@@ -29,8 +30,8 @@ export function DashboardNavbar() {
   const { user, logOut } = useContext(AuthProvider);
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
-  const count = useSelector(state => state.counter.value)
-  const email = user?.email
+  const count = useSelector((state) => state.counter.value);
+  const email = user?.email;
   const donorsReq = [];
 
   //   const { _id } = filteredUser || {};
@@ -97,7 +98,10 @@ export function DashboardNavbar() {
         </div>
         <div className="flex items-center">
           <div className="mr-auto md:mr-4 md:w-56">
-            <Input label="Search" />
+            <Input
+              label="Search"
+              icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+            />
           </div>
           <ToggleTheme />
           {!user ? (

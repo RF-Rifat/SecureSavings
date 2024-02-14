@@ -5,6 +5,7 @@ const Blog = require("../models/blog");
 const Comment = require("../models/comment");
 const Loan = require("../models/loan");
 const Testimonial = require("../models/Testimonial");
+const Account = require("../models/account");
 
 router.post("/", async (req, res) => {
   try {
@@ -71,6 +72,11 @@ router.get("/:type", async (req, res) => {
           .skip(page * size)
           .limit(size);
         break;
+      case "account":
+        result = await Account.find()
+          .skip(page * size)
+          .limit(size);
+        break;
       case "message":
         result = await Message.find()
           .sort({ _id: -1 })
@@ -122,6 +128,9 @@ router.post("/:type", async (req, res) => {
       case "user":
         result = await User.create(data);
         break;
+      case "account":
+        result = await Account.create(data);
+        break;
       case "message":
         result = await Message.create(data);
         break;
@@ -148,41 +157,6 @@ router.post("/:type", async (req, res) => {
   }
 });
 
-// create account req
-router.post("/api/user/addAccount/:userId", async (req, res) => {
-  try {
-    const userId = req.params.userId;
-    const newAccountData = req.body;
-    const user = await User.findById(userId);
-    console.log(user, userId);
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    user.accounts.push(newAccountData);
-    await user.save();
-
-    res.status(200).json({ message: "Account added successfully", user });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
-
-router.get("/api/user/accounts/:userId", async (req, res) => {
-  try {
-    const userId = req.params.userId;
-    const user = await User.findById(userId);
-    console.log(user);
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    res.status(200).json({ accounts: user.accounts });
-  } catch (error) {
-    console.error("Error fetching account data:", error.message);
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
 
 // PUT route
 router.put("/user/update-status/:email", async (req, res) => {

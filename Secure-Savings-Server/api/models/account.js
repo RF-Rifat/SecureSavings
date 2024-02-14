@@ -1,16 +1,21 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const accountSchema = new Schema({
-  accounts: [
-    {
-      account_id: { type: String, required: true },
-      account_type: { type: String, required: true },
-      balance: { type: Number, required: true },
+const accountSchema = new Schema(
+  {
+    accountId: { type: String, required: true, unique: true },
+    accountType: { type: String, required: true, unique: true },
+    balance: { type: Number, default: 500 },
+    status: { type: String, default: "pending", enum: ["pending", "approved","cancelled"] },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-  ],
-});
+  },
+  { timestamps: true }
+);
 
-const Account = mongoose.model("Account", userSchema);
+const Account = mongoose.model("Account", accountSchema);
 
 module.exports = Account;

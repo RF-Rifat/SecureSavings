@@ -69,7 +69,6 @@ const UserProvider = ({ children }) => {
 
   const logOut = async (email) => {
     setLoading(true);
-    console.log(email);
     try {
       const response = await fetch(
         `${BASE_URL}/api/user/update-status/${email}`,

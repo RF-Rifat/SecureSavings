@@ -32,7 +32,6 @@ const SignUp = () => {
               memberSince: formattedDate,
               status: true,
               position: "Member",
-              accounts: [],
             });
             console.log(res.acknowledged);
             if (res.acknowledged) {
