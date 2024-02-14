@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Card,
   CardHeader,
@@ -6,22 +6,57 @@ import {
   Input,
   Button,
   Typography,
+  Select,
+  Option,
 } from "@material-tailwind/react";
+import { AdminDataContext } from "../../Context/AdminProvider";
 
 export default function Modal() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [address, setAddress] = useState("");
+  const authInfo = useContext(AdminDataContext);
+  const { LoggedUser, isAdmin } = authInfo;
+  const { name, email } = LoggedUser[0] || {};
+  console.log(name, email);
+
+  const generateAccountID = () => {
+    const firstThreeLetters = email.substring(0, 3);
+    const randomNumbers = Math.floor(1000 + Math.random() * 9000);
+    return `${firstThreeLetters}${name}${randomNumbers}`;
+  };
+
+  const [userData, setUserData] = useState({
+    email: email,
+    fullName: name,
+    dateOfBirth: "",
+    address: "",
+    account_id: generateAccountID(),
+    account_type: "",
+    balance: 0,
+  });
 
   const handleCreateAccount = () => {
-    console.log("Creating account...");
+    console.log("Creating account...", userData);
+    // Now you can send userData to your backend for saving
+  };
+
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    if (name.startsWith("accounts")) {
+      const updatedAccounts = [...userData.accounts];
+      updatedAccounts[index][name.split(".")[1]] = value;
+      setUserData((prevData) => ({
+        ...prevData,
+        accounts: updatedAccounts,
+      }));
+    } else {
+      setUserData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   return (
-    <Card className="w-full">
+    <Card>
       <CardHeader
         color="gray"
         floated={false}
@@ -44,10 +79,31 @@ export default function Modal() {
             </Typography>
             <Input
               type="email"
+              name="email"
               placeholder="name@mail.com"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              value={userData.email}
+              onChange={handleInputChange}
             />
+          </div>
+          {/* Other input fields */}
+          <div>
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              Account Type
+            </Typography>
+            <Select
+              name="account_type"
+              value={userData.account_type}
+              onChange={handleInputChange}
+            >
+              <Option value="">Select Account Type</Option>
+              <Option value="checking">Checking</Option>
+              <Option value="savings">Savings</Option>
+              {/* Add more account types as needed */}
+            </Select>
           </div>
           <div>
             <Typography
@@ -55,71 +111,14 @@ export default function Modal() {
               color="blue-gray"
               className="mb-2 font-medium"
             >
-              Password
+              Balance
             </Typography>
             <Input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-          </div>
-          <div>
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 font-medium"
-            >
-              Confirm Password
-            </Typography>
-            <Input
-              type="password"
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(event) => setConfirmPassword(event.target.value)}
-            />
-          </div>
-          <div>
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 font-medium"
-            >
-              Full Name
-            </Typography>
-            <Input
-              placeholder="Full Name"
-              value={fullName}
-              onChange={(event) => setFullName(event.target.value)}
-            />
-          </div>
-          <div>
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 font-medium"
-            >
-              Date of Birth
-            </Typography>
-            <Input
-              type="date"
-              placeholder="Date of Birth"
-              value={dateOfBirth}
-              onChange={(event) => setDateOfBirth(event.target.value)}
-            />
-          </div>
-          <div className="col-span-2">
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 font-medium"
-            >
-              Address
-            </Typography>
-            <Input
-              placeholder="Address"
-              value={address}
-              onChange={(event) => setAddress(event.target.value)}
+              type="number"
+              name="balance"
+              placeholder="Balance"
+              value={userData.balance}
+              onChange={handleInputChange}
             />
           </div>
           <Button className="col-span-2" onClick={handleCreateAccount}>

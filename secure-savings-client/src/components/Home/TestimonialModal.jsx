@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   Dialog,
@@ -11,19 +11,31 @@ import {
 } from "@material-tailwind/react";
 
 import { useForm } from "react-hook-form";
+import { AdminDataContext } from "../../Context/AdminProvider";
+import { modifyData } from "../../Hooks/Api";
+import useAuth from "../../Hooks/useAuth";
 
-export default function TestimonialModal({ email, name }) {
-  const authInfo = useContext(AdminDataContext);
-  const { LoggedUser, isAdmin } = authInfo;
-  const { name, email } = LoggedUser[0] || {};
-  console.log(name, email);
+export default function TestimonialModal() {
+  const { authInfo } = useAuth();
+  const { displayName, photoURL } = authInfo?.user || {};
+  console.log(authInfo);
   const [open, setOpen] = React.useState(false);
-  const { register, handleSubmit, reset } = useForm(); // Initialize React Hook Form
+  const { register, handleSubmit, reset } = useForm();
 
   const handleOpen = () => setOpen(!open);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const testimonial = { ...data, name: displayName, imageSrc: photoURL };
+    console.log(testimonial);
+    try {
+      const res = await modifyData("/api/testimonial", "POST", testimonial);
+      if (res.acknowledged) {
+        console.log("Testimonial Posted Successfully");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
     handleOpen();
     reset();
   };
@@ -62,7 +74,8 @@ export default function TestimonialModal({ email, name }) {
             <Typography className="-mb-1" color="blue-gray" variant="h6">
               Username
             </Typography>
-            <Input label="Name" {...register("name")} />
+            <Input label="Occupation" {...register("occupation")} />
+
             <Typography className="-mb-1" color="blue-gray" variant="h6">
               Email
             </Typography>

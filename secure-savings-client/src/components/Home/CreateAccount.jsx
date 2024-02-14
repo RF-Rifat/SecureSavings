@@ -15,7 +15,7 @@ export default function CreateAccount() {
         Create Account
       </Button>
       <Dialog
-        size="xs"
+        size="sm"
         open={open}
         handler={handleOpen}
         className="bg-transparent shadow-none"

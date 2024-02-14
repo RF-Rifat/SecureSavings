@@ -1,8 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect, useState } from "react";
 import TestimonialModal from "./TestimonialModal";
+import useGetData from "../../Hooks/useGetData";
 
 const Testimonial = () => {
+  const [testimonial, isLoading] = useGetData("/api/testimonial");
+  console.log(testimonial);
   const array = [
     {
       name: "John Doe",

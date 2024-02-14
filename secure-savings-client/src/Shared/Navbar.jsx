@@ -205,11 +205,11 @@ function NavListMenu() {
         <MenuHandler>
           <div>
             <div
-              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900 rounded-md text-start leading-tight cursor-pointer select-none transition-all hover:bg-none mt-2 mb-4 flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3 text-lg"
+              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900 rounded-md text-start leading-tight cursor-pointer select-none transition-all hover:bg-none mt-2 mb-4 flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center px-3 text-lg dark:text-white"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
-              <MdDesignServices />
+              <MdDesignServices className="dark:text-white" />
               Services
               <ChevronDownIcon
                 strokeWidth={2.5}
