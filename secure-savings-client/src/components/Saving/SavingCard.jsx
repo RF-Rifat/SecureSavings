@@ -45,6 +45,7 @@ const SavingCard = ({ card }) => {
                       <div>
                         <a href="">
                           <h2 className="text-xl font-semibold dark:text-gray-300">
+                          <Skeleton />
                             {cardName || <Skeleton />}
                           </h2>
 
