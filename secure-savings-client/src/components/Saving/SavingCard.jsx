@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
 
-
 const SavingCard = ({ card }) => {
   const {
     bankName,
@@ -31,7 +30,7 @@ const SavingCard = ({ card }) => {
                 <div>
                   <div className="relative w-full h-56">
                     <img
-                      src={imageUrl || <Skeleton />}
+                      src={imageUrl}
                       alt=""
                       className="object-cover w-full h-full "
                     />
@@ -44,8 +43,7 @@ const SavingCard = ({ card }) => {
                       <div>
                         <a href="">
                           <h2 className="text-xl font-semibold dark:text-gray-300">
-                          <Skeleton />
-                            {cardName || <Skeleton />}
+                            {cardName}
                           </h2>
 
                         </a>
@@ -105,7 +103,7 @@ const SavingCard = ({ card }) => {
                       </span>
                     </div>
                     <h2 className="mb-4 text-lg font-medium text-gray-700 dark:text-gray-400">
-                      {description || <Skeleton />}...
+                      {description}...
                     </h2>
                     <div className="flex items-center justify-between ">
                       <div className="flex items-center">
@@ -133,7 +131,7 @@ const SavingCard = ({ card }) => {
                         href="#"
                         className="px-3 py-2 text-xs text-gray-100 bg-blue-700 rounded hover:bg-blue-600 hover:text-gray-100"
                       >
-                        {reserveButtonLabel || <Skeleton />}
+                        {reserveButtonLabel}
                       </a>
                     </div>
                   </div>

@@ -2,89 +2,32 @@
 import { useCallback, useEffect, useState } from "react";
 import TestimonialModal from "./TestimonialModal";
 import useGetData from "../../Hooks/useGetData";
+import { useForm } from "react-hook-form";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
+import { modifyData } from "../../Hooks/Api";
 
 const Testimonial = () => {
   const [testimonial, isLoading] = useGetData("/api/testimonial");
-  const array = [
-    {
-      name: "John Doe",
-      designation: "Student",
-      testimonialDescription:
-        "Being a student, Taskiee has been my go-to tool for organizing assignments and study schedules. The visual timeline and reminder features have helped me stay on top of my coursework",
-      occupation: "Child",
-    },
-    {
-      name: "Jane Doe",
-      designation: "Freelancer",
-      testimonialDescription:
-        "Taskiee has been a game-changer for my freelance work. It allows me to effortlessly prioritize tasks, set realistic deadlines, and maintain a healthy work-life balance",
-      occupation: "Gentlewoman",
-    },
-    {
-      name: "Shiyam Sarker",
-      designation: "Entrepreneur",
-      testimonialDescription:
-        "Taskiee's collaborative features have been instrumental in streamlining tasks for my startup. The ability to share projects and track progress with the team has enhanced our efficiency.",
-      occupation: "Gentleman",
-    },
-    {
-      name: "Bob Smith",
-      designation: "Creative Professional",
-      testimonialDescription:
-        "As a creative professional, Taskiee has simplified my project management. The clean design and goal tracking feature keep me inspired and organized throughout the creative process.",
-      occupation: "Child",
-    },
-    {
-      name: "Eva Williams",
-      designation: "Remote Worker",
-      testimonialDescription:
-        "Taskiee's mobile app has made remote work a breeze for me. I can seamlessly manage tasks on the go, ensuring that I stay productive regardless of my location.",
-      occupation: "Individual",
-    },
-    {
-      name: "Chris Brown",
-      designation: "Parent",
-      testimonialDescription:
-        "Managing family schedules is no easy task, but Taskiee has made it seamless. From school activities to household chores, Taskiee keeps our family organized and on track.",
-      occupation: "Boy",
-    },
-    {
-      name: "Olivia Davis",
-      designation: "Health Professional",
-      testimonialDescription:
-        "In the healthcare field, where time is crucial, Taskiee has become my ally. Its time tracking feature has allowed me to optimize patient care and manage administrative tasks efficiently.",
-      occupation: "Girl",
-    },
-    {
-      name: "Liam Wilson",
-      designation: "Researcher",
-      testimonialDescription:
-        "Taskiee's analytics feature has proven invaluable in my research endeavors. It provides insightful data on my productivity patterns, helping me refine my workflow and achieve research goals",
-      occupation: "Toddler",
-    },
-  ];
 
-  const [currentSlider, setCurrentSlider] = useState(0);
-  // The slider images array
-  const prevSlider = () =>
-    setCurrentSlider((currentSlider) =>
-      currentSlider === 0 ? array.length - 2 : currentSlider - 1
-    );
-  const nextSlider = useCallback(() =>
-    setCurrentSlider((currentSlider) =>
-      currentSlider === array.length - 2 ? 0 : currentSlider + 1
-    )
-  );
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      nextSlider();
-    }, 4000);
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [currentSlider, nextSlider]);
+  const { authInfo } = useAuth();
+  const { displayName, photoURL } = authInfo?.user || {};
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = async (data) => {
+    const testimonial = { ...data, name: displayName, imageSrc: photoURL };
 
-  // const isSmallScreen = window.innerWidth <= 768;
+    try {
+      const res = await modifyData("/api/testimonial", "POST", testimonial);
+      if (res.acknowledged) {
+        toast.success("Testimonial Posted Successfully");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    reset();
+  };
+
   return (
     <>
       <div className="max-w-full min-w-[350px] mx-auto h-[800px]">
@@ -294,6 +237,7 @@ const Testimonial = () => {
                   </a>
                 </div>
               </div>
+              {/* give the review */}
               <div className="p-6 mb-6 bg-white dark:bg-gray-900">
                 <h2 className="mb-6 text-xl font-semibold text-left font-gray-600 dark:text-gray-400">
                   Leave a comment
@@ -302,155 +246,81 @@ const Testimonial = () => {
                   <div className="mb-6 ">
                     <input
                       type="text"
-                      placeholder="your email"
-                      required=""
+                      {...register("occupation")}
+                      placeholder="your occupation"
+                      required="true"
                       className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-100 border rounded dark:placeholder-gray-500 dark:text-gray-400 dark:border-gray-800 dark:bg-gray-800 "
                     />
                   </div>
                   <div className="mb-6 ">
                     <textarea
                       type="message"
+                      {...register("review")}
                       placeholder="write a comment"
-                      required=""
+                      required="true"
                       className="block w-full px-4 leading-tight text-gray-700 bg-gray-100 border rounded dark:placeholder-gray-500 py-7 dark:text-gray-400 dark:border-gray-800 dark:bg-gray-800 "
                       defaultValue={""}
                     />
                   </div>
                   <div className="">
-                    <button className="px-4 py-2 text-xs font-medium text-gray-100 bg-blue-500 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-700">
+                    <button
+                      onClick={handleSubmit(onSubmit)}
+                      className="px-4 py-2 text-xs font-medium text-gray-100 bg-blue-500 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-700"
+                    >
                       Submit comment
                     </button>
                   </div>
                 </form>
               </div>
             </div>
+            {/* set the review */}
             <div className="p-6 dark:bg-gray-900 bg-gray-50">
-              <div className="flex flex-wrap items-center mb-4 space-x-2">
-                <div className="flex self-start flex-shrink-0 cursor-pointer">
-                  <img
-                    src="https://i.postimg.cc/JzmrHQmk/pexels-pixabay-220453.jpg"
-                    alt=""
-                    className="object-fill w-16 h-16 rounded-full"
-                  />
-                </div>
-                <div className="flex items-center justify-center space-x-2 ">
-                  <div className="block">
-                    <div className="w-auto px-2 pb-2 ">
-                      <div className="font-medium">
-                        <a
-                          href="#"
-                          className="text-lg font-semibold dark:text-gray-400 hover:underline"
-                        >
-                          <small>John Doe</small>
-                        </a>
+              {testimonial.map((review, index) => (
+                <div
+                  key={index}
+                  className="flex flex-wrap items-center mb-4 space-x-2"
+                >
+                  <div className="flex self-start flex-shrink-0 cursor-pointer">
+                    <img
+                      src={review.imageSrc}
+                      alt=""
+                      className="object-fill w-16 h-16 rounded-full"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center space-x-2 ">
+                    <div className="block">
+                      <div className="w-auto px-2 pb-2 ">
+                        <div className="font-medium">
+                          <a
+                            href="#"
+                            className="text-lg font-semibold dark:text-gray-400 hover:underline"
+                          >
+                            <small>{review.name}</small>
+                          </a>
+                        </div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                          {review.review}
+                        </div>
                       </div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Expedita, maiores!
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-start w-full text-xs">
-                      <div className="flex items-center justify-center px-2 space-x-1 font-semibold text-gray-700 dark:text-gray-400">
-                        <a href="#" className="hover:underline">
-                          <span>Like</span>
-                        </a>
-                        <span className="self-center">.</span>
-                        <a href="#" className="hover:underline">
-                          <span>Reply</span>
-                        </a>
-                        <span className="self-center">.</span>
-                        <a href="#" className="hover:underline">
-                          <span>10m ago</span>
-                        </a>
+                      <div className="flex items-center justify-start w-full text-xs">
+                        <div className="flex items-center justify-center px-2 space-x-1 font-semibold text-gray-700 dark:text-gray-400">
+                          <a href="#" className="hover:underline">
+                            <span>Like</span>
+                          </a>
+                          <span className="self-center">.</span>
+                          <a href="#" className="hover:underline">
+                            <span>Reply</span>
+                          </a>
+                          <span className="self-center">.</span>
+                          <a href="#" className="hover:underline">
+                            <span>{review.timestamps}</span>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="flex flex-wrap items-center mb-4 space-x-2">
-                <div className="flex self-start flex-shrink-0 cursor-pointer">
-                  <img
-                    src="https://i.postimg.cc/RhQYkKYk/pexels-italo-melo-2379005.jpg"
-                    alt=""
-                    className="object-fill w-16 h-16 rounded-full"
-                  />
-                </div>
-                <div className="flex items-center justify-center space-x-2 ">
-                  <div className="block">
-                    <div className="w-auto px-2 pb-2 ">
-                      <div className="font-medium">
-                        <a
-                          href="#"
-                          className="text-lg font-semibold dark:text-gray-400 hover:underline"
-                        >
-                          <small>Adam Smith</small>
-                        </a>
-                      </div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Expedita, maiores!
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-start w-full text-xs">
-                      <div className="flex items-center justify-center px-2 space-x-1 font-semibold text-gray-700 dark:text-gray-400">
-                        <a href="#" className="hover:underline">
-                          <span>Like</span>
-                        </a>
-                        <span className="self-center">.</span>
-                        <a href="#" className="hover:underline">
-                          <span>Reply</span>
-                        </a>
-                        <span className="self-center">.</span>
-                        <a href="#" className="hover:underline">
-                          <span>10m ago</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-wrap items-center space-x-2">
-                <div className="flex self-start flex-shrink-0 cursor-pointer">
-                  <img
-                    src="https://i.postimg.cc/q7pv50zT/pexels-edmond-dant-s-4342352.jpg"
-                    alt=""
-                    className="object-fill w-16 h-16 rounded-full"
-                  />
-                </div>
-                <div className="flex items-center justify-center space-x-2 ">
-                  <div className="block">
-                    <div className="w-auto px-2 pb-2 ">
-                      <div className="font-medium">
-                        <a
-                          href="#"
-                          className="text-lg font-semibold dark:text-gray-400 hover:underline"
-                        >
-                          <small>Sedrina Set</small>
-                        </a>
-                      </div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Expedita, maiores!
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-start w-full text-xs">
-                      <div className="flex items-center justify-center px-2 space-x-1 font-semibold text-gray-700 dark:text-gray-400">
-                        <a href="#" className="hover:underline">
-                          <span>Like</span>
-                        </a>
-                        <span className="self-center">.</span>
-                        <a href="#" className="hover:underline">
-                          <span>Reply</span>
-                        </a>
-                        <span className="self-center">.</span>
-                        <a href="#" className="hover:underline">
-                          <span>10m ago</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
