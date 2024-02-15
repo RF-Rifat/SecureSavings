@@ -45,9 +45,12 @@ const TABLE_HEAD = [
 
 export default function UserList() {
   const [userData] = useGetData("/api/user");
+  console.log(userData);
+  const [user, loading] = useGetData("/api/account")
+  console.log(user);
 
   return (
-    <Card className="h-full w-full dark:bg-dark dark:text-darkText">
+    <Card className="w-full dark:bg-dark dark:text-darkText">
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <div className="mb-8 flex items-center justify-between gap-8">
           <div>
@@ -106,9 +109,9 @@ export default function UserList() {
             </tr>
           </thead>
           <tbody>
-            {userData.map(
+            {user.map(
               (
-                { imageSrc, name, email, position, status, memberSince },
+                { imageSrc, name, email, accountId, status, memberSince },
                 index
               ) => {
                 const isLast = index === userData.length - 1;
@@ -127,14 +130,14 @@ export default function UserList() {
                             color="blue-gray"
                             className="font-normal"
                           >
-                            {name}
+                            {accountId}
                           </Typography>
                           <Typography
                             variant="small"
                             color="blue-gray"
                             className="font-normal opacity-70"
                           >
-                            {email}
+                            {accountId}
                           </Typography>
                         </div>
                       </div>
@@ -144,27 +147,10 @@ export default function UserList() {
                         <Typography
                           variant="small"
                           color="blue-gray"
-                          className="font-normal"
+                          className="font-normal cursor-pointer bg-blue-gray-200 rounded-md flex justify-center py-3"
                         >
-                          {position}
+                          {status}
                         </Typography>
-                        {/* <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal opacity-70"
-                        >
-                          User
-                        </Typography> */}
-                      </div>
-                    </td>
-                    <td className={classes}>
-                      <div className="w-max">
-                        <Chip
-                          variant="gradient"
-                          color={status ? "green" : "blue-gray"}
-                          value={status ? "online" : "offline"}
-                          className="py-0.5 px-2 text-[11px] font-medium w-fit"
-                        />
                       </div>
                     </td>
                     <td className={classes}>
@@ -173,17 +159,26 @@ export default function UserList() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {memberSince}
+                        {status}
                       </Typography>
                     </td>
                     <td className={classes}>
-                      <Tooltip content="Send Email">
-                        <IconButton variant="text">
-                          {/* <PencilIcon className="h-4 w-4" /> */}
-
-                          <EmailModal email={email} name={name}></EmailModal>
-                        </IconButton>
-                      </Tooltip>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {status}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {status}
+                      </Typography>
                     </td>
                   </tr>
                 );
