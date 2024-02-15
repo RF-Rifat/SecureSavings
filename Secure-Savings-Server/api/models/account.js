@@ -3,10 +3,14 @@ const Schema = mongoose.Schema;
 
 const accountSchema = new Schema(
   {
-    accountId: { type: String, required: true, unique: true },
+    accountId: { type: String, required: true },
     accountType: { type: String, required: true, unique: true },
     balance: { type: Number, default: 500 },
-    status: { type: String, default: "pending", enum: ["pending", "approved","cancelled"] },
+    status: {
+      type: String,
+      default: "pending",
+      enum: ["pending", "approved", "cancelled"],
+    },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
