@@ -1,10 +1,5 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
-<<<<<<< HEAD
-import Skeleton from "react-loading-skeleton";
-// import 'react-loading-skeleton/dist/skeleton.css'
-=======
->>>>>>> 525130b1a98f9f5ff86ae48c3568c3883dc2e807
 
 const SavingCard = ({ card }) => {
   const {
@@ -48,12 +43,7 @@ const SavingCard = ({ card }) => {
                       <div>
                         <a href="">
                           <h2 className="text-xl font-semibold dark:text-gray-300">
-<<<<<<< HEAD
-                            <Skeleton />
-                            {cardName || <Skeleton />}
-=======
                             {cardName}
->>>>>>> 525130b1a98f9f5ff86ae48c3568c3883dc2e807
                           </h2>
                         </a>
                       </div>
