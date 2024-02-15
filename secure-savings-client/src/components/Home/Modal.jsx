@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+/* eslint-disable react/prop-types */
+import React, { useContext, useState } from "react";
 import {
   Card,
   CardHeader,
@@ -10,18 +11,57 @@ import {
 } from "@material-tailwind/react";
 import { AdminDataContext } from "../../Context/AdminProvider";
 import { modifyData } from "../../Hooks/Api";
+import toast from "react-hot-toast";
+import {
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+} from "@material-tailwind/react";
+import {
+  Square3Stack3DIcon,
+  UserCircleIcon,
+  Cog6ToothIcon,
+} from "@heroicons/react/24/solid";
+import { IoShieldCheckmark } from "react-icons/io5";
 
-export default function Modal() {
+const data = [
+  {
+    label: "Saving",
+    value: "Saving",
+    icon: Square3Stack3DIcon,
+    desc: `It really matters and then like it really doesn't matter.
+      What matters is the people who are sparked by it. And the people
+      who are like offended by it, it doesn't matter.`,
+  },
+  {
+    label: "Checking",
+    value: "Checking",
+    icon: IoShieldCheckmark,
+    desc: `Because it's about motivating the doers. Because I'm here
+      to follow my dreams and inspire other people to follow their dreams, too.`,
+  },
+  {
+    label: "Money Market",
+    value: "Money Market",
+    icon: Cog6ToothIcon,
+    desc: `We're not always in the position that we want to be at.
+      We're constantly growing. We're constantly making mistakes. We're
+      constantly trying to express ourselves and actualize our dreams.`,
+  },
+];
+
+export default function Modal({ open, handler }) {
   const authInfo = useContext(AdminDataContext);
-  const { LoggedUser,  } = authInfo;
-  const { _id, email,name } = LoggedUser[0] || {};
- 
+  const { LoggedUser } = authInfo;
+  const { _id, email, name } = LoggedUser[0] || {};
 
   const generateAccountID = () => {
-    const firstThreeLettersEmail = email.substring(0, 3);
-    const firstThreeLettersName = name.substring(0, 3);
+    const firstThreeLettersEmail = email.substring(0, 4);
+
     const randomNumbers = Math.floor(1000 + Math.random() * 9000);
-    return `${firstThreeLettersEmail}${firstThreeLettersName}${randomNumbers}`;
+    return `${firstThreeLettersEmail}${randomNumbers}`;
   };
 
   const [accountType, setAccountType] = useState("");
@@ -32,16 +72,22 @@ export default function Modal() {
       accountId: generateAccountID(),
       userId: _id,
       balance: 500,
+      status: "pending",
     };
     try {
       const res = await modifyData("/api/account", "POST", newAcc);
-      if (res.acknowledged) {
-        console.log("Account Created Successfully");
+      if (res.accountId) {
+        console.log(res && res.success);
+        toast.success(`Your ${accountType} account created successfully`);
+        handler(!open);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      toast.error(
+        `You Already have ${accountType} account so can't create another.`
+      );
+      handler(!open);
     }
-    // Now you can send userData to your backend for saving
   };
 
   return (
@@ -57,7 +103,26 @@ export default function Modal() {
         </Typography>
       </CardHeader>
       <CardBody>
-        <form className="mt-4 grid gap-4 grid-cols-2">
+        <Tabs value="Saving">
+          <TabsHeader>
+            {data.map(({ label, value, icon }) => (
+              <Tab key={value} value={value}>
+                <div className="flex items-center gap-2">
+                  {React.createElement(icon, { className: "w-5 h-5" })}
+                  {label}
+                </div>
+              </Tab>
+            ))}
+          </TabsHeader>
+          <TabsBody>
+            {data.map(({ value, desc }) => (
+              <TabPanel key={value} value={value}>
+                {desc}
+              </TabPanel>
+            ))}
+          </TabsBody>
+        </Tabs>
+        {/* <form className="mt-4 grid gap-4 grid-cols-2">
           <div>
             <Typography
               variant="small"
@@ -79,7 +144,7 @@ export default function Modal() {
           <Button className="col-span-2" onClick={handleCreateAccount}>
             Create Account
           </Button>
-        </form>
+        </form> */}
       </CardBody>
     </Card>
   );
