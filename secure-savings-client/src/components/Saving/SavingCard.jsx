@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "react-loading-skeleton";
+// import 'react-loading-skeleton/dist/skeleton.css'
 
 const SavingCard = ({ card }) => {
   const {
@@ -45,10 +45,9 @@ const SavingCard = ({ card }) => {
                       <div>
                         <a href="">
                           <h2 className="text-xl font-semibold dark:text-gray-300">
-                          <Skeleton />
+                            <Skeleton />
                             {cardName || <Skeleton />}
                           </h2>
-
                         </a>
                       </div>
                       <div className="flex">
