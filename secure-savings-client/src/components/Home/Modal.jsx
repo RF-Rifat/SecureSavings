@@ -25,6 +25,7 @@ import {
   Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
 import { IoShieldCheckmark } from "react-icons/io5";
+import { GiMoneyStack } from "react-icons/gi";
 
 const data = [
   {
@@ -42,11 +43,10 @@ const data = [
   {
     label: "Money Market",
     value: "Money Market",
-    icon: Cog6ToothIcon,
+    icon: GiMoneyStack,
     desc: `A money market account is a type of savings account that usually offers higher interest rates than traditional savings accounts. It combines the features of a savings account with some of the benefits of an investment account, such as check-writing privileges and higher yield potential. Money market accounts typically require a higher minimum balance to open and maintain.`,
   },
 ];
-
 
 export default function Modal({ open, handler }) {
   const authInfo = useContext(AdminDataContext);
@@ -54,10 +54,10 @@ export default function Modal({ open, handler }) {
   const { _id, email, name } = LoggedUser[0] || {};
 
   const generateAccountID = () => {
-    const firstThreeLettersEmail = email.substring(0, 4);
+    const firstFewLettersEmail = email.substring(0, 4);
 
     const randomNumbers = Math.floor(1000 + Math.random() * 9000);
-    return `${firstThreeLettersEmail}${randomNumbers}`;
+    return `${firstFewLettersEmail}${randomNumbers}`;
   };
 
   const [accountType, setAccountType] = useState("");
@@ -99,7 +99,7 @@ export default function Modal({ open, handler }) {
         </Typography>
       </CardHeader>
       <CardBody>
-        {/* <Tabs value="Saving">
+        <Tabs value="Saving">
           <TabsHeader>
             {data.map(({ label, value, icon }) => (
               <Tab key={value} value={value}>
@@ -114,11 +114,34 @@ export default function Modal({ open, handler }) {
             {data.map(({ value, desc }) => (
               <TabPanel key={value} value={value}>
                 {desc}
+                <form className="mt-4 grid gap-4 grid-cols-2">
+                  <div>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="mb-2 font-medium"
+                    >
+                      Account Type
+                    </Typography>
+                    <Select
+                      color="blue"
+                      label="Select Version"
+                      onChange={(e) => setAccountType(e)}
+                    >
+                      <Option value="checking">Checking</Option>
+                      <Option value="savings">Savings</Option>
+                    </Select>
+                  </div>
+
+                  <Button className="col-span-2" onClick={handleCreateAccount}>
+                    Create Account
+                  </Button>
+                </form>
               </TabPanel>
             ))}
           </TabsBody>
-        </Tabs> */}
-        <form className="mt-4 grid gap-4 grid-cols-2">
+        </Tabs>
+        {/* <form className="mt-4 grid gap-4 grid-cols-2">
           <div>
             <Typography
               variant="small"
@@ -140,7 +163,7 @@ export default function Modal({ open, handler }) {
           <Button className="col-span-2" onClick={handleCreateAccount}>
             Create Account
           </Button>
-        </form>
+        </form> */}
       </CardBody>
     </Card>
   );
