@@ -36,7 +36,7 @@ const BatteryStatus = () => {
   };
 
   return (
-    <div className="p-4 bg-white shadow-md rounded-xl">
+    <div className="p-4 rounded-xl">
       <h2 className="text-lg font-semibold mb-4">Battery Status</h2>
       <div className="flex justify-between items-center">
         <div className="w-20 h-10 border border-gray-300 rounded-lg overflow-hidden">

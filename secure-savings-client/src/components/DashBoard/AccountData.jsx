@@ -1,3 +1,5 @@
+import Lottie from "lottie-react";
+import MasterCard from "../../../public/masterCard.json"
 const AccountData = () => {
   return (
     <>
@@ -10,8 +12,9 @@ const AccountData = () => {
                   <div
                     className="relative overflow-hidden rounded-2xl"
                     style={{
-                      backgroundImage:
-                        'url("https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/card-visa.jpg")',
+                      // backgroundImage:
+                      //   'url("")',
+                      backgroundColor: "#3399EE",
                     }}
                   >
                     <span className="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 opacity-80" />
@@ -39,11 +42,12 @@ const AccountData = () => {
                           </div>
                         </div>
                         <div className="flex items-end justify-end w-1/5 ml-auto">
-                          <img
+                          {/* <img
                             className="w-3/5 mt-2"
                             src="../assets/img/logos/mastercard.png"
                             alt="logo"
-                          />
+                          /> */}
+                          <Lottie  animationData={MasterCard} />
                         </div>
                       </div>
                     </div>

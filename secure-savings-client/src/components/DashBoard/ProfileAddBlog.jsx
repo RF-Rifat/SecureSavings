@@ -1,10 +1,9 @@
 import { Button } from "@material-tailwind/react";
-import useGetData from "../../Hooks/useGetData";
+import useGetBlogData from "../../Hooks/useGetBlogData";
+import { AddBlogModal } from "./AddBlogModal";
 
 const ProfileAddBlog = () => {
-  const [blogData] = useGetData("/api/blog");
-  console.log(blogData);
-  // const { title, authorImage, blogImage } = blogData;
+  const [blogData] = useGetBlogData("/api/blog");
   return (
     <>
       <div className="flex-none w-full max-w-full px-3 mt-6">
@@ -17,23 +16,23 @@ const ProfileAddBlog = () => {
           </div>
           <div className="flex-auto p-4">
             <div className="flex flex-wrap -mx-3">
-              {blogData.map((item) => (
+              {blogData?.map((item) => (
                 <div
-                  key={item._id}
+                  key={item?._id}
                   className="w-full max-w-full px-3 mb-6 md:w-6/12 md:flex-none xl:mb-0 xl:w-3/12"
                 >
                   <div className="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none dark:shadow-soft-dark-xl rounded-2xl bg-clip-border">
                     <div className="relative">
                       <a className="block shadow-xl rounded-2xl">
                         <img
-                          src={item.blogImage}
+                          src={item?.blogImage}
                           alt="img-blur-shadow"
                           className="max-w-full shadow-soft-2xl rounded-2xl"
                         />
                       </a>
                     </div>
                     <div className="flex-auto px-1 pt-6">
-                      <p className="relative z-10 mb-2 leading-normal text-transparent bg-gradient-to-tl from-gray-900 to-slate-800 text-sm bg-clip-text dark:text-white dark:opacity-80">
+                      <p className="relative z-10 mb-2 leading-normal bg-gradient-to-tl from-gray-900 to-gray-900-800 text-sm bg-clip-text dark:opacity-80">
                         {item?.title}{" "}
                       </p>
                       <a href="javascript:;">
@@ -53,7 +52,8 @@ const ProfileAddBlog = () => {
                   </div>
                 </div>
               ))}
-              <div className="w-full max-w-full px-3 mb-6 md:w-6/12 md:flex-none xl:mb-0 xl:w-3/12">
+              <AddBlogModal />
+              {/* <div className="w-full max-w-full px-3 mb-6 md:w-6/12 md:flex-none xl:mb-0 xl:w-3/12">
                 <div className="relative flex flex-col h-full min-w-0 break-words bg-transparent border-2 border-solid shadow-none dark:shadow-lg rounded-2xl border-slate-100 bg-clip-border dark:border-slate-700">
                   <div className="flex flex-col justify-center flex-auto p-6 text-center">
                     <a href="javascript:;">
@@ -62,12 +62,12 @@ const ProfileAddBlog = () => {
                         aria-hidden="true"
                       />
                       <h5 className="text-slate-400 dark:text-white dark:opacity-80">
-                        Add New Blog
+                        Add New Blog 
                       </h5>
                     </a>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

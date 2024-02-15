@@ -237,6 +237,7 @@ export function CustomProfile() {
                     </div>
                   )}
                 </div>
+                <BatteryStatus />
               </div>
             </div>
             <div className="w-full max-w-full px-3 shrink-0 md:flex-0">
@@ -425,7 +426,6 @@ export function CustomProfile() {
             </div>
           </div>
         </div>
-        <BatteryStatus />
         <ProfileAddBlog />
       </div>
     </>
