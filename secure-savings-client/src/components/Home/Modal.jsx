@@ -103,7 +103,7 @@ export default function Modal({ open, handler }) {
         </Typography>
       </CardHeader>
       <CardBody>
-        <Tabs value="Saving">
+        {/* <Tabs value="Saving">
           <TabsHeader>
             {data.map(({ label, value, icon }) => (
               <Tab key={value} value={value}>
@@ -121,8 +121,8 @@ export default function Modal({ open, handler }) {
               </TabPanel>
             ))}
           </TabsBody>
-        </Tabs>
-        {/* <form className="mt-4 grid gap-4 grid-cols-2">
+        </Tabs> */}
+        <form className="mt-4 grid gap-4 grid-cols-2">
           <div>
             <Typography
               variant="small"
@@ -144,7 +144,7 @@ export default function Modal({ open, handler }) {
           <Button className="col-span-2" onClick={handleCreateAccount}>
             Create Account
           </Button>
-        </form> */}
+        </form>
       </CardBody>
     </Card>
   );
