@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AdminDataContext } from "../../Context/AdminProvider";
 
 import ProfileAddBlog from "../../components/DashBoard/ProfileAddBlog";
+import BatteryStatus from "../../components/DashBoard/BatteryStatus";
 
 export function CustomProfile() {
   const { LoggedUser, isAdmin, userAcc } = useContext(AdminDataContext);
@@ -424,6 +425,7 @@ export function CustomProfile() {
             </div>
           </div>
         </div>
+        <BatteryStatus />
         <ProfileAddBlog />
       </div>
     </>

@@ -11,6 +11,8 @@ import {
   HomeIcon,
   WalletIcon,
   PlusCircleIcon,
+  InboxStackIcon,
+  DocumentTextIcon,
 } from "@heroicons/react/24/solid";
 import { AiOutlineTransaction } from "react-icons/ai";
 const icon = {
@@ -33,7 +35,7 @@ export function SideNav() {
           path: "/profile",
         },
         {
-          icon: <UserCircleIcon {...icon} />,
+          icon: <InboxStackIcon {...icon} />,
           name: "Account",
           path: "/account",
         },
@@ -41,6 +43,11 @@ export function SideNav() {
           icon: <WalletIcon {...icon} />,
           name: "My-Wallet",
           path: "/wallet",
+        },
+        {
+          icon: <DocumentTextIcon {...icon} />,
+          name: "Invoice",
+          path: "/invoice",
         },
         {
           icon: <TableCellsIcon {...icon} />,
