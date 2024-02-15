@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useEffect, useState } from "react";
-import TestimonialModal from "./TestimonialModal";
+// import { useCallback, useEffect, useState } from "react";
+
 import useGetData from "../../Hooks/useGetData";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
@@ -24,13 +24,12 @@ const Testimonial = () => {
     } catch (error) {
       console.log(error);
     }
-
     reset();
   };
 
   return (
     <>
-      <div className="max-w-full min-w-[350px] mx-auto h-[800px]">
+      <div className="max-w-full min-w-[350px] mx-auto ">
         <div className="px-4 text-center md:m-6">
           <h2 className="pb-2 text-2xl font-semibold text-gray-800 md:text-4xl dark:text-gray-300">
             Testimonials
@@ -41,7 +40,7 @@ const Testimonial = () => {
             <div className="flex-1 h-2 bg-teal-300"></div>
           </div>
         </div>
-        <section className="flex items-center py-16 bg-gray-100 font-poppins dark:bg-gray-800 ">
+        <section className="flex items-center   bg-gray-100 font-poppins dark:bg-gray-800 ">
           <div className="justify-center flex-1 max-w-6xl px-4 py-6 mx-auto lg:py-4 md:px-6">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div className="p-6 mb-6 bg-gray-50 dark:bg-gray-900">
@@ -312,9 +311,12 @@ const Testimonial = () => {
                             <span>Reply</span>
                           </a>
                           <span className="self-center">.</span>
-                          <a href="#" className="hover:underline">
-                            <span>{review.timestamps}</span>
-                          </a>
+                          <span>
+                            {new Date(review.createdAt).toLocaleString(
+                              "en-US",
+                              { timeZone: "Asia/Dhaka" }
+                            )}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -324,10 +326,6 @@ const Testimonial = () => {
             </div>
           </div>
         </section>
-      </div>
-
-      <div className="flex flex-wrap justify-center mt-12">
-        <TestimonialModal></TestimonialModal>
       </div>
     </>
   );
