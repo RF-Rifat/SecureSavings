@@ -6,11 +6,13 @@ import Lottie from "lottie-react";
 import toast from "react-hot-toast";
 import { useContext, useState } from "react";
 import { AuthProvider } from "../AuthProvider";
+import { sendPasswordResetEmail } from "firebase/auth";
+import auth from "../firebase.config";
 
 const Login = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, watch } = useForm();
   const { login, signWithGooglePop } = useContext(AuthProvider);
 
   const handleLogIn = (data) => {
@@ -37,6 +39,18 @@ const Login = () => {
         console.error(error);
       });
   };
+
+  const handleResetPass = async () => {
+    try {
+      const formData = watch();
+      const email = formData.email;
+      sendPasswordResetEmail(auth, email);
+      toast.success("Please check your email");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <div className="font-[sans-serif] bg-gray-900 text-[#333] md:h-screen">
@@ -146,7 +160,7 @@ const Login = () => {
                 </div>
                 <div>
                   <a
-                    href="jajvascript:void(0);"
+                    onClick={handleResetPass}
                     className="text-blue-600 font-semibold text-sm hover:underline"
                   >
                     Forgot Password?

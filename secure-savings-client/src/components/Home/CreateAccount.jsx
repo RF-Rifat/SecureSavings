@@ -5,7 +5,7 @@ import {
 } from "@material-tailwind/react";
 import Modal from "./Modal";
 
-export default function NewAccount() {
+export default function CreateAccount() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen((cur) => !cur);
 
@@ -15,7 +15,7 @@ export default function NewAccount() {
         Create Account
       </Button>
       <Dialog
-        size="xs"
+        size="sm"
         open={open}
         handler={handleOpen}
         className="bg-transparent shadow-none"
@@ -50,7 +50,7 @@ export default function NewAccount() {
             </Button>
           </CardFooter>
         </Card> */}
-              <Modal/>
+        <Modal open={open} handler={handleOpen} />
       </Dialog>
     </>
   );

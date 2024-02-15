@@ -12,14 +12,32 @@ const ToggleTheme = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const handleTheme = () => {
+  const handleThemeChange = () => {
     // Toggle between "light" and "dark" themes
-    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
   };
 
   return (
-    <div className="" onChange={handleTheme}>
-      <Switch checked={theme === "dark"}></Switch>
+    <div>
+      {/* <Switch
+        id="custom-switch-component"
+        checked={theme === "dark"}
+        onChange={handleThemeChange}
+      /> */}
+      <Switch
+        id="custom-switch-component"
+        color="indigo"
+        className="h-full w-full"
+        containerProps={{
+          className: "w-11 h-6",
+        }}
+        circleProps={{
+          className: "before:hidden left-0.5 border-none",
+        }}
+        checked={theme === "dark"}
+        onChange={handleThemeChange}
+      />
     </div>
   );
 };

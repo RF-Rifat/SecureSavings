@@ -10,7 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../Authentication/firebase.config.js";
-import BASE_URL from "../Hooks/Api.jsx";
+import { BASE_URL } from "../Hooks/Api.jsx";
 
 export const AuthProvider = createContext(null);
 
@@ -69,7 +69,6 @@ const UserProvider = ({ children }) => {
 
   const logOut = async (email) => {
     setLoading(true);
-    console.log(email);
     try {
       const response = await fetch(
         `${BASE_URL}/api/user/update-status/${email}`,
@@ -100,7 +99,6 @@ const UserProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       // const userEmail = currentUser?.email || user?.email;
       // const loggedUser = { email: userEmail };
-      console.log(currentUser)
       setUser(currentUser);
       setLoading(false);
       // if (currentUser) {

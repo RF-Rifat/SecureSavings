@@ -5,6 +5,7 @@ const Blog = require("../models/blog");
 const Comment = require("../models/comment");
 const Loan = require("../models/loan");
 const Testimonial = require("../models/Testimonial");
+const Account = require("../models/account");
 
 router.post("/", async (req, res) => {
   try {
@@ -71,6 +72,11 @@ router.get("/:type", async (req, res) => {
           .skip(page * size)
           .limit(size);
         break;
+      case "account":
+        result = await Account.find()
+          .skip(page * size)
+          .limit(size);
+        break;
       case "message":
         result = await Message.find()
           .sort({ _id: -1 })
@@ -122,6 +128,9 @@ router.post("/:type", async (req, res) => {
       case "user":
         result = await User.create(data);
         break;
+      case "account":
+        result = await Account.create(data);
+        break;
       case "message":
         result = await Message.create(data);
         break;
@@ -148,6 +157,7 @@ router.post("/:type", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
 
 // PUT route
 router.put("/user/update-status/:email", async (req, res) => {
