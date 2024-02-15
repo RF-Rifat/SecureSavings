@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import BASE_URL from "./Api";
+import { BASE_URL } from "./Api";
 const useGetData = (endpoint, query) => {
   const [resData, setResData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

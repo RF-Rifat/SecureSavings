@@ -10,7 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../Authentication/firebase.config.js";
-import BASE_URL from "../Hooks/Api.jsx";
+import { BASE_URL } from "../Hooks/Api.jsx";
 
 export const AuthProvider = createContext(null);
 

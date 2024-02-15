@@ -50,7 +50,7 @@ export default function CreateAccount() {
             </Button>
           </CardFooter>
         </Card> */}
-              <Modal/>
+        <Modal open={open} handler={handleOpen} />
       </Dialog>
     </>
   );

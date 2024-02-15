@@ -51,7 +51,7 @@ export function SideNav() {
         },
         {
           icon: <TableCellsIcon {...icon} />,
-          name: "Users",
+          name: "Members",
           path: "/users",
         },
         {
