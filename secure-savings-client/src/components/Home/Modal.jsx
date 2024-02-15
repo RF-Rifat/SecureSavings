@@ -1,54 +1,93 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React, { useContext, useState } from "react";
 import {
   Card,
   CardHeader,
   CardBody,
-  Input,
   Button,
   Typography,
+  Select,
+  Option,
+} from "@material-tailwind/react";
+import { AdminDataContext } from "../../Context/AdminProvider";
+import { modifyData } from "../../Hooks/Api";
+import toast from "react-hot-toast";
+import {
   Tabs,
   TabsHeader,
   TabsBody,
   Tab,
   TabPanel,
-  Select,
-  Option,
 } from "@material-tailwind/react";
-import { CreditCardIcon } from "@heroicons/react/24/solid";
+import {
+  Square3Stack3DIcon,
+  UserCircleIcon,
+  Cog6ToothIcon,
+} from "@heroicons/react/24/solid";
+import { IoShieldCheckmark } from "react-icons/io5";
+import { GiMoneyStack } from "react-icons/gi";
 
-function formatCardNumber(value) {
-  const val = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
-  const matches = val.match(/\d{4,16}/g);
-  const match = (matches && matches[0]) || "";
-  const parts = [];
+const data = [
+  {
+    label: "Saving",
+    value: "Saving",
+    icon: Square3Stack3DIcon,
+    desc: `A savings account is designed for individuals who want to set aside money for future use, such as emergencies, large purchases, or long-term goals. It typically offers a lower interest rate than other types of accounts, but it provides security and easy access to funds when needed.`,
+  },
+  {
+    label: "Checking",
+    value: "Checking",
+    icon: IoShieldCheckmark,
+    desc: `A checking account is a basic banking account that allows you to deposit and withdraw money for everyday transactions. It typically comes with features such as a debit card, check-writing capabilities, and online banking. Checking accounts may or may not earn interest, depending on the bank and account type.`,
+  },
+  {
+    label: "Money Market",
+    value: "Money Market",
+    icon: GiMoneyStack,
+    desc: `A money market account is a type of savings account that usually offers higher interest rates than traditional savings accounts. It combines the features of a savings account with some of the benefits of an investment account, such as check-writing privileges and higher yield potential. Money market accounts typically require a higher minimum balance to open and maintain.`,
+  },
+];
 
-  for (let i = 0, len = match.length; i < len; i += 4) {
-    parts.push(match.substring(i, i + 4));
-  }
+export default function Modal({ open, handler }) {
+  const authInfo = useContext(AdminDataContext);
+  const { LoggedUser } = authInfo;
+  const { _id, email, name } = LoggedUser[0] || {};
 
-  if (parts.length) {
-    return parts.join(" ");
-  } else {
-    return value;
-  }
-}
+  const generateAccountID = () => {
+    const firstFewLettersEmail = email.substring(0, 4);
 
-function formatExpires(value) {
-  return value
-    .replace(/[^0-9]/g, "")
-    .replace(/^([2-9])$/g, "0$1")
-    .replace(/^(1{1})([3-9]{1})$/g, "0$1/$2")
-    .replace(/^0{1,}/g, "0")
-    .replace(/^([0-1]{1}[0-9]{1})([0-9]{1,2}).*/g, "$1/$2");
-}
+    const randomNumbers = Math.floor(1000 + Math.random() * 9000);
+    return `${firstFewLettersEmail}${randomNumbers}`;
+  };
 
-export default function Modal() {
-  const [type, setType] = React.useState("card");
-  const [cardNumber, setCardNumber] = React.useState("");
-  const [cardExpires, setCardExpires] = React.useState("");
+  const [accountType, setAccountType] = useState("");
+
+  const handleCreateAccount = async () => {
+    const newAcc = {
+      accountType,
+      accountId: generateAccountID(),
+      userId: _id,
+      balance: 500,
+      status: "pending",
+    };
+    try {
+      const res = await modifyData("/api/account", "POST", newAcc);
+      if (res.accountId) {
+        console.log(res && res.success);
+        toast.success(`Your ${accountType} account created successfully`);
+        handler(!open);
+      }
+    } catch (error) {
+      // console.log(error);
+      toast.error(
+        `You Already have ${accountType} account so can't create another.`
+      );
+      handler(!open);
+    }
+  };
 
   return (
-    <Card className="w-full max-w-[24rem]">
+    <Card>
       <CardHeader
         color="gray"
         floated={false}
@@ -56,210 +95,75 @@ export default function Modal() {
         className="m-0 grid place-items-center px-4 py-8 text-center"
       >
         <Typography variant="h5" color="white">
-          Material Tailwind PRO
+          Create Account
         </Typography>
       </CardHeader>
       <CardBody>
-        <Tabs value={type} className="overflow-visible">
-          <TabsHeader className="relative z-0 ">
-            <Tab value="card" onClick={() => setType("card")}>
-              Pay with Card
-            </Tab>
-            <Tab value="paypal" onClick={() => setType("paypal")}>
-              Pay with PayPal
-            </Tab>
+        <Tabs value="Saving">
+          <TabsHeader>
+            {data.map(({ label, value, icon }) => (
+              <Tab key={value} value={value}>
+                <div className="flex items-center gap-2">
+                  {React.createElement(icon, { className: "w-5 h-5" })}
+                  {label}
+                </div>
+              </Tab>
+            ))}
           </TabsHeader>
-          <TabsBody
-            className="!overflow-x-hidden !overflow-y-visible"
-            animate={{
-              initial: {
-                x: type === "card" ? 400 : -400,
-              },
-              mount: {
-                x: 0,
-              },
-              unmount: {
-                x: type === "card" ? 400 : -400,
-              },
-            }}
-          >
-            <TabPanel value="card" className="p-0">
-              <form className="mt-12 flex flex-col gap-4">
-                <div>
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mb-2 font-medium"
-                  >
-                    Your Email
-                  </Typography>
-                  <Input
-                    type="email"
-                    placeholder="name@mail.com"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                  />
-                </div>
-
-                <div className="my-3">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mb-2 font-medium "
-                  >
-                    Card Details
-                  </Typography>
-
-                  <Input
-                    maxLength={19}
-                    value={formatCardNumber(cardNumber)}
-                    onChange={(event) => setCardNumber(event.target.value)}
-                    icon={
-                      <CreditCardIcon className="absolute left-0 h-4 w-4 text-blue-gray-300" />
-                    }
-                    placeholder="0000 0000 0000 0000"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                  />
-                  <div className="my-4 flex items-center gap-4">
-                    <div>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="mb-2 font-medium"
-                      >
-                        Expires
-                      </Typography>
-                      <Input
-                        maxLength={5}
-                        value={formatExpires(cardExpires)}
-                        onChange={(event) => setCardExpires(event.target.value)}
-                        containerProps={{ className: "min-w-[72px]" }}
-                        placeholder="00/00"
-                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                        labelProps={{
-                          className: "before:content-none after:content-none",
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="mb-2 font-medium"
-                      >
-                        CVC
-                      </Typography>
-                      <Input
-                        maxLength={4}
-                        containerProps={{ className: "min-w-[72px]" }}
-                        placeholder="000"
-                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                        labelProps={{
-                          className: "before:content-none after:content-none",
-                        }}
-                      />
-                    </div>
+          <TabsBody>
+            {data.map(({ value, desc }) => (
+              <TabPanel key={value} value={value}>
+                {desc}
+                <form className="mt-4 grid gap-4 grid-cols-2">
+                  <div>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="mb-2 font-medium"
+                    >
+                      Account Type
+                    </Typography>
+                    <Select
+                      color="blue"
+                      label="Select Version"
+                      onChange={(e) => setAccountType(e)}
+                    >
+                      <Option value="checking">Checking</Option>
+                      <Option value="savings">Savings</Option>
+                    </Select>
                   </div>
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mb-2 font-medium"
-                  >
-                    Holder Name
-                  </Typography>
-                  <Input
-                    placeholder="name@mail.com"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                  />
-                </div>
-                <Button size="lg">Pay Now</Button>
-               
-              </form>
-            </TabPanel>
-            <TabPanel value="paypal" className="p-0">
-              <form className="mt-12 flex flex-col gap-4">
-                <div>
-                  <Typography
-                    variant="paragraph"
-                    color="blue-gray"
-                    className="mb-4 font-medium"
-                  >
-                    Personal Details
-                  </Typography>
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mb-2 font-medium"
-                  >
-                    Your Email
-                  </Typography>
-                  <Input
-                    type="email"
-                    placeholder="name@mail.com"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                  />
-                </div>
 
-                <div className="my-6">
-                  <Typography
-                    variant="paragraph"
-                    color="blue-gray"
-                    className="mb-4 font-medium"
-                  >
-                    Billing Address
-                  </Typography>
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mb-2 font-medium"
-                  >
-                    Country
-                  </Typography>
-                  <Select
-                    placeholder="USA"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                    menuProps={{ className: "h-48" }}
-                  >
-                    <Option>
-                      <div className="flex items-center gap-x-2">New</div>
-                    </Option>
-                  </Select>
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="mt-4 -mb-2 font-medium"
-                  >
-                    Postal Code
-                  </Typography>
-                  <Input
-                    placeholder="0000"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
-                    containerProps={{ className: "mt-4" }}
-                  />
-                </div>
-                <Button size="lg">pay with paypal</Button>
-                
-              </form>
-            </TabPanel>
+                  <Button className="col-span-2" onClick={handleCreateAccount}>
+                    Create Account
+                  </Button>
+                </form>
+              </TabPanel>
+            ))}
           </TabsBody>
         </Tabs>
+        {/* <form className="mt-4 grid gap-4 grid-cols-2">
+          <div>
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              Account Type
+            </Typography>
+            <Select
+              color="blue"
+              label="Select Version"
+              onChange={(e) => setAccountType(e)}
+            >
+              <Option value="checking">Checking</Option>
+              <Option value="savings">Savings</Option>
+            </Select>
+          </div>
+
+          <Button className="col-span-2" onClick={handleCreateAccount}>
+            Create Account
+          </Button>
+        </form> */}
       </CardBody>
     </Card>
   );

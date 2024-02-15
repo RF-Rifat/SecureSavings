@@ -108,7 +108,7 @@ export default function UserList() {
           <tbody>
             {userData.map(
               (
-                { image, name, email, position, status, memberSince },
+                { imageSrc, name, email, position, status, memberSince },
                 index
               ) => {
                 const isLast = index === userData.length - 1;
@@ -120,7 +120,7 @@ export default function UserList() {
                   <tr key={name}>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
-                        <Avatar src={image} alt={name} size="sm" />
+                        <Avatar src={imageSrc} alt={name} size="sm" />
                         <div className="flex flex-col">
                           <Typography
                             variant="small"

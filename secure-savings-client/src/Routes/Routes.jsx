@@ -21,6 +21,8 @@ import BlogDetails from "../pages/blogs/BlogDetails";
 import AdminChat from "../DashBoard/DashBoard-Pages/AdminChat";
 import HomeLoan from "../components/HomeLoan/HomeLoan";
 import BusinessLoan from "../BusinessLoan/BusinessLoan";
+import AccountSetting from "../DashBoard/DashBoard-Pages/AccountSetting";
+import Invoice from "../DashBoard/DashBoard-Pages/Invoice";
 
 export const router = createBrowserRouter([
   {
@@ -85,8 +87,16 @@ export const router = createBrowserRouter([
         element: <CustomProfile />,
       },
       {
+        path: "/dashboard/account",
+        element: <AccountSetting />,
+      },
+      {
         path: "/dashboard/wallet",
         element: <MyWallet />,
+      },
+      {
+        path: "/dashboard/invoice",
+        element: <Invoice />,
       },
       {
         path: "/dashboard/users",

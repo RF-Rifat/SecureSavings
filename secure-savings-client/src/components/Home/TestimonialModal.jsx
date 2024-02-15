@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Button,
   Dialog,
@@ -9,17 +8,34 @@ import {
   Textarea,
   Typography,
 } from "@material-tailwind/react";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { useForm } from "react-hook-form";
 
-export default function TestimonialModal({ email, name }) {
-  const [open, setOpen] = React.useState(false);
-  const { register, handleSubmit, reset } = useForm(); // Initialize React Hook Form
+import { useForm } from "react-hook-form";
+import { modifyData } from "../../Hooks/Api";
+import useAuth from "../../Hooks/useAuth";
+import { useState } from "react";
+import toast from "react-hot-toast";
+
+export default function TestimonialModal() {
+  const { authInfo } = useAuth();
+  const { displayName, photoURL } = authInfo?.user || {};
+
+  const [open, setOpen] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
 
   const handleOpen = () => setOpen(!open);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const testimonial = { ...data, name: displayName, imageSrc: photoURL };
+
+    try {
+      const res = await modifyData("/api/testimonial", "POST", testimonial);
+      if (res.acknowledged) {
+        toast.success("Testimonial Posted Successfully");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
     handleOpen();
     reset();
   };
@@ -58,11 +74,12 @@ export default function TestimonialModal({ email, name }) {
             <Typography className="-mb-1" color="blue-gray" variant="h6">
               Username
             </Typography>
-            <Input label="Name" {...register("name")} />
+            <Input label="Occupation" {...register("occupation")} />
+
             <Typography className="-mb-1" color="blue-gray" variant="h6">
               Email
             </Typography>
-            <Input label="Email" {...register("email")} />
+            {/* <Input label="Email" {...register("email")} /> */}
             <Textarea label="Review" {...register("review")} />
           </div>
         </DialogBody>
