@@ -31,26 +31,22 @@ const data = [
     label: "Saving",
     value: "Saving",
     icon: Square3Stack3DIcon,
-    desc: `It really matters and then like it really doesn't matter.
-      What matters is the people who are sparked by it. And the people
-      who are like offended by it, it doesn't matter.`,
+    desc: `A savings account is designed for individuals who want to set aside money for future use, such as emergencies, large purchases, or long-term goals. It typically offers a lower interest rate than other types of accounts, but it provides security and easy access to funds when needed.`,
   },
   {
     label: "Checking",
     value: "Checking",
     icon: IoShieldCheckmark,
-    desc: `Because it's about motivating the doers. Because I'm here
-      to follow my dreams and inspire other people to follow their dreams, too.`,
+    desc: `A checking account is a basic banking account that allows you to deposit and withdraw money for everyday transactions. It typically comes with features such as a debit card, check-writing capabilities, and online banking. Checking accounts may or may not earn interest, depending on the bank and account type.`,
   },
   {
     label: "Money Market",
     value: "Money Market",
     icon: Cog6ToothIcon,
-    desc: `We're not always in the position that we want to be at.
-      We're constantly growing. We're constantly making mistakes. We're
-      constantly trying to express ourselves and actualize our dreams.`,
+    desc: `A money market account is a type of savings account that usually offers higher interest rates than traditional savings accounts. It combines the features of a savings account with some of the benefits of an investment account, such as check-writing privileges and higher yield potential. Money market accounts typically require a higher minimum balance to open and maintain.`,
   },
 ];
+
 
 export default function Modal({ open, handler }) {
   const authInfo = useContext(AdminDataContext);
