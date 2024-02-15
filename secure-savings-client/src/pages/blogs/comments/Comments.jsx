@@ -5,22 +5,28 @@ import Spinner from "../../../Shared/Spinner";
 import useGetData from "../../../Hooks/useGetData";
 
 const Comments = ({ id }) => {
-  const [isLoading] = useGetData();
-  const [comments] = useComment();
+  const [,isLoading] = useGetData();
+  const [comments,,] = useComment();
+  // console.log(comments)
   const [filterComment, setComment] = useState("");
- 
-  useEffect(() => {
-    const filtered = comments?.filter((c) => {
-      return c?.blogId == id;
-    });
-    setComment(filtered);
-  }, [comments, id]);
+
+useEffect(()=>{
+
+  let filteredComment=comments?.filter(c=> c.blogId==id )
+setComment(filteredComment)
+// console.log(filteredComment)
+}
+,[comments,id])
+
+
+
   if (isLoading) {
     return <Spinner></Spinner>;
   }
   // console.log(filterComment);
   return (
     <div>
+      {/* comments */}
       <div>
         {filterComment?.length > 0 ? (
           <h2 className="mt-5 text-xl font-semibold">
