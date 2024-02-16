@@ -1,7 +1,11 @@
+import useAuth from "../../Hooks/useAuth";
+
 const Invoice = () => {
   const handlePrint = () => {
     window.print(); // This will trigger the print dialog
   };
+  const { authInfo } = useAuth();
+  const { displayName, photoURL } = authInfo?.user || {};
   return (
     <>
       <div className="w-full max-w-full px-3 mx-auto sm:flex-0 shrink-0 sm:w-10/12 md:w-8/12">
@@ -25,7 +29,7 @@ const Invoice = () => {
                 </div>
                 <div className="w-full max-w-full px-3 mt-12 text-left md:flex-0 shrink-0 md:w-7/12 md:text-right lg:w-3/12">
                   <h6 className="block mt-2 mb-0 dark:text-white">
-                    Billed to: Rifadul Islam
+                    Billed to: {displayName}
                   </h6>
                   <p className="text-slate-400 dark:text-white dark:opacity-80">
                     Shahi Maszid
