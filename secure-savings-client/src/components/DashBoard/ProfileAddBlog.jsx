@@ -1,5 +1,5 @@
 import { Button } from "@material-tailwind/react";
-import useGetUserData from "../../Hooks/useGetBlogData";
+import useGetUserData from "../../Hooks/useGetUserData";
 import { AddBlogModal } from "./AddBlogModal";
 import { Link } from "react-router-dom";
 
