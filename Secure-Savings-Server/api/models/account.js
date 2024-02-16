@@ -3,8 +3,13 @@ const Schema = mongoose.Schema;
 
 const accountSchema = new Schema(
   {
+    name: { type: String, required: true },
     accountId: { type: String, required: true },
-    accountType: { type: String, required: true },
+    accountType: {
+      type: String,
+      required: true,
+      enum: ["Saving", "Checking", "Money Market"],
+    },
     balance: { type: Number, default: 500 },
     status: {
       type: String,

@@ -62,7 +62,7 @@ export default function Modal({ open, handler }) {
 
   const authInfo = useContext(AdminDataContext);
   const { LoggedUser } = authInfo;
-  const { _id, email } = LoggedUser[0] || {};
+  const { _id, email,name } = LoggedUser[0] || {};
   const [accData, setAccData] = useState("");
 
   const generateAccountID = () => {
@@ -76,6 +76,7 @@ export default function Modal({ open, handler }) {
 
   const handleCreateAccount = async (accountType, initialDeposit) => {
     const newAcc = {
+      name,
       accountType,
       accountId: generateAccountID(),
       userId: _id,

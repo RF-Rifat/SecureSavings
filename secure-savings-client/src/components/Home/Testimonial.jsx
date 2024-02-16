@@ -6,20 +6,24 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { modifyData } from "../../Hooks/Api";
+import useGetUserData from "../../Hooks/useGetUserData";
+import { AdminDataContext } from "../../Context/AdminProvider";
+import { useContext } from "react";
 
 const Testimonial = () => {
-  const [testimonial, isLoading] = useGetData("/api/testimonial");
+  const [testimonial, refetch] = useGetUserData("/api/testimonial");
+  const { LoggedUser, isAdmin, userAcc } = useContext(AdminDataContext);
+  const { name, imageSrc } = LoggedUser[0] || {};
 
-  const { authInfo } = useAuth();
-  const { displayName, photoURL } = authInfo?.user || {};
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
-    const testimonial = { ...data, name: displayName, imageSrc: photoURL };
+    const testimonial = { ...data, name, imageSrc };
 
     try {
       const res = await modifyData("/api/testimonial", "POST", testimonial);
-      if (res.acknowledged) {
+      if (res) {
         toast.success("Testimonial Posted Successfully");
+        refetch();
       }
     } catch (error) {
       console.log(error);
@@ -274,14 +278,14 @@ const Testimonial = () => {
             </div>
             {/* set the review */}
             <div className="p-6 dark:bg-gray-900 bg-gray-50">
-              {testimonial.map((review, index) => (
+              {testimonial?.map((review, index) => (
                 <div
                   key={index}
                   className="flex flex-wrap items-center mb-4 space-x-2"
                 >
                   <div className="flex self-start flex-shrink-0 cursor-pointer">
                     <img
-                      src={review.imageSrc}
+                      src={review?.imageSrc}
                       alt=""
                       className="object-fill w-16 h-16 rounded-full"
                     />
@@ -294,11 +298,11 @@ const Testimonial = () => {
                             href="#"
                             className="text-lg font-semibold dark:text-gray-400 hover:underline"
                           >
-                            <small>{review.name}</small>
+                            <small>{review?.name}</small>
                           </a>
                         </div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">
-                          {review.review}
+                          {review?.review}
                         </div>
                       </div>
                       <div className="flex items-center justify-start w-full text-xs">
@@ -312,7 +316,7 @@ const Testimonial = () => {
                           </a>
                           <span className="self-center">.</span>
                           <span>
-                            {new Date(review.createdAt).toLocaleString(
+                            {new Date(review?.createdAt).toLocaleString(
                               "en-US",
                               { timeZone: "Asia/Dhaka" }
                             )}

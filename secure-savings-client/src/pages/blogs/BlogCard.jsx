@@ -1,5 +1,6 @@
-import logo from "../../assets/images/marqueeItems/masterCard.png";
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+
 const BlogCard = ({ blog }) => {
   //   console.log(blog);
   const { _id, title, date, type, authorImage, blogImage, post, name } = blog;

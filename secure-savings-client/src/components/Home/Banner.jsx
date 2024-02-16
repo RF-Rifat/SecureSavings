@@ -8,7 +8,6 @@ import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 import "./Banner.css";
 import CreateAccount from "./createAccount";
 
-
 const Banner = () => {
   // const [currentSlide, setCurrentSlide] = useState(0);
   // const handleSlideChange = (swiper) => {
