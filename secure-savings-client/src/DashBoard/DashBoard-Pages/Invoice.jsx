@@ -1,4 +1,7 @@
 const Invoice = () => {
+  const handlePrint = () => {
+    window.print(); // This will trigger the print dialog
+  };
   return (
     <>
       <div className="w-full max-w-full px-3 mx-auto sm:flex-0 shrink-0 sm:w-10/12 md:w-8/12">
@@ -14,7 +17,7 @@ const Invoice = () => {
                   />
 
                   <h6 className="dark:text-white">
-                    abc dhaka
+                    Fayej Mansion,Chawk Bazar,Dhaka
                   </h6>
                   <p className="block text-slate-400 dark:text-white dark:opacity-80">
                     tel: +1010101010
@@ -22,14 +25,12 @@ const Invoice = () => {
                 </div>
                 <div className="w-full max-w-full px-3 mt-12 text-left md:flex-0 shrink-0 md:w-7/12 md:text-right lg:w-3/12">
                   <h6 className="block mt-2 mb-0 dark:text-white">
-                    Billed to: abc
+                    Billed to: Rifadul Islam
                   </h6>
                   <p className="text-slate-400 dark:text-white dark:opacity-80">
-                    4006 
+                    Shahi Maszid
                     <br />
-                    Dhaka
-                    <br />
-                    Mirpur
+                    Dinajpur
                   </p>
                 </div>
               </div>
@@ -50,7 +51,7 @@ const Invoice = () => {
                     </div>
                     <div className="w-full max-w-full px-3 md:flex-0 shrink-0 md:w-6/12">
                       <h6 className="mb-0 text-slate-700 dark:text-white">
-                        06/03/2019
+                        16/02/2024
                       </h6>
                     </div>
                   </div>
@@ -62,7 +63,7 @@ const Invoice = () => {
                     </div>
                     <div className="w-full max-w-full px-3 md:flex-0 shrink-0 md:w-6/12">
                       <h6 className="mb-0 text-slate-700 dark:text-white">
-                        11/03/2019
+                        11/03/2024
                       </h6>
                     </div>
                   </div>
@@ -123,7 +124,7 @@ const Invoice = () => {
                         </tr>
                         <tr>
                           <td className="p-2 text-left border-b whitespace-nowrap dark:border-white/40 dark:text-white/60">
-                            Soft UI Design System PRO
+                            Website Maintenance Plan
                           </td>
                           <td className="p-2 pl-6 border-b whitespace-nowrap dark:border-white/40 dark:text-white/60">
                             3
@@ -203,14 +204,14 @@ const Invoice = () => {
                   </p>
                   <h6 className="mb-0 text-slate-400 dark:text-white dark:opacity-80">
                     email:
-                    <span className="text-slate-700 dark:text-white">
-                      support@creative-tim.com
+                    <span className="text-blue-700 dark:text-white">
+                      support@securesavingsbank.com
                     </span>
                   </h6>
                 </div>
                 <div className="w-full max-w-full px-3 mt-4 lg:flex-0 shrink-0 md:mt-0 md:text-right lg:w-7/12">
                   <button
-                    onClick="window.print()"
+                    onClick={handlePrint} // Call handlePrint function when button is clicked
                     type="button"
                     className="inline-block px-5 py-2.5 mb-0 text-sm font-bold leading-normal text-right text-white align-middle transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer hover:-translate-y-px active:opacity-85 hover:shadow-xs tracking-tight-rem bg-150 bg-x-25 lg:mt-24"
                   >
