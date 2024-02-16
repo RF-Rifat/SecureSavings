@@ -151,6 +151,7 @@ router.post("/:type", async (req, res) => {
     }
 
     res.send(result);
+    console.log(result)
   } catch (error) {
     console.error(error);
     res.status(500).send(error);
