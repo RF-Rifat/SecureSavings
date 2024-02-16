@@ -3,6 +3,8 @@ import MasterCard from "../../../public/masterCard.json";
 import { useContext } from "react";
 import { AdminDataContext } from "../../Context/AdminProvider";
 import { Button, Chip } from "@material-tailwind/react";
+import { FcMoneyTransfer } from "react-icons/fc";
+
 const AccountData = () => {
   const { LoggedUser, userAcc } = useContext(AdminDataContext);
   console.log(userAcc);
@@ -38,7 +40,9 @@ const AccountData = () => {
                             <p className="mb-0 text-sm leading-normal text-white opacity-80">
                               Card Holder
                             </p>
-                            <h6 className="mb-0 text-white">Jack Peterson</h6>
+                            <h6 className="mb-0 text-white">
+                              {LoggedUser[0]?.name}
+                            </h6>
                           </div>
                           <div>
                             <p className="mb-0 text-sm leading-normal text-white opacity-80">
@@ -62,10 +66,10 @@ const AccountData = () => {
               </div>
               <div className="w-full max-w-full px-3 xl:w-1/2 xl:flex-none">
                 <div className="flex flex-wrap -mx-3">
-                  <div className="w-full max-w-full px-3 md:w-1/2 md:flex-none">
-                    <div className="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                  <div className="w-full max-w-full px-3 md:w-1/2 md:flex-none ">
+                    <div className="relative flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border grid place-items-center">
                       <div className="p-4 mx-6 mb-0 text-center border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <div className="w-16 h-16 text-center bg-center shadow-sm icon bg-gradient-to-tl from-blue-500 to-violet-500 rounded-xl">
+                        <div className="w-16 h-16 text-center grid place-items-center shadow-sm icon bg-gradient-to-tl from-blue-500 to-violet-500 rounded-xl">
                           <i
                             className="relative text-xl leading-none text-white opacity-100 fas fa-landmark top-31/100"
                             aria-hidden="true"
@@ -74,20 +78,20 @@ const AccountData = () => {
                       </div>
                       <div className="flex-auto p-4 pt-0 text-center">
                         <h6 className="mb-0 text-center dark:text-white">
-                          Salary
+                          Master Card
                         </h6>
                         <span className="text-xs leading-tight dark:text-white dark:opacity-80">
                           Belong Interactive
                         </span>
                         <hr className="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
-                        <h5 className="mb-0 dark:text-white">+$2000</h5>
+                        <h5 className="mb-0 dark:text-white">$2000</h5>
                       </div>
                     </div>
                   </div>
                   <div className="w-full max-w-full px-3 mt-6 md:mt-0 md:w-1/2 md:flex-none">
-                    <div className="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
-                      <div className="p-4 mx-6 mb-0 text-center border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <div className="w-16 h-16 text-center bg-center shadow-sm icon bg-gradient-to-tl from-blue-500 to-violet-500 rounded-xl">
+                    <div className="relative  flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-xl grid place-items-center dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                      <div className="p-4 mx-6 mb-0 text-center border-b-0 border-b-solid rounded-t-2xl  border-b-transparent">
+                        <div className="w-16 h-16 text-center bg-center shadow-sm icon  grid place-items-center bg-gradient-to-tl from-blue-500 to-violet-500 rounded-xl">
                           <i
                             className="relative text-xl leading-none text-white opacity-100 fab fa-paypal top-31/100"
                             aria-hidden="true"
@@ -111,14 +115,13 @@ const AccountData = () => {
               <div className="max-w-full px-3 mb-6 lg:mb-0 lg:w-full lg:flex-none">
                 <div className="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                   <div className="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <div className="flex flex-wrap -mx-3">
+                    <div className="flex flex-wrap justify-between w-full">
                       <div className="flex items-center flex-none w-1/2 max-w-full px-3">
                         <h6 className="mb-0 dark:text-white">Payment Method</h6>
                       </div>
                       <Button className="flex-none justify-items-end text-right">
                         <a
-                          // className="inline-block font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25"
-                          
+                        // className="inline-block font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25"
                         >
                           {" "}
                           <i className="fas fa-plus" aria-hidden="true">
@@ -134,8 +137,8 @@ const AccountData = () => {
                       <div className="max-w-full px-3 mb-6 md:mb-0 md:w-1/2 md:flex-none">
                         <div className="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none md-max:overflow-auto rounded-xl border-slate-100 dark:border-slate-700 bg-clip-border">
                           <img
-                            className="mb-0 mr-4 w-1/10"
-                            src="../assets/img/logos/mastercard.png"
+                            className="mb-0 mr-4 w-1/10 h-10 w-16"
+                            src="/image/masterCard.png"
                             alt="logo"
                           />
                           <h6 className="mb-0 dark:text-white">
@@ -174,8 +177,8 @@ const AccountData = () => {
                       <div className="max-w-full px-3 md:w-1/2 md:flex-none">
                         <div className="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none md-max:overflow-auto rounded-xl border-slate-100 dark:border-slate-700 bg-clip-border">
                           <img
-                            className="mb-0 mr-4 w-1/10"
-                            src="../assets/img/logos/visa.png"
+                            className="mb-0 mr-4 w-1/10 h-10 w-16"
+                            src="/image/paypal.png"
                             alt="logo"
                           />
                           <h6 className="mb-0 dark:text-white">
@@ -220,7 +223,7 @@ const AccountData = () => {
           <div className="w-full max-w-full px-3 lg:w-1/3 lg:flex-none">
             <div className="relative flex flex-col h-full min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
               <div className="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                <div className="flex flex-wrap -mx-3">
+                <div className="flex flex-wrap">
                   <div className="flex items-center flex-none w-1/2 max-w-full px-3">
                     <h6 className="mb-0 dark:text-white">Invoices</h6>
                   </div>
@@ -338,7 +341,7 @@ const AccountData = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap -mx-3">
+        <div className="flex flex-wrap">
           <div className="w-full max-w-full px-3 mt-6 md:flex-none">
             <div className="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
               <div className="p-6 px-4 pb-0 mb-0 border-b-0 rounded-t-2xl">
@@ -406,11 +409,11 @@ const AccountData = () => {
                           variant="outlined"
                           className="relative z-10 inline-block px-4 py-2.5 mb-0 font-bold text-center text-transparent align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-normal text-sm ease-in bg-150 bg-gradient-to-tl from-red-600 to-orange-600 hover:-translate-y-px active:opacity-85 bg-x-25 bg-clip-text"
                         >
-                          <i
-                            className="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-orange-600 bg-x-25 bg-clip-text"
+                          <FcMoneyTransfer
+                            className="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 text-orange-600 bg-x-25 bg-clip-text "
                             aria-hidden="true"
                           />
-                          Delete
+                          Withdraw
                         </Button>
                         <Button
                           variant="outlined"

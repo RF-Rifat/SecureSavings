@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AddBlog from "../../pages/blogs/AddBlog";
 
 export const AddBlogModal = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -31,13 +32,13 @@ export const AddBlogModal = () => {
         >
           <div
             onClick={(e_) => e_.stopPropagation()}
-            className={`absolute w-full lg:w-[500px] bg-white drop-shadow-2xl rounded-lg ${
+            className={`absolute w-full lg:w-[500px] bg-white rounded-lg ${
               openModal
                 ? "opacity-1 duration-300 translate-y-0"
                 : "-translate-y-20 opacity-0 duration-150"
             }`}
           >
-            <form className="p-12">
+            {/* <form className="p-12">
               <svg
                 onClick={() => setOpenModal(false)}
                 className="w-10 mx-auto mr-0 cursor-pointer"
@@ -135,14 +136,15 @@ export const AddBlogModal = () => {
                   </span>
                 </div>
               </div>
-              {/* button type will be submit for handling form submission*/}
+            
               <button
                 type="button"
                 className="py-2 px-5 mb-4 mt-6 shadow-lg rounded-lg before:block before:-left-1 before:-top-1 before:bg-black before:rounded-lg before:absolute before:h-0 before:w-0 before:hover:w-[100%] before:hover:h-[100%]  before:duration-500 before:-z-40 after:block after:-right-1 after:-bottom-1 after:bg-black after:rounded-lg after:absolute after:h-0 after:w-0 after:hover:w-[100%] after:hover:h-[100%] after:duration-500 after:-z-40 bg-white relative inline-block"
               >
                 Submit
               </button>
-            </form>
+            </form> */}
+            <AddBlog />
           </div>
         </div>
       </div>

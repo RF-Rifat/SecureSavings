@@ -40,7 +40,7 @@ const ProfileAddBlog = () => {
                         <h5 className="dark:text-white">{item?.name}</h5>
                       </a>
                       <p className="mb-6 leading-normal text-sm dark:text-white dark:opacity-60">
-                        {item?.post.length > 80
+                        {item?.post?.length > 80
                           ? `${item?.post.substring(0, 100)}...`
                           : item?.post}
                       </p>
