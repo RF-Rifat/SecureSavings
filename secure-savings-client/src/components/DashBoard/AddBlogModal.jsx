@@ -10,7 +10,7 @@ export const AddBlogModal = () => {
       >
         <div className="relative flex flex-col h-full min-w-0 break-words bg-transparent border-2 border-solid shadow-none dark:shadow-lg rounded-2xl border-slate-100 bg-clip-border dark:border-slate-700">
           <div className="flex flex-col justify-center flex-auto p-6 text-center">
-            <a href="javascript:;">
+            <div>
               <i
                 className="mb-4 fa fa-plus text-slate-400 dark:text-white dark:opacity-80"
                 aria-hidden="true"
@@ -18,7 +18,7 @@ export const AddBlogModal = () => {
               <h5 className="text-slate-400 dark:text-white dark:opacity-80">
                 Add New Blog
               </h5>
-            </a>
+            </div>
           </div>
         </div>
       </button>

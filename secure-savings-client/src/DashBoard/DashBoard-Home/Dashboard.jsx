@@ -3,13 +3,17 @@ import BarChart from "./BarChart";
 import { DashboardTimeLine } from "./DashBoardTimeline";
 import { AdminDataContext } from "../../Context/AdminProvider";
 import useGetData from "../../Hooks/useGetData";
+import useGetUserData from "../../Hooks/useGetBlogData";
+import { GiLogicGateAnd } from "react-icons/gi";
 
 
 const Dashboard = () => {
   const authInfo = useContext(AdminDataContext);
   const { LoggedUser, isAdmin} = authInfo;
   const [userData] = useGetData("/api/user");
-  const totalBalance = userData.reduce((sum, user) => sum + user.balance, 0);
+  const [accData] = useGetUserData("/api/account");
+  
+  const totalBalance = accData?.reduce((sum, user) => sum + user.balance, 0);
 
   return (
     <>
@@ -35,7 +39,7 @@ const Dashboard = () => {
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     {/* {user.email} */}
-                    {userData.length}
+                    {accData?.length}
                   </p>
                 </div>
               </div>

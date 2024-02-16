@@ -8,6 +8,7 @@ import {
   Typography,
   Select,
   Option,
+  Input,
 } from "@material-tailwind/react";
 import { AdminDataContext } from "../../Context/AdminProvider";
 import { modifyData } from "../../Hooks/Api";
@@ -32,19 +33,19 @@ const data = [
     label: "Saving",
     value: "Saving",
     icon: Square3Stack3DIcon,
-    desc: `A savings account is designed for individuals who want to set aside money for future use, such as emergencies, large purchases, or long-term goals. It typically offers a lower interest rate than other types of accounts, but it provides security and easy access to funds when needed.`,
+    desc: `A savings account is designed for individuals who want to set aside money for future use.`,
   },
   {
     label: "Checking",
     value: "Checking",
     icon: IoShieldCheckmark,
-    desc: `A checking account is a basic banking account that allows you to deposit and withdraw money for everyday transactions. It typically comes with features such as a debit card, check-writing capabilities, and online banking. Checking accounts may or may not earn interest, depending on the bank and account type.`,
+    desc: `A checking account is a basic banking account that allows you to deposit and withdraw money for everyday transactions.`,
   },
   {
     label: "Money Market",
     value: "Money Market",
     icon: GiMoneyStack,
-    desc: `A money market account is a type of savings account that usually offers higher interest rates than traditional savings accounts. It combines the features of a savings account with some of the benefits of an investment account, such as check-writing privileges and higher yield potential. Money market accounts typically require a higher minimum balance to open and maintain.`,
+    desc: `A money market account is a type of savings account that usually offers higher interest rates than traditional savings accounts.`,
   },
 ];
 
@@ -61,13 +62,14 @@ export default function Modal({ open, handler }) {
   };
 
   const [accountType, setAccountType] = useState("");
+  const [initialDeposit, setInitialDeposit] = useState("");
 
   const handleCreateAccount = async () => {
     const newAcc = {
       accountType,
       accountId: generateAccountID(),
       userId: _id,
-      balance: 500,
+      balance: parseFloat(initialDeposit) || 500, // Default balance or user input
       status: "pending",
     };
     try {
@@ -132,7 +134,21 @@ export default function Modal({ open, handler }) {
                       <Option value="savings">Savings</Option>
                     </Select>
                   </div>
-
+                  <div>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="mb-2 font-medium"
+                    >
+                      Initial Deposit
+                    </Typography>
+                    <Input
+                      type="number"
+                      color="blue"
+                      placeholder="Initial Deposit"
+                      onChange={(e) => setInitialDeposit(e.target.value)}
+                    />
+                  </div>
                   <Button className="col-span-2" onClick={handleCreateAccount}>
                     Create Account
                   </Button>
@@ -141,29 +157,6 @@ export default function Modal({ open, handler }) {
             ))}
           </TabsBody>
         </Tabs>
-        {/* <form className="mt-4 grid gap-4 grid-cols-2">
-          <div>
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 font-medium"
-            >
-              Account Type
-            </Typography>
-            <Select
-              color="blue"
-              label="Select Version"
-              onChange={(e) => setAccountType(e)}
-            >
-              <Option value="checking">Checking</Option>
-              <Option value="savings">Savings</Option>
-            </Select>
-          </div>
-
-          <Button className="col-span-2" onClick={handleCreateAccount}>
-            Create Account
-          </Button>
-        </form> */}
       </CardBody>
     </Card>
   );
