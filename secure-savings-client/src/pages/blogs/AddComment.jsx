@@ -1,28 +1,29 @@
+/* eslint-disable react/prop-types */
 import { Button, Textarea } from "@material-tailwind/react";
 import { useContext } from "react";
 import { AuthProvider } from "../../Authentication/AuthProvider";
 import { modifyData } from "../../Hooks/Api";
 import toast from "react-hot-toast";
 import useComment from "../../Hooks/useComment";
+import { AdminDataContext } from "../../Context/AdminProvider";
 
 const AddComment = ({ id }) => {
-  const [, refetch] = useComment();
-  const { user } = useContext(AuthProvider);
+  const [refetch] = useComment();
+  const { LoggedUser,} = useContext(AdminDataContext);
+  const {  name, imageSrc } = LoggedUser[0] || {};
   // add comment
   const handleAddComment = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const currentDate = new Date();
-    const formattedDate = currentDate.toDateString();
     const newComment = {
-      name: user?.displayName,
-      photo: user?.photoURL,
-      date: formattedDate,
+      name: name,
+      photo: imageSrc,
       comment: form?.comment?.value,
       blogId: id,
     };
     try {
       const res = await modifyData("/api/comment", "POST", newComment);
+      console.log(newComment)
       if (res.acknowledged) {
         console.log(res);
         toast.success("Thanks for your valuable comment.");

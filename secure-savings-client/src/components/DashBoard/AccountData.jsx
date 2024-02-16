@@ -115,10 +115,10 @@ const AccountData = () => {
                       <div className="flex items-center flex-none w-1/2 max-w-full px-3">
                         <h6 className="mb-0 dark:text-white">Payment Method</h6>
                       </div>
-                      <div className="flex-none w-1/2 max-w-full px-3 text-right">
+                      <Button className="flex-none justify-items-end text-right">
                         <a
-                          className="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25"
-                          href="javascript:;"
+                          // className="inline-block font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25"
+                          
                         >
                           {" "}
                           <i className="fas fa-plus" aria-hidden="true">
@@ -126,7 +126,7 @@ const AccountData = () => {
                           </i>
                           &nbsp;&nbsp;Add New Card
                         </a>
-                      </div>
+                      </Button>
                     </div>
                   </div>
                   <div className="flex-auto p-4">
