@@ -7,7 +7,7 @@ import useComment from "../../Hooks/useComment";
 import { AdminDataContext } from "../../Context/AdminProvider";
 
 const AddComment = ({ id }) => {
-  const [refetch] = useComment();
+  const [comments, refetch] = useComment();
   const { LoggedUser,} = useContext(AdminDataContext);
   const {  name, imageSrc } = LoggedUser[0] || {};
   // add comment
@@ -23,7 +23,6 @@ const AddComment = ({ id }) => {
     try {
       const res = await modifyData("/api/comment", "POST", newComment);
       if (res) {
-        console.log(res);
         toast.success("Thanks for your valuable comment.");
         form.reset();
         refetch();
