@@ -9,31 +9,27 @@ const Invoice = () => {
                 <div className="w-full max-w-full px-3 text-left md:flex-0 shrink-0 md:w-4/12">
                   <img
                     className="block w-1/4 p-2 mb-2 dark:hidden"
-                    src="../../../assets/img/logo-ct-dark.png"
+                    src="/logo.png"
                     alt="Logo"
                   />
-                  <img
-                    className="hidden w-1/4 p-2 mb-2 dark:block"
-                    src="../../../assets/img/logo-ct.png"
-                    alt="Logo"
-                  />
+
                   <h6 className="dark:text-white">
-                    St. Independence Embankment, 050105 Bucharest, Romania
+                    abc dhaka
                   </h6>
                   <p className="block text-slate-400 dark:text-white dark:opacity-80">
-                    tel: +4 (074) 1090873
+                    tel: +1010101010
                   </p>
                 </div>
                 <div className="w-full max-w-full px-3 mt-12 text-left md:flex-0 shrink-0 md:w-7/12 md:text-right lg:w-3/12">
                   <h6 className="block mt-2 mb-0 dark:text-white">
-                    Billed to: John Doe
+                    Billed to: abc
                   </h6>
                   <p className="text-slate-400 dark:text-white dark:opacity-80">
-                    4006 Locust View Drive
+                    4006 
                     <br />
-                    San Francisco CA
+                    Dhaka
                     <br />
-                    California
+                    Mirpur
                   </p>
                 </div>
               </div>
@@ -228,6 +224,6 @@ const Invoice = () => {
       </div>
     </>
   );
-}
+};
 
-export default Invoice
+export default Invoice;
