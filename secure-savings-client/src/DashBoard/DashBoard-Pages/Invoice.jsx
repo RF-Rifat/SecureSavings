@@ -111,7 +111,7 @@ const Invoice = () => {
                       <tbody className="border-t-2">
                         <tr>
                           <td className="p-2 text-left border-b whitespace-nowrap dark:border-white/40 dark:text-white/60">
-                            Premium Support
+                            Send Money
                           </td>
                           <td className="p-2 pl-6 border-b whitespace-nowrap dark:border-white/40 dark:text-white/60">
                             1
@@ -128,7 +128,7 @@ const Invoice = () => {
                         </tr>
                         <tr>
                           <td className="p-2 text-left border-b whitespace-nowrap dark:border-white/40 dark:text-white/60">
-                            Website Maintenance Plan
+                            Credit Card
                           </td>
                           <td className="p-2 pl-6 border-b whitespace-nowrap dark:border-white/40 dark:text-white/60">
                             3
@@ -145,7 +145,7 @@ const Invoice = () => {
                         </tr>
                         <tr>
                           <td className="p-2 text-left border-b-0 whitespace-nowrap dark:border-white/40 dark:text-white/60">
-                            Parts for service
+                            Loan service
                           </td>
                           <td className="p-2 pl-6 border-b-0 whitespace-nowrap dark:border-white/40 dark:text-white/60">
                             1
