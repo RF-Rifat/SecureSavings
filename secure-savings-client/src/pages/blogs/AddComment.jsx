@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Button, Textarea } from "@material-tailwind/react";
 import { useContext } from "react";
-import { AuthProvider } from "../../Authentication/AuthProvider";
 import { modifyData } from "../../Hooks/Api";
 import toast from "react-hot-toast";
 import useComment from "../../Hooks/useComment";
@@ -23,8 +22,7 @@ const AddComment = ({ id }) => {
     };
     try {
       const res = await modifyData("/api/comment", "POST", newComment);
-      console.log(newComment)
-      if (res.acknowledged) {
+      if (res) {
         console.log(res);
         toast.success("Thanks for your valuable comment.");
         form.reset();
