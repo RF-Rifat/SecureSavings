@@ -32,7 +32,7 @@ export const AddBlogModal = () => {
         >
           <div
             onClick={(e_) => e_.stopPropagation()}
-            className={`absolute w-full lg:w-[500px] bg-white drop-shadow-2xl rounded-lg ${
+            className={`absolute w-full lg:w-[500px] bg-white rounded-lg ${
               openModal
                 ? "opacity-1 duration-300 translate-y-0"
                 : "-translate-y-20 opacity-0 duration-150"
@@ -144,7 +144,7 @@ export const AddBlogModal = () => {
                 Submit
               </button>
             </form> */}
-            <AddBlog/>
+            <AddBlog />
           </div>
         </div>
       </div>

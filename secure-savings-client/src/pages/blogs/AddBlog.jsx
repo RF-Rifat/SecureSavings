@@ -42,7 +42,7 @@ const AddBlog = () => {
   return (
     <div className="bg-gradient-to-br flex justify-center items-center">
       <div className="w-full max-w-3xl p-8">
-        <div className="bg-white p-8 rounded-lg shadow-lg md:flex md:items-center">
+        <div className="bg-white p-8 md:flex md:items-center">
           <div className="md:flex-shrink-0 mb-8 md:mb-0">
             {/* <Lottie
               animationData={blogImg}
@@ -54,8 +54,8 @@ const AddBlog = () => {
               Add Blog
             </h2>
             <form onSubmit={handleNewBlog} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex-1">
                   <Input
                     color="blue"
                     className="text-black"
@@ -66,7 +66,7 @@ const AddBlog = () => {
                     required
                   />
                 </div>
-                <div>
+                <div className="flex-1">
                   <Input
                     color="blue"
                     name="image"
