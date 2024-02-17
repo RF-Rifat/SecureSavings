@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function useCreditCardGenerator() {
   const generateRandomNumber = (length) => {
     return Math.floor(Math.random() * Math.pow(10, length));

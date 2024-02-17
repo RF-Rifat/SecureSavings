@@ -6,6 +6,7 @@ const Comment = require("../models/comment");
 const Loan = require("../models/loan");
 const Testimonial = require("../models/Testimonial");
 const Account = require("../models/account");
+const CreditCard = require("../models/creditCard");
 
 router.post("/", async (req, res) => {
   try {
@@ -130,6 +131,9 @@ router.post("/:type", async (req, res) => {
         break;
       case "account":
         result = await Account.create(data);
+        break;
+      case "creditCard":
+        result = await CreditCard.create(data);
         break;
       case "message":
         result = await Message.create(data);

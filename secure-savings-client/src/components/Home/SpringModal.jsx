@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 
 import toast from "react-hot-toast";
@@ -28,35 +29,26 @@ const SpringModal = ({ setOpenModal, openModal }) => {
       label: "Master Card",
       value: "MasterCard",
 
-      desc: {
-        amount: [1000, 1500, 2250, 3000],
-        desc: "A savings account is designed for individuals who want to set aside money for future use, such as emergencies, large purchases, or long-term goals.",
-      },
+      number: "4332..........6592",
     },
     {
       label: "Visa",
       value: "Visa",
 
-      desc: {
-        amount: [2000, 3000, 5000, 10000],
-        desc: "A checking account is a basic banking account that allows you to deposit and withdraw money for everyday transactions.",
-      },
+      number: "5327.........6546",
     },
     {
       label: "American Express",
       value: "American Express",
 
-      desc: {
-        amount: [10000, 15000, 22500, 30000],
-        desc: "A money market account is a type of savings account that usually offers higher interest rates than traditional savings accounts.",
-      },
+      number: "3772.........2259",
     },
   ];
   const [formData, setFormData] = useState({
-    expiryDate: "",
-    cvv: "",
-    creditLimit: "",
-    availableCredit: "",
+    expiryDate: 0,
+    cvv: 0,
+    creditLimit: 0,
+    availableCredit: 0,
     cardStatus: "Active",
     cardholderAgreementAcceptance: false,
   });
@@ -66,10 +58,9 @@ const SpringModal = ({ setOpenModal, openModal }) => {
       ...formData,
       cardNumber,
     });
-  }, [cardNumber, formData]);
+  }, [cardNumber]);
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setFormData({
       ...formData,
       [name]: value,
@@ -138,7 +129,7 @@ const SpringModal = ({ setOpenModal, openModal }) => {
         onClick={() => setOpenModal(false)}
         className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${
           openModal ? "opacity-100" : "opacity-0 pointer-events-none"
-        } bg-black bg-opacity-50`}
+        } bg-black bg-opacity-60`}
       >
         <div
           className="bg-white rounded-lg overflow-hidden max-w-xl w-full"
@@ -146,7 +137,7 @@ const SpringModal = ({ setOpenModal, openModal }) => {
         >
           <div className="px-4 py-6">
             <CardHeader
-              color="gray"
+              color="blue"
               floated={false}
               shadow={false}
               className="m-0 grid place-items-center px-4 py-8 text-center"
@@ -168,12 +159,12 @@ const SpringModal = ({ setOpenModal, openModal }) => {
                   </TabsHeader>
                   <TabsBody
                     animate={{
-                      initial: { y: 250 },
+                      initial: { y: 550 },
                       mount: { y: 0 },
-                      unmount: { y: 250 },
+                      unmount: { y: 550 },
                     }}
                   >
-                    {data.map(({ value }) => (
+                    {data.map(({ value, number }) => (
                       <div key={value}>
                         <TabPanel value={value}>
                           <form
@@ -199,9 +190,9 @@ const SpringModal = ({ setOpenModal, openModal }) => {
                                     {/* {cardNumber
                                       ? cardNumber
                                       : "4455.............9191"} */}
-                                    {cardNumber || "4455.............9191"}
+                                    {cardNumber || number}
                                   </span>
-                                  <span className="absolute right-0 text-lg md:right-3 grid h-full w-8 place-items-center">
+                                  <span className="absolute right-0 text-lg md:right-2 grid h-full w-8 place-items-center">
                                     <FaCopy />
                                   </span>
                                 </div>
@@ -232,6 +223,8 @@ const SpringModal = ({ setOpenModal, openModal }) => {
                                 value={formData.cvv}
                                 onChange={handleChange}
                                 fullWidth
+                                type="text"
+                                maxlength={4}
                               />
                               <Input
                                 name="creditLimit"
@@ -239,6 +232,7 @@ const SpringModal = ({ setOpenModal, openModal }) => {
                                 value={formData.creditLimit}
                                 onChange={handleChange}
                                 fullWidth
+                                maxLength={4}
                               />
                               <Input
                                 name="availableCredit"
