@@ -58,8 +58,7 @@ export default function Modal({ open, handler }) {
     },
   ];
 
-  const authInfo = useContext(AdminDataContext);
-  const { LoggedUser } = authInfo;
+  const { LoggedUser } = useContext(AdminDataContext);
   const { _id, email,name } = LoggedUser[0] || {};
   const [accData, setAccData] = useState("");
 

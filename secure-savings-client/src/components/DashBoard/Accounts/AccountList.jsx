@@ -2,7 +2,6 @@
 import { FcMoneyTransfer } from "react-icons/fc";
 import { Chip, Button } from "@material-tailwind/react";
 const AccountList = ({ userAcc }) => {
-  
   return (
     <>
       <div className="flex flex-wrap">

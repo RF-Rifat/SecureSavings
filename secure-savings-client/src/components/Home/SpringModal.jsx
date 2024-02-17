@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 
 import toast from "react-hot-toast";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Input,
   Select,
@@ -16,11 +16,17 @@ import {
   TabsBody,
   Tab,
   TabPanel,
+  Checkbox,
 } from "@material-tailwind/react";
 import { FaCopy, FaKey } from "react-icons/fa";
 import useCreditCardGenerator from "../../Hooks/generateCardNumber";
+import { modifyData } from "../../Hooks/Api";
+import { AdminDataContext } from "../../Context/AdminProvider";
 
 const SpringModal = ({ setOpenModal, openModal }) => {
+  const { LoggedUser } = useContext(AdminDataContext);
+  const { _id } = LoggedUser[0] || {};
+  console.log(_id);
   const { generateCreditCardNumber } = useCreditCardGenerator();
   const [cardNumber, setCardNumber] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
@@ -45,12 +51,11 @@ const SpringModal = ({ setOpenModal, openModal }) => {
     },
   ];
   const [formData, setFormData] = useState({
-    expiryDate: 0,
-    cvv: 0,
-    creditLimit: 0,
-    availableCredit: 0,
+    cvv: "",
+    creditLimit: "",
+    availableCredit: "",
     cardStatus: "Active",
-    cardholderAgreementAcceptance: false,
+   
   });
 
   useEffect(() => {
@@ -96,27 +101,19 @@ const SpringModal = ({ setOpenModal, openModal }) => {
     }
   }, [copySuccess]);
   const handleFormSubmit = async (type) => {
-    console.log(type, formData);
-    // try {
-    //   const response = await fetch("YOUR_BACKEND_API_URL", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({ type, formData }),
-    //   });
-
-    //   if (response.ok) {
-    //     console.log("Form submitted successfully!");
-    //     // Optionally, you can handle success feedback or redirect the user
-    //   } else {
-    //     console.error("Failed to submit form.");
-    //     // Optionally, you can handle error feedback to the user
-    //   }
-    // } catch (error) {
-    //   console.error("Error submitting form:", error);
-    //   // Optionally, you can handle error feedback to the user
-    // }
+    try {
+      const res = await modifyData("/api/credit", "POST", {
+        ...formData,
+        cardType: type,
+        userId: _id,
+      });
+      console.log(res);
+      if (res) {
+        toast.success(`Your ${type} account created successfully`);
+      }
+    } catch (error) {
+      toast.error(`You Already have ${type} account so can't create another.`);
+    }
   };
 
   const handleFormClick = (e) => {
@@ -209,14 +206,7 @@ const SpringModal = ({ setOpenModal, openModal }) => {
                                   <FaKey />
                                 </span>
                               </Button>
-                              <Input
-                                name="expiryDate"
-                                label="Expiry Date"
-                                type="date"
-                                value={formData.expiryDate}
-                                onChange={handleChange}
-                                fullWidth
-                              />
+
                               <Input
                                 name="cvv"
                                 label="CVV/CVC Code"
@@ -255,14 +245,11 @@ const SpringModal = ({ setOpenModal, openModal }) => {
                               </Select>
                               <div className="col-span-2 mb-3">
                                 <label className="flex items-center">
-                                  <input
+                                  <Checkbox
+                                    color="blue"
                                     type="checkbox"
+                                    required
                                     name="cardholderAgreementAcceptance"
-                                    checked={
-                                      formData.cardholderAgreementAcceptance
-                                    }
-                                    onChange={handleChange}
-                                    className="mr-2"
                                   />
                                   <span className="text-sm">
                                     I agree to the terms and conditions

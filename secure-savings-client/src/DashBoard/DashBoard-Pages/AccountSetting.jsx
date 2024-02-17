@@ -1,13 +1,17 @@
+import useAuth from "../../Hooks/useAuth";
 import useGetUserData from "../../Hooks/useGetUserData";
 import AccountData from "../../components/DashBoard/Accounts/AccountData";
 import AccountList from "../../components/DashBoard/Accounts/AccountList";
 
 const AccountSetting = () => {
-  const [userAcc] = useGetUserData("/api/account");
+  const { authInfo } = useAuth();
+  const { displayName, photoURL, email } = authInfo?.user || {};
+  const [data, refetch] = useGetUserData(`/api/userData/${email}`);
+
   return (
     <>
-      <AccountData />
-      <AccountList userAcc={userAcc} />
+      <AccountData data={data} />
+      <AccountList userAcc={data.accounts} />
     </>
   );
 };

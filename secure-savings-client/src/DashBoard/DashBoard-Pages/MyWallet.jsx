@@ -3,9 +3,17 @@ import { FcDataSheet } from "react-icons/fc";
 import { FcPieChart } from "react-icons/fc";
 import { FcLineChart } from "react-icons/fc";
 import MyWalletForm from "./MyWalletForm";
+import useAuth from "../../Hooks/useAuth";
+import useGetData from "../../Hooks/useGetData";
+import useGetUserData from "../../Hooks/useGetUserData";
+
 
 const MyWallet = () => {
+  const { authInfo } = useAuth();
+  const { displayName, photoURL, email } = authInfo?.user || {};
+  const [data,refetch] = useGetUserData(`/api/userData/${email}`);
 
+console.log(data)
   return (
     <>
       <div className="px-3 relative sm:px-4 xxxl:px-6 py-6 lg:py-8 duration-300 false false">

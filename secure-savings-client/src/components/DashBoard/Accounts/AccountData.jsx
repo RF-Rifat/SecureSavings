@@ -1,11 +1,11 @@
+/* eslint-disable react/prop-types */
 import Lottie from "lottie-react";
 import MasterCard from "../../../../public/masterCard.json";
 import { useContext } from "react";
 import { AdminDataContext } from "../../../Context/AdminProvider";
 import { Button } from "@material-tailwind/react";
 
-
-const AccountData = () => {
+const AccountData = ({ data }) => {
   const { LoggedUser } = useContext(AdminDataContext);
 
   return (
@@ -135,48 +135,58 @@ const AccountData = () => {
                     </div>
                   </div>
                   <div className="flex-auto p-4">
-                    <div className="flex flex-wrap -mx-3">
-                      <div className="max-w-full px-3 mb-6 md:mb-0 md:w-1/2 md:flex-none">
-                        <div className="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none md-max:overflow-auto rounded-xl border-slate-100 dark:border-slate-700 bg-clip-border">
-                          <img
-                            className="mb-0 mr-4 w-1/10 h-10 w-16"
-                            src="/image/masterCard.png"
-                            alt="logo"
-                          />
-                          <h6 className="mb-0 dark:text-white">
-                            ****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;7852
-                          </h6>
-                          <i
-                            className="ml-auto cursor-pointer fas fa-pencil-alt text-slate-700"
-                            data-target="tooltip_trigger"
-                            data-placement="top"
-                            aria-hidden="true"
-                          />
-                          <div
-                            data-target="tooltip"
-                            className="px-2 py-1 text-sm text-white bg-black rounded-lg hidden"
-                            style={{
-                              position: "absolute",
-                              inset: "auto auto 0px 0px",
-                              margin: 0,
-                              transform: "translate3d(652.8px, -388px, 0px)",
-                            }}
-                            data-popper-placement="top"
-                          >
-                            Edit Card
+                    <div className="flex flex-wrap gap-3">
+                      {data?.creditCards?.map((item) => (
+                        <div
+                          key={item?._id}
+                          className="max-w-full px-3 mb-6 md:flex-none"
+                        >
+                          <div className="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none md-max:overflow-auto rounded-xl border-slate-100 dark:border-slate-700 bg-clip-border">
+                            <img
+                              className="mb-0 mr-4 w-1/10 h-10 w-16"
+                              src={
+                                item?.cardType === "MasterCard"
+                                  ? "/image/masterCard.png"
+                                  : "/image/paypal.png"
+                              }
+                              alt="logo"
+                            />
+
+                            <h6 className="mb-0 dark:text-white">
+                              {item?.cardNumber}
+                            </h6>
+                            <i
+                              className="ml-auto cursor-pointer fas fa-pencil-alt text-slate-700"
+                              data-target="tooltip_trigger"
+                              data-placement="top"
+                              aria-hidden="true"
+                            />
                             <div
-                              className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                              data-popper-arrow=""
+                              data-target="tooltip"
+                              className="px-2 py-1 text-sm text-white bg-black rounded-lg hidden"
                               style={{
                                 position: "absolute",
-                                left: 0,
-                                transform: "translate3d(0px, 0px, 0px)",
+                                inset: "auto auto 0px 0px",
+                                margin: 0,
+                                transform: "translate3d(652.8px, -388px, 0px)",
                               }}
-                            />
+                              data-popper-placement="top"
+                            >
+                              Edit Card
+                              <div
+                                className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
+                                data-popper-arrow=""
+                                style={{
+                                  position: "absolute",
+                                  left: 0,
+                                  transform: "translate3d(0px, 0px, 0px)",
+                                }}
+                              />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="max-w-full px-3 md:w-1/2 md:flex-none">
+                      ))}
+                      {/* <div className="max-w-full px-3 md:w-1/2 md:flex-none">
                         <div className="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none md-max:overflow-auto rounded-xl border-slate-100 dark:border-slate-700 bg-clip-border">
                           <img
                             className="mb-0 mr-4 w-1/10 h-10 w-16"
@@ -215,7 +225,7 @@ const AccountData = () => {
                             />
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -343,7 +353,6 @@ const AccountData = () => {
             </div>
           </div>
         </div>
-        
       </div>
     </>
   );
