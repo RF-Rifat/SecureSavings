@@ -6,7 +6,7 @@ export default function CreateCreditCard() {
   const [openModal, setOpenModal] = useState(false);
   return (
     <div className="flex items-center justify-center">
-      <Button onClick={() => setOpenModal(true)} color="blue">
+      <Button onClick={() => setOpenModal(true)} color="green">
         Apply For Credit Card
       </Button>
       <SpringModal openModal={openModal} setOpenModal={setOpenModal} />

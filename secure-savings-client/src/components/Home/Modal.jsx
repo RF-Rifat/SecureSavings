@@ -22,8 +22,6 @@ import {
 } from "@material-tailwind/react";
 import {
   Square3Stack3DIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
 import { IoShieldCheckmark } from "react-icons/io5";
 import { GiMoneyStack } from "react-icons/gi";
@@ -139,8 +137,6 @@ export default function Modal({ open, handler }) {
                       setInitialDeposit={setInitialDeposit}
                     />
                   }
-                  
-                  {/* add proper time limit for account type and money */}
 
                   <Button
                     fullWidth
