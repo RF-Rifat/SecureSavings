@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+
+import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 import {
   Input,
   Select,
@@ -14,7 +16,13 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
+import { FaCopy, FaKey } from "react-icons/fa";
+import useCreditCardGenerator from "../../Hooks/generateCardNumber";
+
 const SpringModal = ({ setOpenModal, openModal }) => {
+  const { generateCreditCardNumber } = useCreditCardGenerator();
+  const [cardNumber, setCardNumber] = useState(null);
+  const [copySuccess, setCopySuccess] = useState(false);
   const data = [
     {
       label: "Master Card",
@@ -45,44 +53,78 @@ const SpringModal = ({ setOpenModal, openModal }) => {
     },
   ];
   const [formData, setFormData] = useState({
-    cardType: "",
-    cardNumber: "",
     expiryDate: "",
     cvv: "",
     creditLimit: "",
     availableCredit: "",
-    dateOfIssuance: "",
     cardStatus: "Active",
     cardholderAgreementAcceptance: false,
   });
 
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      cardNumber,
+    });
+  }, [cardNumber, formData]);
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
     setFormData({
       ...formData,
       [name]: value,
+      cardNumber,
     });
   };
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    console.log(formData);
 
+  const handleGenerateNewNumbers = (type) => {
+    if (type === "MasterCard") {
+      setCardNumber(generateCreditCardNumber(4, 16));
+    } else if (type === "Visa") {
+      setCardNumber(generateCreditCardNumber(5, 16));
+    } else {
+      setCardNumber(generateCreditCardNumber(37, 15));
+    }
+  };
+  const handleCopyCardNumber = () => {
+    const tempInput = document.createElement("input");
+    tempInput.value = cardNumber;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    setCopySuccess(true);
+    setTimeout(() => {
+      setCopySuccess(false);
+    }, 3000);
+  };
+  useEffect(() => {
+    if (copySuccess) {
+      toast.success("Card Number Copied in your clipboard");
+    }
+  }, [copySuccess]);
+  const handleFormSubmit = async (type) => {
+    console.log(type, formData);
     // try {
-    //   const response = await fetch("YOUR_BACKEND_ENDPOINT_HERE", {
+    //   const response = await fetch("YOUR_BACKEND_API_URL", {
     //     method: "POST",
     //     headers: {
     //       "Content-Type": "application/json",
     //     },
-    //     body: JSON.stringify(formData),
+    //     body: JSON.stringify({ type, formData }),
     //   });
 
     //   if (response.ok) {
     //     console.log("Form submitted successfully!");
+    //     // Optionally, you can handle success feedback or redirect the user
     //   } else {
     //     console.error("Failed to submit form.");
+    //     // Optionally, you can handle error feedback to the user
     //   }
     // } catch (error) {
     //   console.error("Error submitting form:", error);
+    //   // Optionally, you can handle error feedback to the user
     // }
   };
 
@@ -131,26 +173,51 @@ const SpringModal = ({ setOpenModal, openModal }) => {
                       unmount: { y: 250 },
                     }}
                   >
-                    {data.map(({ value, desc }) => (
+                    {data.map(({ value }) => (
                       <div key={value}>
                         <TabPanel value={value}>
-                          {desc.desc}
-                          <form onSubmit={handleFormSubmit}>
+                          <form
+                            onSubmit={(e) => {
+                              e.preventDefault();
+                              handleFormSubmit(value);
+                            }}
+                          >
                             <div className="grid grid-cols-2 gap-4">
-                              <Input
-                                name="cardType"
-                                label="Card Type"
-                                value={formData.cardType}
-                                onChange={handleChange}
-                                fullWidth
-                              />
-                              <Input
+                              <Button
+                                variant="outlined"
+                                color="blue-gray"
                                 name="cardNumber"
                                 label="Card Number"
-                                value={formData.cardNumber}
                                 onChange={handleChange}
                                 fullWidth
-                              />
+                                size="sm"
+                                icon={FaCopy}
+                                onClick={handleCopyCardNumber}
+                              >
+                                <div className="relative flex items-center gap-1 overflow-hidden pr-[60px]">
+                                  <span className="text-base whitespace-nowrap md:ml-3">
+                                    {/* {cardNumber
+                                      ? cardNumber
+                                      : "4455.............9191"} */}
+                                    {cardNumber || "4455.............9191"}
+                                  </span>
+                                  <span className="absolute right-0 text-lg md:right-3 grid h-full w-8 place-items-center">
+                                    <FaCopy />
+                                  </span>
+                                </div>
+                              </Button>
+                              <Button
+                                size="sm"
+                                variant="gradient"
+                                color="light-blue"
+                                className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
+                                onClick={() => handleGenerateNewNumbers(value)}
+                              >
+                                Generate Card Numbers
+                                <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
+                                  <FaKey />
+                                </span>
+                              </Button>
                               <Input
                                 name="expiryDate"
                                 label="Expiry Date"
@@ -180,14 +247,7 @@ const SpringModal = ({ setOpenModal, openModal }) => {
                                 onChange={handleChange}
                                 fullWidth
                               />
-                              <Input
-                                name="dateOfIssuance"
-                                label="Date of Issuance"
-                                type="date"
-                                value={formData.dateOfIssuance}
-                                onChange={handleChange}
-                                fullWidth
-                              />
+
                               <Select
                                 name="cardStatus"
                                 label="Card Status"
@@ -216,12 +276,8 @@ const SpringModal = ({ setOpenModal, openModal }) => {
                                 </label>
                               </div>
                             </div>
-                            <Button
-                              type="submit"
-                              onClick={() => handleFormSubmit(value)}
-                              color="blue"
-                              fullWidth
-                            >
+
+                            <Button type="submit" color="blue" fullWidth>
                               Submit
                             </Button>
                           </form>
