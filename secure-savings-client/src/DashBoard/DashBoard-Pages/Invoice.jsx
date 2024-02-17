@@ -2,7 +2,7 @@ import useAuth from "../../Hooks/useAuth";
 
 const Invoice = () => {
   const handlePrint = () => {
-    window.print(); // This will trigger the print dialog
+    window.print();
   };
   const { authInfo } = useAuth();
   const { displayName, photoURL } = authInfo?.user || {};
