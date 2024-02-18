@@ -4,6 +4,7 @@ import MasterCard from "../../../../public/masterCard.json";
 import { useContext } from "react";
 import { AdminDataContext } from "../../../Context/AdminProvider";
 import { Button } from "@material-tailwind/react";
+import { BsTicketDetailed } from "react-icons/bs";
 
 const AccountData = ({ data }) => {
   const { LoggedUser } = useContext(AdminDataContext);
@@ -111,7 +112,7 @@ const AccountData = ({ data }) => {
                   </div>
                 </div>
               </div>
-              <div className="max-w-full px-3 mb-6 lg:mb-0 lg:w-full lg:flex-none">
+              <div className=" px-3 w-full lg:flex-none">
                 <div className="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                   <div className="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <div className="flex flex-wrap justify-between w-full">
@@ -135,12 +136,9 @@ const AccountData = ({ data }) => {
                     </div>
                   </div>
                   <div className="flex-auto p-4">
-                    <div className="flex flex-wrap gap-3">
+                    <div className="grid md:grid-cols-2 gap-3 px-2">
                       {data?.creditCards?.map((item) => (
-                        <div
-                          key={item?._id}
-                          className="max-w-full px-3 mb-6 md:flex-none"
-                        >
+                        <div key={item?._id} className="mb-6 md:flex-none">
                           <div className="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none md-max:overflow-auto rounded-xl border-slate-100 dark:border-slate-700 bg-clip-border">
                             <img
                               className="mb-0 mr-4 w-1/10 h-10 w-16"
@@ -152,10 +150,10 @@ const AccountData = ({ data }) => {
                               alt="logo"
                             />
 
-                            <h6 className="mb-0 dark:text-white">
+                            <h6 className="mb-0 dark:text-white text-lg">
                               {item?.cardNumber}
                             </h6>
-                            <i
+                            <BsTicketDetailed
                               className="ml-auto cursor-pointer fas fa-pencil-alt text-slate-700"
                               data-target="tooltip_trigger"
                               data-placement="top"
