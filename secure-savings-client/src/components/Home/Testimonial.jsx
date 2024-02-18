@@ -278,55 +278,56 @@ const Testimonial = () => {
             </div>
             {/* set the review */}
             <div className="p-6 dark:bg-gray-900 bg-gray-50">
-              {testimonial?.map((review, index) => (
-                <div
-                  key={index}
-                  className="flex flex-wrap items-center mb-4 space-x-2"
-                >
-                  <div className="flex self-start flex-shrink-0 cursor-pointer">
-                    <img
-                      src={review?.imageSrc}
-                      alt=""
-                      className="object-fill w-16 h-16 rounded-full"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center space-x-2 ">
-                    <div className="block">
-                      <div className="w-auto px-2 pb-2 ">
-                        <div className="font-medium">
-                          <a
-                            href="#"
-                            className="text-lg font-semibold dark:text-gray-400 hover:underline"
-                          >
-                            <small>{review?.name}</small>
-                          </a>
+              {testimonial?.length > 0 &&
+                testimonial.map((review, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-wrap items-center mb-4 space-x-2"
+                  >
+                    <div className="flex self-start flex-shrink-0 cursor-pointer">
+                      <img
+                        src={review?.imageSrc}
+                        alt=""
+                        className="object-fill w-16 h-16 rounded-full"
+                      />
+                    </div>
+                    <div className="flex items-center justify-center space-x-2 ">
+                      <div className="block">
+                        <div className="w-auto px-2 pb-2 ">
+                          <div className="font-medium">
+                            <a
+                              href="#"
+                              className="text-lg font-semibold dark:text-gray-400 hover:underline"
+                            >
+                              <small>{review?.name}</small>
+                            </a>
+                          </div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400">
+                            {review?.review}
+                          </div>
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
-                          {review?.review}
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-start w-full text-xs">
-                        <div className="flex items-center justify-center px-2 space-x-1 font-semibold text-gray-700 dark:text-gray-400">
-                          <a href="#" className="hover:underline">
-                            <span>Like</span>
-                          </a>
-                          <span className="self-center">.</span>
-                          <a href="#" className="hover:underline">
-                            <span>Reply</span>
-                          </a>
-                          <span className="self-center">.</span>
-                          <span>
-                            {new Date(review?.createdAt).toLocaleString(
-                              "en-US",
-                              { timeZone: "Asia/Dhaka" }
-                            )}
-                          </span>
+                        <div className="flex items-center justify-start w-full text-xs">
+                          <div className="flex items-center justify-center px-2 space-x-1 font-semibold text-gray-700 dark:text-gray-400">
+                            <a href="#" className="hover:underline">
+                              <span>Like</span>
+                            </a>
+                            <span className="self-center">.</span>
+                            <a href="#" className="hover:underline">
+                              <span>Reply</span>
+                            </a>
+                            <span className="self-center">.</span>
+                            <span>
+                              {new Date(review?.createdAt).toLocaleString(
+                                "en-US",
+                                { timeZone: "Asia/Dhaka" }
+                              )}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </section>

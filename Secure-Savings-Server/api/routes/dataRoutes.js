@@ -173,15 +173,16 @@ router.post("/:type", async (req, res) => {
 router.get("/userData/:email", async (req, res) => {
   try {
     const email = req.params.email;
-    let user = await User.find({ email: email });
-    console.log(user[0]._id);
-    let userAcc = await Account.find({ userId: new ObjectId(user[0]?._id) });
-    let userCard = await CreditCard.find({ userId: new ObjectId(user[0]?._id) });
+    let user = await User.findOne({ email: email });
+    let userAcc = await Account.find({ userId: new ObjectId(user?._id) });
+    let userCard = await CreditCard.find({
+      userId: new ObjectId(user?._id),
+    });
     if (!user || !userAcc || !userCard) {
       return res.status(404).json({ error: "User data not found" });
     }
     const responseData = {
-      ...user,
+      ...user.toObject(), 
       accounts: userAcc,
       creditCards: userCard,
     };

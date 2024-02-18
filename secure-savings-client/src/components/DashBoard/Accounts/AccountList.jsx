@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { FcMoneyTransfer } from "react-icons/fc";
+import { FcCurrencyExchange, FcMoneyTransfer } from "react-icons/fc";
 import { Chip, Button } from "@material-tailwind/react";
 const AccountList = ({ userAcc }) => {
   return (
@@ -88,11 +88,11 @@ const AccountList = ({ userAcc }) => {
                         variant="outlined"
                         className="inline-block dark:text-white px-4 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-sm ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700"
                       >
-                        <i
+                        <FcCurrencyExchange
                           className="mr-2 fas fa-pencil-alt text-slate-700"
                           aria-hidden="true"
                         />
-                        Edit
+                        Deposit
                       </Button>
                     </div>
                   </li>

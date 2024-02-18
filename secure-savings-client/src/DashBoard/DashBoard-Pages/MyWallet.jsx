@@ -13,7 +13,6 @@ const MyWallet = () => {
   const { displayName, photoURL, email } = authInfo?.user || {};
   const [data,refetch] = useGetUserData(`/api/userData/${email}`);
 
-console.log(data)
   return (
     <>
       <div className="px-3 relative sm:px-4 xxxl:px-6 py-6 lg:py-8 duration-300 false false">

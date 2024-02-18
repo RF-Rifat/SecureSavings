@@ -1,14 +1,11 @@
 /* eslint-disable react/prop-types */
 import Lottie from "lottie-react";
 import MasterCard from "../../../../public/masterCard.json";
-import { useContext } from "react";
-import { AdminDataContext } from "../../../Context/AdminProvider";
 import { Button } from "@material-tailwind/react";
 import { BsTicketDetailed } from "react-icons/bs";
 
 const AccountData = ({ data }) => {
-  const { LoggedUser } = useContext(AdminDataContext);
-
+  console.log(data?.creditCards);
   return (
     <>
       <div className="w-full px-6 py-6 mx-auto">
@@ -32,7 +29,7 @@ const AccountData = ({ data }) => {
                         aria-hidden="true"
                       />
                       <h5 className="pb-2 mt-6 mb-12 text-white">
-                        4562&nbsp;&nbsp;&nbsp;1122&nbsp;&nbsp;&nbsp;4594&nbsp;&nbsp;&nbsp;7852
+                        4562&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;7852
                       </h5>
                       <div className="flex">
                         <div className="flex">
@@ -40,9 +37,7 @@ const AccountData = ({ data }) => {
                             <p className="mb-0 text-sm leading-normal text-white opacity-80">
                               Card Holder
                             </p>
-                            <h6 className="mb-0 text-white">
-                              {LoggedUser[0]?.name}
-                            </h6>
+                            <h6 className="mb-0 text-white">{data[0]?.name}</h6>
                           </div>
                           <div>
                             <p className="mb-0 text-sm leading-normal text-white opacity-80">
