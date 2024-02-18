@@ -19,8 +19,12 @@ import {
 import useGetData from "../../Hooks/useGetData";
 // import { MdOutlineMailOutline } from "react-icons/md";
 import EmailModal from "./EmailModal";
+
 import useGetUserData from "../../Hooks/useGetUserData";
 import AccountList from "../../components/DashBoard/Accounts/AccountList";
+
+import Members from "./Members";
+
 
 const TABS = [
   {
@@ -51,7 +55,11 @@ export default function UserList() {
 
   return (
     <>
+
       <Card className="h-full w-full dark:bg-dark dark:text-darkText">
+
+      <Card className="w-full dark:bg-dark dark:text-darkText">
+
         <CardHeader floated={false} shadow={false} className="rounded-none">
           <div className="mb-8 flex items-center justify-between gap-8">
             <div>
@@ -210,7 +218,11 @@ export default function UserList() {
           </div>
         </CardFooter>
       </Card>
+
       <AccountList userAcc={userAcc} />
+
+      <Members />
+
     </>
   );
 }
