@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { BASE_URL } from "./Api";
 
 // get all comments
 const useComment = () => {
@@ -9,8 +10,7 @@ const useComment = () => {
     refetch,
   } = useQuery({
     queryKey: ["comments"],
-    queryFn: () =>
-      fetch("http://localhost:5000/api/comment").then((res) => res.json()),
+    queryFn: () => fetch(`${BASE_URL}/api/comment`).then((res) => res.json()),
   });
 
   return [comments, refetch, isPending];

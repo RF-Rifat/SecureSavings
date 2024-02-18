@@ -1,6 +1,7 @@
 import { Switch } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 
+
 const ToggleTheme = () => {
   // Retrieve the theme from local storage on initial load
   const initialTheme = localStorage.getItem("theme") || "light";
@@ -19,26 +20,29 @@ const ToggleTheme = () => {
   };
 
   return (
-    <div>
-      {/* <Switch
+    <>
+      <div>
+        {/* <Switch
         id="custom-switch-component"
         checked={theme === "dark"}
         onChange={handleThemeChange}
       /> */}
-      <Switch
-        id="custom-switch-component"
-        color="indigo"
-        className="h-full w-full"
-        containerProps={{
-          className: "w-11 h-6",
-        }}
-        circleProps={{
-          className: "before:hidden left-0.5 border-none",
-        }}
-        checked={theme === "dark"}
-        onChange={handleThemeChange}
-      />
-    </div>
+        <Switch
+          id="custom-switch-component"
+          color="indigo"
+          className="h-full w-full"
+          containerProps={{
+            className: "w-11 h-6",
+          }}
+          circleProps={{
+            className: "before:hidden left-0.5 border-none",
+          }}
+          checked={theme === "dark"}
+          onChange={handleThemeChange}
+        />
+      </div>
+
+    </>
   );
 };
 

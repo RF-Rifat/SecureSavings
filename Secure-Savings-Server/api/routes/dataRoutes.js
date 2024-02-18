@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const { ObjectId } = require("mongodb");
 const User = require("../models/User");
 const Blog = require("../models/blog");
 const Comment = require("../models/comment");
 const Loan = require("../models/loan");
 const Testimonial = require("../models/Testimonial");
 const Account = require("../models/account");
+const CreditCard = require("../models/creditCard");
 
 router.post("/", async (req, res) => {
   try {
@@ -69,11 +71,19 @@ router.get("/:type", async (req, res) => {
     switch (type) {
       case "user":
         result = await User.find()
+          .sort({ _id: -1 })
           .skip(page * size)
           .limit(size);
         break;
       case "account":
         result = await Account.find()
+          .sort({ _id: -1 })
+          .skip(page * size)
+          .limit(size);
+        break;
+      case "credit":
+        result = await CreditCard.find()
+          .sort({ _id: -1 })
           .skip(page * size)
           .limit(size);
         break;
@@ -108,7 +118,7 @@ router.get("/:type", async (req, res) => {
           .limit(size);
         break;
       default:
-        result = [];
+        result = "unrecognized path";
     }
 
     res.send(result);
@@ -131,6 +141,9 @@ router.post("/:type", async (req, res) => {
       case "account":
         result = await Account.create(data);
         break;
+      case "credit":
+        result = await CreditCard.create(data);
+        break;
       case "message":
         result = await Message.create(data);
         break;
@@ -151,12 +164,34 @@ router.post("/:type", async (req, res) => {
     }
 
     res.send(result);
+    console.log(result);
   } catch (error) {
     console.error(error);
     res.status(500).send(error);
   }
 });
-
+router.get("/userData/:email", async (req, res) => {
+  try {
+    const email = req.params.email;
+    let user = await User.findOne({ email: email });
+    let userAcc = await Account.find({ userId: new ObjectId(user?._id) });
+    let userCard = await CreditCard.find({
+      userId: new ObjectId(user?._id),
+    });
+    if (!user || !userAcc || !userCard) {
+      return res.status(404).json({ error: "User data not found" });
+    }
+    const responseData = {
+      ...user.toObject(), 
+      accounts: userAcc,
+      creditCards: userCard,
+    };
+    res.status(200).json(responseData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 // PUT route
 router.put("/user/update-status/:email", async (req, res) => {

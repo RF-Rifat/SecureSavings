@@ -8,6 +8,7 @@ import {
   Typography,
   Select,
   Option,
+  Input,
 } from "@material-tailwind/react";
 import { AdminDataContext } from "../../Context/AdminProvider";
 import { modifyData } from "../../Hooks/Api";
@@ -21,37 +22,45 @@ import {
 } from "@material-tailwind/react";
 import {
   Square3Stack3DIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
 import { IoShieldCheckmark } from "react-icons/io5";
 import { GiMoneyStack } from "react-icons/gi";
-
-const data = [
-  {
-    label: "Saving",
-    value: "Saving",
-    icon: Square3Stack3DIcon,
-    desc: `A savings account is designed for individuals who want to set aside money for future use, such as emergencies, large purchases, or long-term goals. It typically offers a lower interest rate than other types of accounts, but it provides security and easy access to funds when needed.`,
-  },
-  {
-    label: "Checking",
-    value: "Checking",
-    icon: IoShieldCheckmark,
-    desc: `A checking account is a basic banking account that allows you to deposit and withdraw money for everyday transactions. It typically comes with features such as a debit card, check-writing capabilities, and online banking. Checking accounts may or may not earn interest, depending on the bank and account type.`,
-  },
-  {
-    label: "Money Market",
-    value: "Money Market",
-    icon: GiMoneyStack,
-    desc: `A money market account is a type of savings account that usually offers higher interest rates than traditional savings accounts. It combines the features of a savings account with some of the benefits of an investment account, such as check-writing privileges and higher yield potential. Money market accounts typically require a higher minimum balance to open and maintain.`,
-  },
-];
+import { MoneyStepper } from "./MoneyStepper";
 
 export default function Modal({ open, handler }) {
-  const authInfo = useContext(AdminDataContext);
-  const { LoggedUser } = authInfo;
-  const { _id, email, name } = LoggedUser[0] || {};
+  const data = [
+    {
+      label: "Saving",
+      value: "Saving",
+      icon: Square3Stack3DIcon,
+      desc: {
+        amount: [1000, 1500, 2250, 3000],
+        desc: "A savings account is designed for individuals who want to set aside money for future use, such as emergencies, large purchases, or long-term goals.",
+      },
+    },
+    {
+      label: "Checking",
+      value: "Checking",
+      icon: IoShieldCheckmark,
+      desc: {
+        amount: [2000, 3000, 5000, 10000],
+        desc: "A checking account is a basic banking account that allows you to deposit and withdraw money for everyday transactions.",
+      },
+    },
+    {
+      label: "Money Market",
+      value: "Money Market",
+      icon: GiMoneyStack,
+      desc: {
+        amount: [10000, 15000, 22500, 30000],
+        desc: "A money market account is a type of savings account that usually offers higher interest rates than traditional savings accounts.",
+      },
+    },
+  ];
+
+  const { LoggedUser } = useContext(AdminDataContext);
+  const { _id, email,name } = LoggedUser[0] || {};
+  const [accData, setAccData] = useState("");
 
   const generateAccountID = () => {
     const firstFewLettersEmail = email.substring(0, 4);
@@ -60,25 +69,24 @@ export default function Modal({ open, handler }) {
     return `${firstFewLettersEmail}${randomNumbers}`;
   };
 
-  const [accountType, setAccountType] = useState("");
+  const [initialDeposit, setInitialDeposit] = useState("");
 
-  const handleCreateAccount = async () => {
+  const handleCreateAccount = async (accountType, initialDeposit) => {
     const newAcc = {
+      name,
       accountType,
       accountId: generateAccountID(),
       userId: _id,
-      balance: 500,
+      balance: parseFloat(initialDeposit) || 500,
       status: "pending",
     };
     try {
       const res = await modifyData("/api/account", "POST", newAcc);
       if (res.accountId) {
-        console.log(res && res.success);
         toast.success(`Your ${accountType} account created successfully`);
         handler(!open);
       }
     } catch (error) {
-      // console.log(error);
       toast.error(
         `You Already have ${accountType} account so can't create another.`
       );
@@ -105,65 +113,42 @@ export default function Modal({ open, handler }) {
               <Tab key={value} value={value}>
                 <div className="flex items-center gap-2">
                   {React.createElement(icon, { className: "w-5 h-5" })}
+
                   {label}
                 </div>
               </Tab>
             ))}
           </TabsHeader>
-          <TabsBody>
+          <TabsBody
+            animate={{
+              initial: { y: 250 },
+              mount: { y: 0 },
+              unmount: { y: 250 },
+            }}
+          >
             {data.map(({ value, desc }) => (
-              <TabPanel key={value} value={value}>
-                {desc}
-                <form className="mt-4 grid gap-4 grid-cols-2">
-                  <div>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="mb-2 font-medium"
-                    >
-                      Account Type
-                    </Typography>
-                    <Select
-                      color="blue"
-                      label="Select Version"
-                      onChange={(e) => setAccountType(e)}
-                    >
-                      <Option value="checking">Checking</Option>
-                      <Option value="savings">Savings</Option>
-                    </Select>
-                  </div>
+              <div key={value} onChange={() => setAccData(value)}>
+                <TabPanel value={value}>
+                  {desc.desc}
+                  {
+                    <MoneyStepper
+                      amount={desc.amount}
+                      setInitialDeposit={setInitialDeposit}
+                    />
+                  }
 
-                  <Button className="col-span-2" onClick={handleCreateAccount}>
+                  <Button
+                    fullWidth
+                    className="col-span-2"
+                    onClick={() => handleCreateAccount(value, initialDeposit)}
+                  >
                     Create Account
                   </Button>
-                </form>
-              </TabPanel>
+                </TabPanel>
+              </div>
             ))}
           </TabsBody>
         </Tabs>
-        {/* <form className="mt-4 grid gap-4 grid-cols-2">
-          <div>
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 font-medium"
-            >
-              Account Type
-            </Typography>
-            <Select
-              color="blue"
-              label="Select Version"
-              onChange={(e) => setAccountType(e)}
-            >
-              <Option value="checking">Checking</Option>
-              <Option value="savings">Savings</Option>
-            </Select>
-          </div>
-
-          <Button className="col-span-2" onClick={handleCreateAccount}>
-            Create Account
-          </Button>
-        </form> */}
       </CardBody>
     </Card>
   );

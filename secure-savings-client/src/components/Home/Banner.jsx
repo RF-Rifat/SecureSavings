@@ -7,7 +7,7 @@ import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 
 import "./Banner.css";
 import CreateAccount from "./createAccount";
-
+import CreateCreditCard from "./CreateCreditCard";
 
 const Banner = () => {
   // const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,8 +32,9 @@ const Banner = () => {
           <span className="text-red-500">1348+</span> Branch and Sub-branch
         </h2>
         <p className="text-2xl">Believing, Banking and Achieving Different</p>
-        <div>
+        <div className="flex lg:gap-10 justify-around lg:justify-start">
           <CreateAccount />
+          <CreateCreditCard />
         </div>
       </div>
       <div className="2xl:w-1/2 my-auto">
@@ -67,7 +68,7 @@ const Banner = () => {
         >
           {imageArray.map((imageUrl, index) => (
             <SwiperSlide key={index}>
-              <img src={imageUrl} alt={`Slide ${index + 1}`} />
+              <img className="rounded" src={imageUrl} alt={`Slide ${index + 1}`} />
             </SwiperSlide>
           ))}
           {/* <SwiperSlide>

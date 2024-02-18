@@ -472,7 +472,7 @@ export function ComplexNavbar() {
               onClick={openDrawer}
               className="ml-auto mr-2 lg:hidden"
             >
-              <Bars3Icon className={open ? "h-6 w-6 rotate-90" : "h-6 w-6"} />
+              <Bars3Icon className={open ? "h-6 w-6 rotate-90" : "h-6 w-6 dark:text-white"} />
             </IconButton>
 
             <div className="flex gap-3 items-center">
@@ -505,7 +505,7 @@ export function ComplexNavbar() {
           >
             <img className="h-20" src="/logo.png" alt="logo" />
           </Link>
-          <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
+          <IconButton className="dark:text-white" variant="text" color="blue-gray" onClick={closeDrawer}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

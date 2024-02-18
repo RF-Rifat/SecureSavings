@@ -3,13 +3,16 @@ import BarChart from "./BarChart";
 import { DashboardTimeLine } from "./DashBoardTimeline";
 import { AdminDataContext } from "../../Context/AdminProvider";
 import useGetData from "../../Hooks/useGetData";
-
+import useGetUserData from "../../Hooks/useGetUserData";
+import { GiLogicGateAnd } from "react-icons/gi";
 
 const Dashboard = () => {
   const authInfo = useContext(AdminDataContext);
-  const { LoggedUser, isAdmin} = authInfo;
+  const { LoggedUser, isAdmin } = authInfo;
   const [userData] = useGetData("/api/user");
-  const totalBalance = userData.reduce((sum, user) => sum + user.balance, 0);
+  const [accData] = useGetUserData("/api/account");
+
+  const totalBalance = accData?.reduce((sum, user) => sum + user.balance, 0);
 
   return (
     <>
@@ -18,7 +21,7 @@ const Dashboard = () => {
       {isAdmin && (
         <>
           <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-            <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-transparent hover:drop-shadow-2xl">
+            <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-transparent hover:drop-shadow-2xl dark:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
               <div className="p-4 flex items-center">
                 <div className="p-3 rounded-full text-blue-500 dark:text-blue-100 bg-blue-100 dark:bg-blue-500 mr-4">
                   <svg
@@ -34,13 +37,12 @@ const Dashboard = () => {
                     Total Accounts
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    {/* {user.email} */}
-                    {userData.length}
+                    {accData?.length}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-transparent hover:drop-shadow-2xl">
+            <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-transparent hover:drop-shadow-2xl dark:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
               <div className="p-4 flex items-center">
                 <div className="p-3 rounded-full text-green-500 dark:text-green-100 bg-green-100 dark:bg-green-500 mr-4">
                   <svg
@@ -65,7 +67,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-transparent hover:drop-shadow-2xl">
+            <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-transparent hover:drop-shadow-2xl dark:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
               <div className="p-4 flex items-center">
                 <div className="p-3 rounded-full text-teal-500 dark:text-teal-100 bg-teal-100 dark:bg-teal-500 mr-4">
                   <svg
@@ -90,7 +92,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-transparent hover:drop-shadow-2xl">
+            <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-transparent hover:drop-shadow-2xl dark:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
               <div className="p-4 flex items-center">
                 <div className="p-3 rounded-full text-red-500 dark:text-red-100 bg-red-100 dark:bg-red-500 mr-4">
                   <svg

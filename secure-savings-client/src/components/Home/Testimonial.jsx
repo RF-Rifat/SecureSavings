@@ -1,36 +1,39 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useEffect, useState } from "react";
-import TestimonialModal from "./TestimonialModal";
+// import { useCallback, useEffect, useState } from "react";
+
 import useGetData from "../../Hooks/useGetData";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { modifyData } from "../../Hooks/Api";
+import useGetUserData from "../../Hooks/useGetUserData";
+import { AdminDataContext } from "../../Context/AdminProvider";
+import { useContext } from "react";
 
 const Testimonial = () => {
-  const [testimonial, isLoading] = useGetData("/api/testimonial");
+  const [testimonial, refetch] = useGetUserData("/api/testimonial");
+  const { LoggedUser, isAdmin, userAcc } = useContext(AdminDataContext);
+  const { name, imageSrc } = LoggedUser[0] || {};
 
-  const { authInfo } = useAuth();
-  const { displayName, photoURL } = authInfo?.user || {};
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
-    const testimonial = { ...data, name: displayName, imageSrc: photoURL };
+    const testimonial = { ...data, name, imageSrc };
 
     try {
       const res = await modifyData("/api/testimonial", "POST", testimonial);
-      if (res.acknowledged) {
+      if (res) {
         toast.success("Testimonial Posted Successfully");
+        refetch();
       }
     } catch (error) {
       console.log(error);
     }
-
     reset();
   };
 
   return (
     <>
-      <div className="max-w-full min-w-[350px] mx-auto h-[800px]">
+      <div className="max-w-full min-w-[350px] mx-auto ">
         <div className="px-4 text-center md:m-6">
           <h2 className="pb-2 text-2xl font-semibold text-gray-800 md:text-4xl dark:text-gray-300">
             Testimonials
@@ -41,7 +44,7 @@ const Testimonial = () => {
             <div className="flex-1 h-2 bg-teal-300"></div>
           </div>
         </div>
-        <section className="flex items-center py-16 bg-gray-100 font-poppins dark:bg-gray-800 ">
+        <section className="flex items-center   bg-gray-100 font-poppins dark:bg-gray-800 ">
           <div className="justify-center flex-1 max-w-6xl px-4 py-6 mx-auto lg:py-4 md:px-6">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div className="p-6 mb-6 bg-gray-50 dark:bg-gray-900">
@@ -275,59 +278,59 @@ const Testimonial = () => {
             </div>
             {/* set the review */}
             <div className="p-6 dark:bg-gray-900 bg-gray-50">
-              {testimonial.map((review, index) => (
-                <div
-                  key={index}
-                  className="flex flex-wrap items-center mb-4 space-x-2"
-                >
-                  <div className="flex self-start flex-shrink-0 cursor-pointer">
-                    <img
-                      src={review.imageSrc}
-                      alt=""
-                      className="object-fill w-16 h-16 rounded-full"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center space-x-2 ">
-                    <div className="block">
-                      <div className="w-auto px-2 pb-2 ">
-                        <div className="font-medium">
-                          <a
-                            href="#"
-                            className="text-lg font-semibold dark:text-gray-400 hover:underline"
-                          >
-                            <small>{review.name}</small>
-                          </a>
+              {testimonial?.length > 0 &&
+                testimonial.map((review, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-wrap items-center mb-4 space-x-2"
+                  >
+                    <div className="flex self-start flex-shrink-0 cursor-pointer">
+                      <img
+                        src={review?.imageSrc}
+                        alt=""
+                        className="object-fill w-16 h-16 rounded-full"
+                      />
+                    </div>
+                    <div className="flex items-center justify-center space-x-2 ">
+                      <div className="block">
+                        <div className="w-auto px-2 pb-2 ">
+                          <div className="font-medium">
+                            <a
+                              href="#"
+                              className="text-lg font-semibold dark:text-gray-400 hover:underline"
+                            >
+                              <small>{review?.name}</small>
+                            </a>
+                          </div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400">
+                            {review?.review}
+                          </div>
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
-                          {review.review}
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-start w-full text-xs">
-                        <div className="flex items-center justify-center px-2 space-x-1 font-semibold text-gray-700 dark:text-gray-400">
-                          <a href="#" className="hover:underline">
-                            <span>Like</span>
-                          </a>
-                          <span className="self-center">.</span>
-                          <a href="#" className="hover:underline">
-                            <span>Reply</span>
-                          </a>
-                          <span className="self-center">.</span>
-                          <a href="#" className="hover:underline">
-                            <span>{review.timestamps}</span>
-                          </a>
+                        <div className="flex items-center justify-start w-full text-xs">
+                          <div className="flex items-center justify-center px-2 space-x-1 font-semibold text-gray-700 dark:text-gray-400">
+                            <a href="#" className="hover:underline">
+                              <span>Like</span>
+                            </a>
+                            <span className="self-center">.</span>
+                            <a href="#" className="hover:underline">
+                              <span>Reply</span>
+                            </a>
+                            <span className="self-center">.</span>
+                            <span>
+                              {new Date(review?.createdAt).toLocaleString(
+                                "en-US",
+                                { timeZone: "Asia/Dhaka" }
+                              )}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </section>
-      </div>
-
-      <div className="flex flex-wrap justify-center mt-12">
-        <TestimonialModal></TestimonialModal>
       </div>
     </>
   );

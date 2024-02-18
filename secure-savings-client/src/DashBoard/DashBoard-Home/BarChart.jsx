@@ -97,30 +97,34 @@ const chartConfig = {
 
 export default function BarChart() {
   return (
-    <Card>
+    <Card className="dark:bg-dark dark:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] mb-10">
       <CardHeader
         floated={false}
         shadow={false}
         color="transparent"
-        className="flex flex-col gap-4 rounded-none md:flex-row md:items-center "
+        className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
       >
-        <div className="w-max rounded-lg bg-[#359BF0] p-5 text-white">
+        <div className="w-max rounded-lg bg-[#359BF0] p-5 text-darkText">
           <Square3Stack3DIcon className="h-6 w-6" />
         </div>
         <div>
-          <Typography variant="h6" color="blue-gray">
+          <Typography
+            variant="h6"
+            color="blue-gray"
+            className="dark:text-darkText"
+          >
             Monthly Transaction Trends
           </Typography>
           <Typography
             variant="small"
             color="gray"
-            className="max-w-sm font-normal"
+            className="max-w-sm font-normal dark:text-white"
           >
             Monthly Transaction trends for your banking accounts
           </Typography>
         </div>
       </CardHeader>
-      <CardBody className="px-2 pb-0">
+      <CardBody className="px-2 pb-0 dark:text-darkText">
         <Chart {...chartConfig} />
       </CardBody>
     </Card>

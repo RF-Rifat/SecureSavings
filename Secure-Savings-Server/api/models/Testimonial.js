@@ -11,7 +11,6 @@ const testimonialSchema = new Schema(
     occupation: {
       type: String,
       required: true,
-      unique: true,
     },
     imageSrc: {
       type: String,

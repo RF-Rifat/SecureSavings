@@ -45,7 +45,6 @@ const SavingCard = ({ card }) => {
                           <h2 className="text-xl font-semibold dark:text-gray-300">
                             {cardName}
                           </h2>
-
                         </a>
                       </div>
                       <div className="flex">

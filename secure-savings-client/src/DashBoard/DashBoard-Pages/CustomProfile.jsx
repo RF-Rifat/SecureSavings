@@ -6,7 +6,8 @@ import BatteryStatus from "../../components/DashBoard/BatteryStatus";
 
 export function CustomProfile() {
   const { LoggedUser, isAdmin, userAcc } = useContext(AdminDataContext);
-  const { _id, email, name, imageSrc } = LoggedUser[0] || {};
+  const { email, name, imageSrc } = LoggedUser[0] || {};
+  console.log(LoggedUser[0]);
 
   // Modal
   const [showModal, setShowModal] = useState(false);
@@ -237,6 +238,7 @@ export function CustomProfile() {
                     </div>
                   )}
                 </div>
+                <BatteryStatus />
               </div>
             </div>
             <div className="w-full max-w-full px-3 shrink-0 md:flex-0">
@@ -425,7 +427,6 @@ export function CustomProfile() {
             </div>
           </div>
         </div>
-        <BatteryStatus />
         <ProfileAddBlog />
       </div>
     </>
