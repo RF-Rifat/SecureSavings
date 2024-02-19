@@ -44,10 +44,10 @@ const Testimonial = () => {
             <div className="flex-1 h-2 bg-teal-300"></div>
           </div>
         </div>
-        <section className="flex items-center   bg-gray-100 font-poppins dark:bg-gray-800 ">
+        <section className="flex items-center   bg-gray-100 font-poppins dark:bg-dark ">
           <div className="justify-center flex-1 max-w-6xl px-4 py-6 mx-auto lg:py-4 md:px-6">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div className="p-6 mb-6 bg-gray-50 dark:bg-gray-900">
+              <div className="p-6 mb-6 bg-gray-50 dark:bg-dark">
                 <h2 className="mb-6 text-xl font-semibold text-left font-gray-600 dark:text-gray-400">
                   Ratings &amp; Reviews
                 </h2>
@@ -241,7 +241,7 @@ const Testimonial = () => {
                 </div>
               </div>
               {/* give the review */}
-              <div className="p-6 mb-6 bg-white dark:bg-gray-900">
+              <div className="p-6 mb-6 bg-white dark:bg-dark">
                 <h2 className="mb-6 text-xl font-semibold text-left font-gray-600 dark:text-gray-400">
                   Leave a comment
                 </h2>
@@ -277,7 +277,7 @@ const Testimonial = () => {
               </div>
             </div>
             {/* set the review */}
-            <div className="p-6 dark:bg-gray-900 bg-gray-50">
+            <div className="p-6 dark:bg-dark bg-gray-50">
               {testimonial?.length > 0 &&
                 testimonial.map((review, index) => (
                   <div

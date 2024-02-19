@@ -17,7 +17,6 @@ import {
   Tooltip,
 } from "@material-tailwind/react";
 import useGetData from "../../Hooks/useGetData";
-// import { MdOutlineMailOutline } from "react-icons/md";
 import EmailModal from "./EmailModal";
 import useGetUserData from "../../Hooks/useGetUserData";
 import AccountList from "../../components/DashBoard/Accounts/AccountList";
@@ -47,11 +46,11 @@ const TABLE_HEAD = [
 
 export default function UserList() {
   const [userData] = useGetData("/api/user");
-  const [userAcc, refetch] = useGetUserData("/api/account");
+  const [userAcc] = useGetUserData("/api/account");
 
   return (
     <>
-      <Card className="h-full w-full dark:bg-dark dark:text-darkText">
+      <Card className="w-full dark:bg-dark dark:text-darkText">
         <CardHeader floated={false} shadow={false} className="rounded-none">
           <div className="mb-8 flex items-center justify-between gap-8">
             <div>
@@ -152,13 +151,6 @@ export default function UserList() {
                           >
                             {position}
                           </Typography>
-                          {/* <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal opacity-70"
-                        >
-                          User
-                        </Typography> */}
                         </div>
                       </td>
                       <td className={classes}>
