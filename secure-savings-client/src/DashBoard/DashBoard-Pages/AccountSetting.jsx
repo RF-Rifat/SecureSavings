@@ -1,5 +1,6 @@
 import useAuth from "../../Hooks/useAuth";
 import useGetUserData from "../../Hooks/useGetUserData";
+import AccSkeleton from "../../components/DashBoard/Accounts/AccSkeleton";
 import AccountData from "../../components/DashBoard/Accounts/AccountData";
 import AccountList from "../../components/DashBoard/Accounts/AccountList";
 
