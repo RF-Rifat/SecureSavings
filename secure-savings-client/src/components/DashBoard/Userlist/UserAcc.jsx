@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Chip } from "@material-tailwind/react";
 
-const AccountList = ({ userAcc }) => {
+const UserAcc = ({ userAcc }) => {
   return (
     <>
       <div className="flex flex-wrap">
@@ -75,4 +75,4 @@ const AccountList = ({ userAcc }) => {
   );
 };
 
-export default AccountList;
+export default UserAcc;
