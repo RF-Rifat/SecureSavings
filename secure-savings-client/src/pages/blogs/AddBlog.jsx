@@ -4,10 +4,8 @@ import { useContext, useState } from "react";
 import { Input, Option, Select, Textarea } from "@material-tailwind/react";
 import { AuthProvider } from "../../Authentication/AuthProvider";
 import "./AddBlog.css";
-import Lottie from "lottie-react";
-import blogImg from "../../../public/image/blog.json";
 
-const AddBlog = () => {
+const AddBlog = ({ refetch }) => {
   const { user } = useContext(AuthProvider);
   const [blogType, setBlogType] = useState("");
 
@@ -33,6 +31,7 @@ const AddBlog = () => {
       if (res) {
         toast.success("Blog Posted Successfully");
         form.reset();
+        refetch();
       }
     } catch (error) {
       console.log(error);

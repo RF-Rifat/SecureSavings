@@ -20,7 +20,7 @@ const ProfileAddBlog = () => {
           </div>
           <div className="flex-auto p-4">
             <div className="flex flex-wrap gap-2 justify-between">
-              <div className="grid md:grid-cols-2 lg:grid-col-3 xl:grid-col-4 gap-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {blogData?.length > 0 &&
                   blogData?.map((item) => (
                     <div
@@ -60,8 +60,8 @@ const ProfileAddBlog = () => {
                       </div>
                     </div>
                   ))}
+                <AddBlogModal refetch={refetch} />
               </div>
-              <AddBlogModal />
             </div>
           </div>
         </div>

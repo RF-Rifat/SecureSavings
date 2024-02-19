@@ -19,7 +19,7 @@ import {
 import useGetData from "../../Hooks/useGetData";
 import EmailModal from "./EmailModal";
 import useGetUserData from "../../Hooks/useGetUserData";
-import AccountList from "../../components/DashBoard/Accounts/AccountList";
+import UserAcc from "../../components/DashBoard/Userlist/UserAcc";
 
 const TABS = [
   {
@@ -202,7 +202,7 @@ export default function UserList() {
           </div>
         </CardFooter>
       </Card>
-      <AccountList userAcc={userAcc} />
+      <UserAcc userAcc={userAcc} />
     </>
   );
 }
