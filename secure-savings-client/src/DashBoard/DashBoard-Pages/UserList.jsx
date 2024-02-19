@@ -19,7 +19,7 @@ import {
 import useGetData from "../../Hooks/useGetData";
 import EmailModal from "./EmailModal";
 import useGetUserData from "../../Hooks/useGetUserData";
-import UserAcc from "../../components/DashBoard/Userlist/UserAcc";
+import AccountList from "../../components/DashBoard/Accounts/AccountList";
 
 const TABS = [
   {
