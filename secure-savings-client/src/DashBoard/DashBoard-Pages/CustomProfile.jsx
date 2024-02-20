@@ -6,8 +6,7 @@ import BatteryStatus from "../../components/DashBoard/BatteryStatus";
 
 export function CustomProfile() {
   const { LoggedUser, isAdmin, userAcc } = useContext(AdminDataContext);
-  const { email, name, imageSrc } = LoggedUser[0] || {};
-  console.log(LoggedUser[0]);
+  const { email, name, imageSrc } = LoggedUser[0] || {}
 
   // Modal
   const [showModal, setShowModal] = useState(false);

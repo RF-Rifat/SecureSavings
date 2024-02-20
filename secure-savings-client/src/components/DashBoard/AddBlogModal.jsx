@@ -1,13 +1,13 @@
 import { useState } from "react";
 import AddBlog from "../../pages/blogs/AddBlog";
 
-export const AddBlogModal = () => {
+export const AddBlogModal = ({ refetch }) => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <>
       <button
         onClick={() => setOpenModal(true)}
-        className="w-full max-w-full px-3 mb-6 md:w-6/12 md:flex-none xl:mb-0 xl:w-3/12"
+        className="w-full max-w-full px-3"
       >
         <div className="relative flex flex-col h-full min-w-0 break-words bg-transparent border-2 border-solid shadow-none dark:shadow-lg rounded-2xl border-slate-100 bg-clip-border dark:border-slate-700">
           <div className="flex flex-col justify-center flex-auto p-6 text-center">
@@ -144,7 +144,7 @@ export const AddBlogModal = () => {
                 Submit
               </button>
             </form> */}
-            <AddBlog />
+            <AddBlog refetch={refetch} />
           </div>
         </div>
       </div>
