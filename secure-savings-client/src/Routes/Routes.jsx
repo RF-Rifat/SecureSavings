@@ -23,6 +23,7 @@ import HomeLoan from "../components/HomeLoan/HomeLoan";
 import BusinessLoan from "../BusinessLoan/BusinessLoan";
 import AccountSetting from "../DashBoard/DashBoard-Pages/AccountSetting";
 import Invoice from "../DashBoard/DashBoard-Pages/Invoice";
+import PayBill from "../DashBoard/DashBoard-Pages/PayBill";
 
 export const router = createBrowserRouter([
   {
@@ -61,11 +62,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "homeLoan",
-        element: <HomeLoan/>,
+        element: <HomeLoan />,
       },
       {
         path: "businessLoan",
-        element: <BusinessLoan/>,
+        element: <BusinessLoan />,
       },
     ],
   },
@@ -93,6 +94,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/wallet",
         element: <MyWallet />,
+      },
+      {
+        path: "/dashboard/payBill",
+        element: <PayBill />,
       },
       {
         path: "/dashboard/invoice",

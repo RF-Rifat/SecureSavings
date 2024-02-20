@@ -1,5 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
-import { ChatBubbleBottomCenterTextIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  ChatBubbleBottomCenterTextIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { Button, IconButton, Typography } from "@material-tailwind/react";
 import {
   useMaterialTailwindController,
@@ -15,6 +18,7 @@ import {
   DocumentTextIcon,
 } from "@heroicons/react/24/solid";
 import { AiOutlineTransaction } from "react-icons/ai";
+import { FaLightbulb } from "react-icons/fa";
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
@@ -43,6 +47,11 @@ export function SideNav() {
           icon: <WalletIcon {...icon} />,
           name: "My-Wallet",
           path: "/wallet",
+        },
+        {
+          icon: <FaLightbulb {...icon} />,
+          name: "Pay Bill",
+          path: "/payBill",
         },
         {
           icon: <DocumentTextIcon {...icon} />,
@@ -83,8 +92,9 @@ export function SideNav() {
 
   return (
     <aside
-      className={`${sidenavTypes[sidenavType]} ${openSidenav ? "translate-x-0" : "-translate-x-80"
-        } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100 dark:bg-blue-gray-100 shadow-md shadow-blue-gray-500/5 `}
+      className={`${sidenavTypes[sidenavType]} ${
+        openSidenav ? "translate-x-0" : "-translate-x-80"
+      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100 dark:bg-blue-gray-100 shadow-md shadow-blue-gray-500/5 `}
     >
       <div className={`relative`}>
         <Link
@@ -134,8 +144,8 @@ export function SideNav() {
                         isActive
                           ? sidenavColor
                           : sidenavType === "dark"
-                            ? "white"
-                            : "blue-gray"
+                          ? "white"
+                          : "blue-gray"
                       }
                       className="flex items-center gap-4 px-4 capitalize"
                       fullWidth
