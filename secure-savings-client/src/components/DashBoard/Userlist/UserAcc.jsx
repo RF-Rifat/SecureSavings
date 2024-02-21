@@ -39,7 +39,7 @@ const UserAcc = ({ userAcc }) => {
                           Balance: ${item?.balance}
                         </span>
                       </p>
-                      <div className="mt-6 rounded-md inline-block text-center text-sm font-semibold shadow-sm">
+                      <div className="mt-6 rounded-md inline-block text-center w-full text-sm font-semibold shadow-sm">
                         {item?.status === "pending" ? (
                           <Chip
                             color="blue"
