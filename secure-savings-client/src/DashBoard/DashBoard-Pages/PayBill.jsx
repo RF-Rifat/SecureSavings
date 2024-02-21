@@ -1,3 +1,8 @@
+import { MdGasMeter } from "react-icons/md";
+import { FcElectricity } from "react-icons/fc";
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { GiIsland } from "react-icons/gi";
+import { FaHandHoldingWater } from "react-icons/fa";
 const PayBill = () => {
   return (
     <div>
@@ -8,19 +13,22 @@ const PayBill = () => {
               <div className="p-5 bg-white rounded-b shadow dark:bg-dark">
                 <a
                   href="#"
-                  className="px-4 py-1 text-sm text-green-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-green-50"
+                  className="px-4 py-1 text-sm text-blue-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-blue-50"
                 >
                   13 march,2022
                 </a>
                 <h2 className="my-3 text-2xl font-bold dark:text-gray-300">
-                  Electricity Bill
+                  Electricity Bill{" "}
+                  <span className="inline-block ml-1 ">
+                    <FcElectricity />
+                  </span>
                 </h2>
                 <p className="mb-3 leading-loose text-gray-500 dark:text-gray-400">
                   Pay your electricity bills from the comfort of your home
                 </p>
                 <a
                   href="#"
-                  className="inline-flex items-center text-lg font-semibold text-green-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-green-800"
+                  className="inline-flex items-center text-lg font-semibold text-blue-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-black"
                 >
                   Pay Bill
                   <svg
@@ -43,19 +51,23 @@ const PayBill = () => {
               <div className="p-5 bg-white rounded-b shadow dark:bg-dark">
                 <a
                   href="#"
-                  className="px-4 py-1 text-sm text-green-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-green-50"
+                  className="px-4 py-1 text-sm text-blue-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-blue-50"
                 >
                   14 march,2022
                 </a>
+
                 <h2 className="my-3 text-2xl font-bold dark:text-gray-300">
-                  Gas Bill
+                  Gas Bill{" "}
+                  <span className="inline-block ml-1">
+                    <MdGasMeter />
+                  </span>
                 </h2>
                 <p className="mb-3 leading-loose text-gray-500 dark:text-gray-400">
                   Pay your gas bill easily, whenever needed
                 </p>
                 <a
                   href="#"
-                  className="inline-flex items-center text-lg font-semibold text-green-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-green-800"
+                  className="inline-flex items-center text-lg font-semibold text-blue-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-black"
                 >
                   Pay Bill
                   <svg
@@ -78,19 +90,22 @@ const PayBill = () => {
               <div className="p-5 bg-white rounded-b shadow dark:bg-dark">
                 <a
                   href="#"
-                  className="px-4 py-1 text-sm text-green-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-green-50"
+                  className="px-4 py-1 text-sm text-blue-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-blue-50"
                 >
                   15 march,2022
                 </a>
                 <h2 className="my-3 text-2xl font-bold dark:text-gray-300">
-                  Telephone Bill
+                  Telephone Bill{" "}
+                  <span className="inline-block ml-1">
+                    <BsFillTelephoneFill />
+                  </span>
                 </h2>
                 <p className="mb-3 leading-loose text-gray-500 dark:text-gray-400">
                   No more standing in queues or worrying about documents.
                 </p>
                 <a
                   href="#"
-                  className="inline-flex items-center text-lg font-semibold text-green-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-green-800"
+                  className="inline-flex items-center text-lg font-semibold text-blue-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-black"
                 >
                   Pay Bill
                   <svg
@@ -113,19 +128,22 @@ const PayBill = () => {
               <div className="p-5 bg-white rounded-b shadow dark:bg-dark">
                 <a
                   href="#"
-                  className="px-4 py-1 text-sm text-green-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-green-50"
+                  className="px-4 py-1 text-sm text-blue-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-blue-50"
                 >
                   15 march,2022
                 </a>
                 <h2 className="my-3 text-2xl font-bold dark:text-gray-300">
-                  Land Fee
+                  Land Fee{" "}
+                  <span className="inline-block ml-1">
+                    <GiIsland />
+                  </span>
                 </h2>
                 <p className="mb-3 leading-loose text-gray-500 dark:text-gray-400">
                   Wherever you are, pay land development tax and e-mutation fees
                 </p>
                 <a
                   href="#"
-                  className="inline-flex items-center text-lg font-semibold text-green-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-green-800"
+                  className="inline-flex items-center text-lg font-semibold text-blue-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-black"
                 >
                   Pay Bill
                   <svg
@@ -148,12 +166,15 @@ const PayBill = () => {
               <div className="p-5 bg-white rounded-b shadow dark:bg-dark">
                 <a
                   href="#"
-                  className="px-4 py-1 text-sm text-green-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-green-50"
+                  className="px-4 py-1 text-sm text-blue-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-blue-50"
                 >
                   15 march,2022
                 </a>
                 <h2 className="my-3 text-2xl font-bold dark:text-gray-300">
-                  Water Bill
+                  Water Bill{" "}
+                  <span className="inline-block ml-1">
+                    <FaHandHoldingWater />
+                  </span>
                 </h2>
                 <p className="mb-3 leading-loose text-gray-500 dark:text-gray-400">
                   Pay water bills anytime with the SecureSavings website
@@ -161,7 +182,7 @@ const PayBill = () => {
                 </p>
                 <a
                   href="#"
-                  className="inline-flex items-center text-lg font-semibold text-green-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-green-800"
+                  className="inline-flex items-center text-lg font-semibold text-blue-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-black"
                 >
                   Pay Bill
                   <svg
