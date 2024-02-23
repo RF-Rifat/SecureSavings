@@ -9,6 +9,7 @@ import "react-credit-cards-2/dist/es/styles-compiled.css";
 import Lottie from "lottie-react";
 import CardOne from "../../../public/CardOne.json";
 import CardTwo from "../../../public/CardTwo.json";
+import { current } from "@reduxjs/toolkit";
 
 const MyWalletForm = () => {
   const authInfo = useContext(AdminDataContext);
@@ -19,10 +20,24 @@ const MyWalletForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const number = form.number.value;
-    const money = form.money.value;
+    const inputAmount = parseInt(form.money.value);
+    const num = parseInt(form.number.value);
+    const amountStr = document.getElementById("wallet-amount").innerText;
+    const amountInt = parseInt(amountStr);
+    if (amountInt === 100) {
+      return toast.error("Your Account Balance is Low");
+    }
+    if (inputAmount >= amountInt) {
+      return toast.error("You have not enough money");
+    }
+    const currentAmount = amountInt - inputAmount;
+    // console.log(amount);
+    document.getElementById("wallet-amount").innerText = currentAmount;
 
+    // console.log(typeof amount);
+    // console.log(typeof num);
     //   create transaction Id
+
     function generateRandomString(length) {
       const characters =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -36,8 +51,8 @@ const MyWalletForm = () => {
     const randomString = generateRandomString(6);
     // console.log(randomString);
     const transactionInfo = {
-      cardNum: form.number.value,
-      amount: form.money.value,
+      cardNum: num,
+      amount: inputAmount,
       transactionId: randomString,
     };
     console.log(transactionInfo);
@@ -70,7 +85,7 @@ const MyWalletForm = () => {
             <div className="flex flex-1 gap-4 sm:flex-wrap sm:gap-12 xl:gap-6 flex-col lg:flex-row">
               <div className="flex-1 flex-col gap-3 justify-center items-center">
                 <span className="text-[32px] font-bold text-dark dark:text-white sm:text-[40px] lg:text-[36px] xl:text-[40px]">
-                  Your Balance: $00
+                  Your Balance: $<span id="wallet-amount">1000</span>
                 </span>
                 <div className="flex gap-1 items-center">
                   <span className="mb-1 text-xl font-bold text-dark dark:text-white">
