@@ -7,9 +7,9 @@ import useComment from "../../Hooks/useComment";
 import { AdminDataContext } from "../../Context/AdminProvider";
 
 const AddComment = ({ id }) => {
-  const [comments, refetch] = useComment();
-  const { LoggedUser,} = useContext(AdminDataContext);
-  const {  name, imageSrc } = LoggedUser[0] || {};
+  const [, refetch] = useComment();
+  const { LoggedUser } = useContext(AdminDataContext);
+  const { name, imageSrc } = LoggedUser[0] || {};
   // add comment
   const handleAddComment = async (e) => {
     e.preventDefault();

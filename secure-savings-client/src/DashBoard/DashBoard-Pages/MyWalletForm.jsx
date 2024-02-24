@@ -10,6 +10,7 @@ import Lottie from "lottie-react";
 import CardOne from "../../../public/CardOne.json";
 import CardTwo from "../../../public/CardTwo.json";
 import { current } from "@reduxjs/toolkit";
+import { modifyData } from "../../Hooks/Api";
 
 const MyWalletForm = () => {
   const authInfo = useContext(AdminDataContext);
@@ -17,22 +18,22 @@ const MyWalletForm = () => {
   // redux
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const inputAmount = parseInt(form.money.value);
     const num = parseInt(form.number.value);
     const amountStr = document.getElementById("wallet-amount").innerText;
     const amountInt = parseInt(amountStr);
-    if (amountInt === 100) {
-      return toast.error("Your Account Balance is Low");
-    }
     if (inputAmount >= amountInt) {
       return toast.error("You have not enough money");
     }
     const currentAmount = amountInt - inputAmount;
     // console.log(amount);
     document.getElementById("wallet-amount").innerText = currentAmount;
+    if (currentAmount <= 100) {
+      return toast.error("Your Account Balance is Low");
+    }
 
     // console.log(typeof amount);
     // console.log(typeof num);
@@ -50,12 +51,24 @@ const MyWalletForm = () => {
     }
     const randomString = generateRandomString(6);
     // console.log(randomString);
-    const transactionInfo = {
+    const newTransaction = {
       cardNum: num,
       amount: inputAmount,
       transactionId: randomString,
     };
-    console.log(transactionInfo);
+    try {
+      const res = await modifyData("/api/transactions", "POST", newTransaction);
+      console.log(res.data);
+      if (res) {
+        toast.success("Transaction Successful");
+      }
+    } catch (error) {
+      if (error) {
+        return toast.error("Something wrong, Please try again");
+      }
+      console.log(error);
+    }
+    console.log(newTransaction);
     dispatch(increment());
     // form.reset();
   };

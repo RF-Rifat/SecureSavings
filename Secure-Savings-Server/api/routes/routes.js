@@ -1,4 +1,5 @@
 const express = require("express");
+const Transactions = require("../models/Transactions");
 const app = express.Router();
 
 // get all user data from database
@@ -59,9 +60,12 @@ app.post("/api/:type", async (req, res) => {
       result = await Comment.create(data);
     } else if (type.toLowerCase().trim() === "loan") {
       result = await Loan.create(data);
+    } else if (type.toLowerCase().trim() === "transactions") {
+      result = await Transactions.create(data);
     }
 
     res.send(result);
+    console.log(result);
   } catch (error) {
     res.send(error);
   }
