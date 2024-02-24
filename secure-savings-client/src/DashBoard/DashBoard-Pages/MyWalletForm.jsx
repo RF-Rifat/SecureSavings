@@ -70,7 +70,7 @@ const MyWalletForm = () => {
     }
     console.log(newTransaction);
     dispatch(increment());
-    // form.reset();
+    form.reset();
   };
 
   // Credit card
