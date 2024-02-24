@@ -35,8 +35,10 @@ app.get("/api/:type", async (req, res) => {
         .sort({ _id: -1 })
         .skip(page * size)
         .limit(size);
+    } else if (type.toLowerCase().trim() === "transaction") {
+      result = await Transactions.find();
     }
-
+    console.log("object", result);
     res.send(result);
   } catch (error) {
     console.log(error);
@@ -60,12 +62,12 @@ app.post("/api/:type", async (req, res) => {
       result = await Comment.create(data);
     } else if (type.toLowerCase().trim() === "loan") {
       result = await Loan.create(data);
-    } else if (type.toLowerCase().trim() === "transactions") {
+    } else if (type.toLowerCase().trim() === "transaction") {
       result = await Transactions.create(data);
     }
 
     res.send(result);
-    console.log(result);
+    // console.log(result);
   } catch (error) {
     res.send(error);
   }
