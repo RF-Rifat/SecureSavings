@@ -24,6 +24,7 @@ import BusinessLoan from "../BusinessLoan/BusinessLoan";
 import AccountSetting from "../DashBoard/DashBoard-Pages/AccountSetting";
 import Invoice from "../DashBoard/DashBoard-Pages/Invoice";
 import PayBill from "../DashBoard/DashBoard-Pages/PayBill";
+import PayBillData from "../DashBoard/DashBoard-Pages/PayBillData";
 
 export const router = createBrowserRouter([
   {
@@ -98,6 +99,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/payBill",
         element: <PayBill />,
+      },
+      {
+        path: "/dashboard/bill/:id",
+        element: <PayBillData />,
       },
       {
         path: "/dashboard/invoice",
