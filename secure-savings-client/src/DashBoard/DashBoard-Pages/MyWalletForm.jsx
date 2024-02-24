@@ -30,10 +30,10 @@ const MyWalletForm = () => {
     }
     const currentAmount = amountInt - inputAmount;
     // console.log(amount);
-    document.getElementById("wallet-amount").innerText = currentAmount;
     if (currentAmount <= 100) {
       return toast.error("Your Account Balance is Low");
     }
+    document.getElementById("wallet-amount").innerText = currentAmount;
 
     // console.log(typeof amount);
     // console.log(typeof num);
@@ -57,7 +57,7 @@ const MyWalletForm = () => {
       transactionId: randomString,
     };
     try {
-      const res = await modifyData("/api/transactions", "POST", newTransaction);
+      const res = await modifyData("/api/transaction", "POST", newTransaction);
       console.log(res.data);
       if (res) {
         toast.success("Transaction Successful");
@@ -70,7 +70,7 @@ const MyWalletForm = () => {
     }
     console.log(newTransaction);
     dispatch(increment());
-    // form.reset();
+    form.reset();
   };
 
   // Credit card
