@@ -12,14 +12,15 @@ const PayBill = () => {
       id: 1,
       date: "13 march, 2022",
       type: "Electricity Bill",
-      icon: MdGasMeter,
+      icon: FcElectricity,
       description: "Pay your electricity bills from the comfort of your home",
     },
     {
       id: 2,
       date: "14 march, 2022",
       type: "Gas Bill",
-      icon: FcElectricity,
+
+      icon: MdGasMeter,
       description: "Pay your gas bill easily, whenever needed",
     },
     {
@@ -55,7 +56,7 @@ const PayBill = () => {
             {bills.map((bill) => (
               <div
                 key={bill.id}
-                className="w-full shadow-md transform hover:-translate-y-1 duration-300 hover:shadow-xl cursor-pointer px-3 mb-6 lg:px-2 md:w-1/2 lg:w-1/3"
+                className="w-full shadow-md transform hover:-translate-y-1 duration-300 hover:shadow-xl  px-3 mb-6 lg:px-2 md:w-1/2 lg:w-1/3"
               >
                 <div className="p-5 bg-white rounded-b shadow dark:bg-dark">
                   <a
@@ -67,7 +68,17 @@ const PayBill = () => {
                   <h2 className="my-3 text-2xl font-bold dark:text-gray-300">
                     {bill.type}{" "}
                     <span className="inline-block ml-1 ">
-                      {/* Your bill icon */}
+                      {bill.icon === FcElectricity ? (
+                        <FcElectricity />
+                      ) : bill.icon === MdGasMeter ? (
+                        <MdGasMeter />
+                      ) : bill.icon === BsFillTelephoneFill ? (
+                        <BsFillTelephoneFill />
+                      ) : bill.icon === GiIsland ? (
+                        <GiIsland />
+                      ) : (
+                        <FaHandHoldingWater />
+                      )}
                     </span>
                   </h2>
                   <p className="mb-3 leading-loose text-gray-500 dark:text-gray-400">
