@@ -1,5 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
-import { ChatBubbleBottomCenterTextIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  ChatBubbleBottomCenterTextIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { Button, IconButton, Typography } from "@material-tailwind/react";
 import {
   useMaterialTailwindController,
@@ -83,8 +86,9 @@ export function SideNav() {
 
   return (
     <aside
-      className={`${sidenavTypes[sidenavType]} ${openSidenav ? "translate-x-0" : "-translate-x-80"
-        } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100 dark:bg-blue-gray-100 shadow-md shadow-blue-gray-500/5 `}
+      className={`${sidenavTypes[sidenavType]} ${
+        openSidenav ? "translate-x-0" : "-translate-x-80"
+      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100 shadow-md shadow-blue-gray-500/5 dark:bg-dark`}
     >
       <div className={`relative`}>
         <Link
@@ -95,19 +99,20 @@ export function SideNav() {
           <Typography
             variant="h6"
             color={sidenavType === "dark" ? "white" : "blue-gray"}
+            className="text-white"
           >
             Secure-Savings
           </Typography>
         </Link>
         <IconButton
           variant="text"
-          color="white"
+          // color="white"
           size="sm"
           ripple={false}
           className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
           onClick={() => setOpenSidenav(dispatch, false)}
         >
-          <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
+          <XMarkIcon strokeWidth={2.5} className="h-5 w-5 dark:text-white" />
         </IconButton>
       </div>
       <div className="m-4">
@@ -134,17 +139,15 @@ export function SideNav() {
                         isActive
                           ? sidenavColor
                           : sidenavType === "dark"
-                            ? "white"
-                            : "blue-gray"
+                          ? "white"
+                          : "blue-gray"
                       }
-                      className="flex items-center gap-4 px-4 capitalize"
+                      // color="blue"
+                      className={`flex items-center gap-4 px-4 capitalize dark:text-white ${' !isActive && "bg-[#359BEF]"'}`}
                       fullWidth
                     >
                       {icon}
-                      <Typography
-                        color="inherit"
-                        className="font-medium capitalize"
-                      >
+                      <Typography className="font-medium capitalize dark:text-white">
                         {name}
                       </Typography>
                     </Button>

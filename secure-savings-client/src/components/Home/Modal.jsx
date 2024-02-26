@@ -20,9 +20,7 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
-import {
-  Square3Stack3DIcon,
-} from "@heroicons/react/24/solid";
+import { Square3Stack3DIcon } from "@heroicons/react/24/solid";
 import { IoShieldCheckmark } from "react-icons/io5";
 import { GiMoneyStack } from "react-icons/gi";
 import { MoneyStepper } from "./MoneyStepper";
@@ -59,7 +57,7 @@ export default function Modal({ open, handler }) {
   ];
 
   const { LoggedUser } = useContext(AdminDataContext);
-  const { _id, email,name } = LoggedUser[0] || {};
+  const { _id, email, name } = LoggedUser[0] || {};
   const [accData, setAccData] = useState("");
 
   const generateAccountID = () => {
@@ -81,7 +79,11 @@ export default function Modal({ open, handler }) {
       status: "pending",
     };
     try {
-      const res = await modifyData("/api/account", "POST", newAcc);
+      const res = await modifyData(
+        `/api/account?userId=${_id}`,
+        "POST",
+        newAcc
+      );
       if (res.accountId) {
         toast.success(`Your ${accountType} account created successfully`);
         handler(!open);

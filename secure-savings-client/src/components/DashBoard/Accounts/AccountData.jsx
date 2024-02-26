@@ -5,7 +5,19 @@ import { Button } from "@material-tailwind/react";
 import { BsTicketDetailed } from "react-icons/bs";
 
 const AccountData = ({ data }) => {
-  console.log(data?.creditCards);
+  const filterAcc = data?.accounts?.filter(
+    (item) => item.accountType === "Saving"
+  );
+  const savingBalance = data?.accounts
+    ?.filter((card) => card?.accountType === "Saving")
+    ?.reduce((total, card) => total + card?.balance, 0);
+  const totalBalance = data?.accounts
+    ?.filter(
+      (card) =>
+        card?.accountType === "Checking" || card?.accountType === "Money Market"
+    )
+    .reduce((total, card) => total + card?.balance, 0);
+
   return (
     <>
       <div className="w-full px-6 py-6 mx-auto">
@@ -29,7 +41,7 @@ const AccountData = ({ data }) => {
                         aria-hidden="true"
                       />
                       <h5 className="pb-2 mt-6 mb-12 text-white">
-                        4562&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;7852
+                        4562&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;7852
                       </h5>
                       <div className="flex">
                         <div className="flex">
@@ -47,11 +59,6 @@ const AccountData = ({ data }) => {
                           </div>
                         </div>
                         <div className="flex items-end justify-end w-1/5 ml-auto">
-                          {/* <img
-                            className="w-3/5 mt-2"
-                            src="../assets/img/logos/mastercard.png"
-                            alt="logo"
-                          /> */}
                           <Lottie animationData={MasterCard} />
                         </div>
                       </div>
@@ -73,13 +80,15 @@ const AccountData = ({ data }) => {
                       </div>
                       <div className="flex-auto p-4 pt-0 text-center">
                         <h6 className="mb-0 text-center dark:text-white">
-                          Master Card
+                          Saving Account
                         </h6>
                         <span className="text-xs leading-tight dark:text-white dark:opacity-80">
-                          Belong Interactive
+                          Your Savings Balance
                         </span>
                         <hr className="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
-                        <h5 className="mb-0 dark:text-white">$2000</h5>
+                        <h5 className="mb-0 dark:text-white">
+                          ${savingBalance}
+                        </h5>
                       </div>
                     </div>
                   </div>
@@ -95,13 +104,15 @@ const AccountData = ({ data }) => {
                       </div>
                       <div className="flex-auto p-4 pt-0 text-center">
                         <h6 className="mb-0 text-center dark:text-white">
-                          Paypal
+                          Market Money
                         </h6>
                         <span className="text-xs leading-tight dark:text-white dark:opacity-80">
-                          Freelance Payment
+                          You can Spend
                         </span>
                         <hr className="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
-                        <h5 className="mb-0 dark:text-white">$455.00</h5>
+                        <h5 className="mb-0 dark:text-white">
+                          ${totalBalance}
+                        </h5>
                       </div>
                     </div>
                   </div>
@@ -118,9 +129,7 @@ const AccountData = ({ data }) => {
                         color="blue"
                         className="flex-none justify-items-end text-right"
                       >
-                        <a
-                        // className="inline-block font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25"
-                        >
+                        <a>
                           {" "}
                           <i className="fas fa-plus" aria-hidden="true">
                             {" "}
@@ -179,46 +188,6 @@ const AccountData = ({ data }) => {
                           </div>
                         </div>
                       ))}
-                      {/* <div className="max-w-full px-3 md:w-1/2 md:flex-none">
-                        <div className="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none md-max:overflow-auto rounded-xl border-slate-100 dark:border-slate-700 bg-clip-border">
-                          <img
-                            className="mb-0 mr-4 w-1/10 h-10 w-16"
-                            src="/image/paypal.png"
-                            alt="logo"
-                          />
-                          <h6 className="mb-0 dark:text-white">
-                            ****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;5248
-                          </h6>
-                          <i
-                            className="ml-auto cursor-pointer fas fa-pencil-alt text-slate-700"
-                            data-target="tooltip_trigger"
-                            data-placement="top"
-                            aria-hidden="true"
-                          />
-                          <div
-                            data-target="tooltip"
-                            className="px-2 py-1 text-sm text-white bg-black rounded-lg hidden"
-                            style={{
-                              position: "absolute",
-                              inset: "auto auto 0px 0px",
-                              margin: 0,
-                              transform: "translate3d(1049.6px, -345.6px, 0px)",
-                            }}
-                            data-popper-placement="top"
-                          >
-                            Edit Card
-                            <div
-                              className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                              data-popper-arrow=""
-                              style={{
-                                position: "absolute",
-                                left: 0,
-                                transform: "translate3d(0px, 0px, 0px)",
-                              }}
-                            />
-                          </div>
-                        </div>
-                      </div> */}
                     </div>
                   </div>
                 </div>

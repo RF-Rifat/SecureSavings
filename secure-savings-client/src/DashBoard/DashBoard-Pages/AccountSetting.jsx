@@ -6,13 +6,13 @@ import AccountList from "../../components/DashBoard/Accounts/AccountList";
 
 const AccountSetting = () => {
   const { authInfo } = useAuth();
-  const { displayName, photoURL, email } = authInfo?.user || {};
-  const [data, refetch] = useGetUserData(`/api/userData/${email}`);
-
+  const { email } = authInfo?.user || {};
+  const [data, refetch, isPending] = useGetUserData(`/api/userData/${email}`);
+  if (isPending) <AccSkeleton />;
   return (
     <>
       <AccountData data={data} />
-      <AccountList userAcc={data.accounts} />
+      <AccountList userAcc={data?.accounts} />
     </>
   );
 };

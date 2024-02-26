@@ -60,8 +60,8 @@ export function DashboardNavbar() {
 
   return (
     <Navbar
-      color={fixedNavbar ? "white" : "transparent"}
-      className={`rounded-xl transition-all ${
+      color="white"
+      className={`dark:bg-dark rounded-xl transition-all sticky top-8 ${
         fixedNavbar
           ? "sticky top-4 z-40 py-3 shadow-md shadow-blue-gray-500/5"
           : "px-0 py-1"
@@ -79,7 +79,7 @@ export function DashboardNavbar() {
               <Typography
                 variant="small"
                 color="blue-gray"
-                className="font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100"
+                className="dark:text-white font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100"
               >
                 {layout}
               </Typography>
@@ -87,12 +87,16 @@ export function DashboardNavbar() {
             <Typography
               variant="small"
               color="blue-gray"
-              className="font-normal"
+              className="font-normal dark:text-white"
             >
               {page}
             </Typography>
           </Breadcrumbs>
-          <Typography variant="h6" color="blue-gray">
+          <Typography
+            variant="h6"
+            color="blue-gray"
+            className="dark:text-white"
+          >
             {page}
           </Typography>
         </div>

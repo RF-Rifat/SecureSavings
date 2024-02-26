@@ -3,6 +3,7 @@ import { FcCurrencyExchange, FcMoneyTransfer } from "react-icons/fc";
 import { Chip, Button } from "@material-tailwind/react";
 import AccSkeleton from "./AccSkeleton";
 const AccountList = ({ userAcc }) => {
+  console.log(userAcc);
   return (
     <>
       <div className="flex flex-wrap">

@@ -55,7 +55,6 @@ const SpringModal = ({ setOpenModal, openModal }) => {
     creditLimit: "",
     availableCredit: "",
     cardStatus: "Active",
-   
   });
 
   useEffect(() => {
@@ -102,12 +101,11 @@ const SpringModal = ({ setOpenModal, openModal }) => {
   }, [copySuccess]);
   const handleFormSubmit = async (type) => {
     try {
-      const res = await modifyData("/api/credit", "POST", {
+      const res = await modifyData(`/api/credit?userId=${_id}`, "POST", {
         ...formData,
         cardType: type,
         userId: _id,
       });
-      console.log(res);
       if (res) {
         toast.success(`Your ${type} account created successfully`);
       }

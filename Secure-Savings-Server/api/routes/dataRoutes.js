@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { ObjectId } = require("mongodb");
+const { ObjectId, MongoCryptInvalidArgumentError } = require("mongodb");
 const User = require("../models/User");
 const Blog = require("../models/blog");
 const Comment = require("../models/comment");
@@ -132,18 +132,40 @@ router.post("/:type", async (req, res) => {
   try {
     const type = req.params.type.toLowerCase().trim();
     const data = req.body;
-    console.log(data);
     let result;
     switch (type) {
       case "user":
         result = await User.create(data);
         break;
-      case "account":
+      case "account": {
+        const userId = data.userId;
+        const accType = data.accountType;
+        const accounts = await Account.find({ userId });
+        const filterAcc = accounts.filter(
+          (item) => item.accountType === accType
+        );
+        if (filterAcc.length > 0) {
+          return res
+            .status(405)
+            .send(`Your can only create one ${accType} account`);
+        }
         result = await Account.create(data);
         break;
-      case "credit":
+      }
+      case "credit": {
+        const userId = data.userId;
+        const cardType = data.cardType;
+        const cards = await CreditCard.find({ userId });
+        const filterCard = cards.filter((item) => item.cardType === cardType);
+        console.log(filterCard.length, cardType, userId);
+        if (filterCard.length > 0) {
+          return res
+            .status(405)
+            .send(`Your can only create one ${cardType} account`);
+        }
         result = await CreditCard.create(data);
         break;
+      }
       case "message":
         result = await Message.create(data);
         break;
@@ -164,9 +186,7 @@ router.post("/:type", async (req, res) => {
     }
 
     res.send(result);
-    console.log(result);
   } catch (error) {
-    console.error(error);
     res.status(500).send(error);
   }
 });
@@ -182,7 +202,7 @@ router.get("/userData/:email", async (req, res) => {
       return res.status(404).json({ error: "User data not found" });
     }
     const responseData = {
-      ...user.toObject(), 
+      ...user.toObject(),
       accounts: userAcc,
       creditCards: userCard,
     };
