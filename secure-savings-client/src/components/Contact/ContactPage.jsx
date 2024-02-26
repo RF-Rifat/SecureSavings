@@ -17,9 +17,10 @@ const ContactPage = () => {
       )
       .then((result) => {
         console.log(result.text);
-        toast.success("Welcome to contact!");
+        toast.success("Thanks for contacting us, we will response you soon!");
       })
       .catch((error) => {
+        toast.error("Something wrong ,Please try again .");
         console.log(error.text);
       });
 

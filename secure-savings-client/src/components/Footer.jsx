@@ -1,8 +1,37 @@
 import { Button, Input, Typography } from "@material-tailwind/react";
+import emailjs from "@emailjs/browser";
+
 import logo from "/logo.png";
+import { useRef } from "react";
+import toast from "react-hot-toast";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const form = useRef();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_63w3b6l",
+        "template_qogzozb",
+        form.current,
+        "xAANWO-JrHiacXa_o"
+      )
+      .then((result) => {
+        // console.log(result.text);
+        if (result) {
+          toast.success("Thanks for your subscription");
+        }
+      })
+      .catch((error) => {
+        // console.log(error.text);
+        if (error) {
+          toast.error("something wrong , Please submit again.");
+        }
+      });
+
+    e.target.reset();
+  };
   return (
     <footer className="relative w-full mt-10">
       <div className="max-w-7xl mx-auto px-2">
@@ -99,13 +128,20 @@ const Footer = () => {
             <h1 className="mb-4 font-bold text-center  uppercase text-green-700">
               Subscribe for newsletter
             </h1>
-            <div className="flex  flex-col items-center justify-center gap-5">
-              <Input className="" size="md" label="Your name" />
-              <Input className="" size="md" label="Your Email" />
-            </div>
-            <Button className="mb-5 mt-2" fullWidth variant="gradient">
-              Subscribe
-            </Button>
+            <form ref={form} onSubmit={handleSubmit}>
+              <div className="flex  flex-col items-center justify-center gap-5">
+                <Input name="name" className="" size="md" label="Your name" />
+                <Input name="email" className="" size="md" label="Your Email" />
+              </div>
+              <Button
+                type="submit"
+                className="mb-5 mt-2"
+                fullWidth
+                variant="gradient"
+              >
+                Subscribe
+              </Button>
+            </form>
           </div>
         </div>
         <div className="flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
