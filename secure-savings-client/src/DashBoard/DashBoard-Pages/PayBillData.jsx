@@ -20,6 +20,7 @@ import {
   CreditCardIcon,
   LockClosedIcon,
 } from "@heroicons/react/24/solid";
+import { useParams } from "react-router-dom";
 
 function formatCardNumber(value) {
   const val = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
@@ -38,22 +39,14 @@ function formatCardNumber(value) {
   }
 }
 
-function formatExpires(value) {
-  return value
-    .replace(/[^0-9]/g, "")
-    .replace(/^([2-9])$/g, "0$1")
-    .replace(/^(1{1})([3-9]{1})$/g, "0$1/$2")
-    .replace(/^0{1,}/g, "0")
-    .replace(/^([0-1]{1}[0-9]{1})([0-9]{1,2}).*/g, "$1/$2");
-}
-
 export default function PayBillData() {
   const { countries } = useCountries();
-  const [type, setType] = React.useState("card");
+  const [types, setType] = React.useState("card");
   const [cardNumber, setCardNumber] = React.useState("");
-  const [cardExpires, setCardExpires] = React.useState("");
+
   const [selectedMonth, setSelectedMonth] = React.useState("");
   const [selectedOption, setSelectedOption] = React.useState("");
+  const { type } = useParams();
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -85,7 +78,7 @@ export default function PayBillData() {
         className="m-0 grid place-items-center px-4 py-8 text-center"
       >
         <div className="mb-4 h-5 p-6 text-white">
-          {type === "card" ? (
+          {types === "card" ? (
             <CreditCardIcon className="h-10 w-10 text-white" />
           ) : (
             <img
@@ -96,11 +89,11 @@ export default function PayBillData() {
           )}
         </div>
         <Typography variant="h5" color="white">
-          Payment
+          {type} Payment
         </Typography>
       </CardHeader>
       <CardBody>
-        <Tabs value={type} className="overflow-visible">
+        <Tabs value={types} className="overflow-visible">
           <TabsHeader className="relative z-0 ">
             <Tab value="card" onClick={() => setType("card")}>
               Pay with Card

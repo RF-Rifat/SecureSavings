@@ -86,7 +86,7 @@ const PayBill = () => {
                   </p>
                   {/* Link to the bill details page */}
                   <Link
-                    to={`/dashboard/bill/${bill.id}`}
+                    to={`/dashboard/bill/${bill.id}?type=${bill.type}`}
                     className="inline-flex items-center text-lg font-semibold text-blue-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-black"
                   >
                     Pay Bill
