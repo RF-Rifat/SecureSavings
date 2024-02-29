@@ -6,6 +6,8 @@ import { GiIsland } from "react-icons/gi";
 import { FaHandHoldingWater } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import { Elements } from "@stripe/react-stripe-js";
+
 const PayBill = () => {
   const [bills] = useState([
     {
