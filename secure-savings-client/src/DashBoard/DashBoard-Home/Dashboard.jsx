@@ -3,6 +3,7 @@ import BarChart from "./BarChart";
 import { DashboardTimeLine } from "./DashBoardTimeline";
 import { AdminDataContext } from "../../Context/AdminProvider";
 import useGetData from "../../Hooks/useGetData";
+import NumberCount from "../../Shared/NumberCount";
 
 const Dashboard = () => {
   const authInfo = useContext(AdminDataContext);
@@ -36,7 +37,8 @@ const Dashboard = () => {
                     Total Users
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    {userData?.length}
+                    
+                    <NumberCount number={userData?.length} />
                   </p>
                 </div>
               </div>
@@ -57,7 +59,7 @@ const Dashboard = () => {
                     Total Accounts
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    {accData?.length}
+                    <NumberCount number={accData?.length}/>
                   </p>
                 </div>
               </div>
@@ -78,7 +80,7 @@ const Dashboard = () => {
                     Total Credit Cards
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    {creditCard?.length}
+                    <NumberCount number={creditCard?.length}/>
                   </p>
                 </div>
               </div>
@@ -103,7 +105,7 @@ const Dashboard = () => {
                     Total Balance
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    {totalBalance}
+                   <NumberCount number={totalBalance}/>
                   </p>
                 </div>
               </div>
@@ -128,7 +130,7 @@ const Dashboard = () => {
                     Total Transactions
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    10
+                    <NumberCount number={10}/>
                   </p>
                 </div>
               </div>
@@ -153,7 +155,7 @@ const Dashboard = () => {
                     Total Loans
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    3
+                   <NumberCount number={3}/>
                   </p>
                 </div>
               </div>
