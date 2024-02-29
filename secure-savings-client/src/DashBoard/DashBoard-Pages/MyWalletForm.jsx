@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { AdminDataContext } from "../../Context/AdminProvider";
+import { useContext, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { increment } from "../../redux/counterSlice";
@@ -11,10 +10,24 @@ import CardOne from "../../../public/CardOne.json";
 import CardTwo from "../../../public/CardTwo.json";
 import { current } from "@reduxjs/toolkit";
 import { modifyData } from "../../Hooks/Api";
+import { AuthProvider } from "../../Authentication/AuthProvider";
+import useGetUserData from "../../Hooks/useGetUserData";
 
 const MyWalletForm = () => {
-  const authInfo = useContext(AdminDataContext);
-  const { LoggedUser } = authInfo;
+  const authInfo = useContext(AuthProvider);
+  const [userId, setId] = useState("");
+  const { user } = authInfo;
+  console.log(user.email);
+  const email = user?.email;
+  const [data] = useGetUserData(`/api/userData/admin@gmail.com`);
+
+  // console.log("wallet", data.accounts.map(acc =>));
+
+  useEffect(() => {
+    data?.accounts?.map((acc) => {
+      setId(acc?.userId);
+    }, []);
+  });
   // redux
   const dispatch = useDispatch();
 
@@ -35,27 +48,12 @@ const MyWalletForm = () => {
     }
     document.getElementById("wallet-amount").innerText = currentAmount;
 
-    // console.log(typeof amount);
-    // console.log(typeof num);
-    //   create transaction Id
-
-    function generateRandomString(length) {
-      const characters =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      let result = "";
-      for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        result += characters.charAt(randomIndex);
-      }
-      return result;
-    }
-    const randomString = generateRandomString(6);
-    // console.log(randomString);
     const newTransaction = {
       cardNum: num,
       amount: inputAmount,
-      transactionId: randomString,
+      userId: userId,
     };
+    console.log(newTransaction);
     try {
       const res = await modifyData("/api/transaction", "POST", newTransaction);
       console.log(res.data);
@@ -105,7 +103,7 @@ const MyWalletForm = () => {
                     ID:
                   </span>
                   <span className="mb-1 text-base font-bold text-dark dark:text-white">
-                    {LoggedUser[0]?._id}
+                    {user[0]?._id}
                   </span>
                 </div>
                 <ul className="grid grid-cols-1 md:grid-cols-2 mx-auto gap-5 mt-10">

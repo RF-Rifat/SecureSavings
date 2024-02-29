@@ -8,7 +8,8 @@ const SearchBar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const form = e.target;
-    console.log("form");
+    const text = form.text.value;
+    console.log(text);
   };
   return (
     <div>
@@ -16,6 +17,7 @@ const SearchBar = () => {
       <div className="relative flex w-full">
         <form onSubmit={handleSearch}>
           <Input
+            name="text"
             type="text"
             color="blue"
             label="Type Here"
@@ -27,6 +29,7 @@ const SearchBar = () => {
             }}
           />
           <Button
+            type="submit"
             size="sm"
             color={text ? "gray" : "blue-gray"}
             disabled={!text}
