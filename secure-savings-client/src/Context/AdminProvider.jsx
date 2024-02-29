@@ -6,6 +6,7 @@ export const AdminDataContext = createContext(null);
 const AdminProvider = ({ children }) => {
   const [userData] = useGetData("/api/user");
   const [userAccData] = useGetData("/api/account");
+  console.log(userAccData);
   const { authInfo } = useAuth();
   const { email } = authInfo?.user || {};
   const LoggedUser = userData?.filter((admin) => admin?.email == email);
