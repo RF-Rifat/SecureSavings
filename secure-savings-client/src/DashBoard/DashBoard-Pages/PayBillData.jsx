@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCountries } from "use-react-countries";
 import {
   Card,
@@ -24,9 +24,9 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import useAuth from "../../Hooks/useAuth";
-import { loadStripe } from "@stripe/stripe-js";
-// TODO: add publishable key
-const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
+import toast from "react-hot-toast";
+import { modifyData } from "../../Hooks/Api";
+
 function formatCardNumber(value) {
   const val = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
   const matches = val.match(/\d{4,16}/g);
@@ -44,16 +44,19 @@ function formatCardNumber(value) {
   }
 }
 
-export default function PayBillData() {
+export default function PayBillData({ refetch }) {
   const { countries } = useCountries();
   const [types, setType] = React.useState("card");
-  const [cardNumber, setCardNumber] = React.useState("");
 
   const [selectedMonth, setSelectedMonth] = React.useState("");
   const [selectedOption, setSelectedOption] = React.useState("");
+  const [totalPrice, setTotalPrice] = React.useState();
   const { type } = useParams();
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
+  };
+  const handleAmountChange = (event) => {
+    setTotalPrice(event.target.value); // Update total price based on user input
   };
   // Array of month options
   const monthOptions = [
@@ -70,18 +73,49 @@ export default function PayBillData() {
     { label: "November", value: "11" },
     { label: "December", value: "12" },
   ];
+  const stripe = useStripe();
+  const elements = useElements();
   const { authInfo } = useAuth();
   const { displayName, photoURL } = authInfo?.user || {};
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const navigate = useNavigate();
-  const stripe = useStripe();
-  const elements = useElements();
 
   const handleMonthChange = (event) => {
     setSelectedMonth(event.target.value);
   };
+  useEffect(() => {
+    const createPaymentIntent = async () => {
+      if (totalPrice > 0) {
+        try {
+          // Send a request to your backend server to create a payment intent
+          const response = await fetch("/create-payment-intent", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ totalPrice }), // Send the total price in the request body
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            setClientSecret(data.clientSecret); // Set the client secret received from the server
+          } else {
+            console.error(
+              "Failed to create payment intent:",
+              response.statusText
+            );
+          }
+        } catch (error) {
+          console.error("Error creating payment intent:", error);
+        }
+      }
+    };
+
+    createPaymentIntent(); // Call the function to create the payment intent
+  }, [totalPrice]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -121,34 +155,29 @@ export default function PayBillData() {
         console.log("transaction id", paymentIntent.id);
         setTransactionId(paymentIntent.id);
         // now save the payment in the database
-        // const payment = {
-        //   email: authInfo?.user.email,
-        //   // price: totalPrice,
-        //   transactionId: paymentIntent.id,
-        //   date: new Date(), // utc date convert use moment js
-        //   // enrollIds: enroll.map((item) => item._id),
-        //   // courseItemIds: enroll.map((item) => item.courseId),
-        //   status: "pending",
-        // };
+        const payment = {
+          email: authInfo?.user.email,
+          price: totalPrice,
+          transactionId: paymentIntent.id,
+          date: new Date(), // utc date convert use moment js
+          // enrollIds: enroll.map((item) => item._id),
+          // courseItemIds: enroll.map((item) => item.courseId),
+          status: "pending",
+        };
         // const res = await axiosSecure.post("/payments", payment);
-        // console.log("payment saved", res.data);
-        // refetch();
-        // if (res.data?.insertedId) {
-        //   Swal.fire({
-        //     position: "top-end",
-        //     icon: "success",
-        //     title: "Thank you for the payment",
-        //     showConfirmButton: false,
-        //     timer: 1500,
-        //   });
-        //   navigate("/dashboard/invoice");
-        // }
+        const res = await modifyData("/api/payments", "POST", payment);
+        console.log("payment saved", res.data);
+        refetch();
+        if (res.data?.insertedId) {
+          toast.success("Payment Successfully");
+          navigate("/dashboard/invoice");
+        }
       }
     }
   };
 
   return (
-    <Elements stripe={stripePromise}>
+    <div>
       <Card className="w-full mx-auto max-w-[24rem]">
         <CardHeader
           color="blue"
@@ -211,6 +240,8 @@ export default function PayBillData() {
                     <Input
                       type="number"
                       placeholder="Enter amount"
+                      value={totalPrice} // Bind total price to input value
+                      onChange={handleAmountChange} // Handle amount change
                       className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                       labelProps={{
                         className: "before:content-none after:content-none",
@@ -242,7 +273,7 @@ export default function PayBillData() {
                         },
                       }}
                     />
-                    <Input
+                    {/* <Input
                       maxLength={19}
                       value={formatCardNumber(cardNumber)}
                       onChange={(event) => setCardNumber(event.target.value)}
@@ -254,7 +285,13 @@ export default function PayBillData() {
                       labelProps={{
                         className: "before:content-none after:content-none",
                       }}
-                    />
+                    /> */}
+                    <p className="text-red-600">{error}</p>
+                    {transactionId && (
+                      <p className="text-green-600">
+                        Your Transaction Id :{transactionId}
+                      </p>
+                    )}
                     <div className="my-4 flex items-center gap-4">
                       <div>
                         <Typography
@@ -277,24 +314,7 @@ export default function PayBillData() {
                           <Option value="postpaid">Postpaid</Option>
                         </Select>
                       </div>
-                      <div>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="mb-2 font-medium"
-                        >
-                          CVC
-                        </Typography>
-                        <Input
-                          maxLength={4}
-                          containerProps={{ className: "min-w-[72px]" }}
-                          placeholder="000"
-                          className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                          labelProps={{
-                            className: "before:content-none after:content-none",
-                          }}
-                        />
-                      </div>
+                      <div></div>
                     </div>
                     <Typography
                       variant="small"
@@ -338,6 +358,7 @@ export default function PayBillData() {
                   </Typography>
                 </form>
               </TabPanel>
+              {/* pay pal payment */}
               <TabPanel value="paypal" className="p-0">
                 <form className="mt-12 flex flex-col gap-4">
                   <div>
@@ -434,6 +455,6 @@ export default function PayBillData() {
           </Tabs>
         </CardBody>
       </Card>
-    </Elements>
+    </div>
   );
 }
