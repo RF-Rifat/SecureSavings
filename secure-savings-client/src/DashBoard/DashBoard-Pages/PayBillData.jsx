@@ -207,7 +207,7 @@ export default function PayBillData({ refetch }) {
                 Pay with Card
               </Tab>
               <Tab value="paypal" onClick={() => setType("paypal")}>
-                Pay with PayPal
+                Pay with Others
               </Tab>
             </TabsHeader>
             <TabsBody
@@ -343,7 +343,7 @@ export default function PayBillData({ refetch }) {
                   <Button
                     size="lg"
                     type="submit"
-                    disabled={!stripe || !clientSecret}
+                    // disabled={!stripe || !clientSecret}
                     className="bg-blue-500 hover:bg-blue-600 text-white"
                   >
                     Pay Now
