@@ -155,7 +155,7 @@ const Dashboard = () => {
                     Total Loans
                   </p>
                   <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                   <NumberCount number={3}/>
+                   <NumberCount number={13}/>
                   </p>
                 </div>
               </div>

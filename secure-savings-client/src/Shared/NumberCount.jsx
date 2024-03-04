@@ -8,7 +8,7 @@ export default function NumberCount({ number }) {
 
   useEffect(() => {
     const animation = animate(count, number, {
-      duration: number < 100 ? number / 10 : 3,
+      duration: 2,
     });
 
     return animation.stop;

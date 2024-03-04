@@ -69,7 +69,7 @@ const AccountData = ({ data }) => {
               <div className="w-full max-w-full px-3 xl:w-1/2 xl:flex-none">
                 <div className="flex flex-wrap -mx-3">
                   <div className="w-full max-w-full px-3 md:w-1/2 md:flex-none ">
-                    <div className="relative flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border grid place-items-center">
+                    <div className="relative flex-col min-w-0 break-words bg-white  border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:bg-dark dark:shadow-blue-gray-800 rounded-2xl bg-clip-border grid place-items-center">
                       <div className="p-4 mx-6 mb-0 text-center border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                         <div className="w-16 h-16 text-center grid place-items-center shadow-sm icon bg-gradient-to-tl from-blue-400 to-blue-600 rounded-xl">
                           <i
@@ -93,7 +93,7 @@ const AccountData = ({ data }) => {
                     </div>
                   </div>
                   <div className="w-full max-w-full px-3 mt-6 md:mt-0 md:w-1/2 md:flex-none">
-                    <div className="relative  flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-xl grid place-items-center dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                    <div className="relative  flex-col min-w-0 break-words bg-white dark:bg-dark dark:shadow-blue-gray-800 border-0 border-transparent border-solid shadow-xl grid place-items-center dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                       <div className="p-4 mx-6 mb-0 text-center border-b-0 border-b-solid rounded-t-2xl  border-b-transparent">
                         <div className="w-16 h-16 text-center bg-center shadow-sm icon  grid place-items-center bg-gradient-to-tl from-blue-400 to-blue-600 rounded-xl">
                           <i
@@ -119,7 +119,7 @@ const AccountData = ({ data }) => {
                 </div>
               </div>
               <div className=" px-3 w-full lg:flex-none">
-                <div className="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                <div className="relative flex flex-col min-w-0 mt-6 break-words bg-white dark:bg-dark dark:shadow-blue-gray-800 border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 rounded-2xl bg-clip-border">
                   <div className="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <div className="flex flex-wrap justify-between w-full">
                       <div className="flex items-center flex-none w-1/2 max-w-full px-3">
