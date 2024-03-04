@@ -213,6 +213,41 @@ router.get("/userData/:email", async (req, res) => {
   }
 });
 
+// Route for creating payment intent
+router.post("/create-payment-intent", async (req, res) => {
+  const { price } = req.body;
+  const amount = parseInt(price * 100);
+
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: amount,
+    currency: "usd",
+    payment_method_types: ["card"],
+  });
+
+  res.send({
+    clientSecret: paymentIntent.client_secret,
+  });
+});
+
+// Route for saving payment information
+router.post("/payments", async (req, res) => {
+  const { email, price, transactionId, date, status } = req.body;
+  const payment = new Payment({
+    email: email,
+    price: price,
+    transactionId: transactionId,
+    date: date,
+    status: status,
+  });
+
+  try {
+    const savedPayment = await payment.save();
+    res.send(savedPayment);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 // PUT route
 router.put("/user/update-status/:email", async (req, res) => {
   try {

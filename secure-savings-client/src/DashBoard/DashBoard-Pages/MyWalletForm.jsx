@@ -5,23 +5,22 @@ import { increment } from "../../redux/counterSlice";
 import { useState } from "react";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
-import Lottie from "lottie-react";
 import CardOne from "../../../public/CardOne.json";
 import CardTwo from "../../../public/CardTwo.json";
 import { current } from "@reduxjs/toolkit";
 import { modifyData } from "../../Hooks/Api";
-import { AuthProvider } from "../../Authentication/AuthProvider";
 import useGetUserData from "../../Hooks/useGetUserData";
+import { AdminDataContext } from "../../Context/AdminProvider";
 
 const MyWalletForm = () => {
-  const authInfo = useContext(AuthProvider);
+  const authInfo = useContext(AdminDataContext);
   const [userId, setId] = useState("");
-  const { user } = authInfo;
-  console.log(user.email);
-  const email = user?.email;
+  const { LoggedUser, isAdmin } = authInfo;
+  // const { user } = authInfo;
+  // console.log(user.email);
+  const user = LoggedUser[0];
+  console.log(user);
   const [data] = useGetUserData(`/api/userData/admin@gmail.com`);
-
-  // console.log("wallet", data.accounts.map(acc =>));
 
   useEffect(() => {
     data?.accounts?.map((acc) => {
@@ -94,7 +93,7 @@ const MyWalletForm = () => {
         <div className="flex flex-col w-full gap-7">
           <div className="bg-gradient-to-tl flex flex-col md:flex-row rounded-xl dark:bg-dark p-5 relative overflow-hidden">
             <div className="flex flex-1 gap-4 sm:flex-wrap sm:gap-12 xl:gap-6 flex-col lg:flex-row">
-              <div className="flex-1 flex-col gap-3 justify-center items-center">
+              {/* <div className="flex-1 flex-col gap-3 justify-center items-center">
                 <span className="text-[32px] font-bold text-dark dark:text-white sm:text-[40px] lg:text-[36px] xl:text-[40px]">
                   Your Balance: $<span id="wallet-amount">1000</span>
                 </span>
@@ -110,7 +109,149 @@ const MyWalletForm = () => {
                   <Lottie animationData={CardTwo} />
                   <Lottie animationData={CardOne} />
                 </ul>
+              </div> */}
+              {/* balance stats */}
+              <div className="col-span-6 overflow-hidden bg-white border shadow-xs rounded-t-2xl rounded-b-md md:col-span-3 lg:col-span-2">
+                <div className="py-4 text-white px-7 bg-gradient-to-r from-blue-500 to-blue-900 rounded-2xl">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center p-1 bg-gray-900 rounded-full bg-opacity-50 space-x-1.5">
+                      <img
+                        className="w-8 h-8 rounded-full p-0.5 bg-opacity-30 bg-white"
+                        src={user?.imageSrc}
+                        alt=""
+                      />
+                      <h4 className="pr-2 text-xs text-white text-opacity-700">
+                        {user?.name}
+                      </h4>
+                    </div>
+
+                    <div className="flex items-center justify-center w-10 h-10 bg-gray-900 bg-opacity-50 rounded-xl">
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between mt-8 mb-20">
+                    <h4 className="text-xl text-white text-opacity-90">
+                      Total balance :
+                    </h4>
+
+                    <h2 className="text-4xl font-light text-white text-opacity-40">
+                      <span className="text-white text-opacity-80">10,840</span>{" "}
+                      USD
+                    </h2>
+                  </div>
+                </div>
+
+                <div className="pb-5 -mt-10 px-7">
+                  <div className="grid grid-cols-2 gap-5">
+                    <div className="px-5 py-3 bg-white border rounded-md shadow-lg border-opacity-30">
+                      <div className="flex items-center space-x-3">
+                        <span className="text-sm">Transfer</span>
+                        <svg
+                          className="w-6 h-6 p-0.5 text-green-500"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 15l7-7 7 7"
+                          />
+                        </svg>
+                      </div>
+
+                      <div className="bg-gray-200 rounded-md px-2 py-0.5 text-center mt-2.5 font-medium text-gray-600 border border-opacity-30">
+                        9,799
+                      </div>
+                    </div>
+
+                    <div className="px-5 py-3 bg-white border rounded-md shadow-lg border-opacity-30">
+                      <div className="flex items-center space-x-3">
+                        <span className="text-sm">Reception</span>
+                        <svg
+                          className="w-6 h-6 p-0.5 transform rotate-180 text-red-500"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 15l7-7 7 7"
+                          />
+                        </svg>
+                      </div>
+
+                      <div className="bg-gray-200 rounded-md px-2 py-0.5 text-center mt-2.5 font-medium text-gray-600 border border-opacity-30">
+                        5,300
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="inline-block">
+                    <div className="flex items-center flex-grow-0 px-3 py-1 mt-5 bg-green-700 rounded-full bg-opacity-80 space-x-2">
+                      <div className="w-2 h-2 bg-white rounded-full" />
+                      <p className="text-xs text-white">Pending</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 text-sm space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Benin</span>
+                      <h4>
+                        <span className="font-medium">1,385</span>{" "}
+                        <span className="text-lg text-gray-400">USD</span>
+                      </h4>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Togo</span>
+                      <h4>
+                        <span className="font-medium">1,566</span>{" "}
+                        <span className="text-lg text-gray-400">USD</span>
+                      </h4>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Senegal</span>
+                      <h4>
+                        <span className="font-medium">2,566</span>{" "}
+                        <span className="text-lg text-gray-400">USD</span>
+                      </h4>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-5 mt-5 text-sm">
+                    <button className="bg-purple-200 border border-gray-300 border-opacity-30 text-purple-500 rounded py-1.5 focus:outline-none hover:outline-none hover:shadow-lg transition duration-300">
+                      View Details
+                    </button>
+
+                    <button className="bg-green-100 text-green-600 rounded py-1.5 focus:outline-none hover:outline-none hover:shadow-lg transition duration-300">
+                      Request Money
+                    </button>
+                  </div>
+                </div>
               </div>
+
+              {/* balance stats */}
               <div className="w-full px-4 lg:w-1/2 xl:w-4/12">
                 <div className="mx-4">
                   <div className="credit-card sm:w-auto mx-auto">

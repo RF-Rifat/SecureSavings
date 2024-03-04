@@ -7,7 +7,7 @@ import NumberCount from "../../Shared/NumberCount";
 
 const Dashboard = () => {
   const authInfo = useContext(AdminDataContext);
-  const { isAdmin } = authInfo;
+  const { LoggedUser, isAdmin } = authInfo;
   const [userData] = useGetData("/api/user");
   const [accData] = useGetData("/api/account");
   const [creditCard] = useGetData("/api/credit");

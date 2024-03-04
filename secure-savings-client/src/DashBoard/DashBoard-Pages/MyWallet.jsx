@@ -7,11 +7,11 @@ import useAuth from "../../Hooks/useAuth";
 import useGetData from "../../Hooks/useGetData";
 import useGetUserData from "../../Hooks/useGetUserData";
 
-
 const MyWallet = () => {
   const { authInfo } = useAuth();
   const { displayName, photoURL, email } = authInfo?.user || {};
-  const [data,refetch] = useGetUserData(`/api/userData/${email}`);
+  const [data, refetch] = useGetUserData(`/api/userData/${email}`);
+  console.log(data);
 
   return (
     <>
