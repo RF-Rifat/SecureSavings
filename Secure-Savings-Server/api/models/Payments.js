@@ -8,6 +8,8 @@ const paymentSchema = new Schema({
   transactionId: String,
   date: Date,
   status: String,
+  billingType: String,
+  month: String,
 });
 
 // Create a Mongoose model based on the payment schema

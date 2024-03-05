@@ -90,7 +90,7 @@ export default function PayBillData({ refetch }) {
       if (totalPrice > 0) {
         try {
           // Send a request to your backend server to create a payment intent
-          const response = await fetch("/create-payment-intent", {
+          const response = await fetch("/stripe/create-payment-intent", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -168,7 +168,7 @@ export default function PayBillData({ refetch }) {
           month: selectedMonth,
         };
         // const res = await axiosSecure.post("/payments", payment);
-        const res = await modifyData("/api/payments", "POST", payment);
+        const res = await modifyData("/api/stripe/payment", "POST", payment);
         console.log("payment saved", res.data);
         refetch();
         if (res.data?.insertedId) {
