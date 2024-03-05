@@ -137,7 +137,7 @@ export default function PayBillData({ refetch }) {
       setError("");
     }
     // confirmed payment
-    toast.success("Payment Successfully");
+    // toast.success("Payment Successfully");
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -164,6 +164,8 @@ export default function PayBillData({ refetch }) {
           // enrollIds: enroll.map((item) => item._id),
           // courseItemIds: enroll.map((item) => item.courseId),
           status: "pending",
+          billingType: selectedOption,
+          month: selectedMonth,
         };
         // const res = await axiosSecure.post("/payments", payment);
         const res = await modifyData("/api/payments", "POST", payment);
