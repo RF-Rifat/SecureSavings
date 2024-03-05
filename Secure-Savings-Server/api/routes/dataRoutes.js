@@ -8,6 +8,7 @@ const Loan = require("../models/loan");
 const Testimonial = require("../models/Testimonial");
 const Account = require("../models/account");
 const CreditCard = require("../models/creditCard");
+const { PaymentIntent, Payment } = require("../models/payment");
 
 router.post("/", async (req, res) => {
   try {
@@ -214,23 +215,33 @@ router.get("/userData/:email", async (req, res) => {
 });
 
 // Route for creating payment intent
-router.post("/create-payment-intent", async (req, res) => {
+router.post("/stripe/create-payment-intent", async (req, res) => {
   const { price } = req.body;
   const amount = parseInt(price * 100);
 
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: amount,
-    currency: "usd",
-    payment_method_types: ["card"],
-  });
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount,
+      currency: "usd",
+      payment_method_types: ["card"],
+    });
 
-  res.send({
-    clientSecret: paymentIntent.client_secret,
-  });
+    const newPaymentIntent = new PaymentIntent({
+      clientSecret: paymentIntent.client_secret,
+    });
+
+    await newPaymentIntent.save();
+
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 // Route for saving payment information
-router.post("/payments", async (req, res) => {
+router.post("/stripe/payment", async (req, res) => {
   const { email, price, transactionId, date, status } = req.body;
   const payment = new Payment({
     email: email,
@@ -242,6 +253,7 @@ router.post("/payments", async (req, res) => {
 
   try {
     const savedPayment = await payment.save();
+
     res.send(savedPayment);
   } catch (error) {
     res.status(500).send(error);
