@@ -1,6 +1,5 @@
-
 /* eslint-disable no-useless-catch */
-export const BASE_URL = "http://localhost:5000";
+export const BASE_URL = "https://secure-savings-server.vercel.app";
 
 export const getData = async (endpoint) => {
   return fetch(BASE_URL + endpoint)
@@ -35,5 +34,3 @@ export const modifyData = async (endpoint, method, data) => {
     throw error;
   }
 };
-
-
