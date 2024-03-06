@@ -17,10 +17,10 @@ const MyWalletForm = () => {
   const authInfo = useContext(AuthProvider);
   const [userId, setId] = useState("");
   const { user } = authInfo;
-  console.log(user.email);
-  const email = user?.email;
+  // console.log(user.email);
+  // const email = user?.email;
   const [data] = useGetUserData(`/api/userData/admin@gmail.com`);
-
+  // console.log(data);
   // console.log("wallet", data.accounts.map(acc =>));
 
   useEffect(() => {
@@ -55,16 +55,17 @@ const MyWalletForm = () => {
     };
     console.log(newTransaction);
     try {
-      const res = await modifyData("/api/transaction", "POST", newTransaction);
+      const res = await modifyData("/transaction", "POST", newTransaction);
       console.log(res.data);
       if (res) {
         toast.success("Transaction Successful");
       }
     } catch (error) {
       if (error) {
+        console.log(error);
+
         return toast.error("Something wrong, Please try again");
       }
-      console.log(error);
     }
     console.log(newTransaction);
     dispatch(increment());

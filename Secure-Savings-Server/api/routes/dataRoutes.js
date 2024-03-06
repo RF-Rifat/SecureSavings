@@ -8,6 +8,7 @@ const Loan = require("../models/loan");
 const Testimonial = require("../models/Testimonial");
 const Account = require("../models/account");
 const CreditCard = require("../models/creditCard");
+const Transaction = require("../models/Transactions");
 
 router.post("/", async (req, res) => {
   try {
@@ -181,11 +182,15 @@ router.post("/:type", async (req, res) => {
       case "testimonial":
         result = await Testimonial.create(data);
         break;
+      case "transaction":
+        result = await Transaction.create(data);
+        break;
       default:
         result = null;
     }
 
     res.send(result);
+    console.log(result);
   } catch (error) {
     res.status(500).send(error);
   }

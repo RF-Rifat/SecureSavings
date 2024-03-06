@@ -62,8 +62,6 @@ app.post("/api/:type", async (req, res) => {
       result = await Comment.create(data);
     } else if (type.toLowerCase().trim() === "loan") {
       result = await Loan.create(data);
-    } else if (type.toLowerCase().trim() === "transaction") {
-      result = await Transactions.create(data);
     }
 
     res.send(result);
