@@ -58,7 +58,7 @@ const PayBill = () => {
             {bills.map((bill) => (
               <div
                 key={bill.id}
-                className="w-full shadow-md transform hover:-translate-y-1 duration-300 hover:shadow-xl  px-3 mb-6 lg:px-2 md:w-1/2 lg:w-1/3"
+                className="w-full shadow-md transform hover:-translate-y-1 duration-300 hover:shadow-xl  px-3 mb-6 lg:px-2 md:w-1/2 lg:w-1/3 dark:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]"
               >
                 <div className="p-5 bg-white rounded-b shadow dark:bg-dark">
                   <a

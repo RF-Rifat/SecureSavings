@@ -8,7 +8,7 @@ const Loan = require("../models/loan");
 const Testimonial = require("../models/Testimonial");
 const Account = require("../models/account");
 const CreditCard = require("../models/creditCard");
-const Transaction = require("../models/Transactions");
+const { PaymentIntent, Payment } = require("../models/payment");
 
 router.post("/", async (req, res) => {
   try {
@@ -215,6 +215,52 @@ router.get("/userData/:email", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Route for creating payment intent
+router.post("/stripe/create-payment-intent", async (req, res) => {
+  const { price } = req.body;
+  const amount = parseInt(price * 100);
+
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount,
+      currency: "usd",
+      payment_method_types: ["card"],
+    });
+
+    const newPaymentIntent = new PaymentIntent({
+      clientSecret: paymentIntent.client_secret,
+    });
+
+    await newPaymentIntent.save();
+
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// Route for saving payment information
+router.post("/stripe/payment", async (req, res) => {
+  const { email, price, transactionId, date, status } = req.body;
+  const payment = new Payment({
+    email: email,
+    price: price,
+    transactionId: transactionId,
+    date: date,
+    status: status,
+  });
+
+  try {
+    const savedPayment = await payment.save();
+
+    res.send(savedPayment);
+  } catch (error) {
+    res.status(500).send(error);
   }
 });
 

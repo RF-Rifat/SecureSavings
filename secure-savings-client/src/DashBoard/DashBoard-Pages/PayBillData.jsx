@@ -90,7 +90,7 @@ export default function PayBillData({ refetch }) {
       if (totalPrice > 0) {
         try {
           // Send a request to your backend server to create a payment intent
-          const response = await fetch("/create-payment-intent", {
+          const response = await fetch("/stripe/create-payment-intent", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -137,6 +137,7 @@ export default function PayBillData({ refetch }) {
       setError("");
     }
     // confirmed payment
+    // toast.success("Payment Successfully");
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -163,9 +164,11 @@ export default function PayBillData({ refetch }) {
           // enrollIds: enroll.map((item) => item._id),
           // courseItemIds: enroll.map((item) => item.courseId),
           status: "pending",
+          billingType: selectedOption,
+          month: selectedMonth,
         };
         // const res = await axiosSecure.post("/payments", payment);
-        const res = await modifyData("/api/payments", "POST", payment);
+        const res = await modifyData("/api/stripe/payment", "POST", payment);
         console.log("payment saved", res.data);
         refetch();
         if (res.data?.insertedId) {
@@ -207,7 +210,7 @@ export default function PayBillData({ refetch }) {
                 Pay with Card
               </Tab>
               <Tab value="paypal" onClick={() => setType("paypal")}>
-                Pay with PayPal
+                Pay with Others
               </Tab>
             </TabsHeader>
             <TabsBody
@@ -343,7 +346,7 @@ export default function PayBillData({ refetch }) {
                   <Button
                     size="lg"
                     type="submit"
-                    disabled={!stripe || !clientSecret}
+                    // disabled={!stripe || !clientSecret}
                     className="bg-blue-500 hover:bg-blue-600 text-white"
                   >
                     Pay Now

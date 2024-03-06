@@ -47,7 +47,6 @@ app.use(cors());
 app.use(express.json());
 
 // Use routes
-app.use("/api", dataRoutes);
 
 const port = process.env.PORT || 5000;
 
@@ -71,6 +70,7 @@ io.on("connection", (socket) => {
   });
 });
 
+app.use("/api", dataRoutes);
 const startServer = async () => {
   await connectDB();
 
