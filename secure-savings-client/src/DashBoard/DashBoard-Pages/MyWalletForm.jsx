@@ -51,14 +51,14 @@ const MyWalletForm = () => {
     const newTransaction = {
       cardNum: num,
       amount: inputAmount,
-      userId: userId,
+      transactionId: userId,
     };
     console.log(newTransaction);
     try {
       const res = await modifyData("/api/transaction", "POST", newTransaction);
       if (res) {
         toast.success("Transaction Successful");
-        // console.log(res)
+        console.log(res)
       }
     } catch (error) {
       if (error) {

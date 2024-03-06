@@ -120,10 +120,7 @@ router.get("/:type", async (req, res) => {
           .skip(page * size)
           .limit(size);
         break;
-      case "transaction":
-        result = await Transaction.find()
-          
-        break;
+     
       default:
         result = "unrecognized path";
     }
