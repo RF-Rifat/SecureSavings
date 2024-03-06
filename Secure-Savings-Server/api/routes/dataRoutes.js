@@ -9,6 +9,7 @@ const Testimonial = require("../models/Testimonial");
 const Account = require("../models/account");
 const CreditCard = require("../models/creditCard");
 const { PaymentIntent, Payment } = require("../models/payment");
+const Transaction = require("../models/Transactions");
 
 router.post("/", async (req, res) => {
   try {
@@ -114,6 +115,12 @@ router.get("/:type", async (req, res) => {
         break;
       case "testimonial":
         result = await Testimonial.find()
+          .sort({ _id: -1 })
+          .skip(page * size)
+          .limit(size);
+        break;
+      case "transactions":
+        result = await Transaction.find()
           .sort({ _id: -1 })
           .skip(page * size)
           .limit(size);
