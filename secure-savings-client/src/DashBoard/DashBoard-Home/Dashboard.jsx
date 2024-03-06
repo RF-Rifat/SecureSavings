@@ -16,7 +16,6 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* component */}
 
       {isAdmin && (
         <>
