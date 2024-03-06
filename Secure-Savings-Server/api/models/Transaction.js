@@ -10,7 +10,7 @@ const transactionSchema = new Schema({
     type: Number,
     require: true,
   },
-  transactionId: {
+  senderId: {
     type: String,
     require: true,
   },

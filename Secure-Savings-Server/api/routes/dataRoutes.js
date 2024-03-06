@@ -212,8 +212,9 @@ router.get("/userData/:email", async (req, res) => {
       userId: new ObjectId(user?._id),
     });
     let userTransaction = await Transaction.find({
-      senderId: new ObjectId(user?._id),
+      senderId: user?._id,
     });
+    console.log(userTransaction);
     if (!user || !userAcc || !userCard) {
       return res.status(404).json({ error: "User data not found" });
     }
