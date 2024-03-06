@@ -11,7 +11,7 @@ const Dashboard = () => {
   const [userData] = useGetData("/api/user");
   const [accData] = useGetData("/api/account");
   const [creditCard] = useGetData("/api/credit");
-  console.log(creditCard);
+  // console.log(creditCard);
   const totalBalance = accData?.reduce((sum, user) => sum + user.balance, 0);
 
   return (

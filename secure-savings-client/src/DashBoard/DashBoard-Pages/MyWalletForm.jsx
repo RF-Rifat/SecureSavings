@@ -19,14 +19,15 @@ const MyWalletForm = () => {
   // const { user } = authInfo;
   // console.log(user.email);
   const user = LoggedUser[0];
-  console.log(user);
-  const [data] = useGetUserData(`/api/userData/admin@gmail.com`);
+  // console.log(user.email);
+  const [data] = useGetUserData(`/api/userData/${user?.email}`);
 
   useEffect(() => {
     data?.accounts?.map((acc) => {
       setId(acc?.userId);
     }, []);
   });
+  // console.log(userId)
   // redux
   const dispatch = useDispatch();
 
@@ -54,14 +55,14 @@ const MyWalletForm = () => {
     };
     console.log(newTransaction);
     try {
-      const res = await modifyData("/transaction", "POST", newTransaction);
-      console.log(res.data);
+      const res = await modifyData("/api/transaction", "POST", newTransaction);
       if (res) {
         toast.success("Transaction Successful");
+        // console.log(res)
       }
     } catch (error) {
       if (error) {
-        console.log(error);
+        // console.log(error);
 
         return toast.error("Something wrong, Please try again");
       }
@@ -150,7 +151,7 @@ const MyWalletForm = () => {
                     </h4>
 
                     <h2 className="text-4xl font-light text-white text-opacity-40">
-                      <span className="text-white text-opacity-80">10,840</span>{" "}
+                      <span className="text-white text-opacity-80" id="wallet-amount">1000</span>{" "}
                       USD
                     </h2>
                   </div>

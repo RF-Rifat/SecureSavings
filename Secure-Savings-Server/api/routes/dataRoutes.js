@@ -6,9 +6,11 @@ const Blog = require("../models/blog");
 const Comment = require("../models/comment");
 const Loan = require("../models/loan");
 const Testimonial = require("../models/Testimonial");
+const Testimonial = require("../models/Testimonial");
 const Account = require("../models/account");
 const CreditCard = require("../models/creditCard");
 const { PaymentIntent, Payment } = require("../models/payment");
+const Transaction = require("../models/Transaction");
 
 router.post("/", async (req, res) => {
   try {
@@ -117,6 +119,10 @@ router.get("/:type", async (req, res) => {
           .sort({ _id: -1 })
           .skip(page * size)
           .limit(size);
+        break;
+      case "transaction":
+        result = await Transaction.find()
+          
         break;
       default:
         result = "unrecognized path";
