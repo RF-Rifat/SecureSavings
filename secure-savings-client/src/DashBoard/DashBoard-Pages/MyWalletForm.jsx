@@ -12,6 +12,7 @@ import { modifyData } from "../../Hooks/Api";
 import useGetUserData from "../../Hooks/useGetUserData";
 import { AdminDataContext } from "../../Context/AdminProvider";
 
+
 const MyWalletForm = () => {
   const authInfo = useContext(AdminDataContext);
   const [userId, setId] = useState("");
@@ -21,6 +22,7 @@ const MyWalletForm = () => {
   const user = LoggedUser[0];
   // console.log(user.email);
   const [data] = useGetUserData(`/api/userData/${user?.email}`);
+  console.log(data)
 
   useEffect(() => {
     data?.accounts?.map((acc) => {
@@ -51,9 +53,11 @@ const MyWalletForm = () => {
     const newTransaction = {
       cardNum: num,
       amount: inputAmount,
-      transactionId: userId,
+      senderId: userId,
     };
-    console.log(newTransaction);
+    // console.log(typeof num);
+    // console.log(typeof inputAmount);
+    // console.log(typeof userId);
     try {
       const res = await modifyData("/api/transaction", "POST", newTransaction);
       if (res) {
@@ -62,7 +66,7 @@ const MyWalletForm = () => {
       }
     } catch (error) {
       if (error) {
-        // console.log(error);
+        console.log(error);
 
         return toast.error("Something wrong, Please try again");
       }
