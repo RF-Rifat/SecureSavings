@@ -1,3 +1,6 @@
+import { MdEmail } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 const ContactPageSTeam = () => {
   return (
     <>
@@ -14,6 +17,42 @@ const ContactPageSTeam = () => {
           Our business hours are 9AM-6PM ET Monday-Friday and 9AM-5PM ET on
           weekends.
         </p>
+        {/* <!-- Contact section --> */}
+        <section className="md:pt-11 mt-8">
+          <div className="mb-16">
+            <div className="grid grid-cols-1 justify-around gap-5 md:grid-cols-2 lg:grid-cols-3">
+              <div className="card bg-base-300 shadow-2xl">
+                <div className="p-10 text-center space-y-2">
+                  <div className="flex justify-center text-5xl">
+                    <FaUser />
+                  </div>
+                  <h2 className="text-2xl font-bold">Mac</h2>
+                  <h3 className="text-[16px] font-bold">
+                    Web Developer ( React )
+                  </h3>
+                </div>
+              </div>
+              <div className="card bg-base-300 shadow-2xl">
+                <div className="p-10 text-center space-y-2">
+                  <div className="flex justify-center text-5xl">
+                    <FaPhoneAlt />
+                  </div>
+                  <h2 className="text-2xl font-bold">Phone</h2>
+                  <h3 className="text-[16px] font-bold">+88045778686868</h3>
+                </div>
+              </div>
+              <div className="card bg-base-300 shadow-2xl">
+                <div className="p-10 text-center space-y-2">
+                  <div className="flex justify-center text-5xl">
+                    <MdEmail />
+                  </div>
+                  <h2 className="text-2xl font-bold">Email</h2>
+                  <h3 className="text-[16px] font-bold">admin@gmail.com</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <div className="mt-10 md:h-[450px] md:flex bg-[#272636] rounded-lg">
           <div className="md:flex-1">
             <img
