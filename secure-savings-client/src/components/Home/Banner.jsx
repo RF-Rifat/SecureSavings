@@ -32,7 +32,7 @@ const Banner = () => {
           <span className="text-red-500">1348+</span> Branch and Sub-branch
         </h2>
         <p className="text-2xl">Believing, Banking and Achieving Different</p>
-        <div className="flex lg:gap-10 justify-around lg:justify-start">
+        <div className="flex lg:gap-10 justify-around 2xl:justify-start">
           <CreateAccount />
           <CreateCreditCard />
         </div>

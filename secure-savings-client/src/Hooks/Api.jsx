@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-catch */
-export const BASE_URL = "https://secure-savings-server.vercel.app";
+export const BASE_URL = "https://securesavings-2.onrender.com";
 
 export const getData = async (endpoint) => {
   return fetch(BASE_URL + endpoint)

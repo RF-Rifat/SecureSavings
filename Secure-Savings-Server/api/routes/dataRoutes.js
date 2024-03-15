@@ -215,13 +215,14 @@ router.get("/userData/:email", async (req, res) => {
       senderId: user?._id,
     });
     console.log(userTransaction);
-    if (!user || !userAcc || !userCard) {
+    if (!user || !userAcc || !userCard || !userTransaction) {
       return res.status(404).json({ error: "User data not found" });
     }
     const responseData = {
       ...user.toObject(),
       accounts: userAcc,
       creditCards: userCard,
+      userTransaction,
     };
     res.status(200).json(responseData);
   } catch (error) {

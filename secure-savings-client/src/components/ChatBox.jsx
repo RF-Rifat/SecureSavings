@@ -9,7 +9,7 @@ import { io } from "socket.io-client";
 import { AdminDataContext } from "../Context/AdminProvider";
 
 const ChatBox = () => {
-  const socket = io("https://secure-savings-server.vercel.app");
+  const socket = io("https://securesavings-2.onrender.com");
   const [chat, setChat] = useState([]);
   const AdminAuth = useContext(AdminDataContext);
   const { isAdmin } = AdminAuth;

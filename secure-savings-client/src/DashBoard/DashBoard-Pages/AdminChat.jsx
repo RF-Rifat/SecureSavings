@@ -12,7 +12,6 @@ const AdminChat = () => {
   const [chat, setChat] = useState([]);
   const [messageInput, setMessageInput] = useState("");
 
-  console.log(filteredUsers);
   useEffect(() => {
     if (userData && userData.length > 0) {
       const filteredData = userData.filter(
@@ -72,7 +71,7 @@ const AdminChat = () => {
 
   return (
     <section className="lg:grid grid-cols-12 relative">
-      <aside className="h-full 2xl:col-span-3 xl:col-span-4 lg:col-span-5 bg-white dark:bg-black border border-bgray-200 dark:border-darkblack-400 pr-7 pl-12 pt-6 pb-10 hidden lg:block">
+      <aside className="h-full 2xl:col-span-3 xl:col-span-4 lg:col-span-5 bg-white dark:bg-black border border-b-gray-200 dark:border-darkblack-400 pr-7 pl-12 pt-6 pb-10 hidden lg:block">
         <header>
           <h3 className="text-2xl font-semibold text-bgray-900 dark:text-white mb-6">
             Messages
@@ -99,7 +98,11 @@ const AdminChat = () => {
               >
                 <div className="flex space-x-3 items-center">
                   <Badge color={data?.status ? "green" : "red"}>
-                    <Avatar src={data.image} alt="avatar" variant="rounded" />
+                    <Avatar
+                      src={data?.imageSrc}
+                      alt="avatar"
+                      variant="rounded"
+                    />
                   </Badge>
                   <h4 className="text-xl font-bold text-bgray-900 dark:text-white">
                     {data.name}
@@ -114,7 +117,7 @@ const AdminChat = () => {
         <header className="bg-white dark:bg-darkblack-600 p-5 lg:pr-24 flex justify-between items-center border-t border-bgray-300 dark:border-darkblack-400">
           <div className="flex space-x-3 items-center">
             <Badge color={selectedUser?.status ? "green" : "red"}>
-              <Avatar src={selectedUser?.image} />
+              <Avatar src={selectedUser?.imageSrc} />
             </Badge>
             <div>
               <h4 className="text-base font-bold text-bgray-900 dark:text-white">
@@ -147,7 +150,7 @@ const AdminChat = () => {
                   src={
                     message.sender === "admin"
                       ? "https://lh3.googleusercontent.com/a/ACg8ocI9KP1WyhE4zyejd4hv7WgtMm4zKgDavXFqiTxByfZkorw=s96-c"
-                      : selectedUser?.image
+                      : selectedUser?.imageSrc
                   }
                   className="shrink-0"
                   alt=""
